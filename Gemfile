@@ -1,0 +1,12 @@
+source "http://rubygems.org"
+
+gem "couchrest"
+gem "couchrest_model"
+gem "css_parser"
+gem "haml"
+gem "highline"
+gem "indextank"
+gem "nokogiri"
+gem "sinatra"
+gem "sinatra/r18n"
+gem "rsolr"
