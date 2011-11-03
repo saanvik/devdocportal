@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'bundler/setup'
 require 'couchrest'
 require 'couchrest_model'
 require 'nokogiri'
