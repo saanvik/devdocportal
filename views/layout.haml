@@ -1,0 +1,40 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content =>"text/html; charset=UTF-8"}        
+  %title Technical Library
+  %link{:rel => "stylesheet",
+        :type => "text/css",
+        :media => "all",
+        :href => "oocss/oocss.css"}
+  %script{:type => "text/javascript",
+          :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"}
+  %body
+    %div{:class => "page liquid body mal"}
+      %div{:class => "head mal"}
+        %div{:class => "box callout chatty wizardBg line"}
+          %div{:class => "inner ols"}
+            %div{:class => "unit size3of5 mts"}          
+              %h1{:class => "h2 pal"}
+                Technical Library
+            %div{:class => "unit size2of5"}
+              %div{:class => "box callout chatty infoBg mrs"}
+                %div{:class => "inner"}
+                  Search box
+        %div{:class => "box chart infoBg line"}
+          %div{:class => "inner pll pts pbs"}
+            %div{:class =>"unit size4of5"}
+              %div
+                %h2
+                  =@topictitle
+              %div
+                %p Tags:               
+            %div{:class => "unit size1of5"}
+              %p api and tabs
+
+      %div{:class => "content mal"}
+        =yield
+ 
+      %div{:class => "footer"}
+        %p Footer content
+

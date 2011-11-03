@@ -1,0 +1,14 @@
+# English US label file
+
+title:
+  popular_content: Popular Content
+  toc: Table of Contents
+  getting_started: Getting Started
+  new_content: New Content
+  browse: Browse
+  searchresults: Search Results
+  facets: Facets
+
+search_results:
+  th_title: Title
+  th_updated: Last Updated

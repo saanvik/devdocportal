@@ -1,0 +1,27 @@
+            -# %table{:class => "txtL"}
+            -#   %thead
+            -#     %tr
+            -#       %th{:scope => "col",
+            -#           :class =>"sortable sorted descending",
+            -#           :title => t.search_results.th_title}
+            -#         = t.search_results.th_title
+            -#       -# %th{:scope => "col",
+            -#       -#     :class =>"sortable",
+            -#       -#     :title => t.search_results.th_snippet}
+            -#       -#   Snippets
+            -#       %th{:scope => "col",
+            -#           :class =>"sortable",
+            -#           :title => "updated"}
+            -#         = t.search_results.th_updated
+            -#   %tbody
+                -# See http://heroku.indextank.com/documentation/ruby-client for info on this array
+                -# - @results['results'].each do |doc|
+                -#   -@localtime = Time.at(doc['timestamp'].to_i).strftime("%b. %d, %y")
+                -#   %tr
+                -#     %td
+                -#       %div
+                -#         %a{:href => "/#{root}/#{locale}/#{doc['docid']}"}
+                -#           = doc['title']
+                -#       %div= doc['snippet_text']
+                -#     %td= @localtime
+
