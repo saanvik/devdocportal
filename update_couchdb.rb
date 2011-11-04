@@ -121,7 +121,11 @@ def upload_attachment(documentname,locale,fullpath, mime_type,attachmentname)
         end
     end
   end
-  @thisattachment.save
+  begin
+    @thisattachment.save
+  rescue
+    STDERR.puts "Could not save filename #{documentname}" 
+  end
   thisfile.close
 end
 
