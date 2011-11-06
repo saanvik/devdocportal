@@ -1,42 +1,33 @@
 %div{:class => "line"}
   %div{:class => "box chatty infoBg"}
     %div{:class => "inner"}
-      %div{:class => "unit size1of5 box chart"} 
-        %div{:class => "inner mrm"}
-          %div{:class => "hd"} 
-            %h3
-              =@sidebartitle
-          %div{:class => "bd"}
-            %p
-              =@sidebarcontent
-      %div{:class=> "unit size4of5"}
-        %div{:class => "box infoBg"}
-          %div{:class => "data colSort"}
-            %table{:class => "txtL"}
-              %thead
+      %div{:class => "box infoBg"}
+        %div{:class => "data colSort"}
+          %table{:class => "txtL"}
+            %thead
+              %tr
+                %th{:scope => "col",
+                    :class =>"sortable sorted descending",
+                    :title => t.search_results.th_title}
+                  = t.search_results.th_title
+                %th{:scope => "col",
+                    :class =>"sortable",
+                    :title => t.search_results.th_snippet}
+                  Snippets
+                %th{:scope => "col",
+                   :class =>"sortable",
+                   :title => "updated"}
+                  = t.search_results.th_updated
+            %tbody
+              - @search.each_hit_with_result do |hit, post|
+                -@localtime = Time.at(hit.result.updated_at.to_i).strftime("%b. %d, %Y")
                 %tr
-                  %th{:scope => "col",
-                      :class =>"sortable sorted descending",
-                      :title => t.search_results.th_title}
-                    = t.search_results.th_title
-                  %th{:scope => "col",
-                      :class =>"sortable",
-                      :title => t.search_results.th_snippet}
-                    Snippets
-                  %th{:scope => "col",
-                     :class =>"sortable",
-                     :title => "updated"}
-                    = t.search_results.th_updated
-              %tbody
-                - @search.each_hit_with_result do |hit, post|
-                  -@localtime = Time.at(hit.result.updated_at.to_i).strftime("%b. %d, %Y")
-                  %tr
-                    %td
-                      %div
-                        %a{:href => "/#{root}/#{locale}/#{hit.result.topicname}"}
-                          = hit.result.title
-                    %td= hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
-                    %td= @localtime
+                  %td
+                    %div
+                      %a{:href => "/#{root}/#{locale}/#{hit.result.topicname}"}
+                        = hit.result.title
+                  %td= hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
+                  %td= @localtime
 
 
 

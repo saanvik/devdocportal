@@ -10,13 +10,13 @@ CURRENT_API_VERSION = 23
 CURRENT_PATCH = 174.10
 
 # Source of the content
-DOCSRCDIR = "/home/sanderson/dev/doc/174/patch/core/174_htportal_out/"
+DOCSRCDIR = "/Users/sanderson/dev/doc/174/patch/core/174_htportal_out/"
 
 # APPSRCDIR is for images in the form of /img
-APPSRCDIR = "/home/sanderson/dev/app/main/core/sfdc/htdocs"
+APPSRCDIR = "/Users/sanderson/dev/app/main/core/sfdc/htdocs"
 
 # Source of the app images
-APPIMGSRC = "/home/sanderson/dev/app/main/core/sfdc/htdocs/img"
+APPIMGSRC = "/Users/sanderson/dev/app/main/core/sfdc/htdocs/img"
 
 # Default lang/locale
 LOCALE="en-us"
@@ -28,4 +28,4 @@ RELNAME = "winter12"
 INDEXNAME = "#{RELNAME}_#{LOCALE}_index"
 
 # Location of the oocss files
-CSSDIR = "/home/sanderson/dev/doc/main/core/build/resource/doc_portal/oocss/"
+CSSDIR = "/Users/sanderson/dev/doc/main/core/build/resource/doc_portal/oocss/"

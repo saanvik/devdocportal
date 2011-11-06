@@ -1,5 +1,5 @@
 source "http://rubygems.org"
-
+gem "thin"
 gem "couchrest"
 gem "couchrest_model"
 gem "css_parser"

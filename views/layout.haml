@@ -2,39 +2,51 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %meta{'http-equiv' => 'Content-Type', :content =>"text/html; charset=UTF-8"}        
-  %title Technical Library
-  %link{:rel => "stylesheet",
+      %title Technical Library
+      %link{:rel => "stylesheet",
         :type => "text/css",
         :media => "all",
         :href => "oocss/oocss.css"}
-  %script{:type => "text/javascript",
-          :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"}
   %body
-    %div{:class => "page liquid body mal"}
-      %div{:class => "head mal"}
-        %div{:class => "box callout chatty wizardBg line"}
-          %div{:class => "inner ols"}
-            %div{:class => "unit size3of5 mts"}          
-              %h1{:class => "h2 pal"}
-                Technical Library
-            %div{:class => "unit size2of5"}
-              %div{:class => "box callout chatty infoBg mrs"}
-                %div{:class => "inner"}
-                  Search box
-        %div{:class => "box chart infoBg line"}
-          %div{:class => "inner pll pts pbs"}
-            %div{:class =>"unit size4of5"}
-              %div
-                %h2
-                  =@topictitle
-              %div
-                %p Tags:               
-            %div{:class => "unit size1of5"}
-              %p api and tabs
-
-      %div{:class => "content mal"}
-        =yield
+    %div{:class => "hd line"}
+      %div{:class => "wizardBg box callout chatty"}
+        %div{:class => "inner"}
+          %div{:class => "unit size1of2 mts"}
+            %img{:src => "http://www.database.com/images/template/dbdc-logo-reversed.png?1319824344",
+                 :width => "363px"}
+          %div{:class => "unit size1of4 mts"}          
+            %h1{:class => "h2 pal",
+                :style => "color: #FFFFFF"}
+              Technical Library
+          %div{:class => "unit size1of4 lastUnit"}
+            %div{:class => "box chatty wizardBg mrs"}
+              %div{:class => "inner"}
+                %form{:action => " ",
+                      :method => "post"}
+                  %div{:class =>"headerSearchLeftRoundedCorner"}
+                    %div{:class => "searchBoxClearContainer"}
+                      %input{:type => "text",
+                             :class => "headerSearchBoxGhostText",
+                             :value => "",
+                             :title => "Search",
+                             :size => "20",
+                             :name => "search_query",
+                             :maxlength => "100",
+                             :id => "phSearchInput",
+                             :autocomplete => "off"}
+                      %div{:title => "Clear search terms",
+                           :style => "visibility:hidden",
+                           :id => "phSearchClearButton",
+                           :class => "headerSearchClearButton"}
+                    %div{:id => "searchButtonContainer",
+                         :class =>"headerSearchRightRoundedCorner"}
+                      %input{:type => "submit",
+                             :value => "Search",
+                             :id => "phSearchButton"}
+  %div{:class => "page liquid body mal"}
+    %div{:class => "content mal"}
+      =yield
  
-      %div{:class => "footer"}
-        %p Footer content
+    %div{:class => "footer"}
+      %p Footer content
 

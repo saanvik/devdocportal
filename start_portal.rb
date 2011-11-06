@@ -148,8 +148,24 @@ end
 # Search only page
 get '/dbcom/:locale/search' do
   # @todo Search only page should go back to the landing page
-    haml :search_page
+  haml :search_info
 end
+
+post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
+  query = params[:search_query]
+  puts "Searching for #{query}"
+  puts "Using #{Sunspot.config.solr.url}"
+  @search=Sunspot.search(Topic) do
+    keywords query do
+      highlight :content
+    end
+    facet :app_area
+  end
+  @results = @search.results
+  puts "Found #{@results.length} topics with the query #{query}"
+  haml :search, :locals => {:locale => locale, :root => root}
+end
+
 
 # Go to the search page, nothing but the search
 get '/dbcom/:locale/search/' do
@@ -163,7 +179,7 @@ get '/dbcom/:locale/:topicname' do
   @thistopic = Topic.by_topicname_and_locale.key([params[:topicname], locale]).first
 
   @thisdoc = Nokogiri::XML(@thistopic.read_attachment(params[:topicname]))
-  @content=@thisdoc.xpath('//body').children()
+  @content=@thisdoc.xpath('//body').children().remove_class("body")
   @topictitle=@thisdoc.xpath('//title[1]').inner_text()
   # Placeholders
   # @todo - Use labels for this one
@@ -175,20 +191,4 @@ get '/dbcom/:locale/:topicname' do
   haml :topic
 #  return @thistopic.read_attachment(params[:topicname])
 end
-
-# @todo Get this working properly
-# get '/dbcom/:locale/search/:query/:facet' do
-#   #puts query
-#   @content ="<div class='inner'>"
-#   @topictitle = "Search Results"
-#   @results = index.search(params[:query],
-#                           :category_filters => {'topictype' => [params[:facet]]},
-#                           :fetch => 'title,timestamp',
-#                           :snippet => 'text')
-
-#   print @results['matches'], " results\n"
-#   @sidebartitle ="Facets"
-#   @sidebarcontent = "List of facets, with checkboxes"
-#   haml :search
-# end
 
