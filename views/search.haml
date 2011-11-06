@@ -11,10 +11,6 @@
                     :title => t.search_results.th_title}
                   = t.search_results.th_title
                 %th{:scope => "col",
-                    :class =>"sortable",
-                    :title => t.search_results.th_snippet}
-                  Snippets
-                %th{:scope => "col",
                    :class =>"sortable",
                    :title => "updated"}
                   = t.search_results.th_updated
@@ -26,7 +22,8 @@
                     %div
                       %a{:href => "/#{root}/#{locale}/#{hit.result.topicname}"}
                         = hit.result.title
-                  %td= hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
+                      %br
+                      = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
                   %td= @localtime
 
 
