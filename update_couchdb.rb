@@ -124,7 +124,7 @@ def upload_attachment(documentname,locale,fullpath, mime_type,attachmentname)
   begin
     @thisattachment.save
   rescue
-    STDERR.puts "Could not save filename #{documentname}" 
+    STDERR.puts "Could not save filename #{documentname}"
   end
   thisfile.close
 end
@@ -171,7 +171,15 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
                                  :title => title)
     @thistopic.save
   rescue NoMethodError
+    STDERR.puts "Error: Could not update the attributes on #{filename}.  Check the couchdb connection."
+    STDERR.puts "#{$!}"
+  rescue RestClient::RequestFailed
+    STDERR.puts "Error: Could not update the attributes on #{filename}, most likely due to a conflict."
+    STDERR.puts "#{$!}"
+  rescue
     STDERR.puts "Error: Could not update the attributes on #{filename}."
+    STDERR.puts "#{$!}"
+    raise
   else
     # If there's no exception, save the topic
     @thistopic.save

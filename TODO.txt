@@ -3,57 +3,43 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
-* VERIFY Change langlocale to locale in all areas
-* DONE Update the config.ru file
-  CLOSED: [2011-09-21 Wed 17:11]
-  - CLOSING NOTE [2011-09-21 Wed 17:11]
-* DONE Make the mime type test safe
-  CLOSED: [2011-09-21 Wed 17:12]
-  - CLOSING NOTE [2011-09-21 Wed 17:12]
-* DONE Figure out how images and CSS get referenced [3/3]
-  CLOSED: [2011-10-10 Mon 07:45]
-  - CLOSING NOTE [2011-10-10 Mon 07:45]
-** DONE Update dupe test to do a hash compare
-   CLOSED: [2011-09-28 Wed 08:17]
-   - CLOSING NOTE [2011-09-28 Wed 08:17]
-   - CLOSING NOTE [2011-09-21 Wed 17:13]
-*** Add a hash property
-*** require digest
-*** Digest::SHA256.file(filename).hexdigest
-*** Compare the result of that to the hash property
-** DONE Load up CSS as attachments
-   CLOSED: [2011-09-21 Wed 17:13]
-   - CLOSING NOTE [2011-09-21 Wed 17:13]
-** DONE Load up images as attachments
-   CLOSED: [2011-09-21 Wed 17:14]
-   - CLOSING NOTE [2011-09-21 Wed 17:14]
-* DONE Figure out template for the Look and Feel [2/2]
-** DONE Design mock-up using haml
-   CLOSED: [2011-09-27 Tue 09:03]
-   - CLOSING NOTE [2011-09-27 Tue 09:03]
-** DONE Get Nicole's CSS (or use dbcom CSS)
-   CLOSED: [2011-09-27 Tue 09:04]
-   - CLOSING NOTE [2011-09-27 Tue 09:04]
-** TODO Match dbcom look and feel
-* Update topic model [7/12]
-** DONE When updating, don't override added metadata
-   CLOSED: [2011-09-01 Thu 11:57]
-   - CLOSING NOTE [2011-09-01 Thu 11:57]
-** DONE When creating or updating, add removed metadata
-   CLOSED: [2011-09-01 Thu 11:57]
-** DONE Add a view that includes lang_locale for lookup
-   CLOSED: [2011-09-21 Wed 17:14]
-   - CLOSING NOTE [2011-09-21 Wed 17:14]
-** DONE Update dupe test to take into account lang_locale
-   CLOSED: [2011-09-21 Wed 17:19]
-   - CLOSING NOTE [2011-09-21 Wed 17:19]
-** DONE Update dupe test to do a hash compare
-   CLOSED: [2011-09-21 Wed 17:14]
-   - CLOSING NOTE [2011-09-21 Wed 17:14]
-*** Add a hash property
-*** require digest
-*** Digest::SHA256.file(filename).hexdigest
-*** Compare the result of that to the hash property
+* TODO Respond to Jon M's email					      :email:
+* TODO Create generic 404
+* TODO Write a topic on using searches.  See ? 
+* TODO Figure out file organization
+* TODO Figure out feedback options
+
+* TODO Comment on test cases
+* TODO Follow up on solr replication
+* TODO Figure out how to right a rake file to
+** Update the local system
+** Run automated tests on local system
+** If test pass, replicate
+*** solr index
+*** couchdb
+** Run tests on remote
+* TODO See if Jenkings supports Rake
+
+* Update routes [0/6]
+** TODO Route for dbcom/locale/<api_version>/topicname
+*** Validate lang/local
+*** Valid api_versions only
+** TODO Route for dbcom/locale/<patch_version>/topicname
+*** Validate lang/locale
+*** Valid patch_versions only
+** TODO Route for dbcom/local/<api_version>/<patch_version>/topicname
+*** Validate lang/locale
+*** Valid patch_versions only
+*** Valid api_versions only
+** TODO Route for dbcom/topicname
+
+*** Return en-us and latest patch version
+
+** TODO Add a route for PDFs to go to na1.salesforce.com/<whatever>
+** TODO Add fallback routes for things missing product and locale
+
+
+* Update topic model [7/13]
 ** TODO Add a function to make sure a document attachment exists at the URL
 *** required param: topicname
 *** optional params: lang_locale, api_version, patch_version
@@ -72,61 +58,55 @@ Next steps
       list of versions that do have it].
 ***** Choice 3: Generic 404 error
 
+** DONE Add a fallback route for help.css
+   CLOSED: [2011-09-21 Wed 17:16]
+   - CLOSING NOTE [2011-09-21 Wed 17:16]
+** DONE When updating, don't override added metadata
+   CLOSED: [2011-09-01 Thu 11:57]
+   - CLOSING NOTE [2011-09-01 Thu 11:57]
+** DONE When creating or updating, add removed metadata
+   CLOSED: [2011-09-01 Thu 11:57]
+** DONE Add a view that includes lang_locale for lookup
+   CLOSED: [2011-09-21 Wed 17:14]
+   - CLOSING NOTE [2011-09-21 Wed 17:14]
+** DONE Update dupe test to take into account lang_locale
+   CLOSED: [2011-09-21 Wed 17:19]
+   - CLOSING NOTE [2011-09-21 Wed 17:19]
+** DONE Update dupe test to do a hash compare
+   CLOSED: [2011-09-21 Wed 17:14]
+   - CLOSING NOTE [2011-09-21 Wed 17:14]
+*** Add a hash property
+*** require digest
+*** Digest::SHA256.file(filename).hexdigest
+*** Compare the result of that to the hash property
+
 ** DONE Route for dbcom/locale/topicname
    CLOSED: [2011-09-21 Wed 17:16]
    - CLOSING NOTE [2011-09-21 Wed 17:16]
 *** Latest patch version only
 *** The route has to match a selected number of lang/locale pairs.
     Do I have to use a regexp?
-** TODO Route for dbcom/locale/<api_version>/topicname
-*** Validate lang/local
-*** Valid api_versions only
-** TODO Route for dbcom/locale/<patch_version>/topicname
-*** Validate lang/locale
-*** Valid patch_versions only
-** TODO Route for dbcom/local/<api_version>/<patch_version>/topicname
-*** Validate lang/locale
-*** Valid patch_versions only
-*** Valid api_versions only
-** TODO Route for dbcom/topicname
-*** Return en-us and latest patch version
-** DONE Add a fallback route for help.css
-   CLOSED: [2011-09-21 Wed 17:16]
-   - CLOSING NOTE [2011-09-21 Wed 17:16]
-* DONE Figure out labels
-  CLOSED: [2011-10-10 Mon 07:46]
-  - CLOSING NOTE [2011-10-10 Mon 07:47] \\
-    Using sinatra-r18n, seems to work fine.  We may have to add some extra locales
-* TODO Create generic 404
-* DONE Figure out how to protect couchdb login information
-  CLOSED: [2011-09-27 Tue 09:04]
-  - CLOSING NOTE [2011-09-27 Tue 09:04]
 
-Longer term
-* Write a "clean-up" method to remove old documents
-* Support mobile by rewriting haml
-** Sue Warnke says it looks good on iPad
-* TODO Figure out file organization
-* TODO Figure out feedback options
-* Update docbuild
+
+* Update docbuild [/]
 ** TODO Drop /js/functions.js
 ** TODO Drop onLoad
 ** TODO Remove ${CSS.PATH}help.css from the build
 
 ** TODO Set feedback=false by default
 ** TODO Update on_server links
-* DONE Remove unneccessary files
-  CLOSED: [2011-10-10 Mon 07:47]
-  - CLOSING NOTE [2011-10-10 Mon 07:47]
-* Write a topic on using searches.  See http://heroku.indextaritnk.com/documentation/query-syntax
-* Document how other people can use our repository
+
+* Long term
+** Document how other people can use our repository
 **  Can they query the database without a password?
 ** They can use indextank without a password
+** Support mobile by rewriting haml
+** Sue Warnke says it looks good on iPad
 
-* Look up Ruby gem xmlsimple; turns xml into a hash.  What does it do with attributes?  
-* Also, look to see if there is a Ruby gem for XML to JSON
+** TODO Write a "clean-up" method to remove old documents
 
-* Why doesn't remote search work?
-** Seems like my SOLR index is URL aware ...
-* What are sets for in Ruby?
-* TODO Reinstall yard!
+
+* Learn about Ruby
+** What are sets for in Ruby?
+** Look up Ruby gem xmlsimple; turns xml into a hash.  What does it do with attributes?  
+** Also, look to see if there is a Ruby gem for XML to JSON
