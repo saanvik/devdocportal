@@ -199,14 +199,14 @@ end
 get %r{/(^\?)*} do
 #get %r{/([^\/]*).locale=([^\&]*)\&target=([^\&]*)\&section=(.*)} do |root,locale,topicname,section|
 #get '/dbcom/:locale/:topicname' do
-  puts "#{request.url}"
-  locale = "#{params[:locale]}"
-  topicname = "#{params[:target]}"
-  section = "#{params[:section]}"
-#  puts "root: #{root}"
-  puts "locale: #{locale}"
-  puts "topicname: #{topicname}"
-  puts "section: #{section}"
+#   puts "#{request.url}"
+#   locale = "#{params[:locale]}"
+#   topicname = "#{params[:target]}"
+#   section = "#{params[:section]}"
+# #  puts "root: #{root}"
+#   puts "locale: #{locale}"
+#   puts "topicname: #{topicname}"
+#   puts "section: #{section}"
   @thistopic = Topic.by_topicname_and_locale.key([params[:target], params[:locale]]).first
 
   @thisdoc = Nokogiri::XML(@thistopic.read_attachment(params[:target]))
