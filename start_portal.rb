@@ -86,6 +86,10 @@ get '*form.htm' do
   ""
 end
 
+get '*favicon.ico' do
+  ""
+end
+
 ####
 # End ignores
 ####
@@ -96,6 +100,14 @@ get '/*/oocss/*' do | discard, path |
     @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
     return @thiscss.read_attachment(path)
 end
+
+get '/oocss/*' do | path |
+  set_content_type(path[/(?:.*)(\..*$)/, 1])
+  @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
+  puts "In the oocss run, looking for #{path}"
+  return @thiscss.read_attachment(path)
+end
+
 
 # All calls to help.css should go to the same file
 get '*help.css' do
@@ -151,6 +163,7 @@ get '/dbcom/:locale/search' do
   haml :search_info
 end
 
+# Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
   query = params[:search_query]
   puts "Searching for #{query}"
@@ -166,7 +179,6 @@ post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
   haml :search, :locals => {:locale => locale, :root => root}
 end
 
-
 # Go to the search page, nothing but the search
 get '/dbcom/:locale/search/' do
   haml :search_info
@@ -174,11 +186,30 @@ end
 
 # Calls to <root>/dbcom/<lang>/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
-get '/dbcom/:locale/:topicname' do
-  locale = "#{params[:locale]}"
-  @thistopic = Topic.by_topicname_and_locale.key([params[:topicname], locale]).first
+# Need to support URLs of the format
+# http://docs.databse.com/dbcom?locale=en-us&target=<filename>&section=<section>
+# This doesn't work.  I'll need to use a regexp
 
-  @thisdoc = Nokogiri::XML(@thistopic.read_attachment(params[:topicname]))
+#([^\/]*)\?locale=([^\&]*)\&target=([^\&]*)\&section=(.*)
+#get 'dbcom?locale=:locale&target=:topicname&section=:section' do |locale,topicname,section|
+
+# So the trick is, everything after the question mark gets pushed into the params hash, like this
+# {"params":{"locale":"en-us","target":"filename","section":"section"}}
+
+get %r{/(^\?)*} do
+#get %r{/([^\/]*).locale=([^\&]*)\&target=([^\&]*)\&section=(.*)} do |root,locale,topicname,section|
+#get '/dbcom/:locale/:topicname' do
+  puts "#{request.url}"
+  locale = "#{params[:locale]}"
+  topicname = "#{params[:target]}"
+  section = "#{params[:section]}"
+#  puts "root: #{root}"
+  puts "locale: #{locale}"
+  puts "topicname: #{topicname}"
+  puts "section: #{section}"
+  @thistopic = Topic.by_topicname_and_locale.key([params[:target], params[:locale]]).first
+
+  @thisdoc = Nokogiri::XML(@thistopic.read_attachment(params[:target]))
   @content=@thisdoc.xpath('//body').children().remove_class("body")
   @topictitle=@thisdoc.xpath('//title[1]').inner_text()
   # Placeholders
@@ -191,4 +222,3 @@ get '/dbcom/:locale/:topicname' do
   haml :topic
 #  return @thistopic.read_attachment(params[:topicname])
 end
-

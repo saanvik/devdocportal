@@ -122,6 +122,7 @@ def upload_attachment(documentname,locale,fullpath, mime_type,attachmentname)
     end
   end
   begin
+    # This may not be required, but the couchrest::model doc isn't clear if create_attachment saves the document or not.
     @thisattachment.save
   rescue
     STDERR.puts "Could not save filename #{documentname}"
@@ -169,20 +170,47 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
                                  :identifier => identifier,
                                  :content => content,
                                  :title => title)
-    @thistopic.save
   rescue NoMethodError
     STDERR.puts "Error: Could not update the attributes on #{filename}.  Check the couchdb connection."
     STDERR.puts "#{$!}"
-  rescue RestClient::RequestFailed
-    STDERR.puts "Error: Could not update the attributes on #{filename}, most likely due to a conflict."
-    STDERR.puts "#{$!}"
+  rescue RestClient::RequestFailed => e
+    STDERR.puts "Error: Could not update the attributes on #{filename}."
+    if e.http_code == 409
+      then
+      STERR.puts "The problem was caused by a conflict.  Trying again."
+      @thistopic.reload
+      begin
+        @thistopic.update_attributes(
+                                     :version_removed => CURRENT_PATCH,
+                                     :api_version_removed => CURRENT_API_VERSION,
+                                     :locale => locale,
+                                     :topicname => filename,
+                                     :app_area => app_area,
+                                     :product => product,
+                                     :role => role,
+                                     :edition => edition,
+                                     :topic_type => topic_type,
+                                     :identifier => identifier,
+                                     :content => content,
+                                     :title => title)
+      rescue
+        STDERR.puts "Nope.  Updating the attributes on #{filename} still failed."
+      # Now add it to the SOLR search index.
+      else
+        begin
+          index_topic_with_solr(@thistopic)
+        rescue
+          STDERR.puts "Couldn't add #{filename} to the SOLR index"
+        end
+      end
+    else
+      raise e
+    end
   rescue
     STDERR.puts "Error: Could not update the attributes on #{filename}."
     STDERR.puts "#{$!}"
     raise
   else
-    # If there's no exception, save the topic
-    @thistopic.save
     # Now add it to the SOLR search index.
     begin
       index_topic_with_solr(@thistopic)
