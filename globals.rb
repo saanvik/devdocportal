@@ -22,7 +22,7 @@ APPIMGSRC = "/Users/sanderson/dev/app/main/core/sfdc/htdocs/img"
 LOCALE="en-us"
 
 # Release name
-RELNAME = "winter12"
+RELNAME = "winter12_test"
 
 # Indextank index name
 INDEXNAME = "#{RELNAME}_#{LOCALE}_index"

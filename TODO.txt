@@ -4,6 +4,8 @@ This TODO is designed for emacs org mode
 
 Next steps
 * TODO Respond to Jon M's email					      :email:
+* TODO Update local schema from Solr schema to get spelling check
+* TODO Set up sounds like (see http://blog.websolr.com/)
 * TODO Create generic 404
 * TODO Write a topic on using searches.  See ? 
 * TODO Figure out file organization
@@ -11,7 +13,7 @@ Next steps
 
 * TODO Comment on test cases
 * TODO Follow up on solr replication
-* TODO Figure out how to right a rake file to
+* TODO Figure out how to write a rake file to
 ** Update the local system
 ** Run automated tests on local system
 ** If test pass, replicate
@@ -37,7 +39,7 @@ Next steps
 
 ** TODO Add a route for PDFs to go to na1.salesforce.com/<whatever>
 ** TODO Add fallback routes for things missing product and locale
-
+  
 
 * Update topic model [7/13]
 ** TODO Add a function to make sure a document attachment exists at the URL

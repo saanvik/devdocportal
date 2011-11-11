@@ -22,20 +22,6 @@ require './server_info'
 # http://haml-lang.com
 set :haml, :format => :xhtml
 
-# Set up the index info
-# The environment variable is auto-set on Heroku.
-# If it's not set, allow the user to set it manually.  This is important for testing.
-# case
-# when ENV['INDEXTANK_API_URL']
-#   client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'])
-# else
-#   print "Indextank API URL: "
-#   indextank_api_url = gets.chomp
-#   client = IndexTank::Client.new(indextank_api_url)
-# end
-
-# index = client.indexes(INDEXNAME)
-
 case
 when ENV['WEBSOLR_URL']
   Sunspot.config.solr.url =ENV['WEBSOLR_URL']
@@ -123,102 +109,67 @@ get '/img/*' do | path |
     return @thistopic.read_attachment('/img/'.concat(path))
 end
 
-# Facet and Query test
-#get %r{/dbcom\/(.*)\/search/(.+)/facet/(.+)} do |locale,query,facet|
-#   "Hello, #{query} in #{locale}, with a facet of #{facet}"
-#end
-
-# For simple pages (not the three pane layout) top_level view replaces
-# the layout view for simple pages
-get '/dbcom/:locale/' do
-  @locale = params[:locale]
-  haml :index, :layout => :simple_layout
-end
-
-# Actual search URL
-# @todo Do queries need to be escaped to be safe?
-get %r{/(.*)\/(.*)\/search/(.+)} do |root,locale,query|
-  @topictitle = t.title.searchresults
-  @sidebartitle = t.title.facets
-
-  # @todo Add the checkboxes here
-  @sidebarcontent = "List of facets, with checkboxes"
-
-  puts "Searching for #{query}"
-  puts "Using #{Sunspot.config.solr.url}"
-  @search=Sunspot.search(Topic) do
-    keywords query do
-      highlight :content
-    end
-    facet :app_area
-  end
-  @results = @search.results
-  puts "Found #{@results.length} topics with the query #{query}"
-  haml :search, :locals => {:locale => locale, :root => root}
-end
-
 # Search only page
 get '/dbcom/:locale/search' do
-  # @todo Search only page should go back to the landing page
+  # Search only page should go back to the landing page
   haml :search_info
 end
 
-# Grab the search and return a page with the results
-post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
-  query = params[:search_query]
-  puts "Searching for #{query}"
-  puts "Using #{Sunspot.config.solr.url}"
-  @search=Sunspot.search(Topic) do
-    keywords query do
-      highlight :content
-    end
-    facet :app_area
-  end
-  @results = @search.results
-  puts "Found #{@results.length} topics with the query #{query}"
-  haml :search, :locals => {:locale => locale, :root => root}
-end
 
 # Go to the search page, nothing but the search
 get '/dbcom/:locale/search/' do
   haml :search_info
 end
 
+# Actual search URL
+# @todo Do queries need to be escaped to be safe?
+get %r{/(.*)\/(.*)\/search/(.+)} do |root,locale,query|
+  @topictitle = t.title.searchresults
+  # @sidebartitle = t.title.facets
+  # @todo Add the checkboxes here
+  # @sidebarcontent = "List of facets, with checkboxes"
+  @search=Sunspot.search(Topic) do
+    keywords query do
+      highlight :content
+    end
+  end
+  @results = @search.results
+  puts "Found #{@results.length} topics with the query #{query}"
+  haml :search, :locals => {:locale => locale, :root => root, :query => query}
+end
+
+# Grab the search and return a page with the results
+post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
+  query = params[:search_query]
+  redirect to("#{root}/#{locale}/search/#{query}")
+end
+
 # Calls to <root>/dbcom/<lang>/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
-# Need to support URLs of the format
-# http://docs.databse.com/dbcom?locale=en-us&target=<filename>&section=<section>
-# This doesn't work.  I'll need to use a regexp
-
-#([^\/]*)\?locale=([^\&]*)\&target=([^\&]*)\&section=(.*)
-#get 'dbcom?locale=:locale&target=:topicname&section=:section' do |locale,topicname,section|
-
-# So the trick is, everything after the question mark gets pushed into the params hash, like this
-# {"params":{"locale":"en-us","target":"filename","section":"section"}}
-
-get %r{/(^\?)*} do
-#get %r{/([^\/]*).locale=([^\&]*)\&target=([^\&]*)\&section=(.*)} do |root,locale,topicname,section|
-#get '/dbcom/:locale/:topicname' do
-#   puts "#{request.url}"
-#   locale = "#{params[:locale]}"
-#   topicname = "#{params[:target]}"
-#   section = "#{params[:section]}"
-# #  puts "root: #{root}"
-#   puts "locale: #{locale}"
-#   puts "topicname: #{topicname}"
-#   puts "section: #{section}"
-  @thistopic = Topic.by_topicname_and_locale.key([params[:target], params[:locale]]).first
-
-  @thisdoc = Nokogiri::XML(@thistopic.read_attachment(params[:target]))
+get %r{/(.*)/(.*)/(.*)} do |root, locale, topicname|
+  puts "root: #{root}"
+  puts "locale: #{locale}"
+  puts "topicname: #{topicname}"
+  @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
+  @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
   @content=@thisdoc.xpath('//body').children().remove_class("body")
   @topictitle=@thisdoc.xpath('//title[1]').inner_text()
-  # Placeholders
-  # @todo - Use labels for this one
   @sidebartitle =t.title.toc
-  # "Table of Contents"
-  # @todo Replace this with the generated version
   @sidebarcontent = t.toc
-    #"List of headers, with links"
   haml :topic
-#  return @thistopic.read_attachment(params[:topicname])
 end
+
+# Need to support URLs of the format
+# http://docs.databse.com/dbcom?locale=en-us&target=<filename>&section=<section>
+get %r{(.*)} do |root|
+  if ((defined?(params[:locale])) &&
+      (defined?(params[:targetname])))
+    puts "#{root}/#{params[:locale]}/#{params[:target]}"
+    redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
+  else
+    # Need to set up a 404 error here
+  end
+end
+
+
+

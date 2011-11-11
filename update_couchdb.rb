@@ -24,12 +24,13 @@ puts "Indexing in the update with with #{Sunspot.config.solr.url}"
 # Sets the items that will be added to the search index.
 Sunspot.setup(Topic) do
   text :content, :stored => true
+  text :perm_and_edition_tables, :stored => false
   text :title, :stored => true
-  string :app_area, :stored => true
-  string :edition, :stored => true
+  string :app_area, :stored => false
+  string :edition, :stored => false
   string :identifier, :stored => true
   string :locale, :stored => true
-  string :product, :stored => true
+  string :product, :stored => false
   string :topicname, :stored => true
   time :updated_at, :stored => true
   integer :api_version_removed, :stored => true
@@ -149,7 +150,12 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
   topic_type = nokodoc.xpath("//meta[@name = 'product']/@content")
   identifier = nokodoc.xpath("//meta[@name = 'DC.Identifier']/@content")
   upload_attachment(filename,locale,fullpath, mime_type,filename)
-  content=nokodoc.xpath('//body').inner_text()
+  perm_and_edition_tables=nokodoc.xpath('//table[contains(@class, "permTable") or contains(@class, "editionTable")]').inner_text()
+  body_content=nokodoc.xpath('//body')
+  # Remove items we don't want returned in the search snippet
+  body_content.xpath('//table[contains(@class, "permTable") or contains(@class, "editionTable")]').remove
+  body_content.xpath('//h1[1]').remove
+  content=body_content.children().inner_text()
   title=nokodoc.xpath('//title[1]').inner_text()
 
   @thistopic = Topic.by_topicname_and_locale.key(["#{filename}","#{locale}"]).first
@@ -169,6 +175,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
                                  :topic_type => topic_type,
                                  :identifier => identifier,
                                  :content => content,
+                                 :perm_and_edition_tables => perm_and_edition_tables,
                                  :title => title)
   rescue NoMethodError
     STDERR.puts "Error: Could not update the attributes on #{filename}.  Check the couchdb connection."
@@ -192,6 +199,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
                                      :topic_type => topic_type,
                                      :identifier => identifier,
                                      :content => content,
+                                     :perm_and_edition_tables => perm_and_edition_tables,
                                      :title => title)
       rescue
         STDERR.puts "Nope.  Updating the attributes on #{filename} still failed."
@@ -293,7 +301,7 @@ end
 # Uploading HTML files also adds them to the index and updates refereneced image files.
 # Start by changing to the correct output directory
 Dir.chdir "#{DOCSRCDIR}"
-Dir.glob("**/*.{html,htm,css,js}") do |filename|
+Dir.glob("**/a*.{html,htm,css,js}") do |filename|
   fullpath = "#{DOCSRCDIR}#{filename}"
   begin
     mime_type = get_mime_type(fullpath[/(?:.*)(\..*$)/, 1])

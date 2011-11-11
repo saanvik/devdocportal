@@ -42,7 +42,7 @@ class Topic < CouchRest::Model::Base
   # Need to add the text from the attachment for solr searching
   property :content, String
   property :title, String
-
+  property :perm_and_edition_tables, String
   timestamps!
 
   ## The design documents
