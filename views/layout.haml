@@ -7,6 +7,19 @@
         :type => "text/css",
         :media => "all",
         :href => "oocss/oocss.css"}
+      %script{:type => "text/javascript",
+            :src => "oocss/scripts/jquery-1.7.min.js"}
+      %script{:type => "text/javascript",
+              :src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"}
+      %script{:type => "text/javascript",
+              :src => "oocss/scripts/jquery.tablesorter.min.js"}
+      :javascript
+        $(document).ready(function() 
+        { 
+         $(".sort_table").tablesorter({cssAsc: "ascending", cssDesc: "descending"});
+         } 
+         ); 
+
   %body
     %div{:class => "hd line"}
       %div{:class => "wizardBg box callout chatty"}

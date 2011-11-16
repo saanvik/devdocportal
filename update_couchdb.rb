@@ -301,7 +301,7 @@ end
 # Uploading HTML files also adds them to the index and updates refereneced image files.
 # Start by changing to the correct output directory
 Dir.chdir "#{DOCSRCDIR}"
-Dir.glob("**/a*.{html,htm,css,js}") do |filename|
+Dir.glob("**/*.{html,htm,css,js}") do |filename|
   fullpath = "#{DOCSRCDIR}#{filename}"
   begin
     mime_type = get_mime_type(fullpath[/(?:.*)(\..*$)/, 1])
@@ -323,7 +323,7 @@ end
 # We're using CSS files stored in a different location, so we need to upload them separately.
 # Change to the CSS directory
 Dir.chdir "#{CSSDIR}"
-Dir.glob("**/*.{css}") do |filename|
+Dir.glob("**/*.{css,js}") do |filename|
   fullpath = "#{CSSDIR}#{filename}"
   begin
     mime_type = get_mime_type(fullpath[/(?:.*)(\..*$)/, 1])
@@ -333,26 +333,29 @@ Dir.glob("**/*.{css}") do |filename|
   # Special case for oocss files
   # Since they depend on relative paths, we need to keep them all in the same document.
   upload_attachment('oocss',LOCALE,fullpath,mime_type,filename)
-  parser = CssParser::Parser.new
-  parser.load_uri!(fullpath)
-  parser.each_selector(:all) do |selector,declarations,specificity|
-    if (declarations.include? 'url("/')
-      @img_path = /url\(.(\/[^'#")]*)/.match(declarations)
-      @img_fullpath = "#{APPSRCDIR}#{@img_path[1]}"
-      if File.exist?(@img_fullpath)
+  if mime_type =~ /css/
+    then
+    parser = CssParser::Parser.new
+    parser.load_uri!(fullpath)
+    parser.each_selector(:all) do |selector,declarations,specificity|
+      if (declarations.include? 'url("/')
+        @img_path = /url\(.(\/[^'#")]*)/.match(declarations)
+        @img_fullpath = "#{APPSRCDIR}#{@img_path[1]}"
+        if File.exist?(@img_fullpath)
         then
-        begin
-          @mime_type = get_mime_type(@img_fullpath[/(?:.*)(\..*$)/, 1])
-        rescue
-          @mime_type = ""
-        end
-        begin
-          upload_attachment('app_image_document',LOCALE,@img_fullpath,@mime_type,@img_path[1])
-        rescue
+          begin
+            @mime_type = get_mime_type(@img_fullpath[/(?:.*)(\..*$)/, 1])
+          rescue
+            @mime_type = ""
+          end
+          begin
+            upload_attachment('app_image_document',LOCALE,@img_fullpath,@mime_type,@img_path[1])
+          rescue
           STDERR.puts "Failed to upload file\n\t #{@img_fullpath}\n referenced by \n\t #{filename} with #{@mime_tpe}"
-        end
+          end
         else
           STDERR.puts "Missing file\n#{@img_fullpath}\n referenced by \n\t #{filename}."
+        end
       end
     end
   end

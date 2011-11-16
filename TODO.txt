@@ -3,15 +3,22 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
-* TODO Respond to Jon M's email					      :email:
+* TODO Download local copy of jquery and add to couchdb
+* DONE Respond to Jon M's email					      :email:
+  CLOSED: [2011-11-15 Tue 17:33]
+  - CLOSING NOTE [2011-11-15 Tue 17:33]
 * TODO Update local schema from Solr schema to get spelling check
 * TODO Set up sounds like (see http://blog.websolr.com/)
 * TODO Create generic 404
-* TODO Write a topic on using searches.  See ? 
+* DONE Write a topic on using searches.  See ? 
+  CLOSED: [2011-11-15 Tue 17:34]
+  - CLOSING NOTE [2011-11-15 Tue 17:34]
 * TODO Figure out file organization
 * TODO Figure out feedback options
 
-* TODO Comment on test cases
+* DONE Comment on test cases
+  CLOSED: [2011-11-15 Tue 17:34]
+  - CLOSING NOTE [2011-11-15 Tue 17:34]
 * TODO Follow up on solr replication
 * TODO Figure out how to write a rake file to
 ** Update the local system
@@ -20,7 +27,7 @@ Next steps
 *** solr index
 *** couchdb
 ** Run tests on remote
-* TODO See if Jenkings supports Rake
+* TODO See if Jenkins supports Rake
 
 * Update routes [0/6]
 ** TODO Route for dbcom/locale/<api_version>/topicname
@@ -81,7 +88,7 @@ Next steps
 *** require digest
 *** Digest::SHA256.file(filename).hexdigest
 *** Compare the result of that to the hash property
-
+    
 ** DONE Route for dbcom/locale/topicname
    CLOSED: [2011-09-21 Wed 17:16]
    - CLOSING NOTE [2011-09-21 Wed 17:16]

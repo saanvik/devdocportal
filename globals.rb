@@ -10,7 +10,7 @@ CURRENT_API_VERSION = 23
 CURRENT_PATCH = 174.10
 
 # Source of the content
-DOCSRCDIR = "/Users/sanderson/dev/doc/174/patch/core/174_htportal_out/"
+DOCSRCDIR = "/Users/sanderson/dev/doc/main/core/devdocportal_out/"
 
 # APPSRCDIR is for images in the form of /img
 APPSRCDIR = "/Users/sanderson/dev/app/main/core/sfdc/htdocs"
@@ -22,7 +22,7 @@ APPIMGSRC = "/Users/sanderson/dev/app/main/core/sfdc/htdocs/img"
 LOCALE="en-us"
 
 # Release name
-RELNAME = "winter12_test"
+RELNAME = "winter12"
 
 # Indextank index name
 INDEXNAME = "#{RELNAME}_#{LOCALE}_index"
