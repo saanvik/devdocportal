@@ -6,7 +6,6 @@ require 'sinatra/r18n'
 require 'couchrest'
 require 'nokogiri'
 require 'haml'
-require 'will_paginate'
 require './topic_model'
 require './couchrest_sunspot'
 require './server_info'
@@ -143,7 +142,7 @@ get %r{/(.*)\/(.*)\/search/(.+)} do |root,locale,query|
   begin
     @search=Sunspot.search(Topic) do
       keywords query do
-        highlight :content, :fragment_size => 100, :phrase_highlighter => true, :require_field_match => true, :merge_continuous_fragments => true
+        highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true, :merge_continuous_fragments => true
       end
       paginate :page => 1, :per_page => 1500
     end
