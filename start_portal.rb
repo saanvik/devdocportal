@@ -6,6 +6,7 @@ require 'sinatra/r18n'
 require 'couchrest'
 require 'nokogiri'
 require 'haml'
+require 'will_paginate'
 require './topic_model'
 require './couchrest_sunspot'
 require './server_info'
@@ -49,6 +50,17 @@ end
 ######################################################################
 # Routes here
 ######################################################################
+
+
+not_found do
+  haml :'404'
+end
+
+error do
+  haml :'500'
+end
+
+
 
 ####
 # Ignore the following
@@ -128,18 +140,33 @@ get %r{/(.*)\/(.*)\/search/(.+)} do |root,locale,query|
   # @sidebartitle = t.title.facets
   # @todo Add the checkboxes here
   # @sidebarcontent = "List of facets, with checkboxes"
-  @search=Sunspot.search(Topic) do
-    keywords query do
-      highlight :content
+  begin
+    @search=Sunspot.search(Topic) do
+      keywords query do
+        highlight :content, :fragment_size => 100, :phrase_highlighter => true, :require_field_match => true, :merge_continuous_fragments => true
+      end
+      paginate :page => 1, :per_page => 1500
+    end
+  rescue
+    haml :search_no_results, :locals => {:query => query}
+  else
+    @results = @search.results
+#    puts "Found #{@results.length} topics with the query #{query}"
+    if (@results.length > 0)
+    then
+      puts "Length of @results: #{@results.length}"
+      puts @results.to_yaml
+      puts "#{@results}"
+      haml :search, :locals => {:locale => locale, :root => root, :query => query}
+    else
+      haml :search_no_results, :locals => {:query => query}
     end
   end
-  @results = @search.results
-  puts "Found #{@results.length} topics with the query #{query}"
-  haml :search, :locals => {:locale => locale, :root => root, :query => query}
 end
 
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
+  puts "In the search redirect"
   query = params[:search_query]
   redirect to("#{root}/#{locale}/search/#{query}")
 end
@@ -150,26 +177,32 @@ get %r{/(.*)/(.*)/(.*)} do |root, locale, topicname|
   puts "root: #{root}"
   puts "locale: #{locale}"
   puts "topicname: #{topicname}"
-  @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
-  @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
-  @content=@thisdoc.xpath('//body').children().remove_class("body")
-  @topictitle=@thisdoc.xpath('//title[1]').inner_text()
-  @sidebartitle =t.title.toc
-  @sidebarcontent = t.toc
-  haml :topic
+  begin
+    @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
+    @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
+    @content=@thisdoc.xpath('//body').children().remove_class("body")
+    @topictitle=@thisdoc.xpath('//title[1]').inner_text()
+    @sidebartitle =t.title.toc
+    @sidebarcontent = t.toc
+    haml :topic
+  rescue
+      haml :'500'
+  end
 end
 
 # Need to support URLs of the format
 # http://docs.databse.com/dbcom?locale=en-us&target=<filename>&section=<section>
 get %r{(.*)} do |root|
-  if ((defined?(params[:locale])) &&
-      (defined?(params[:targetname])))
+  if (
+      (defined?(params[:locale])) &&
+      (defined?(params[:targetname]))
+      (not(params[:locale].nil? || params[:targetname].nil?))
+      )
+    puts "locale: #{params[:locale]}"
+    puts "targetname: #{params[:targetname]}"
     puts "#{root}/#{params[:locale]}/#{params[:target]}"
     redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
   else
-    # Need to set up a 404 error here
+    haml :'404'
   end
 end
-
-
-

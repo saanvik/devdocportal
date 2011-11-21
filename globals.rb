@@ -29,3 +29,7 @@ INDEXNAME = "#{RELNAME}_#{LOCALE}_index"
 
 # Location of the oocss files
 CSSDIR = "/Users/sanderson/dev/doc/main/core/build/resource/doc_portal/oocss/"
+
+# Source of the "extra" images
+IMGDIR = "#{CSSDIR}/images/"
+

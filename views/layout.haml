@@ -24,13 +24,23 @@
     %div{:class => "hd line"}
       %div{:class => "wizardBg box callout chatty"}
         %div{:class => "inner"}
-          %div{:class => "unit size1of2 mts"}
-            %img{:src => "http://www.database.com/images/template/dbdc-logo-reversed.png?1319824344",
-                 :width => "363px"}
-          %div{:class => "unit size1of4 mts"}          
-            %h1{:class => "h2 pal",
-                :style => "color: #FFFFFF"}
-              Technical Library
+          %div{:class => "unit size3of4 mts"}
+            %div{:class=>"media"}
+              %a{:class=>"img",
+                 :href=>"javascript:void(0);"}
+                %img{:alt=>"Database.com cloud",
+                     :src=>"/img/databaselogo_cloud.png"}
+              %div{:class=>"mediaBd"}
+                %ul{:class=>"basicList",
+                    :style => "margin: 0px;"}
+                  %li{:style => "margin-left: 0px;"}
+                    %a{:class=>"img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/img/databaselogo_text.png"}
+                    %li{:style => "margin-left: 5px;"}
+                      %span{:class => "h2",
+                            :style => "color: #FFFFFF"}
+                        Technical Library
           %div{:class => "unit size1of4 lastUnit"}
             %div{:class => "box chatty wizardBg mrs"}
               %div{:class => "inner"}

@@ -12,3 +12,16 @@ title:
 search_results:
   th_title: Title
   th_updated: Last Updated
+  count: results for 
+search:
+  
+  noresults_title: No search results found.
+  noresults: 0 results for 
+  tip_title: Tips on Searching
+  tip_intro: Searches are simple.  Enter the terms you want to search for and press <b>Search</b>.
+  tip_quotes: You can search for a phrase by surrounding it with quote characters.  For example, "grant access" will return all the topics with the phrase "grant access", but will not return topics that contain only the term grant or access, or a topic that contains both terms, but separated by other words.
+  tip_plus_minus: You can use + and - to indicate mandatory or optional entries.  For example, <br/><pre>grant + access</pre>returns all the topics with the terms "grant" and "access".  The search <br/><pre>grant - access</pre> will return all the topics with the term "grant" but without the term "access".  The + is not required.  A search of the form <br/><pre>grant access</pre> will return the same results as <br/><pre>grant + access</pre>
+  tip_wildcards: Wildcard searches are not supported.
+
+misc:
+  try_again: Please try again.

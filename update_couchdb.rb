@@ -108,7 +108,7 @@ def upload_attachment(documentname,locale,fullpath, mime_type,attachmentname)
                                               :content_type => mime_type})
         rescue
     STDERR.puts "Could not update attributes, or the attachment on lang/locale: #{locale} and filename #{documentname}, for #{attachmentname}"
-  end
+        end
       end
       else
         begin
@@ -155,6 +155,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
   # Remove items we don't want returned in the search snippet
   body_content.xpath('//table[contains(@class, "permTable") or contains(@class, "editionTable")]').remove
   body_content.xpath('//h1[1]').remove
+  body_content.xpath('//*[contains(@class, "breadcrumb")]').remove
   content=body_content.children().inner_text()
   title=nokodoc.xpath('//title[1]').inner_text()
 
@@ -360,6 +361,26 @@ Dir.glob("**/*.{css,js}") do |filename|
     end
   end
 end
+
+# Upload "extra" images
+Dir.chdir "#{IMGDIR}"
+Dir.glob("**/*.*") do |filename|
+  fullpath = "#{IMGDIR}#{filename}"
+  begin
+    mime_type = get_mime_type(fullpath[/(?:.*)(\..*$)/, 1])
+  rescue
+    @mime_type = ""
+  end
+  # Special case for "extra" images
+  begin
+    upload_attachment('app_image_document',LOCALE,fullpath,@mime_type,"/img/#{filename}")
+  rescue
+    STDERR.puts "Failed to upload file\n\t #{fullpath}\n"
+  end
+end
+
+
+
 
 # We don't need to start Sinatra, so close the app
 exit(0)
