@@ -11,4 +11,4 @@ gem "sunspot"
 gem "sunspot_rails"
 gem "sinatra"
 gem "sinatra-r18n"
-gem "will_paginate"
+
