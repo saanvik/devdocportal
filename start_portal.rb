@@ -172,20 +172,36 @@ end
 
 # Calls to <root>/dbcom/<lang>/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
-get %r{/(.*)/(.*)/(.*)} do |root, locale, topicname|
+get %r{/(.*)\/(.*)\/(.*)} do |root, locale, topicname|
   puts "root: #{root}"
   puts "locale: #{locale}"
   puts "topicname: #{topicname}"
-  begin
+  puts "referrer: #{request.referrer}"
+  if (locale == "images")
+    then
+    referrer = request.referrer
+    oldroot = root
+    attachmentname = topicname
+    root = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[1]
+    locale = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[2]
+    topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
+    imagepath = oldroot.match(/.*\/#{locale}\/([^\/]*)/)[1]
+    puts "imagepath: #{imagepath}"
+    fullattachmentname = "#{imagepath}/images/#{attachmentname}"
     @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
-    @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
-    @content=@thisdoc.xpath('//body').children().remove_class("body")
-    @topictitle=@thisdoc.xpath('//title[1]').inner_text()
-    @sidebartitle =t.title.toc
-    @sidebarcontent = t.toc
-    haml :topic
-  rescue
+    return @thistopic.read_attachment(fullattachmentname)
+    else
+    begin
+      @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
+      @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
+      @content=@thisdoc.xpath('//body').children().remove_class("body")
+      @topictitle=@thisdoc.xpath('//title[1]').inner_text()
+      @sidebartitle =t.title.toc
+      @sidebarcontent = t.toc
+      haml :topic
+    rescue
       haml :'500'
+    end
   end
 end
 
