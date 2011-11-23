@@ -23,20 +23,16 @@ set :static, true
 set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
 set :cache, Dalli::Client.new
 
-before do
-#  cache_control :public, :max_age => 36000
-  expires 500, :public, :max_age => 36000
-end
-
 # Try to use deflator
 use Rack::Deflater
-
-# Set up the cache
-set :cache, Dalli::Client.new
 
 # Views (in the views directory) are defined using haml
 # http://haml-lang.com
 set :haml, :format => :xhtml
+
+before do
+  expires 500, :public, :max_age => 36000
+end
 
 case
 when ENV['WEBSOLR_URL']
