@@ -18,6 +18,8 @@ require './server_info'
 ######################################################################
 
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
+# Try to use deflator
+use Rack::Deflater
 
 # Set up the cache
 set :cache, Dalli::Client.new
@@ -49,6 +51,13 @@ helpers do
   end
 end
 
+set :static, true
+
+set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
+before do
+#  cache_control :public, :max_age => 36000
+  expires 500, :public, :max_age => 36000
+end
 
 ######################################################################
 # Routes here

@@ -1,0 +1,1114 @@
+.userDefinedMRU img.userDefinedImage {
+    background-image: none;
+}
+.userDefinedMotif img.userDefinedImage {
+    background-image: none;
+}
+.userDefinedRL img.userDefinedImage {
+    background-image: none;
+}
+.userDefinedRL .pbHeader .pbTitle h3 {
+    margin-left: 4px;
+}
+.motifElement {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    cursor: default;
+    display: block;
+    height: 1.5em;
+    margin-right: 0.3em;
+    overflow: hidden;
+    padding: 0;
+    text-decoration: none;
+    width: 150px;
+}
+a.motifElement:hover {
+    text-decoration: none;
+}
+.motifElement .iconChoice, .motifElement .iconChoice img {
+    background-color: #FFFFFF;
+    float: left;
+    height: 100%;
+    width: 19px;
+}
+.motifElement .colorChoice {
+    float: right;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    width: 128px;
+}
+.motifColorElement, .motifColorElement .colorChoice {
+    width: 48px;
+}
+.motifColorElement .iconChoice {
+    display: none;
+}
+.customDefinedMotif .iconChoice img.mruIcon {
+    background-image: none;
+}
+.motifElement .mruIcon {
+    height: 16px;
+    width: 16px;
+}
+.motifInputElement .motifElement, .pickableMotifElement {
+    cursor: pointer;
+}
+.motifInputElement {
+    height: 20px;
+    margin: 2px 10px 2px 0;
+    width: 170px;
+}
+.motifInputElement .motifElement {
+    position: absolute;
+}
+.motifInputElement .lookup {
+    left: 155px;
+    padding: 0;
+    position: relative;
+    top: 1px;
+}
+.motifColorInputElement {
+    height: 20px;
+    margin: 2px 10px 2px 0;
+    width: 70px;
+}
+.motifColorInputElement .motifColorElement {
+    position: absolute;
+}
+.motifColorInputElement .lookup {
+    position: relative;
+    top: 1px;
+}
+.bPageBlock .detailList .motifElement td {
+    color: #FFFFFF;
+}
+.apexp .bPageBlock p {
+    margin-bottom: 0;
+}
+.apexp .bPageBlock .detailList .list table td, .apexp .bPageBlock .detailList .list table th {
+    border-bottom: 1px solid #E3DEB8;
+}
+.apexp .bPageBlock .detailList {
+    width: 100%;
+}
+.apexp .bPageBlock .detailList .list {
+    width: 100%;
+}
+.apexp .bPageBlock .error {
+    border: 2px solid #CC0000;
+}
+.apexp .detailList .list td, .apexp .detailList .list th, .apexp .editPage .bPageBlock .detailList .list tr td, .apexp .editPage .bPageBlock .detailList .list tr th {
+    border-bottom: 1px solid #E3DEB8;
+    color: #333333;
+    padding: 4px 2px 4px 5px;
+}
+.apexp .bPageBlock .detailList .list .last td, .apexp .bPageBlock .detailList .list .last th, .apexp .detailList .list .totalRow td, .apexp .detailList .list .totalRow th {
+    border-bottom-width: 0;
+}
+.apexp .totalRow {
+    background-color: #E3E3D7;
+    font-weight: bold;
+}
+.apexp .detailList .list .headerRow th {
+    border-bottom: 2px solid #CCCCCC;
+    white-space: nowrap;
+}
+.mouseOverInfoOuter {
+    display: inline;
+    position: relative;
+}
+.mouseOverInfo {
+    background-color: #FEFDB9;
+    border: 1px solid black;
+    bottom: 20px;
+    color: #000000;
+    display: none;
+    font-weight: normal;
+    left: 22px;
+    opacity: 0;
+    padding: 2px;
+    position: absolute;
+    white-space: normal;
+    width: 20em;
+    z-index: 11;
+}
+.whatIsThisElement {
+    margin-left: 0.5em;
+    vertical-align: bottom;
+}
+.tipArea {
+    color: #999999;
+    padding-top: 5px;
+}
+.tagEditArea {
+    background-color: #FFFFFF;
+    border: 1px dotted #CCCCCC;
+    margin: 0;
+    padding: 5px;
+}
+.tagSelectionList a.tag_selector {
+    color: #666666;
+    padding: 0 2px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.tagSelectionList a.tag_selector.selected {
+    background-color: #FFCCCC;
+    color: #333333;
+    text-decoration: none;
+}
+.tagSelectionList a.tag_selector:hover {
+    background-color: #EEEEEE;
+    color: #333333;
+    text-decoration: none;
+}
+.tagSelectionList a.tag_selector.selected:hover {
+    background-color: #EE8888;
+    color: #333333;
+    text-decoration: none;
+}
+.tagSelectionList {
+    line-height: 1.5em;
+    margin: 0 0.75em 0.75em;
+}
+.manageableInfo {
+    background-color: #FFFFCC;
+    border: 1px solid #AAAA88;
+    color: #000000;
+    margin: 4px 20px 16px;
+    padding: 8px 8px 6px;
+}
+.manageableMoreInfo ul {
+    list-style-type: disc;
+}
+.manageableInfo img {
+    padding-right: 6px;
+}
+.manageableMoreInfo {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDAA;
+    display: none;
+    font-weight: normal;
+    margin: 12px 0 2px;
+    padding: 10px 8px 6px 18px;
+}
+.manageableMoreInfo th {
+    font-weight: bold;
+    vertical-align: top;
+}
+.verticalSelectElement .upDownButtons {
+    vertical-align: middle;
+}
+.verticalSelectElement .upDownButtons img {
+    display: block;
+}
+.verticalSelectElement label {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+img.numberLabel {
+    float: right;
+}
+.radioGroup {
+    margin: 0;
+    padding: 0;
+}
+.radioGroup li {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 2em;
+    text-indent: -2em;
+}
+.datePicker {
+    background-color: #B7C6B2;
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+    display: none;
+    left: 0;
+    margin: 0;
+    padding: 1px 1px 2px 2px;
+    position: absolute;
+    top: 0;
+    width: 17em;
+    z-index: 100;
+}
+.datePicker .dateBar {
+    margin: 0;
+    overflow: hidden;
+    padding: 1px 2px;
+    text-align: center;
+    white-space: nowrap;
+}
+.datePicker select {
+    vertical-align: top;
+}
+.datePicker .calBody {
+    border-color: #7B829D #7B829D -moz-use-text-color;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+}
+.datePicker .calDays {
+    color: #333333;
+    font-family: 'Verdana','Geneva',sans-serif;
+    font-size: 0.8em;
+    font-weight: normal;
+    width: 100%;
+}
+.datePicker .calDays .prevMonth, .datePicker .calDays .nextMonth {
+    color: #999999;
+}
+.datePicker .calDays th, .datePicker .calDays td {
+    text-align: center;
+    width: 14%;
+}
+.datePicker .calDays .dayOfWeek {
+    background: url("/img/func_icons/cal/dp_daysbg.gif") repeat-x scroll center top #ECECEC;
+    border-bottom: 1px solid #E0DEE0;
+    padding: 3px 0;
+}
+.datePicker .calDays .weekend, .datePicker .calDays .weekday {
+    border-bottom: 1px solid #E0F0FB;
+    border-right: 1px solid #E0F0FB;
+    cursor: pointer;
+    padding: 5px 0;
+}
+.datePicker .calDays .weekend {
+    background-color: #F2F3F7;
+}
+.datePicker .calDays .weekday {
+    background-color: #FFFFFF;
+}
+.datePicker .calDays .dueDate {
+    background-color: #FF1100;
+    color: #000000;
+    font-weight: bold;
+}
+.datePicker .calDays .todayDate {
+    border: 1px solid #000000;
+}
+.datePicker .calDays .startDate, .datePicker .calDays .endDate {
+    text-decoration: underline;
+}
+.datePicker .calDays .startDate, .datePicker .calDays .endDate, .datePicker .calDays .selectedDate {
+    background-color: #FBFAE3;
+    color: #000000;
+    font-weight: bold;
+}
+.datePicker .calDays .highlight {
+    background-color: #E0F0FD;
+    color: #000000;
+}
+.datePicker .buttonBar {
+    background-color: #ECECEC;
+    border-top: 1px solid #E1E2E9;
+    clear: both;
+    padding: 2px 0;
+    text-align: center;
+}
+.datePicker .buttonBar .calToday {
+    font-size: 91%;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.datePicker .dateBar .calLeft, .datePicker .dateBar .calLeftOn, .datePicker .dateBar .calRight, .datePicker .dateBar .calRightOn {
+    margin: 2px 2px 0;
+}
+.datePicker .dateBar .calLeft {
+    background-image: url("/img/func_icons/cal/dp_left.gif");
+    background-position: left top;
+    height: 21px;
+    width: 13px;
+}
+.datePicker .dateBar .calLeftOn {
+    background-image: url("/img/func_icons/cal/dp_left.gif");
+    background-position: right top;
+    height: 21px;
+    width: 13px;
+}
+.datePicker .dateBar .calRight {
+    background-image: url("/img/func_icons/cal/dp_right.gif");
+    background-position: left top;
+    height: 21px;
+    width: 13px;
+}
+.datePicker .dateBar .calRightOn {
+    background-image: url("/img/func_icons/cal/dp_right.gif");
+    background-position: right top;
+    height: 21px;
+    width: 13px;
+}
+.timeInput {
+    white-space: nowrap;
+}
+.hourPicker {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #B7C6B2;
+    display: none;
+    height: 12.7em;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    white-space: pre;
+    width: 7.5em;
+    z-index: 51;
+}
+.hourPicker .hour {
+    background: url("/img/func_icons/arrowright10.gif") no-repeat scroll right center transparent;
+    margin-right: 4px;
+    padding: 2px 12px 2px 4px;
+    text-align: right;
+}
+.hourPicker .simpleHour {
+    margin-right: 4px;
+    padding: 2px 12px 2px 4px;
+    text-align: left;
+}
+.hourPicker div.hover {
+    background-color: #E0F0FB;
+}
+.hourPicker .arrow {
+    background: url("/img/func_icons/arrowright10.gif") repeat scroll 0 0 transparent;
+    height: 10px;
+    width: 10px;
+}
+.minutePicker {
+    background-color: #FFFFFF;
+    border: 1px solid #E0F0FB;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 51;
+}
+.minutePicker .minutes {
+    border-left: 1px solid #E0F0FB;
+    float: left;
+    font-weight: bold;
+    padding: 1px 2px;
+    text-align: center;
+    width: 2em;
+}
+.minutePicker div.hover {
+    background-color: #E0F0FB;
+    text-decoration: underline;
+}
+.colorPicker {
+    background-color: #BCBCBC;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    display: none;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 230px;
+    z-index: 20;
+}
+.colorPickerHeader {
+    text-align: center;
+}
+.colorPickerColorView, .colorPickerHexView {
+    border: 1px solid black;
+    cursor: default;
+    margin: 4px 3px 2px;
+}
+.colorPickerColorView {
+    width: 3em;
+}
+.colorPickerHexView {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding-left: 5px;
+    width: 7em;
+}
+.colorPickerContent {
+    background-color: #FFFFFF;
+    border: 1px inset #8E8C8F;
+    margin: 2px;
+}
+.colorPickerPalette {
+    border: 2px solid #FFFFFF;
+    margin: 2px auto;
+}
+.colorPickerPalette td {
+    cursor: pointer;
+}
+.colorPickerPaletteChoice {
+    display: block;
+    height: 7px;
+    margin: 2px;
+    width: 7px;
+}
+td.highlight .colorPickerPaletteChoice {
+    border: 1px solid #FFFFFF;
+    margin: 1px;
+}
+.colorBox {
+    border: 1px solid #000000;
+    cursor: pointer;
+    float: left;
+    height: 1em;
+    margin: 4px;
+    width: 1em;
+}
+.errorColorBox {
+    background-image: url("/img/x.gif");
+    background-position: center center;
+    border-color: #FF0000;
+}
+.detailHeaderHighlightMsg {
+    background-color: #FFFFCC;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 5px;
+}
+.detailHeaderHighlightMsgName {
+    font-weight: bold;
+}
+.mailmergeTemplateSelectElement .mmtse_title, .mailmergeTemplateSelectElement .mmtse_description {
+    font-weight: bold;
+}
+.mailmergeTemplateSelectElement .descriptionDiv {
+    padding-top: 10px;
+}
+.mailmergeTemplateSelectElement .mmtse_preview {
+    padding-top: 10px;
+}
+.mailmergeTemplateSelectElement .mmtse_selectEle {
+    width: 300px;
+}
+.gmailLink {
+    display: inline;
+    white-space: nowrap;
+}
+.gmailIcon {
+    background-image: url("/img/google/gmail_M_icon.gif");
+    background-position: 0 0;
+    height: 12px;
+    margin-right: 0.25em;
+    vertical-align: middle;
+    width: 16px;
+}
+.dialogClose {
+    background-image: url("/img/func_icons/util/dialogClose16.gif");
+    background-position: left top;
+    cursor: pointer;
+    float: right;
+    height: 16px;
+    width: 16px;
+}
+.dialogCloseOn {
+    background-image: url("/img/func_icons/util/dialogClose16.gif");
+    background-position: right top;
+    cursor: pointer;
+    float: right;
+    height: 16px;
+    width: 16px;
+}
+.dialogResize {
+    background: url("/img/func_icons/util/rescale11.gif") no-repeat scroll right bottom transparent;
+    bottom: 5px;
+    cursor: se-resize;
+    height: 11px;
+    position: absolute;
+    right: 5px;
+    width: 11px;
+}
+.overlayBackground {
+    background-color: #FFFFFF;
+    border: medium none;
+    display: none;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+}
+.overlayDialog {
+    display: none;
+    left: 150px;
+    position: fixed;
+    top: 40px;
+    visibility: hidden;
+    z-index: 101;
+}
+.absolutePositionedOverlayDialog {
+    position: absolute;
+}
+.inlineOverlayDialog {
+}
+.overlayDialog .topLeft, .inlineOverlayDialog .topLeft {
+    background: url("/img/overlaytopleft.gif") no-repeat scroll left top transparent;
+    padding: 4px 2px 6px 12px;
+}
+.overlayDialog .movable {
+    cursor: move;
+}
+.overlayDialog .topLeft h2, .inlineOverlayDialog .topLeft h2 {
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+.overlayDialog .topRight, .inlineOverlayDialog .topRight {
+    background: url("/img/overlaytopright.gif") no-repeat scroll right top transparent;
+    padding-right: 6px;
+}
+.overlayDialog .middle, .inlineOverlayDialog .middle {
+    background-color: #F5F5F5;
+    border-left: 1px solid #393A3C;
+    border-right: 1px solid #393A3C;
+}
+.overlayDialog .innerContent, .inlineOverlayDialog .innerContent {
+    padding: 12px 16px 8px 20px;
+}
+.overlayDialog .innerContent h2, .inlineOverlayDialog .innerContent h2 {
+    font-family: 'Arial';
+    font-size: 1.4em;
+}
+.overlayDialog .innerContent p, .inlineOverlayDialog .innerContent p {
+    margin: 8px 0;
+}
+.overlayDialog .innerContent .split, .inlineOverlayDialog .innerContent .split {
+    background: url("/img/overlaysplit.gif") repeat-x scroll center top transparent;
+    border-left: 1px solid #919191;
+    border-right: 1px solid #919191;
+    height: 16px;
+    padding-left: 20px;
+}
+.overlayDialog .innerContent .pointer, .inlineOverlayDialog .innerContent .pointer {
+    background: url("/img/overlaypointer.gif") no-repeat scroll 0 0 transparent;
+    height: 16px;
+    width: 27px;
+}
+.overlayDialog .innerContent .infoImage, .inlineOverlayDialog .innerContent .infoImage {
+    float: left;
+    height: 100%;
+    width: 60px;
+}
+.overlayDialog .innerContent .buttons, .inlineOverlayDialog .innerContent .buttons {
+    padding-top: 12px;
+    text-align: center;
+}
+.overlayDialog .innerContent .buttons .btn, .overlayDialog .innerContent .buttons .btnDisabled, .inlineOverlayDialog .innerContent .buttons .btn, .overlayDialog .innerContent .buttons .btnDisabled {
+    margin: 0 10px 0 0;
+    min-width: 50px;
+}
+.overlayDialog .scrollableArea, .overlayDialog .scrollableAreaBottomBorder, .inlineOverlayDialog .scrollableArea, .overlayDialog .scrollableAreaBottomBorder {
+    background-color: #FFFFFF;
+    border: 1px solid #919191;
+    overflow-y: auto;
+}
+.overlayDialog .scrollableArea, .inlineOverlayDialog .scrollableArea {
+    border-bottom: medium none;
+}
+.overlayDialog .summaryArea, .inlineOverlayDialog .summaryArea {
+    background-color: #F3F3EC;
+    border-color: -moz-use-text-color #919191 #919191;
+    border-right: 1px solid #919191;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    height: 50px;
+    margin-top: -13px;
+    padding: 12px 8px 4px;
+}
+.overlayDialog .bottomLeft, .inlineOverlayDialog .bottomLeft {
+    background: url("/img/overlaybottomleft.gif") no-repeat scroll left bottom transparent;
+    height: 4px;
+}
+.overlayDialog .bottomRight, .inlineOverlayDialog .bottomRight {
+    background: url("/img/overlaybottomright.gif") no-repeat scroll right bottom transparent;
+    height: 4px;
+    padding-right: 4px;
+}
+.accessibleDialogPopup {
+    margin: 12px;
+    padding: 12px;
+}
+.accessibleDialogPopup .buttons {
+    padding-top: 12px;
+    text-align: center;
+}
+.accessibleDialogPopup .buttons .btn, .accessibleDialogPopup .buttons .btnDisabled {
+    margin: 0 10px 0 0;
+    min-width: 50px;
+}
+.backgroundConfirm {
+    background-color: #E7F8E6;
+}
+.backgroundWarn {
+    background-color: #F7F2D8;
+}
+.backgroundInfo {
+    background-color: #DAE5F2;
+}
+.backgroundError {
+    background-color: #F1D7D7;
+}
+.contentConfirm {
+    border: 1px solid #3CA500;
+}
+.contentWarn {
+    border: 1px solid #FF9900;
+}
+.contentInfo {
+    border: 1px solid #287FE1;
+}
+.contentError {
+    border: 1px solid #CC0000;
+}
+.message {
+    background-color: #FFFFCC;
+    border-style: solid;
+    border-width: 1px;
+    color: #000000;
+    margin: 4px 20px;
+    padding: 6px 8px 6px 6px;
+}
+.confirmM5, .warningM5, .infoM5, .errorM5 {
+    border: medium none;
+}
+.confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1 {
+    border-color: #339900;
+}
+.confirmM4 .msgIcon, .confirmSmall {
+    background-image: url("/img/msg_icons/confirm16.png");
+    background-position: 0 0;
+    height: 16px;
+    width: 16px;
+}
+.confirmM3 .msgIcon, .confirmMedium {
+    background-image: url("/img/msg_icons/confirm24.png");
+    background-position: 0 0;
+    height: 24px;
+    width: 24px;
+}
+.confirmM2 .msgIcon, .confirmLarge {
+    background-image: url("/img/msg_icons/confirm32.png");
+    background-position: 0 0;
+    height: 32px;
+    width: 32px;
+}
+.confirmS1 .msgIcon {
+    background-image: url("/img/msg_icons/securityconfirm48.gif");
+    background-position: 0 0;
+    height: 48px;
+    width: 48px;
+}
+.errorM6, .errorM4, .errorM3, .errorM2, .errorS1 {
+    border-color: #CC0000;
+}
+.errorM4 .msgIcon, .errorSmall {
+    background-image: url("/img/msg_icons/error16.png");
+    background-position: 0 0;
+    height: 16px;
+    width: 16px;
+}
+.errorM3 .msgIcon, .errorMedium {
+    background-image: url("/img/msg_icons/error24.png");
+    background-position: 0 0;
+    height: 24px;
+    width: 24px;
+}
+.errorM2 .msgIcon, .errorLarge {
+    background-image: url("/img/msg_icons/error32.png");
+    background-position: 0 0;
+    height: 32px;
+    width: 32px;
+}
+.errorS1 .msgIcon {
+    background-image: url("/img/msg_icons/securityerror48.gif");
+    background-position: 0 0;
+    height: 48px;
+    width: 48px;
+}
+.infoM6, .infoM4, .infoM3, .infoM2, .infoS1 {
+    border-color: #3399FF;
+}
+.infoM4 .msgIcon, .infoSmall {
+    background-image: url("/img/msg_icons/info16.png");
+    background-position: 0 0;
+    height: 16px;
+    width: 16px;
+}
+.infoM3 .msgIcon, .infoMedium {
+    background-image: url("/img/msg_icons/info24.png");
+    background-position: 0 0;
+    height: 24px;
+    width: 24px;
+}
+.infoM2 .msgIcon, .infoLarge {
+    background-image: url("/img/msg_icons/info32.png");
+    background-position: 0 0;
+    height: 32px;
+    width: 32px;
+}
+.infoS1 .msgIcon {
+    background-image: url("/img/msg_icons/securityinfo48.gif");
+    background-position: 0 0;
+    height: 48px;
+    width: 48px;
+}
+.warningM6, .warningM4, .warningM3, .warningM2, .warningS1 {
+    border-color: #FF9900;
+}
+.warningM4 .msgIcon, .warningSmall {
+    background-image: url("/img/msg_icons/warning16.png");
+    background-position: 0 0;
+    height: 16px;
+    width: 16px;
+}
+.warningM3 .msgIcon, .warningMedium {
+    background-image: url("/img/msg_icons/warning24.png");
+    background-position: 0 0;
+    height: 24px;
+    width: 24px;
+}
+.warningM2 .msgIcon, .warningLarge {
+    background-image: url("/img/msg_icons/warning32.png");
+    background-position: 0 0;
+    height: 32px;
+    width: 32px;
+}
+.warningS1 .msgIcon {
+    background-image: url("/img/msg_icons/securitywarning48.gif");
+    background-position: 0 0;
+    height: 48px;
+    width: 48px;
+}
+.bPageBlock .message {
+    margin: 0 0 4px;
+}
+body.lookupTab .bPageBlock .message {
+    margin: 0;
+}
+.lookup .message {
+    margin: 0 0 12px;
+}
+.message .messageTable .messageCell {
+    vertical-align: middle;
+}
+.pbError .message {
+    font-weight: normal;
+    text-align: left;
+}
+.message .messageText {
+    margin-left: 8px;
+}
+.message .messageText h4 {
+    display: block;
+    font-weight: bold;
+}
+.message .messageText a {
+    color: #333333;
+    font-size: 91%;
+    margin: 0 8px;
+}
+.message .messageTextAndLinks a {
+    font-size: 100%;
+    margin: 0;
+}
+.htmlDetailElementTable {
+    width: 100%;
+}
+.htmlDetailElementTable td {
+    padding: 1px;
+}
+.htmlDetailElementDiv {
+    display: none;
+}
+#recaptcha_image {
+    margin-bottom: 6px;
+}
+#recaptcha_response_field {
+    display: block;
+    width: 250px;
+}
+.captchaContent tr td {
+    border: 1px solid #BFBFBF;
+    padding: 4px;
+}
+.spanIcon {
+    background-image: url("/img/func_icons/ispan12.gif");
+    background-position: 0 0;
+    height: 12px;
+    margin-left: 4px;
+    width: 12px;
+}
+.twistyHeader .twistyText {
+    text-decoration: underline;
+}
+.scheduledIcon {
+    background-image: url("/img/func_icons/schedReport34.gif");
+    background-position: left top;
+    height: 16px;
+    margin-right: 0.25em;
+    vertical-align: middle;
+    width: 17px;
+}
+a.scheduleLink {
+}
+a.scheduleLink:hover img {
+    background-image: url("/img/func_icons/schedReport34.gif");
+    background-position: -17px top;
+    height: 16px;
+    width: 17px;
+}
+h2#docViewerOverlayTitle div {
+    margin-right: 35px;
+    overflow: hidden;
+}
+.overlayDialog.docViewerOverlay {
+    position: fixed;
+}
+.docViewerOverlay .innerContent {
+    padding: 4px 4px 0;
+}
+.docViewerContainerParent {
+    height: 484px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.docViewerContainer {
+    height: 100%;
+    width: 100%;
+}
+a .contentThumbnail {
+    border: 1px solid #D0D0D0;
+    padding: 3px;
+}
+a:hover .contentThumbnail {
+    border: 2px solid #1797C0;
+    padding: 2px;
+}
+img.contentThumbnail {
+    margin: 4px 3px 3px 0;
+}
+img.contentThumbnailNoPreview {
+    margin: 0 0 0 10px;
+}
+.contentActionIcon {
+    margin-left: -1px;
+    padding-right: 2px;
+    width: 16px;
+}
+.contentActionElement {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+}
+.contentActionLabel {
+    font-size: 0.9em;
+    line-height: 18px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+.contentPost {
+    width: 100%;
+}
+.contentPost .rightSideCell {
+    padding-left: 9px;
+    vertical-align: top;
+}
+.contentPost .thumbnailCell {
+    vertical-align: top;
+    width: 1px;
+}
+.contentPost .linkCell {
+    padding-right: 4px;
+    white-space: nowrap;
+}
+.contentTitle {
+    color: #333435;
+    font-size: 1em;
+    font-weight: bold;
+}
+.contentTitleLink {
+    font-size: 1em;
+    font-weight: bold;
+}
+.contentDescription {
+    color: #222222;
+    font-size: 1em;
+    vertical-align: top;
+}
+.importWizTable {
+    width: 100%;
+}
+.importWizTable td.wizStepInfo {
+    padding: 10px 15px;
+}
+.importWizTable td.stepNum, .importWizTable td.stepDir {
+    padding: 8px 5px;
+    vertical-align: top;
+}
+.orgimport_format td.stepNum, .orgimport_format td.stepDir {
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
+.importWizTable td.matchOption {
+    padding-top: 12px;
+}
+.stepNum {
+    font-weight: bold;
+    text-align: right;
+}
+.importWizTable .stepDir > label {
+    font-size: 1em;
+}
+.importWizTable .stepDir > .mouseOverInfoOuter {
+    bottom: -3px;
+}
+.stepBtns {
+    text-align: right;
+}
+.importWizTable .importWizOptTable {
+    margin-top: 5px;
+}
+.importWizTable .importWizOptTable td.radioOption {
+    padding: 2px 0;
+    vertical-align: middle;
+}
+.importWizTable .importWizOptTable td.radioOption input {
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+body.setupTab #stageForm > div.bWizardBlock.tertiaryPalette {
+    background-color: transparent;
+    border: 0 none;
+    margin-right: 0;
+}
+body.setupTab div.bWizardBlock .pbWizardBody table.list div.mouseOverInfoOuter {
+    display: inline-block;
+    left: 5px;
+    vertical-align: middle;
+}
+#divMatch, #divStyle {
+    margin-top: 10px;
+}
+tr.newWizRow td {
+    padding-top: 10px;
+}
+hr.divider {
+    border-color: #D9D9D9 -moz-use-text-color -moz-use-text-color;
+    border-right: medium none;
+    border-style: dotted none none;
+    border-width: 1px medium medium;
+    height: 0;
+    margin: 5px 0;
+}
+#devSlide {
+    display: none;
+    position: fixed;
+    right: -232px;
+    top: 160px;
+    width: 270px;
+    z-index: 7;
+}
+#devSlide .handle {
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-box-shadow: -2px 0 2px #A0A6AB;
+    background-color: #226B86;
+    border-color: #FFFFFF;
+    border-style: solid none solid solid;
+    border-width: 4px;
+    color: white;
+    left: 0;
+    padding: 7px 0 7px 3px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 39px;
+    z-index: 10;
+}
+#devSlide .slideContainer {
+    -moz-border-radius-bottomleft: 5px;
+    -moz-box-shadow: 0 0 2px #A0A6AB;
+    background-color: #226B86;
+    border: 4px solid #FFFFFF;
+    margin: 0;
+    padding: 6px;
+    position: absolute;
+    right: -2px;
+    top: 0;
+    width: 210px;
+    z-index: 9;
+}
+#devSlide .slideBody {
+    -moz-border-radius: 5px 5px 5px 5px;
+    background-color: white;
+    border: 3px solid #FFFFFF;
+}
+#devSlide .slideList {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+#devSlide hr {
+    clear: both;
+    color: #CCCCCC;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+#devSlide .slideList li {
+    clear: both;
+    list-style-type: none;
+    margin: 1px;
+}
+#devSlide .slideList li a {
+    line-height: 1.3em;
+    padding: 5px;
+}
+#devSlide .helpIcon {
+    background: url("/img/alohaSkin/help_grey.png") no-repeat scroll 0 0 transparent;
+}
+#devSlide .slideList li.hover {
+    background-color: #CFEEF8;
+}
+#devSlide .slideList li.hover .toolLink {
+    text-decoration: underline;
+}
+#devSlide .slideList li.hover .toolNewLink {
+    text-decoration: none;
+}
+#devSlide .toolLink {
+    color: #096186;
+    float: left;
+    text-decoration: none;
+}
+#devSlide .toolNewLink {
+    color: #096186;
+    display: none;
+    float: right;
+    margin-left: 3px;
+    padding-left: 2px;
+}
+#devSlide .toolNewLink img {
+    margin-right: 2px;
+    vertical-align: text-bottom;
+}
+#devSlide .hover .toolNewLink {
+    display: block;
+}
+#devSlide .footer {
+    padding: 3px 1px;
+    text-align: right;
+}
+#devSlide .footer a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+#devSlide .footer a:hover {
+    text-decoration: underline;
+}
+#devSlide .helpLink {
+    float: right;
+    margin-top: 5px;
+}

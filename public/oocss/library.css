@@ -1,0 +1,15 @@
+.docs {
+    border-bottom: 1px solid #999999;
+}
+strong {
+    color: #333333;
+}
+pre {
+    background-color: #F2F2F2;
+    border: 1px solid #E2E2E2;
+    font-size: 13px;
+    padding: 10px;
+}
+code {
+    font-size: 13px;
+}
