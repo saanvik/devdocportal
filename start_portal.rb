@@ -6,6 +6,7 @@ require 'sinatra/r18n'
 require 'couchrest'
 require 'nokogiri'
 require 'haml'
+require 'dalli'
 require './topic_model'
 require './couchrest_sunspot'
 require './server_info'
@@ -17,6 +18,9 @@ require './server_info'
 ######################################################################
 
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
+
+# Set up the cache
+set :cache, Dalli::Client.new
 
 # Views (in the views directory) are defined using haml
 # http://haml-lang.com
@@ -101,7 +105,6 @@ end
 get '/oocss/*' do | path |
   set_content_type(path[/(?:.*)(\..*$)/, 1])
   @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
-  puts "In the oocss run, looking for #{path}"
   return @thiscss.read_attachment(path)
 end
 
@@ -150,12 +153,8 @@ get %r{/(.*)\/(.*)\/search/(.+)} do |root,locale,query|
     haml :search_no_results, :locals => {:query => query}
   else
     @results = @search.results
-#    puts "Found #{@results.length} topics with the query #{query}"
     if (@results.length > 0)
     then
-      puts "Length of @results: #{@results.length}"
-      puts @results.to_yaml
-      puts "#{@results}"
       haml :search, :locals => {:locale => locale, :root => root, :query => query}
     else
       haml :search_no_results, :locals => {:query => query}
@@ -165,32 +164,22 @@ end
 
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
-  puts "In the search redirect"
   query = params[:search_query]
   redirect to("#{root}/#{locale}/search/#{query}")
 end
 
+# Grab all the relative links that go to images
+get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, imagename|
+  referrer = request.referrer
+  topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
+  fullattachmentname = "#{imagepath}/#{imagename}"
+  @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
+  return @thistopic.read_attachment(fullattachmentname)
+end
+
 # Calls to <root>/dbcom/<lang>/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
-get %r{/(.*)\/(.*)\/(.*)} do |root, locale, topicname|
-  puts "root: #{root}"
-  puts "locale: #{locale}"
-  puts "topicname: #{topicname}"
-  puts "referrer: #{request.referrer}"
-  if (locale == "images")
-    then
-    referrer = request.referrer
-    oldroot = root
-    attachmentname = topicname
-    root = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[1]
-    locale = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[2]
-    topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
-    imagepath = oldroot.match(/.*\/#{locale}\/([^\/]*)/)[1]
-    puts "imagepath: #{imagepath}"
-    fullattachmentname = "#{imagepath}/images/#{attachmentname}"
-    @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
-    return @thistopic.read_attachment(fullattachmentname)
-    else
+get %r{/([^\/]*)\/([^\/]*)\/([^\/]*)} do |root, locale, topicname|
     begin
       @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
       @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
@@ -202,20 +191,18 @@ get %r{/(.*)\/(.*)\/(.*)} do |root, locale, topicname|
     rescue
       haml :'500'
     end
-  end
+#  end
 end
 
+
 # Need to support URLs of the format
-# http://docs.databse.com/dbcom?locale=en-us&target=<filename>&section=<section>
+# http://docs.database.com/dbcom?locale=en-us&target=<filename>&section=<section>
 get %r{(.*)} do |root|
   if (
       (defined?(params[:locale])) &&
       (defined?(params[:targetname]))
       (not(params[:locale].nil? || params[:targetname].nil?))
       )
-    puts "locale: #{params[:locale]}"
-    puts "targetname: #{params[:targetname]}"
-    puts "#{root}/#{params[:locale]}/#{params[:target]}"
     redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
   else
     haml :'404'
