@@ -18,6 +18,16 @@ require './server_info'
 ######################################################################
 
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
+set :static, true
+
+set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
+set :cache, Dalli::Client.new
+
+before do
+#  cache_control :public, :max_age => 36000
+  expires 500, :public, :max_age => 36000
+end
+
 # Try to use deflator
 use Rack::Deflater
 
@@ -51,13 +61,6 @@ helpers do
   end
 end
 
-set :static, true
-
-set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
-before do
-#  cache_control :public, :max_age => 36000
-  expires 500, :public, :max_age => 36000
-end
 
 ######################################################################
 # Routes here
@@ -71,8 +74,6 @@ end
 error do
   haml :'500'
 end
-
-
 
 ####
 # Ignore the following
@@ -105,17 +106,17 @@ end
 ####
 
 # Import for oocss stylesheets
-get '/*/oocss/*' do | discard, path |
-    set_content_type(path[/(?:.*)(\..*$)/, 1])
-    @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
-    return @thiscss.read_attachment(path)
-end
+# get '/*/oocss/*' do | discard, path |
+#     set_content_type(path[/(?:.*)(\..*$)/, 1])
+#     @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
+#     return @thiscss.read_attachment(path)
+# end
 
-get '/oocss/*' do | path |
-  set_content_type(path[/(?:.*)(\..*$)/, 1])
-  @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
-  return @thiscss.read_attachment(path)
-end
+# get '/oocss/*' do | path |
+#   set_content_type(path[/(?:.*)(\..*$)/, 1])
+#   @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
+#   return @thiscss.read_attachment(path)
+# end
 
 
 # All calls to help.css should go to the same file
@@ -189,18 +190,19 @@ end
 # Calls to <root>/dbcom/<lang>/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
 get %r{/([^\/]*)\/([^\/]*)\/([^\/]*)} do |root, locale, topicname|
-    begin
-      @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
-      @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
-      @content=@thisdoc.xpath('//body').children().remove_class("body")
-      @topictitle=@thisdoc.xpath('//title[1]').inner_text()
-      @sidebartitle =t.title.toc
-      @sidebarcontent = t.toc
-      haml :topic
-    rescue
-      haml :'500'
-    end
-#  end
+  puts "WTF?"
+  puts "topicname: #{topicname}"
+  begin
+    @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
+    @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
+    @content=@thisdoc.xpath('//body').children().remove_class("body")
+    @topictitle=@thisdoc.xpath('//title[1]').inner_text()
+    @sidebartitle =t.title.toc
+    @sidebarcontent = t.toc
+    haml :topic
+  rescue
+    haml :'500'
+  end
 end
 
 
