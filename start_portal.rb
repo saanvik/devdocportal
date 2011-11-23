@@ -21,7 +21,7 @@ require './server_info'
 set :static, true
 
 set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
-set :cache, Dalli::Client.new
+set :cache, Dalli::Client.new(:expires_in => 500, :compression => true)
 
 # Try to use deflator
 use Rack::Deflater
