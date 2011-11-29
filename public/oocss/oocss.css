@@ -3081,15 +3081,16 @@ ol.enumList ol.enumList ul li {
 	list-style-type: square;
 }
 
-ul li {
+
+ul li, ol.enumList ul li {
     list-style-type: square;
 }
 
-ul ul li {
+ul ul li, ol.enumList ul ul li {
     list-style-type: circle;
 }
 
-ul ul ul li {
+ul ul ul li, ol.enumList ul ul ul li {
     list-style-type: disc;
 }
 
