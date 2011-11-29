@@ -185,7 +185,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
     STDERR.puts "Error: Could not update the attributes on #{filename}."
     if e.http_code == 409
       then
-      STERR.puts "The problem was caused by a conflict.  Trying again."
+      STDERR.puts "The problem was caused by a conflict.  Trying again."
       @thistopic.reload
       begin
         @thistopic.update_attributes(
@@ -202,6 +202,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
                                      :content => content,
                                      :perm_and_edition_tables => perm_and_edition_tables,
                                      :title => title)
+        STDERR.puts "Success!"
       rescue
         STDERR.puts "Nope.  Updating the attributes on #{filename} still failed."
       # Now add it to the SOLR search index.
