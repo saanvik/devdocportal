@@ -59,7 +59,8 @@ legend {
 }
 body {
     color: #464646;
-    font: 0.75em arial,helvetica,clean,sans-serif;
+    font: 0.94em arial,helvetica,clean,sans-serif;
+    line-height: 1.25em;
 }
 select, input, button, textarea {
     font: 99% arial,helvetica,clean,sans-serif;
@@ -681,7 +682,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     color: #464646;
     font-weight: bold;
 }
-h1, .h1, h2, .h2, h6, .h6 {
+h1, .h1, h2, .h2, h6, .h6, div.section {
     margin: 10px 0;
 }
 h3, .h3, h4, .h4, h5, .h5 {
@@ -689,7 +690,7 @@ h3, .h3, h4, .h4, h5, .h5 {
 }
 h1, .h1 {
     font-size: 2em;
-    font-weight: normal;
+    font-weight: bold;
 }
 h1 strong, .h1 strong {
     color: #4A4A56;
@@ -712,7 +713,7 @@ h5, .h5 {
 h6, .h6 {
     font-size: 0.917em;
 }
-h1, h2, h3, h4, h5, h6, dl, p, blockquote, .box, pre {
+h1, h2, h3, h4, h5, h6, dl, p, blockquote, .box, pre, div.p {
     margin: 10px 0;
 }
 .hd h1, .hd h2, .hd h3, .hd h4, .hd h5, .hd h6 {
@@ -724,7 +725,7 @@ h1, h2, h3, h4, h5, h6, dl, p, blockquote, .box, pre {
 h1, h2, h3, h4, h5, h6, img {
     padding-bottom: 0;
 }
-table h1, table h2, table h3, table h4, table h5, table h6, table p, table ul, table ol, table dl {
+table h1, table h2, table h3, table h4, table h5, table h6, table p, table ul, table ol, table dl, div.p {
     padding: 0;
 }
 .ptn, .pvn, .pan {
@@ -862,12 +863,11 @@ em {
     overflow: auto;
 }
 .detailList dt {
-    clear: left;
-    float: left;
     margin: 0.2em 0.3em 0 0;
 }
 .detailList dd {
     margin-top: 0.2em;
+    margin-left: 1em;
 }
 .detailListExt dt {
     padding: 3px 10px;
@@ -3041,10 +3041,66 @@ a:hover .allTabsArrow {
 .customBranding .headerSearchOptionsLink {
     color: #1797C0;
 }
+
+/*
+    Dev doc portal mods 
+*/
 input:focus {
     outline: none;
 }
 
 div.search_results_title a {
 	font-size: 1.333em;	
+}
+
+span.parmname, span.keyword, var {
+    font-size: 13px;
+    font-family: "Courier New",'Courier',mono;
+}
+strong, th {
+    font-weight: bold;
+}
+
+pre.codeblock {
+    line-height: 140%;
+}
+
+ol.enumList li {
+  list-style-type: decimal;
+}
+
+ol.enumList ol.enumList li {
+    list-style-type: lower-alpha;
+}
+
+ol.enumList ol.enumList ol.enumList li {
+    list-style-type: lower-roman;
+}
+
+ol.enumList ol.enumList ul li {
+	list-style-type: square;
+}
+
+ul li {
+    list-style-type: square;
+}
+
+ul ul li {
+    list-style-type: circle;
+}
+
+ul ul ul li {
+    list-style-type: disc;
+}
+
+li div {
+    padding-top: 0.5em;
+}
+
+div.related-links ul.ullinks {
+    padding-bottom: 1em;
+}
+
+table.featureTable {
+    margin-bottom: 8px;
 }
