@@ -20,7 +20,7 @@ require './server_info'
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
 set :static, true
 
-set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
+#set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
 set :cache, Dalli::Client.new(:expires_in => 500, :compression => true)
 
 # Try to use deflator
@@ -31,7 +31,7 @@ use Rack::Deflater
 set :haml, :format => :xhtml
 
 before do
-  expires 500, :public, :max_age => 36000
+  expires 500, :public, :must_revalidate
 end
 
 case
@@ -124,9 +124,9 @@ end
 
 # All calls to /img should grab it from the app_image_document
 get '/img/*' do | path |
-    set_content_type(path[/(?:.*)(\..*$)/, 1])
-    @thistopic = Topic.by_topicname_and_locale.key(["app_image_document","en-us"]).first
-    return @thistopic.read_attachment('/img/'.concat(path))
+  set_content_type(path[/(?:.*)(\..*$)/, 1])
+  @thistopic = Topic.by_topicname_and_locale.key(["app_image_document","en-us"]).first
+  return @thistopic.read_attachment('/img/'.concat(path))
 end
 
 # Search only page
