@@ -20,8 +20,18 @@ require './server_info'
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
 set :static, true
 
-#set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
-set :cache, Dalli::Client.new(:expires_in => 500, :compression => true)
+set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
+set :cache, Dalli::Client.new
+#(ENV['MEMCACHE_SERVERS'],
+#:username => ENV['MEMCACHE_USERNAME'],
+#:password => ENV['MEMCACHE_PASSWORD'],
+#:expires_in => 500)
+# The next line doesn't appear to do anything
+#(['localhost:11211'],:threadsafe => true, :expires_in => 300)
+#(:expires_in => 500, :compression => true)
+set :enable_cache, true
+set :short_ttl, 400
+set :long_ttl, 4600
 
 # Try to use deflator
 use Rack::Deflater
@@ -54,6 +64,24 @@ helpers do
     rescue
       STDERR.puts "Couldn't find the MIME type for #{extension}."
     end
+  end
+
+  # Get the attachment from the cache, or push it into the cache
+  def get_attachment(topicname, attachmentname, locale, time_to_live=settings.long_ttl)
+    if(!settings.enable_cache)
+      then
+      @thistopic = Topic.by_topicname_and_locale.key([topicname,locale]).first
+      return @thistopic.read_attachment(attachmentname)
+    end
+    # Check that this is good enough - what about dupe attachment names?
+    @key = "#{topicname}/#{attachmentname}"
+    if(settings.cache.get(@key) == nil)
+      then
+      @thistopic = Topic.by_topicname_and_locale.key([topicname,locale]).first
+      @image = @thistopic.read_attachment(attachmentname)
+      settings.cache.set(@key, @image, ttl=time_to_live+rand(100))
+    end
+    return settings.cache.get(@key)
   end
 end
 
@@ -101,20 +129,6 @@ end
 # End ignores
 ####
 
-# Import for oocss stylesheets
-# get '/*/oocss/*' do | discard, path |
-#     set_content_type(path[/(?:.*)(\..*$)/, 1])
-#     @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
-#     return @thiscss.read_attachment(path)
-# end
-
-# get '/oocss/*' do | path |
-#   set_content_type(path[/(?:.*)(\..*$)/, 1])
-#   @thiscss = Topic.by_topicname_and_locale.key(["oocss", "en-us"]).first
-#   return @thiscss.read_attachment(path)
-# end
-
-
 # All calls to help.css should go to the same file
 get '*help.css' do
   content_type 'text/css'
@@ -125,8 +139,8 @@ end
 # All calls to /img should grab it from the app_image_document
 get '/img/*' do | path |
   set_content_type(path[/(?:.*)(\..*$)/, 1])
-  @thistopic = Topic.by_topicname_and_locale.key(["app_image_document","en-us"]).first
-  return @thistopic.read_attachment('/img/'.concat(path))
+  @image = get_attachment("app_image_document", '/img/'.concat(path), "en-us")
+  return @image
 end
 
 # Search only page
@@ -179,18 +193,18 @@ get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, i
   referrer = request.referrer
   topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
   fullattachmentname = "#{imagepath}/#{imagename}"
-  @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
-  return @thistopic.read_attachment(fullattachmentname)
+  @image = get_attachment(topicname, fullattachmentname, locale)
+  return @image
+#  @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
+#  return @thistopic.read_attachment(fullattachmentname)
 end
 
 # Calls to <root>/dbcom/<lang>/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
 get %r{/([^\/]*)\/([^\/]*)\/([^\/]*)} do |root, locale, topicname|
-  puts "WTF?"
-  puts "topicname: #{topicname}"
   begin
-    @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
-    @thisdoc = Nokogiri::XML(@thistopic.read_attachment(topicname))
+    @attachment = get_attachment(topicname, topicname, locale)
+    @thisdoc = Nokogiri::XML(@attachment)
     @content=@thisdoc.xpath('//body').children().remove_class("body")
     @topictitle=@thisdoc.xpath('//title[1]').inner_text()
     @sidebartitle =t.title.toc
