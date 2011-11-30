@@ -190,7 +190,7 @@ end
 
 # Grab all the relative links that go to images
 get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, imagename|
-  set_content_type(path[/(?:.*)(\..*$)/, 1])
+  set_content_type(imagename[/(?:.*)(\..*$)/, 1])
   referrer = request.referrer
   topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
   fullattachmentname = "#{imagepath}/#{imagename}"
