@@ -183,9 +183,9 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
     STDERR.puts "#{$!}"
   rescue RestClient::RequestFailed => e
     STDERR.puts "Error: Could not update the attributes on #{filename}."
-    if e.http_code == 409
+    if (e.http_code == 409 or e.http_code == 412)
       then
-      STDERR.puts "The problem was caused by a conflict.  Trying again."
+      STDERR.puts "The problem was caused by a conflict or a precondition issue.  Trying again."
       @thistopic.reload
       begin
         @thistopic.update_attributes(
@@ -214,7 +214,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
         end
       end
     else
-      raise e
+      STDERR.puts "There was an error (#{e.http_code}) updating #{filename}."
     end
   rescue
     STDERR.puts "Error: Could not update the attributes on #{filename}."
