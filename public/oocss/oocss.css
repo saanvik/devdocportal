@@ -3118,3 +3118,13 @@ h1 + div#sfdc\:seealso * li
 a[name="top"] + div {
     margin-bottom: 0.5em;
 }
+
+div.logoBox
+{
+ font-color: red;   
+}
+
+div.searchBox
+{
+ font-color: red;   
+}
