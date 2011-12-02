@@ -86,6 +86,40 @@ helpers do
 end
 
 
+# Some R18N magic
+
+# Add t and l helpers
+helpers ::R18n::Helpers
+
+# Set default locale and translation dir
+set :default_locale, 'en-us'
+set :translations, Proc.new { File.join(root, 'i18n/') }
+
+before do
+  # Lazy locale setter
+  ::R18n.set do
+    ::R18n::I18n.default = settings.default_locale
+
+    # Parse browser locales
+    locales = ::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])
+
+    # Allow to set locale manually
+    if params[:locale]
+      locales.insert(0, params[:locale])
+    elsif session[:locale]
+      locales.insert(0, session[:locale])
+    end
+
+    # Do your stuff with locales
+
+    ::R18n::I18n.new(locales, settings.translations)
+  end
+end
+
+# Switch to HTML error for untranslated messages
+::R18n::Filters.off(:untranslated)
+::R18n::Filters.on(:untranslated_html)
+
 ######################################################################
 # Routes here
 ######################################################################
@@ -146,30 +180,35 @@ end
 # Search only page
 get '/dbcom/:locale/search' do
   # Search only page should go back to the landing page
+  @locale = params[:locale]
   haml :search_info
 end
 
 
 # Go to the search page, nothing but the search
 get '/dbcom/:locale/search/' do
+  @locale = params[:locale]
   haml :search_info
 end
 
 # Actual search URL
 # @todo Do queries need to be escaped to be safe?
-get %r{/(.*)\/(.*)\/search/(.+)} do |root,locale,query|
+#get %r{/(.*)\/(.*)/search/(.+)} do |root,locale,query|
+get '/:root/:locale/search/:query' do
+  root = params[:root]
+  locale = params[:locale]
+  query = params[:query]
   @topictitle = t.title.searchresults
-  # @sidebartitle = t.title.facets
-  # @todo Add the checkboxes here
-  # @sidebarcontent = "List of facets, with checkboxes"
   begin
     @search=Sunspot.search(Topic) do
       keywords query do
         highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true, :merge_continuous_fragments => true
       end
+      with(:locale, locale)
       paginate :page => 1, :per_page => 1500
     end
   rescue
+    STDERR.puts "In the failed search"
     haml :search_no_results, :locals => {:query => query}
   else
     @results = @search.results
@@ -196,13 +235,14 @@ get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, i
   fullattachmentname = "#{imagepath}/#{imagename}"
   @image = get_attachment(topicname, fullattachmentname, locale)
   return @image
-#  @thistopic = Topic.by_topicname_and_locale.key([topicname, locale]).first
-#  return @thistopic.read_attachment(fullattachmentname)
 end
 
-# Calls to <root>/dbcom/<lang>/<locale>/<topicname> get redirected
+# Calls to /dbcom/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
-get %r{/([^\/]*)\/([^\/]*)\/([^\/]*)} do |root, locale, topicname|
+get '/:root/:locale/:topicname' do
+  topicname = params[:topicname]
+  locale = params[:locale]
+  root = params[:root]
   begin
     @attachment = get_attachment(topicname, topicname, locale)
     @thisdoc = Nokogiri::XML(@attachment)

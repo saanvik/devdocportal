@@ -21,10 +21,8 @@
                     :title => "updated"}
                   = t.search_results.th_updated
             %tbody{:class => "content"}
-              - STDERR .puts "Here we go ..."
-              - STDERR.puts "#{@search.total}"
               - @search.each_hit_with_result do |hit, post|
-                -@localtime = Time.at(hit.result.updated_at.to_i).strftime("%b. %d, %Y")
+                -@localtime = l Time.at(hit.result.updated_at.to_i).to_date, :full
                 - if (hit.highlight(:content).nil?)
                   - then @snippet = ""
                   - else @snippet = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }

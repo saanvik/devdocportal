@@ -8,13 +8,14 @@ title:
   browse: Browse
   searchresults: Search Results
   facets: Facets
+  main: Technical Library
 
 search_results:
   th_title: Title
   th_updated: Last Updated
   count: results for 
 search:
-  
+  string: Search
   noresults_title: No search results found.
   noresults: 0 results for 
   tip_title: Tips on Searching

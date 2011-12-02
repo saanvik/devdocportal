@@ -10,7 +10,7 @@ CURRENT_API_VERSION = 23
 CURRENT_PATCH = 174.10
 
 # Source of the content
-DOCSRCDIR = "/Users/sanderson/dev/doc/main/core/devdocportal_out/"
+DOCSRCDIR = "/Users/sanderson/dev/doc/main/core/devdocportal_out/ja-jp/"
 
 # APPSRCDIR is for images in the form of /img
 APPSRCDIR = "/Users/sanderson/dev/app/main/core/sfdc/htdocs"
@@ -19,7 +19,7 @@ APPSRCDIR = "/Users/sanderson/dev/app/main/core/sfdc/htdocs"
 APPIMGSRC = "/Users/sanderson/dev/app/main/core/sfdc/htdocs/img"
 
 # Default lang/locale
-LOCALE="en-us"
+LOCALE="ja-jp"
 
 # Release name
 RELNAME = "winter12"

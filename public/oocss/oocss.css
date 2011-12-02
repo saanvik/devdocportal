@@ -3105,3 +3105,16 @@ div.related-links ul.ullinks {
 table.featureTable {
     margin-bottom: 8px;
 }
+
+h1 + div#sfdc\:seealso {
+    margin-top: 1em;
+}
+
+h1 + div#sfdc\:seealso * li
+{
+    margin-top: 0.5em;
+}
+
+a[name="top"] + div {
+    margin-bottom: 0.5em;
+}

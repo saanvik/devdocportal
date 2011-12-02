@@ -1,2 +1,27 @@
 title:
   popular_content: 人気のあるもの
+  toc: JA-Table of Contents
+  getting_started: JA-Getting Started
+  new_content: JA-New Content
+  browse: JA-Browse
+  searchresults: JA-Search Results
+  facets: JA-Facets
+  main: JA-Technical Library
+
+search_results:
+  th_title: JA-Title
+  th_updated: JA-Last Updated
+  count: JA-results for 
+search:
+  string: JA-Search
+  noresults_title: JA-No search results found.
+  noresults: JA-0 results for 
+  tip_title: JA-Tips on Searching
+  tip_intro: JA-Searches are simple.  Enter the terms you want to search for and press <b>Search</b>.
+  tip_quotes: JA-You can search for a phrase by surrounding it with quote characters.  For example, "grant access" will return all the topics with the phrase "grant access", but will not return topics that contain only the term grant or access, or a topic that contains both terms, but separated by other words.
+  tip_plus_minus: JA-You can use + and - to indicate mandatory or optional entries.  For example, <br/><pre>grant + access</pre>returns all the topics with the terms "grant" and "access".  The search <br/><pre>grant - access</pre> will return all the topics with the term "grant" but without the term "access".  The + is not required.  A search of the form <br/><pre>grant access</pre> will return the same results as <br/><pre>grant + access</pre>
+  tip_wildcards: JA-Wildcard searches are not supported.
+
+misc:
+  try_again: JA-Please try again.
+  copyright: JA-© Copyright 2000–2012 salesforce.com, inc. All rights reserved.<br/>Various trademarks held by their respective owners.
