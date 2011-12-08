@@ -15,7 +15,7 @@ search_results:
   th_updated: Last Updated
   count: results for 
 search:
-  string: Search
+  string: Enter your search
   noresults_title: No search results found.
   noresults: 0 results for 
   tip_title: Tips on Searching

@@ -202,13 +202,12 @@ get '/:root/:locale/search/:query' do
   begin
     @search=Sunspot.search(Topic) do
       keywords query do
-        highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true, :merge_continuous_fragments => true
+        highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true
       end
       with(:locale, locale)
       paginate :page => 1, :per_page => 1500
     end
   rescue
-    STDERR.puts "In the failed search"
     haml :search_no_results, :locals => {:query => query}
   else
     @results = @search.results
@@ -223,7 +222,10 @@ end
 
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
-  query = params[:search_query]
+  query = params[:s]
+  STDERR.puts "Root: #{root}"
+  STDERR.puts "query: #{query}"
+
   redirect to("#{root}/#{locale}/search/#{query}")
 end
 

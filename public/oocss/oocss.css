@@ -3119,12 +3119,88 @@ a[name="top"] + div {
     margin-bottom: 0.5em;
 }
 
-div.logoBox
-{
- font-color: red;   
+#searchwrapper {
+width:310px; /*follow your image's size*/
+height:40px;/*follow your image's size*/
+background-image:url(THE_SEARCH_BOX_IMAGE);
+background-repeat:no-repeat; /*important*/
+padding:0px;
+margin:0px;
+position:relative; /*important*/
+}
+#searchwrapper form { display:inline ; }
+.searchbox {
+border:0px; /*important*/
+background-color:transparent; /*important*/
+position:absolute; /*important*/
+top:4px;
+left:9px;
+width:256px;
+height:28px;
+}
+.searchbox_submit {
+border:0px; /*important*/
+background-color:transparent; /*important*/
+position:absolute; /*important*/
+top:4px;
+left:265px;
+width:32px;
+height:28px;
 }
 
-div.searchBox
-{
- font-color: red;   
+/*-------------
+SEARCH
+-------------*/
+
+#searchForm fieldset {
+    width:240px;
+    position:relative;
+    display:block;
 }
+
+div.input {
+    width:180px;
+    padding:5px 15px 7px 15px;
+    border-radius:20px;
+    border:1px solid #c6d2db;
+    border-top:1px solid #b4c1cb;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,0.08);
+    float:right;
+    background:#FFFFFF;
+}
+
+    div.input.focus {
+        border:1px solid #9ecbe2;
+        box-shadow:0 0 6px #abdcff, inset 0 1px 2px rgba(0,0,0,0.08);
+	color: #464646;
+    }
+
+input#s {
+    width:90%;
+    border:0;
+    border-radius:20px;
+    background:transparent;
+    height:25px;
+    color: #464646;
+    text-shadow:0 1px 1px #fff;
+}
+
+    input#s:focus {
+        outline:none
+	color:#464646;
+    }
+
+input#searchSubmit {
+    width:19px;
+    height:19px;
+    text-indent:-9999px;
+    overflow:hidden;
+    background:url(./images/search-icon.png) no-repeat;
+    border:0;
+    position:absolute;
+    top:7px; right:13px;
+    z-index:5;
+    cursor:pointer;
+}
+
+
