@@ -39,6 +39,7 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.3)
     multipart-post (1.1.3)
+    newrelic_rpm (3.3.0)
     nokogiri (1.5.0)
     pr_geohash (1.0.0)
     r18n-core (0.4.11)
@@ -82,6 +83,7 @@ DEPENDENCIES
   haml
   highline
   indextank
+  newrelic_rpm
   nokogiri
   sinatra
   sinatra-r18n

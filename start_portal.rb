@@ -22,27 +22,26 @@ set :static, true
 
 set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
 set :cache, Dalli::Client.new
-#(ENV['MEMCACHE_SERVERS'],
-#:username => ENV['MEMCACHE_USERNAME'],
-#:password => ENV['MEMCACHE_PASSWORD'],
-#:expires_in => 500)
-# The next line doesn't appear to do anything
-#(['localhost:11211'],:threadsafe => true, :expires_in => 300)
-#(:expires_in => 500, :compression => true)
 set :enable_cache, true
 set :short_ttl, 400
 set :long_ttl, 4600
 
-# Try to use deflator
+before do
+  expires 500, :public, :must_revalidate
+end
+
+# Compress the files
 use Rack::Deflater
 
 # Views (in the views directory) are defined using haml
 # http://haml-lang.com
 set :haml, :format => :xhtml
 
-before do
-  expires 500, :public, :must_revalidate
+# Add new relic M&M
+configure :production do
+  require 'newrelic_rpm'
 end
+
 
 case
 when ENV['WEBSOLR_URL']
