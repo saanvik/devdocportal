@@ -54,7 +54,11 @@
       %a{:class=>"btn primaryBtn",
          :title => "PDF",
          :href=>"/dbcom_help.pdf",
-         :style => "white-space: normal;"}pdf      
+         :style => "white-space: normal;"}pdf
+      %a{:class=>"btn primaryBtn",
+         :title => "email",
+         :href=>"mailto:?body=#{request.url}",
+         :style => "white-space: normal;"}email
   %div{:class => "page liquid body mal"}
     %div{:class => "content mal"}
       =yield
