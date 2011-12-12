@@ -294,7 +294,6 @@ end
 # Need to support URLs of the format
 # http://docs.database.com/dbcom?locale=en-us&target=<filename>&section=<section>
 get %r{(.*)} do |root|
-  STDERR.puts "In this route?"
   if (
       (defined?(params[:locale])) &&
       (defined?(params[:targetname]))
