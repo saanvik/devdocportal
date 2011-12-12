@@ -3204,3 +3204,79 @@ input#searchSubmit {
 }
 
 
+/*
+  BEGIN ICON STYLES
+*/
+span.icon_24x24 {
+    padding-right: 24px;
+}
+
+span.icon_20x20 {
+    padding-right: 20px;
+}
+
+span.icon_20x15 {
+    padding-right: 15px;
+}
+
+span.icon_20x16 {
+    padding-right: 16px;
+}
+
+span.icon_16x16 {
+    padding-right: 16px;
+}
+
+span.icon_24x18 {
+    padding-right: 18px;
+}
+
+span.icon_32x32 {
+    padding-right: 32px;
+}
+
+/* Don't add commas to the clips below - they won't work in IE or Eclipse */
+img.icon_24x24 {
+    clip: rect(0px 24px 24px 0px);
+    position:absolute;
+}
+
+img.icon_16x16 {
+    clip: rect(0px 16px 16px 0px);
+    position:absolute;
+}
+
+img.icon_32x32 {
+    clip: rect(0px 32px 32px 0px);
+    position:absolute;
+}
+
+img.icon_20x20 {
+    clip: rect(0px 20px 20px 0px);
+    position:absolute;
+}
+
+img.icon_20x15 {
+    clip: rect(0px 20px 15px 0px);
+    position:absolute;
+}
+
+img.icon_20x16 {
+    clip: rect(0px 20px 16px 0px);
+    position:absolute;
+}
+
+img.icon_24x18 {
+   clip: rect(0px 24px 18px 0px);
+    position:absolute;
+}
+
+/* Add formatting for figure captions (title element in DITA XML) */
+.fignone {
+    font-size:90%;
+    font-weight:bold;
+    margin:1em 0pt 0pt;
+}
+/*
+  END ICON STYLES
+*/

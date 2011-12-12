@@ -10,7 +10,7 @@ CURRENT_API_VERSION = 23
 CURRENT_PATCH = 174.10
 
 # Source of the content
-DOCSRCDIR = "/Users/sanderson/dev/doc/main/core/devdocportal_out/en-us/"
+DOCSRCDIR = "/Users/sanderson/dev/doc/main/core/devdocportal_out/"
 
 # APPSRCDIR is for images in the form of /img
 APPSRCDIR = "/Users/sanderson/dev/app/main/core/sfdc/htdocs"

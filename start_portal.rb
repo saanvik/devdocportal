@@ -18,8 +18,9 @@ require './server_info'
 ######################################################################
 
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
-set :static, true
 
+## Cacching
+set :static, true
 set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
 set :cache, Dalli::Client.new
 set :enable_cache, true
@@ -37,19 +38,57 @@ use Rack::Deflater
 # http://haml-lang.com
 set :haml, :format => :xhtml
 
+# Set default root and topic
+set :default_root, 'dbcom'
+set :default_topic, 'index.htm'
+
 # Add new relic M&M
 configure :production do
   require 'newrelic_rpm'
 end
 
-
+# Set up the path to the search index
 case
 when ENV['WEBSOLR_URL']
   Sunspot.config.solr.url =ENV['WEBSOLR_URL']
 when ENV['LOCALSOLR_URL']
   Sunspot.config.solr.url =ENV['LOCALSOLR_URL']
 end
-puts "Indexing with #{Sunspot.config.solr.url}"
+STDERR.puts "Indexing with #{Sunspot.config.solr.url}"
+
+# Some R18N magic
+
+# Add t and l helpers
+helpers ::R18n::Helpers
+# Set default locale and translation dir
+set :default_locale, 'en-us'
+set :translations, Proc.new { File.join(root, 'i18n/') }
+
+before do
+  # Lazy locale setter
+  ::R18n.set do
+    ::R18n::I18n.default = settings.default_locale
+    # Parse browser locales
+    locales = ::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])
+    # Allow to set locale manually
+    if params[:locale]
+      if params[:locale].start_with?('ja')
+        locales.insert(0, 'ja-jp')
+      else
+        locales.insert(0, 'en-us')
+      end
+    elsif session[:locale]
+      locales.insert(0, session[:locale])
+    end
+    # Do your stuff with locales
+    ::R18n::I18n.new(locales, settings.translations)
+  end
+end
+
+# Switch to HTML error for untranslated messages
+::R18n::Filters.off(:untranslated)
+::R18n::Filters.on(:untranslated_html)
+
 
 # Sinatra helpers go here
 helpers do
@@ -82,42 +121,17 @@ helpers do
     end
     return settings.cache.get(@key)
   end
-end
 
-
-# Some R18N magic
-
-# Add t and l helpers
-helpers ::R18n::Helpers
-
-# Set default locale and translation dir
-set :default_locale, 'en-us'
-set :translations, Proc.new { File.join(root, 'i18n/') }
-
-before do
-  # Lazy locale setter
-  ::R18n.set do
-    ::R18n::I18n.default = settings.default_locale
-
-    # Parse browser locales
-    locales = ::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])
-
-    # Allow to set locale manually
-    if params[:locale]
-      locales.insert(0, params[:locale])
-    elsif session[:locale]
-      locales.insert(0, session[:locale])
+  def set_locale(locale)
+    if locale.start_with?('ja')
+      return 'ja-jp'
+    else
+      return 'en-us'
     end
-
-    # Do your stuff with locales
-
-    ::R18n::I18n.new(locales, settings.translations)
   end
 end
 
-# Switch to HTML error for untranslated messages
-::R18n::Filters.off(:untranslated)
-::R18n::Filters.on(:untranslated_html)
+
 
 ######################################################################
 # Routes here
@@ -179,14 +193,14 @@ end
 # Search only page
 get '/dbcom/:locale/search' do
   # Search only page should go back to the landing page
-  @locale = params[:locale]
+  @locale = set_locale(params[:locale])
   haml :search_info
 end
 
 
 # Go to the search page, nothing but the search
 get '/dbcom/:locale/search/' do
-  @locale = params[:locale]
+  @locale = set_locale(params[:locale])
   haml :search_info
 end
 
@@ -195,7 +209,7 @@ end
 #get %r{/(.*)\/(.*)/search/(.+)} do |root,locale,query|
 get '/:root/:locale/search/:query' do
   root = params[:root]
-  locale = params[:locale]
+  locale = set_locale(params[:locale])
   query = params[:query]
   @topictitle = t.title.searchresults
   begin
@@ -222,27 +236,30 @@ end
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
   query = params[:s]
-  STDERR.puts "Root: #{root}"
-  STDERR.puts "query: #{query}"
-
+  locale = set_locale(locale)
   redirect to("#{root}/#{locale}/search/#{query}")
 end
 
 # Grab all the relative links that go to images
 get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, imagename|
-  set_content_type(imagename[/(?:.*)(\..*$)/, 1])
-  referrer = request.referrer
-  topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
-  fullattachmentname = "#{imagepath}/#{imagename}"
-  @image = get_attachment(topicname, fullattachmentname, locale)
-  return @image
+  begin
+    set_content_type(imagename[/(?:.*)(\..*$)/, 1])
+    referrer = request.referrer
+    topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
+    fullattachmentname = "#{imagepath}/#{imagename}"
+    locale = set_locale(locale)
+    @image = get_attachment(topicname, fullattachmentname, locale)
+    return @image
+  rescue
+    return ""
+  end
 end
 
 # Calls to /dbcom/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
 get '/:root/:locale/:topicname' do
   topicname = params[:topicname]
-  locale = params[:locale]
+  locale = set_locale(params[:locale])
   root = params[:root]
   begin
     @attachment = get_attachment(topicname, topicname, locale)
@@ -253,14 +270,31 @@ get '/:root/:locale/:topicname' do
     @sidebarcontent = t.toc
     haml :topic
   rescue
-    haml :'500'
+    haml :'404'
   end
 end
 
+get '/:locale/:topicname.:format' do
+  locale = set_locale(params[:locale])
+  redirect to("/#{settings.default_root}/#{locale}/#{params[:topicname]}.#{params[:format]}")
+end
+
+
+get '/:root/:locale/?' do
+  STDERR.puts "Hmm, maybe in this route?"
+  locale = set_locale(params[:locale])
+  redirect to("/#{params[:root]}/#{locale}/#{settings.default_topic}")
+end
+
+get '/:topicname.:format' do
+  locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
+  redirect to("/#{settings.default_root}/#{locale}/#{params[:topicname]}.#{params[:format]}")
+end
 
 # Need to support URLs of the format
 # http://docs.database.com/dbcom?locale=en-us&target=<filename>&section=<section>
 get %r{(.*)} do |root|
+  STDERR.puts "In this route?"
   if (
       (defined?(params[:locale])) &&
       (defined?(params[:targetname]))
@@ -268,6 +302,7 @@ get %r{(.*)} do |root|
       )
     redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
   else
-    haml :'404'
+    locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
+    redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
   end
 end
