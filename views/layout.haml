@@ -50,6 +50,11 @@
                 %input{:type=>"submit",
                        :value=>"",
                        :id=>"searchSubmit"}
+    %div{:class=>"pdf_button"}
+      %a{:class=>"btn primaryBtn",
+         :title => "PDF",
+         :href=>"dbcom.pdf",
+         :style => "white-space: normal;"}pdf      
   %div{:class => "page liquid body mal"}
     %div{:class => "content mal"}
       =yield

@@ -413,6 +413,7 @@ b {
 }
 .callout .inner {
     -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
     overflow: hidden;
 }
 .sideNorth {
@@ -1300,6 +1301,8 @@ body.pop {
 .body {
     -moz-border-radius: 5px 5px 5px 5px / 7px 7px 7px 7px;
     -moz-box-shadow: 0 10px 10px #137C9E;
+    -webkit-border-radius: 5px 5px 5px 5px / 7px 7px 7px 7px;
+    -webkit-box-shadow: 0 10px 10px #137C9E;
     background-color: #FFFFFF;
     border-top: 0px solid;
     margin-top: 0px;
@@ -1551,7 +1554,7 @@ body.pop {
     -moz-border-radius: 5px 5px 5px 5px;
     -moz-box-shadow: 0 2px 5px #A0A6AB;
     background-color: #FFFFFF;
-    border: 1px solid #C1C1C1;
+#    border: 1px solid #C1C1C1;
 }
 .callout .arrow {
     background-image: url("/img/sprites/callout_arrows.png");
@@ -1811,6 +1814,8 @@ button:disabled {
 }
 .primaryBtn {
     background: -moz-linear-gradient(center top , #EAF9FF 0%, #CCEDFB 68%, #BEE9F8 100%) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EAF9FF), to(#CCEDFB))  repeat scroll 0 0 transparent; 
+
 }
 .primaryBtn:hover, .primaryBtn:focus {
     background: -moz-linear-gradient(center top , #F9FDFF 0%, #D3F2FD 100%) repeat scroll 0 0 transparent;
@@ -3280,3 +3285,11 @@ img.icon_24x18 {
 /*
   END ICON STYLES
 */
+
+.pdf_button
+{
+    position: absolute;
+    z-index: 15;
+    right: 25px;
+    padding-top: 13px;
+}
