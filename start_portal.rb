@@ -281,7 +281,6 @@ end
 
 
 get '/:root/:locale/?' do
-  STDERR.puts "Hmm, maybe in this route?"
   locale = set_locale(params[:locale])
   redirect to("/#{params[:root]}/#{locale}/#{settings.default_topic}")
 end
@@ -296,8 +295,8 @@ end
 get %r{(.*)} do |root|
   if (
       (defined?(params[:locale])) &&
-      (defined?(params[:targetname]))
-      (not(params[:locale].nil? || params[:targetname].nil?))
+      (defined?(params[:target]))
+      (not(params[:locale].nil? || params[:target].nil?))
       )
     redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
   else
