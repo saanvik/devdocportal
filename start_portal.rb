@@ -92,6 +92,8 @@ end
 
 # Sinatra helpers go here
 helpers do
+  include Rack::Utils
+  alias_method :h, :escape_html
   # A Sinatra helper to get the MIME type for an
   # attachment/file/whatever, the set the content_type for the route
   # based on the extension passed in.
@@ -235,7 +237,9 @@ end
 
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
-  query = params[:s]
+  STDERR.puts "Query before escaping: #{params[:s]}"
+  query = h(params[:s])
+  STDERR.puts "Query after escaping: #{query}"
   locale = set_locale(locale)
   redirect to("#{root}/#{locale}/search/#{query}")
 end

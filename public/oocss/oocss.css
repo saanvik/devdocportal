@@ -1034,7 +1034,7 @@ hr.divider_strong {
     padding: 4px 7px;
 }
 .data thead th, .data thead td {
-    white-space: nowrap;
+#    white-space: nowrap;
 }
 .btn {
     cursor: pointer;
@@ -1986,6 +1986,7 @@ a.promoBtn, a.promoBtn:hover, a.promoBtn:focus, a.promoBtn:active {
 }
 .menuButtonMenu a {
     -moz-border-radius: 11px 11px 11px 11px;
+    -webkit-border-radius: 11px 11px 11px 11px;
     color: #333435;
     font-weight: normal;
     text-decoration: none;
@@ -3141,7 +3142,7 @@ div.search_results_title a {
 	font-size: 1.333em;	
 }
 
-span.parmname, span.keyword, var {
+span.parmname, span.keyword, var, .filepath  {
     font-size: 13px;
     font-family: "Courier New",'Courier',mono;
 }
@@ -3241,13 +3242,13 @@ SEARCH
 -------------*/
 
 #searchForm fieldset {
-    width:240px;
+    width:310px;
     position:relative;
     display:block;
 }
 
 div.input {
-    width:180px;
+    width:250px;
     padding:5px 15px 7px 15px;
     border-radius:20px;
     border:1px solid #c6d2db;
@@ -3286,7 +3287,7 @@ input#searchSubmit {
     background:url(./images/search-icon.png) no-repeat;
     border:0;
     position:absolute;
-    top:7px; right:13px;
+    top:10px; right:13px;
     z-index:5;
     cursor:pointer;
 }
@@ -3376,3 +3377,9 @@ img.icon_24x18 {
     right: 25px;
     padding-top: 13px;
 }
+
+.varname
+{
+    font-style: italic;
+}
+

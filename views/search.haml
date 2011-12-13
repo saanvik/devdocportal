@@ -19,7 +19,8 @@
                   = t.search_results.th_title
                 %th{:scope => "col",
                     :class =>"sortable sorted h4",
-                    :title => "updated"}
+                    :title => "updated",
+                    :style => "min-width: 8em;"}
                   = t.search_results.th_updated
             %tbody{:class => "content"}
               - @search.each_hit_with_result do |hit, post|

@@ -21,7 +21,6 @@ a:hover {
 th {
     font-weight: bold;
     text-align: left;
-    white-space: nowrap;
 }
 form {
     margin: 0;
