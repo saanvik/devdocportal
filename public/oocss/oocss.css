@@ -3274,6 +3274,7 @@ input#s {
     text-shadow:0 1px 1px #fff;
 }
 
+
     input#s:focus {
         outline:none
 	color:#464646;
@@ -3383,3 +3384,6 @@ img.icon_24x18 {
     font-style: italic;
 }
 
+cite {
+    font-style: italic;
+}
