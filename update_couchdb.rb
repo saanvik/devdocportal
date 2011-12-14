@@ -4,9 +4,9 @@ require 'couchrest'
 require 'couchrest_model'
 require 'nokogiri'
 require 'css_parser'
-require 'sinatra'
+#require 'sinatra'
 require './globals'
-require './server_info'
+#require './server_info'
 require './topic_model'
 #include CSSParser
 
@@ -290,12 +290,8 @@ def upload_referenced_images(filename, mime_type, nokodoc, locale)
 end
 
 def index_topic_with_solr(thistopic)
-  begin
     Sunspot.index(thistopic)
     Sunspot.commit
-  rescue
-    puts "Crap.  Didn't index."
-  end
 end
 
 # Upload all the HTML, CSS, and JavaScript files to couchdb.

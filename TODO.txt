@@ -3,19 +3,17 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
-* TODO Download local copy of jquery and add to couchdb
+* DONE Download local copy of jquery and add to couchdb
+  CLOSED: [2011-12-14 Wed 08:23]
 * DONE Respond to Jon M's email					      :email:
   CLOSED: [2011-11-15 Tue 17:33]
   - CLOSING NOTE [2011-11-15 Tue 17:33]
-* TODO Update local schema from Solr schema to get spelling check
-* TODO Set up sounds like (see http://blog.websolr.com/)
-* TODO Create generic 404
+* DONE Create generic 404
+  CLOSED: [2011-12-14 Wed 08:24]
 * DONE Write a topic on using searches.  See ? 
   CLOSED: [2011-11-15 Tue 17:34]
   - CLOSING NOTE [2011-11-15 Tue 17:34]
 * TODO Figure out file organization
-* TODO Figure out feedback options
-
 * DONE Comment on test cases
   CLOSED: [2011-11-15 Tue 17:34]
   - CLOSING NOTE [2011-11-15 Tue 17:34]
@@ -29,27 +27,16 @@ Next steps
 ** Run tests on remote
 * TODO See if Jenkins supports Rake
 
-* Update routes [0/6]
-** TODO Route for dbcom/locale/<api_version>/topicname
-*** Validate lang/local
-*** Valid api_versions only
-** TODO Route for dbcom/locale/<patch_version>/topicname
-*** Validate lang/locale
-*** Valid patch_versions only
-** TODO Route for dbcom/local/<api_version>/<patch_version>/topicname
-*** Validate lang/locale
-*** Valid patch_versions only
-*** Valid api_versions only
-** TODO Route for dbcom/topicname
+* Update routes [2/2]
+** DONE Add a route for PDFs to go to na1.salesforce.com/<whatever>
+   CLOSED: [2011-12-14 Wed 08:26]
+** DONE Add fallback routes for things missing product and locale
+   CLOSED: [2011-12-14 Wed 08:26]
+   
 
-*** Return en-us and latest patch version
-
-** TODO Add a route for PDFs to go to na1.salesforce.com/<whatever>
-** TODO Add fallback routes for things missing product and locale
-  
-
-* Update topic model [7/13]
-** TODO Add a function to make sure a document attachment exists at the URL
+* Update topic model [8/8]
+** DONE Add a function to make sure a document attachment exists at the URL
+   CLOSED: [2011-12-14 Wed 08:27]
 *** required param: topicname
 *** optional params: lang_locale, api_version, patch_version
 **** If all exist, look up based on that and 404/graceful error if not exist
@@ -105,14 +92,29 @@ Next steps
 ** TODO Set feedback=false by default
 ** TODO Update on_server links
 
+
 * Long term
 ** Document how other people can use our repository
-**  Can they query the database without a password?
-** They can use indextank without a password
-** Support mobile by rewriting haml
-** Sue Warnke says it looks good on iPad
-
+** Support mobile by rewriting haml, or maybe just the CSS
 ** TODO Write a "clean-up" method to remove old documents
+
+** TODO Figure out feedback options
+
+** TODO Update local schema from Solr schema to get spelling check
+** TODO Set up sounds like (see http://blog.websolr.com/)
+** Update Routes [/]
+*** TODO Route for dbcom/locale/<api_version>/topicname
+**** Validate lang/local
+**** Valid api_versions only
+**** Validate lang/loc
+*** TODO Route for dbcom/locale/<patch_version>/topicname
+**** Valid patch_versions only
+*** TODO Route for dbcom/local/<api_version>/<patch_version>/topicname
+*** Validate lang/locale
+*** Valid patch_versions only
+*** Valid api_versions only
+*** TODO Route for dbcom/topicname
+*** Return en-us and latest patch version
 
 
 * Learn about Ruby

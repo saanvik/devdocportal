@@ -8,13 +8,30 @@ require './globals'
 require './server_info'
 require './couchrest_sunspot'
 
+case
+when ENV['CLOUDANT_URL']
+  puts "Logging in with #{ENV['CLOUDANT_URL']}"
+  set :db, CouchRest.database!( "#{ENV['CLOUDANT_URL']}/#{RELNAME}" )
+when ENV['LOCALCOUCH_URL']
+  puts "Logging in with #{ENV['LOCALCOUCH_URL']}"
+  set :db, CouchRest.database!( "#{ENV['LOCALCOUCH_URL']}/#{RELNAME}" )
+else
+  print "CouchDB Username: "
+  username = gets.chomp
+  password = ask("Password: ") { |q| q.echo = false }
+  server = ask("Server URL: ") { |q| q.echo = true }
+  database = ask("Database name: ") { |q| q.echo = true }
+  localURL = "http://".concat("#{username}:#{password}@#{server}/#{database}")
+  set :db, CouchRest.database!(localURL)
+end
+
 # A class that defines what a topic is
 class Topic < CouchRest::Model::Base
   include Sunspot::Couch
   use_database settings.db
 
-  ## Set the properties ##
 
+  ## Set the properties ##
   # Version added
   property :version_added, Float
   # Version removed

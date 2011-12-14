@@ -687,7 +687,7 @@ b {
     padding: 3px;
 }
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-    color: #464646;
+    color: #222;
     font-weight: bold;
 }
 h1, .h1, h2, .h2, h6, .h6, div.section {
@@ -697,7 +697,7 @@ h3, .h3, h4, .h4, h5, .h5 {
     margin: 5px 0;
 }
 h1, .h1 {
-    font-size: 2em;
+    font-size: 2.167em;
     font-weight: bold;
 }
 h1 strong, .h1 strong {
@@ -900,7 +900,7 @@ em {
 }
 .breadcrumb {
     display: inline-block;
-    font-size: 0.917em;
+    font-size: 1.083em;
     padding: 2px 0 0;
 }
 .breadcrumb li {
@@ -950,14 +950,14 @@ em {
 }
 .enumList li {
     list-style: decimal outside none;
-    margin: 3px 0;
+    margin: 3px 0 15px 0px;
 }
 .bulletList {
     padding-left: 20px;
 }
 .bulletList li {
     list-style: disc outside none;
-    margin: 3px 0;
+    margin: 3px 0 15px 0;
 }
 .ideaList ul {
     margin: 4px;
@@ -3204,7 +3204,7 @@ div.related-links ul.ullinks {
 }
 
 table.featureTable {
-    margin-bottom: 8px;
+    margin-bottom: 815px;
 }
 
 h1 + div#sfdc\:seealso {
@@ -3213,11 +3213,12 @@ h1 + div#sfdc\:seealso {
 
 h1 + div#sfdc\:seealso * li
 {
-    margin-top: 0.5em;
+    margin-top: 0.75em;
 }
 
-a[name="top"] + div {
-    margin-bottom: 0.5em;
+div.breadcrumbs {
+    margin-bottom: 1em;
+    margin-top:2em;
 }
 
 #searchwrapper {
