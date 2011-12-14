@@ -3387,3 +3387,15 @@ img.icon_24x18 {
 cite {
     font-style: italic;
 }
+
+.body .body
+{
+    -moz-border-radius: 0px 0px 0px 0px / 0px 0px 0px 0px;
+    -moz-box-shadow: 0 0px 0px #137C9E;
+    -webkit-border-radius: 0px 0px 0px 0px / 0px 0px 0px 0px;
+    -webkit-box-shadow: 0 00px 0px #137C9E;
+    background-color: #FFFFFF;
+    border-top: 0px;
+    margin-top: 0px;
+}
+   
