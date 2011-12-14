@@ -3421,3 +3421,15 @@ cite {
   color: #AAA;
 }
 
+table.sort_table thead.sorted tr th.featureTableHeader:hover {
+    background-color: #D5F1F9;
+}
+
+table.sort_table thead.sorted tr th.featureTableHeader:hover:after {
+    content: "↓";
+}
+
+table.sort_table thead.sorted tr th.descending:hover:after {
+    content: "↑";
+}
+
