@@ -1789,14 +1789,14 @@ a:hover, a:focus {
 }
 .colSort .ascending:after {
     content: "↑";
+    background-color: #D5F1F9;
 }
 .colSort .descending:after {
     color: #222222;
     content: "↓";
-}
-.colSort .descending {
     background-color: #D5F1F9;
 }
+
 .colSort thead .selected {
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
