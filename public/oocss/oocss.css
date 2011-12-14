@@ -1791,6 +1791,11 @@ a:hover, a:focus {
     content: "↑";
     background-color: #D5F1F9;
 }
+.colSort .ascending {
+    background-color: #D5F1F9;
+}
+
+
 .colSort .descending:after {
     color: #222222;
     content: "↓";
