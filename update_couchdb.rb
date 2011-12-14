@@ -155,7 +155,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
   # Remove items we don't want returned in the search snippet
   body_content.xpath('//table[contains(@class, "permTable") or contains(@class, "editionTable")]').remove
   body_content.xpath('//h1[1]').remove
-  body_content.xpath('//*[contains(@class, "breadcrumb")]').remove
+  body_content.xpath('//*[contains(@class, "breadcrumbs")]').remove
   content=body_content.children().inner_text()
   title=nokodoc.xpath('//title[1]').inner_text()
 
