@@ -237,9 +237,7 @@ end
 
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
-  STDERR.puts "Query before escaping: #{params[:s]}"
   query = h(params[:s])
-  STDERR.puts "Query after escaping: #{query}"
   locale = set_locale(locale)
   redirect to("#{root}/#{locale}/search/#{query}")
 end

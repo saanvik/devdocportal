@@ -1794,6 +1794,9 @@ a:hover, a:focus {
     color: #222222;
     content: "↓";
 }
+.colSort .descending {
+    background-color: #D5F1F9;
+}
 .colSort thead .selected {
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
