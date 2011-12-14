@@ -1795,6 +1795,10 @@ a:hover, a:focus {
     background-color: #D5F1F9;
 }
 
+.colSort .descending {
+    background-color: #D5F1F9;
+}
+
 
 .colSort .descending:after {
     color: #222222;
