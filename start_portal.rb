@@ -154,7 +154,7 @@ error do
 end
 
 ####
-# Ignore the following
+# Ignore the following routes
 ####
 
 # This is a bad path for help.css, so ignore it if it's called
@@ -213,7 +213,6 @@ end
 
 # Actual search URL
 # @todo Do queries need to be escaped to be safe?
-#get %r{/(.*)\/(.*)/search/(.+)} do |root,locale,query|
 get '/:root/:locale/search/:query' do
   root = params[:root]
   locale = set_locale(params[:locale])
@@ -308,6 +307,7 @@ get %r{(.*)} do |root|
     redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
   else
     locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
-    redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
+#    redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
+    redirect to("http://database.com")
   end
 end
