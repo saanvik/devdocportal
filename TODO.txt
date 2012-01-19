@@ -3,87 +3,20 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
-* DONE Download local copy of jquery and add to couchdb
-  CLOSED: [2011-12-14 Wed 08:23]
-* DONE Respond to Jon M's email					      :email:
-  CLOSED: [2011-11-15 Tue 17:33]
-  - CLOSING NOTE [2011-11-15 Tue 17:33]
-* DONE Create generic 404
-  CLOSED: [2011-12-14 Wed 08:24]
-* DONE Write a topic on using searches.  See ? 
-  CLOSED: [2011-11-15 Tue 17:34]
-  - CLOSING NOTE [2011-11-15 Tue 17:34]
-* TODO Figure out file organization
-* DONE Comment on test cases
-  CLOSED: [2011-11-15 Tue 17:34]
-  - CLOSING NOTE [2011-11-15 Tue 17:34]
 * TODO Follow up on solr replication
-* TODO Figure out how to write a rake file to
-** Update the local system
-** Run automated tests on local system
-** If test pass, replicate
-*** solr index
-*** couchdb
-** Run tests on remote
+* Write a rake file to [0/3]
+** TODO Build the doc
+** TODO Update the local system
+** TODO Run automated tests on local system
+** TODO Update the remote system
+** TODO Monitor remote [/]
+*** Can this be done on a server running on my linux box?
+*** TODO Report last update in CouchDB
+**** This is likely easiest to do by setting up a view on the DB using couchrest
+*** TODO Report status of site (Ranger?)
+*** TODO New Relic or Blitz test?
+
 * TODO See if Jenkins supports Rake
-
-* Update routes [2/2]
-** DONE Add a route for PDFs to go to na1.salesforce.com/<whatever>
-   CLOSED: [2011-12-14 Wed 08:26]
-** DONE Add fallback routes for things missing product and locale
-   CLOSED: [2011-12-14 Wed 08:26]
-   
-
-* Update topic model [8/8]
-** DONE Add a function to make sure a document attachment exists at the URL
-   CLOSED: [2011-12-14 Wed 08:27]
-*** required param: topicname
-*** optional params: lang_locale, api_version, patch_version
-**** If all exist, look up based on that and 404/graceful error if not exist
-**** If no lang_locale, assume en-us
-***** Q: What about a non-valid lang-locale?  Or one that hasn't been translated?
-**** If no api_version, assume CURRENT_API_VERSION
-***** Q: Validation of api_version?
-**** If no patch_version, assume CURRENT_PATCH_VERSION
-***** Q: Validation of patch_version? 
-**** If document and attachment doesn't exist for that, what's the
-     fallback logic?  Should the page error?
-***** Choice 1: Redirect to http://<root>/<highest_version>/topic.html
-***** Choice 2: Graceful failure page (Blah, blah, blah isn't
-      available in bersion 22.0 of the API.  Do you want to see [a
-      list of versions that do have it].
-***** Choice 3: Generic 404 error
-
-** DONE Add a fallback route for help.css
-   CLOSED: [2011-09-21 Wed 17:16]
-   - CLOSING NOTE [2011-09-21 Wed 17:16]
-** DONE When updating, don't override added metadata
-   CLOSED: [2011-09-01 Thu 11:57]
-   - CLOSING NOTE [2011-09-01 Thu 11:57]
-** DONE When creating or updating, add removed metadata
-   CLOSED: [2011-09-01 Thu 11:57]
-** DONE Add a view that includes lang_locale for lookup
-   CLOSED: [2011-09-21 Wed 17:14]
-   - CLOSING NOTE [2011-09-21 Wed 17:14]
-** DONE Update dupe test to take into account lang_locale
-   CLOSED: [2011-09-21 Wed 17:19]
-   - CLOSING NOTE [2011-09-21 Wed 17:19]
-** DONE Update dupe test to do a hash compare
-   CLOSED: [2011-09-21 Wed 17:14]
-   - CLOSING NOTE [2011-09-21 Wed 17:14]
-*** Add a hash property
-*** require digest
-*** Digest::SHA256.file(filename).hexdigest
-*** Compare the result of that to the hash property
-    
-** DONE Route for dbcom/locale/topicname
-   CLOSED: [2011-09-21 Wed 17:16]
-   - CLOSING NOTE [2011-09-21 Wed 17:16]
-*** Latest patch version only
-*** The route has to match a selected number of lang/locale pairs.
-    Do I have to use a regexp?
-
-
 * Update docbuild [/]
 ** TODO Drop /js/functions.js
 ** TODO Drop onLoad
@@ -91,7 +24,6 @@ Next steps
 
 ** TODO Set feedback=false by default
 ** TODO Update on_server links
-
 
 * Long term
 ** Document how other people can use our repository
