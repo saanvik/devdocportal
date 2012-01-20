@@ -2,7 +2,8 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %meta{'http-equiv' => 'Content-Type', :content =>"text/html; charset=UTF-8"}        
-      %title Technical Library
+      %title
+        = @topictitle.to_s.strip.length == 0 ? "#{t.title.main}" : "#{@topictitle}"
       %link{:rel => "stylesheet",
         :type => "text/css",
         :media => "all",
@@ -54,7 +55,7 @@
     %div{:class=>"pdf_button"}
       %a{:class=>"btn primaryBtn",
          :title => "PDF",
-         :href=>"/dbcom_help.pdf",
+         :href=>"/en-us/dbcom_help.pdf",
          :style => "white-space: normal;"}pdf
       %a{:class=>"btn primaryBtn",
          :title => "email",

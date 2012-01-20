@@ -75,16 +75,18 @@ before do
     ::R18n::I18n.default = settings.default_locale
     # Parse browser locales
     locales = ::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])
+    locales.insert(0, 'en-us')
+    # @todo uncomment when we have ja doc
     # Allow to set locale manually
-    if params[:locale]
-      if params[:locale].start_with?('ja')
-        locales.insert(0, 'ja-jp')
-      else
-        locales.insert(0, 'en-us')
-      end
-    elsif session[:locale]
-      locales.insert(0, session[:locale])
-    end
+    # if params[:locale]
+    #   if params[:locale].start_with?('ja')
+    #     locales.insert(0, 'ja-jp')
+    #   else
+    #     locales.insert(0, 'en-us')
+    #   end
+    # elsif session[:locale]
+    #   locales.insert(0, session[:locale])
+    # end
     # Do your stuff with locales
     ::R18n::I18n.new(locales, settings.translations)
   end
@@ -130,11 +132,13 @@ helpers do
   end
 
   def set_locale(locale)
-    if locale.start_with?('ja')
-      return 'ja-jp'
-    else
-      return 'en-us'
-    end
+    # @todo Uncomment the conditional when we have ja-jp doc
+    return 'en-us'
+    # if locale.start_with?('ja')
+    #   return 'ja-jp'
+    # else
+    #   return 'en-us'
+    # end
   end
 end
 
@@ -195,6 +199,12 @@ get '/img/*' do | path |
   set_content_type(path[/(?:.*)(\..*$)/, 1])
   @image = get_attachment("app_image_document", '/img/'.concat(path), "en-us")
   return @image
+end
+
+# User guide PDF
+get '/:locale/*.pdf' do |filename|
+  @locale = set_locale(params[:locale])
+  STDERR.print "Going to #{@locale}/#{filename}.pdf"
 end
 
 # Search only page
