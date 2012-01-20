@@ -20,9 +20,9 @@ require './server_info'
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
 
 # Authentication
-use Rack::Auth::Basic, "Restricted Area" do |username, password|
-  [username, password] == ['devdoc', 'test1234']
-end
+# use Rack::Auth::Basic, "Restricted Area" do |username, password|
+#   [username, password] == ['devdoc', 'test1234']
+# end
 
 ## Cacching
 set :static, true
@@ -317,7 +317,7 @@ get %r{(.*)} do |root|
     redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
   else
     locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
-#    redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
-    redirect to("http://database.com")
+    redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
+#    redirect to("http://database.com")
   end
 end
