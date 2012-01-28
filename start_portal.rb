@@ -318,6 +318,7 @@ get %r{(.*)} do |root|
   else
     locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
     redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
+    # Need to redirect
 #    redirect to("http://database.com")
   end
 end
