@@ -11,10 +11,10 @@ require './couchrest_sunspot'
 case
 when ENV['CLOUDANT_URL']
   puts "Logging in with #{ENV['CLOUDANT_URL']}"
-  set :db, CouchRest.database!( "#{ENV['CLOUDANT_URL']}/#{RELNAME}" )
+  set :db, CouchRest.database( "#{ENV['CLOUDANT_URL']}/#{RELNAME}" )
 when ENV['LOCALCOUCH_URL']
   puts "Logging in with #{ENV['LOCALCOUCH_URL']}"
-  set :db, CouchRest.database!( "#{ENV['LOCALCOUCH_URL']}/#{RELNAME}" )
+  set :db, CouchRest.database( "#{ENV['LOCALCOUCH_URL']}/#{RELNAME}" )
 else
   print "CouchDB Username: "
   username = gets.chomp

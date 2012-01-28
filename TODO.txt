@@ -3,6 +3,16 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
+* Add retry blocks for database calls
+
+  begin
+  puts i
+  raise "foo"
+  rescue Exception
+  i -= 1
+  retry if i > 0
+  end
+
 * TODO Follow up on solr replication
 * Write a rake file to [0/3]
 ** TODO Build the doc
