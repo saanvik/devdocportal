@@ -3,29 +3,20 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
-* Add retry blocks for database calls
-
-  begin
-  puts i
-  raise "foo"
-  rescue Exception
-  i -= 1
-  retry if i > 0
-  end
-
 * TODO Follow up on solr replication
-* Write a rake file to [0/3]
+* Write a rake file to [1/5]
 ** TODO Build the doc
-** TODO Update the local system
+** DONE Update the local system
+   CLOSED: [2012-01-30 Mon 08:34]
 ** TODO Run automated tests on local system
-** TODO Update the remote system
 ** TODO Monitor remote [/]
 *** Can this be done on a server running on my linux box?
+*** Maybe use pulse for this, too.
 *** TODO Report last update in CouchDB
 **** This is likely easiest to do by setting up a view on the DB using couchrest
 *** TODO Report status of site (Ranger?)
 *** TODO New Relic or Blitz test?
-
+*** TODO Can google voice be used to call me on a Ranger message?
 * TODO See if Jenkins supports Rake
 * Update docbuild [/]
 ** TODO Drop /js/functions.js

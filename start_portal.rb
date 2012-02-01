@@ -41,7 +41,7 @@ use Rack::Deflater
 
 # Views (in the views directory) are defined using haml
 # http://haml-lang.com
-set :haml, :format => :xhtml
+set :haml, :format => :xhtml, :ugly => true
 
 # Set default root and topic
 set :default_root, 'dbcom'
