@@ -28,7 +28,7 @@ RELNAME ||= "winter12"
 INDEXNAME ||= "#{RELNAME}_#{LOCALE}_index"
 
 # Location of the oocss files
-CSSDIR ||= "/Users/sanderson/dev/doc/main/core/build/resource/doc_portal/oocss/"
+CSSDIR ||= "/Users/sanderson/lang/ruby/devdocportal/public/oocss/"
 
 # Source of the "extra" images
 IMGDIR ||= "#{CSSDIR}/images/"
