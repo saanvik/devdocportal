@@ -3,7 +3,10 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
-* TODO Follow up on solr replication
+* TODO Look up popups from Org deadlines
+* TODO Look up importing dates from Exchange/iCal
+* TODO Send labels for localization 
+  DEADLINE: <2012-02-03 Fri 13:30>
 * Write a rake file to [1/5]
 ** TODO Build the doc
 ** DONE Update the local system
@@ -18,21 +21,22 @@ Next steps
 *** TODO New Relic or Blitz test?
 *** TODO Can google voice be used to call me on a Ranger message?
 * TODO See if Jenkins supports Rake
-* Update docbuild [/]
-** TODO Drop /js/functions.js
-** TODO Drop onLoad
-** TODO Remove ${CSS.PATH}help.css from the build
+* Update docbuild [3/5]
+** DONE Drop /js/functions.js
+   CLOSED: [2012-02-03 Fri 08:15]
+** DONE Drop onLoad
+   CLOSED: [2012-02-03 Fri 08:15]
+** DONE Remove ${CSS.PATH}help.css from the build
+   CLOSED: [2012-02-03 Fri 08:15]
 
-** TODO Set feedback=false by default
-** TODO Update on_server links
+** VERIFY Set feedback=false by default
+** VERIFY Update on_server links
 
 * Long term
 ** Document how other people can use our repository
 ** Support mobile by rewriting haml, or maybe just the CSS
 ** TODO Write a "clean-up" method to remove old documents
-
 ** TODO Figure out feedback options
-
 ** TODO Update local schema from Solr schema to get spelling check
 ** TODO Set up sounds like (see http://blog.websolr.com/)
 ** Update Routes [/]

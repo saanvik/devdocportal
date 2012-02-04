@@ -67,7 +67,7 @@ def upload_attachment(documentname,locale,fullpath, mime_type,attachmentname)
   # Create the hash of the file for comparison, since we don't want to update the attachment if it hasn't changed
   this_attachment_hash = Digest::SHA256.file(thisfile).hexdigest
   dupe = Topic.by_topicname_and_locale.key(["#{documentname}","#{locale}"]).count > 0
-  if not(dupe)
+  unless dupe
   then
     begin
       @thisattachment = Topic.create({
@@ -320,6 +320,7 @@ end
 
 # We're using CSS files stored in a different location, so we need to upload them separately.
 # Change to the CSS directory
+# @todo - now we're using the CSS file in public/oocss
 Dir.chdir "#{CSSDIR}"
 Dir.glob("**/*.{css,js}") do |filename|
   fullpath = "#{CSSDIR}#{filename}"
