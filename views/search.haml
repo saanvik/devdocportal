@@ -10,12 +10,14 @@
     %div{:class => "inner"}
       %div{:class => "box infoBg"}
         %div{:class => "data colSort"}
-          %table{:class => "txtL sort_table search_results"}
+          %table{:class => "txtL sort_table search_results",
+                 :style => "table-layout: fixed;"}
             %thead
               %tr
                 %th{:scope => "col",
                     :class =>"sortable sorted h4",
-                    :title => t.search_results.th_title}
+                    :title => t.search_results.th_title,
+                    :style => "width: 85%;"}
                   = t.search_results.th_title
                 %th{:scope => "col",
                     :class =>"sortable sorted h4",
