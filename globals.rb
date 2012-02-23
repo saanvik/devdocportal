@@ -3,6 +3,14 @@
 #
 ## @todo: Allow these to be overridden at the command line
 
+WD = Dir.getwd
+
+# Assumption -
+# if you are Windows, you're working in c:\dev\doc\...
+# if you are not, you're working in ~/dev/doc
+
+HOMEDIR = RUBY_PLATFORM.downcase.include?("mswin")? ENV['HOMEDRIVE'] : ENV['HOME']
+
 # Set the current API version.
 CURRENT_API_VERSION ||= 24
 
@@ -10,13 +18,13 @@ CURRENT_API_VERSION ||= 24
 CURRENT_PATCH ||= 178.0
 
 # Source of the content - must end with a /
-DOCSRCDIR ||= "/Users/sanderson/dev/doc/main/feature/devdocportal/178/help_build/en/"
+DOCSRCDIR ||= "#{WD}/help_build/en/"
 
 # APPSRCDIR is for images in the form of /img
-APPSRCDIR ||= "/Users/sanderson/dev/app/main/core/sfdc/htdocs"
+APPSRCDIR ||= "#{HOMEDIR}/dev/app/main/core/sfdc/htdocs"
 
 # Source of the app images
-APPIMGSRC ||= "/Users/sanderson/dev/app/main/core/sfdc/htdocs/img"
+APPIMGSRC ||= "#{HOMEDIR}/dev/app/main/core/sfdc/htdocs/img"
 
 # Default lang/locale
 LOCALE ||= "en-us"
@@ -25,7 +33,7 @@ LOCALE ||= "en-us"
 RELNAME ||= "spring12"
 
 # Location of the oocss files
-CSSDIR ||= "/Users/sanderson/dev/doc/main/feature/devdocportal/178/public/oocss/"
+CSSDIR ||= "#{WD}/public/oocss/"
 
 # Source of the "extra" images
 IMGDIR ||= "#{CSSDIR}/images/"
