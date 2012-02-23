@@ -7,9 +7,8 @@ require 'couchrest'
 require 'nokogiri'
 require 'haml'
 require 'dalli'
-require './topic_model'
-require './couchrest_sunspot'
-require './server_info'
+require './topic_model.rb'
+require './couchrest_sunspot.rb'
 
 
 ######################################################################

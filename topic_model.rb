@@ -4,9 +4,10 @@ require 'couchrest'
 require 'couchrest_model'
 require 'sunspot'
 require 'sunspot/rails'
-require './globals'
-require './server_info'
-require './couchrest_sunspot'
+require 'sinatra'
+require 'highline/import'
+require './globals.rb'
+require './couchrest_sunspot.rb'
 
 case
 when ENV['CLOUDANT_URL']
@@ -29,7 +30,6 @@ end
 class Topic < CouchRest::Model::Base
   include Sunspot::Couch
   use_database settings.db
-
 
   ## Set the properties ##
   # Version added

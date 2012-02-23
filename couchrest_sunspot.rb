@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'bundler/setup'
 require 'sunspot'
 require 'couchrest'
 require 'couchrest_model'

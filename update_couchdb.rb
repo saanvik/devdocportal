@@ -1,13 +1,12 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'sinatra'
 require 'couchrest'
 require 'couchrest_model'
 require 'nokogiri'
 require 'css_parser'
-#require 'sinatra'
-require './globals'
-#require './server_info'
-require './topic_model'
+require './globals.rb'
+require './topic_model.rb'
 #include CSSParser
 
 case
