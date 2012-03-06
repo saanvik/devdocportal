@@ -220,9 +220,59 @@ get '/dbcom/:locale/search/' do
   haml :search_info
 end
 
+
+# Actual search URL, with a facet
+get '/:root/:locale/search/:query/facet' do
+  STDERR.puts "In the facet search"
+  root = params[:root]
+  locale = set_locale(params[:locale])
+  STDERR.puts "app_area is #{params[:app_area]}"
+  STDERR.puts "editions is #{params[:edition]}"
+  query = params[:query]
+#  facet = params[:facet]
+#  facetsArray = params[:facet].split
+#  STDERR.puts "Here's the array"
+#  facetsArray.each{ |myfacet| STDERR.puts myfacet}
+#  STDERR.puts "Facet: #{facet}"
+#  STDERR.puts "The length is #{params[:app_area].length}"
+  @topictitle = t.title.searchresults
+  begin
+    @search=Sunspot.search(Topic) do
+      keywords query do
+        highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true
+      end
+      with(:locale, locale)
+      if params[:app_area]
+        with(:app_area,params[:app_area].split)
+      end
+      if params[:editon]
+        with(:edition,params[:edition].split)
+      end
+      if params[:product]
+        with(:product, params[:product].split)
+      end
+      if params[:role]
+        with(:role, params[:role].split)
+      end
+      paginate :page => 1, :per_page => 1500
+    end
+  rescue
+    haml :search_no_results, :locals => {:query => query}
+  else
+    @results = @search.results
+    if (@results.length > 0)
+    then
+      haml :search, :locals => {:locale => locale, :root => root, :query => query}
+    else
+      haml :search_no_results, :locals => {:query => query}
+    end
+  end
+end
+
 # Actual search URL
 # @todo Do queries need to be escaped to be safe?
 get '/:root/:locale/search/:query' do
+  STDERR.puts "Not in faceted search"
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
@@ -250,10 +300,26 @@ end
 
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
-  query = h(params[:s])
+  STDERR.puts "In search post"
   locale = set_locale(locale)
+  query = h(params[:s])
   redirect to("#{root}/#{locale}/search/#{query}")
+
+  # This is needed if we use the filter search box
+  # if params[:f]
+  #   filter = h(params[:f])
+  #   referrer = request.referrer
+  #   STDERR.puts "My referrer is #{referrer}"
+  #   original_query = referrer.match(/.*\/([^\/]*)\/search\/(.*)/)[2]
+  #   STDERR.puts "My original query is #{original_query}"
+  #   STDERR.puts "F - #{filter}"
+  #   redirect to("#{root}/#{locale}/search/#{original_query}+#{filter}")    
+  # else
+  #   query = h(params[:s])
+  #   redirect to("#{root}/#{locale}/search/#{query}")
+  # end
 end
+
 
 # Grab all the relative links that go to images
 get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, imagename|

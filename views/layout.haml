@@ -8,16 +8,34 @@
         :type => "text/css",
         :media => "all",
         :href => "/oocss/oocss.css"}
+      %link{:rel => "stylesheet",
+        :type => "text/css",
+        :href => "/css/redmond/jquery-ui-1.8.18.custom.css"}
+      %link{:rel => "stylesheet",
+        :type => "text/css",
+        :href => "/css/ui.dynatree.css"}
       %script{:type => "text/javascript",
-            :src => "/oocss/scripts/jquery-1.7.min.js"}
+            :src => "/js/jquery-1.7.min.js"}
       %script{:type => "text/javascript",
-              :src => "/oocss/scripts/jquery.tablesorter.min.js"}
+              :src => "/js/jquery.tablesorter.min.js"}
+      %script{:type => "text/javascript",
+              :src => "/js/jquery-ui-1.8.18.custom.min.js"}
+      %script{:type => "text/javascript",
+              :src => "/js/jquery.cookie.js"}
+      %script{:type => "text/javascript",
+              :src => "/js/jquery.dynatree.min.js"}
+
       :javascript
         $(document).ready(function() 
         { 
          $(".sort_table").tablesorter({cssAsc: "ascending", cssDesc: "descending"});
-         } 
-         ); 
+         $("div#searchResultsLine").delegate("span#toggleFacets", "click", function(){
+              $("div#facetDiv").toggle();
+              $("div#searchResultsDiv").toggleClass("size3of4");
+              $("span#toggleFacets").toggleClass("ui-icon-circle-arrow-w");
+              $("span#toggleFacets").toggleClass("ui-icon-circle-arrow-e");
+              });
+          });
 
   %body
     %div{:class => "callout wizardBg mam"}

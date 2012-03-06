@@ -1,0 +1,37 @@
+[ {"title": "Type","hideCheckbox":"true","isFolder":"true","icon":"hide",
+   "children": [
+       {"title": "Guide", "icon" : "hide"},
+       {"title": "Reference", "icon" : "hide"},
+       {"title": "Release Notes", "icon" : "hide"},
+       {"title": "Tutorial", "icon" : "hide"},
+       {"title": "Video", "icon" : "hide"}
+   ]
+  },
+  {"title": "Technology", "isFolder": "true", "hideCheckbox": "true", "icon" : "hide",
+   "children": [
+       {"title": "Apex", "icon" : "hide"},
+       {"title": "Integration", "icon" : "hide",
+	"children": [
+	    {"title": "Bulk API", "icon" : "hide"},
+	    {"title": "Chatter REST API", "icon" : "hide"},
+	    {"title": "Java SDK", "icon" : "hide"}
+	    ]}
+   ]},
+       {"title": "Customization & Setup", "icon" : "hide",
+	"children": [
+	    {"title": "Validation Rules", "icon" : "hide"},
+	    {"title": "Workflow", "icon" : "hide"},
+	    {"title": "Users and Profiles SDK", "icon" : "hide"}
+	    ]
+       },
+
+       {"title": "Data Management", "icon" : "hide",
+	"children": [
+	    {"title": "Data Loader", "icon" : "hide"},
+	    {"title": "Mass Update and Delete", "icon" : "hide"},
+	    {"title": "Import Wizards", "icon" : "hide"}
+	    ]},
+
+       {"title": "Developer Console", "icon" : "hide"}	    
+
+]

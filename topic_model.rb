@@ -73,11 +73,12 @@ class Topic < CouchRest::Model::Base
   searchable do
     text :content, :stored => true
     text :title, :stored => true
-    string :app_area, :stored => true
-    string :edition, :stored => true
+    string :app_area, :stored => true, :multiple => true
+    string :edition, :stored => true, :multiple => true
     string :identifier, :stored => true
     string :locale, :stored => true
-    string :product, :stored => true
+    string :product, :stored => true, :multiple => true
+    string :role, :stored => true, :multiple => true
     string :topicname, :stored => true
     time :updated_at, :stored => true
     integer :api_version_removed, :stored => true

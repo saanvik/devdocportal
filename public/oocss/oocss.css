@@ -899,9 +899,8 @@ em {
     width: 0;
 }
 .breadcrumb {
-    display: inline-block;
     font-size: 1.083em;
-    padding: 2px 0 0;
+    padding: 2px 0 10px;
 }
 .breadcrumb li {
     display: inline-block;
@@ -3272,11 +3271,11 @@ div.input {
     background:#FFFFFF;
 }
 
-    div.input.focus {
-        border:1px solid #9ecbe2;
-        box-shadow:0 0 6px #abdcff, inset 0 1px 2px rgba(0,0,0,0.08);
-	color: #464646;
-    }
+div.input.focus {
+    border:1px solid #9ecbe2;
+    box-shadow:0 0 6px #abdcff, inset 0 1px 2px rgba(0,0,0,0.08);
+    color: #464646;
+}
 
 input#s {
     width:90%;
@@ -3289,10 +3288,26 @@ input#s {
 }
 
 
-    input#s:focus {
-        outline:none
-	color:#464646;
-    }
+input#s:focus {
+    outline:none
+    color:#464646;
+}
+
+input#f {
+    width:90%;
+    border:0;
+    border-radius:20px;
+    background:transparent;
+    color: #464646;
+    text-shadow:0 1px 1px #fff;
+}
+
+
+input#f:focus {
+    outline:none
+    color:#464646;
+}
+
 
 input#searchSubmit {
     width:19px;
@@ -3303,6 +3318,37 @@ input#searchSubmit {
     border:0;
     position:absolute;
     top:10px; right:13px;
+    z-index:5;
+    cursor:pointer;
+}
+
+#filterForm fieldset {
+    width:310px;
+    position:relative;
+    display:block;
+}
+
+div.input#filter {
+    width:210px;
+    padding:5px 15px 7px 15px;
+    border-radius:0px;
+    border:1px solid #c6d2db;
+    border-top:1px solid #b4c1cb;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,0.08);
+    float:left;
+    background:#FFFFFF;
+}
+
+
+input#filterSubmit {
+    width:19px;
+    height:19px;
+    text-indent:-9999px;
+    overflow:hidden;
+    background:url(./images/search-icon.png) no-repeat;
+    border:0;
+    position:absolute;
+    top: 7px; right:40px;
     z-index:5;
     cursor:pointer;
 }
@@ -3434,3 +3480,6 @@ table.sort_table thead.sorted tr th.descending:hover:after {
     content: "↑";
 }
 
+table.search_results * td { 
+    overflow: hidden;
+ }

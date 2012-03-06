@@ -25,11 +25,20 @@ Sunspot.setup(Topic) do
   text :content, :stored => true
   text :perm_and_edition_tables, :stored => false
   text :title, :stored => true
-  string :app_area, :stored => false
-  string :edition, :stored => false
+  string :app_area, :stored => true, :multiple => true do
+    app_area.split
+  end
+  string :edition, :stored => true, :multiple => true do
+    edition.split
+  end
   string :identifier, :stored => true
   string :locale, :stored => true
-  string :product, :stored => false
+  string :product, :stored => true , :multiple => true do
+    product.split
+  end
+  string :role, :stored => true , :multiple => true do
+    role.split
+  end
   string :topicname, :stored => true
   time :updated_at, :stored => true
   integer :api_version_removed, :stored => true

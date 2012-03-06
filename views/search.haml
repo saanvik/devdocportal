@@ -1,46 +1,103 @@
-%div{:class => "line"}
-  %div{:class => "box chatty infoBg"}
-    %p{:class => "h4",
-       :style => "padding-bottom: 10px; padding-top: 5px;"}
-      %span
-        = @search.total
-      %span 
-        = t.search_results.count
-        %span <b>#{query}</b>
-    %div{:class => "inner"}
-      %div{:class => "box infoBg"}
-        %div{:class => "data colSort"}
-          %table{:class => "txtL sort_table search_results",
-                 :style => "table-layout: fixed;"}
-            %thead
-              %tr
-                %th{:scope => "col",
-                    :class =>"sortable sorted h4",
-                    :title => t.search_results.th_title,
-                    :style => "width: 80%;"}
-                  = t.search_results.th_title
-                %th{:scope => "col",
-                    :class =>"sortable sorted h4",
-                    :title => "updated",
-                    :style => "min-width: 8em;"}
-                  = t.search_results.th_updated
-            %tbody{:class => "content"}
-              - @search.each_hit_with_result do |hit, post|
-                - if (locale == 'en' or locale == 'en-us')
-                  - then @localtime = Time.at(hit.result.updated_at.to_i).strftime("%b. %d, %Y")
-                  - else @localtime = l Time.at(hit.result.updated_at.to_i).to_date, :full
-                - if (hit.highlight(:content).nil?)
-                  - then @snippet = ""
-                  - else @snippet = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
-                %tr
-                  %td
-                    %div{:class => "search_results_title"}
-                      %a{:href => "/#{root}/#{locale}/#{hit.result.topicname}"}
-                        = hit.result.title
-                      %br
-                        = @snippet
-                  %td= @localtime
+:javascript
+  $(function(){
+        $("#tree").dynatree({
+        checkbox: true,
+        persist: false,
+        selectMode: 3,
+        initAjax: { //Eventually get this back from couchdb
+          url: "/facets.json",
+        },
+        onActivate: function(node) {$("#echoActive").text(node.data.title);},
+        onDeactivate: function(node) {$("#echoActive").text("-");}
+        });
+        });
 
+
+%div{:class => "line",
+     :id => "searchResultsLine"}
+  %div{:class => "unit size1of4",
+       :id => "facetDiv"}
+    %div{:class=> "box callout chatty mrl"}
+      %div{:class => "inner"}
+        %div{:class => "hd mts"}
+          %span{:class => "h4"}
+            = t.facets.title
+        %div{:class => "bd",
+             :id => "tree"}
+
+  %span{:id => "toggleFacets",
+        :class => "ui-icon ui-icon-circle-arrow-w",
+        :style => "float: left;"}
+  %div{:class => "unit size3of4 last_unit",
+       :id => "searchResultsDiv"}
+    %div{:class => "box chatty infoBg"}
+      %p{:class => "h2"}
+        Search Results
+      %p{:style => "padding-bottom: 10px; padding-top: 5px;"}
+        %span
+          = @search.total
+        %span 
+          = t.search_results.count
+          %span <b>#{query}</b>
+      %p
+        %span{:class => "h3"}
+          Filters:
+        %span
+          None selected
+      %div{:class => "inner"}
+        %div{:class => "box infoBg"}
+          %div{:class => "data colSort"}
+            %table{:class => "txtL sort_table search_results",
+                   :style => "table-layout: fixed;"}
+              %thead
+                -# Filter search box
+                -# %tr{:style =>  "background: #F2F2F2;"}
+                -#   %td{:scope => "col",
+                -#       :style => "width: 80%;border-width: 0;"}
+                -#     %form{:id =>"filterForm",
+                -#           :action => " ",
+                -#           :method => "post"}
+                -#       %fieldset
+                -#         %div{:class=>"input",
+                -#              :id => "filter"}
+                -#           %input{:type=>"text",
+                -#                  :id=>"f",
+                -#                  :name=>"f",
+                -#                  :placeholder=>t.filter.placeholder}
+                -#         %input{:id => "filterButton",
+                -#            :type=>"submit",
+                -#            :value => "Filter",
+                -#            :class => "h6 pas",
+                -#            :style => "margin: 0px;"}
+                  -# %td{:scope => "col",
+                  -#     :style => "width: 20%;border-width: 0;"}
+                %tr
+                  %th{:scope => "col",
+                      :class =>"sortable sorted h4",
+                      :title => t.search_results.th_title,
+                      :style => "width: 80%;"}
+                    = t.search_results.th_title
+                  %th{:scope => "col",
+                      :class =>"sortable sorted h4",
+                      :title => "updated",
+                      :style => "min-width: 8em;"}
+                    = t.search_results.th_updated
+              %tbody{:class => "content"}
+                - @search.each_hit_with_result do |hit, post|
+                  - if (locale == 'en' or locale == 'en-us')
+                    - then @localtime = Time.at(hit.result.updated_at.to_i).strftime("%b. %d, %Y")
+                    - else @localtime = l Time.at(hit.result.updated_at.to_i).to_date, :full
+                  - if (hit.highlight(:content).nil?)
+                    - then @snippet = ""
+                    - else @snippet = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
+                  %tr
+                    %td
+                      %div{:class => "search_results_title"}
+                        %a{:href => "/#{root}/#{locale}/#{hit.result.topicname}"}
+                          = hit.result.title
+                        %br
+                          = @snippet
+                    %td= @localtime
 
 
 
