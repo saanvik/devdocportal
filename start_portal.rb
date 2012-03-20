@@ -226,9 +226,8 @@ get '/:root/:locale/search/:query/facet' do
   STDERR.puts "In the facet search"
   root = params[:root]
   locale = set_locale(params[:locale])
-  STDERR.puts "app_area is #{params[:app_area]}"
-  STDERR.puts params[:app_area].split.inspect
   STDERR.puts "editions is #{params[:edition]}"
+  STDERR.puts "Am in the right route?"
   query = params[:query]
 #  facet = params[:facet]
 #  facetsArray = params[:facet].split
@@ -244,7 +243,11 @@ get '/:root/:locale/search/:query/facet' do
       end
       with(:locale, locale)
       if params[:app_area]
-        with(:app_area,params[:app_area].split)
+        app_area = params[:app_area].split
+        STDERR.puts "app_area is #{app_area}"
+        STDERR.puts app_area.inspect
+        STDERR.puts app_area.class
+        with(:app_area,app_area)
       end
       if params[:editon]
         with(:edition,params[:edition].split)
@@ -263,8 +266,7 @@ get '/:root/:locale/search/:query/facet' do
     @results = @search.results
     if (@results.length > 0)
     then
-      haml :search, :locals => {:locale => locale, :root => root, :query => query,
-        :app_area => params[:app_area], :type => params[:type].split}
+      haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => params[:app_area].split, :type => params[:type].split}
     else
       haml :search_no_results, :locals => {:query => query}
     end

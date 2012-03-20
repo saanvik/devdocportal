@@ -1,12 +1,24 @@
 :javascript
   $(function(){
         $("#tree").dynatree({
+        debugLevel:2,
         checkbox: true,
         persist: false,
         selectMode: 3,
+        activeVisible: true,
+        autoFocus: true,
         initAjax: { //Eventually get this back from couchdb
           url: "/facets.json",
         },
+        onPostInit: function(isReloading, isError) {
+        // 'this' is the current tree
+        // isReloading is true, if status was read from existing cookies
+        // isError is only used in Ajax mode
+          #{
+           app_area.map{ |area | "this.selectKey('#{area}');"}.join '\n'
+          }
+        },
+        // Set up the initial state based on the URL
         onSelect: function(select, node) {
         // Get a list of all selected nodes, and convert to a key array:
         var selFeatureAreaKeys = $.map(node.tree.getSelectedNodes(), function(node){
@@ -23,14 +35,16 @@
          $("#clickMe").text('http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
         if (select) {
            $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
-           $.map(node.getChildren(),function(node){
-             $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
-           });
+           if (node.getChildren()) {
+             $.map(node.getChildren(),function(node){
+               $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
+           });}
            } else {
         $("#myKey_" + node.data.key).remove();
-        $.map(node.getChildren(),function(node){
-         $("#myKey_" + node.data.key).remove();
-        });}
+        if (node.getChildren()) {
+          $.map(node.getChildren(),function(node){
+           $("#myKey_" + node.data.key).remove();
+          });}}
          },
       onDblClick: function(node, event) {
         node.toggleSelect();
@@ -69,11 +83,13 @@
       %p{:id => "filterEnum"}
       %a{:id => "clickMe"}
         
-      %p{:id => "tester"}
-        Foo
-        - unless @app_area.nil?
-          - @app_area.each do |area|
+      %p{:id => "tester_old"}
+        - unless app_area.nil?
+          - app_area.each do |area|
             %span= area
+        - if app_area.nil?
+          %span Nil?
+      %p{:id => "tester"}      
       %div{:class => "inner"}
         %div{:class => "box infoBg"}
           %div{:class => "data colSort"}
