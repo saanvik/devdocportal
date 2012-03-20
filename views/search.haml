@@ -14,48 +14,28 @@
             return node.data.key;
             }
           });
-        var selFeatureAreaTitles = $.map(node.tree.getSelectedNodes(), function(node){
-          if (node.isDescendantOf(node.tree.getNodeByKey("FeatureArea"))) {
-            $("#filterEnum").append('<a class="btn primaryBtn" id="featureAreaKey_' + node.data.key + '">' + node.data.title + '</a>');
-            return node.data.title;
-            }
-          });        
         var selTypeKeys = $.map(node.tree.getSelectedNodes(), function(node){
           if (node.isDescendantOf(node.tree.getNodeByKey("Type"))) {
             return node.data.key;
             }
           });
-        var selTypeTitles = $.map(node.tree.getSelectedNodes(), function(node){
-          if (node.isDescendantOf(node.tree.getNodeByKey("Type"))) {
-            $("#filterEnum").append('<a class="btn primaryBtn" id="typeKey_' + node.data.key + '">' + node.data.title + '</a>');
-            return node.data.title;
-            }
-          });
-        var selKeys = $.map(node.tree.getSelectedNodes(), function(node){
-          return node.data.key;
-        });
-        $("#echoActive").text(selKeys.join(", "));
-
-        // Get a list of all selected TOP nodes
-        var selRootNodes = node.tree.getSelectedNodes(true);
-        // ... and convert to a key array:
-        var selRootKeys = $.map(selRootNodes, function(node){
-          return node.data.key;
-        });
-        $("#clickMe").attr('href','http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + ' ' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+         $("#clickMe").attr('href','http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+         $("#clickMe").text('http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+        if (select) {
+           $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
+           $.map(node.getChildren(),function(node){
+             $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
+           });
+           } else {
+        $("#myKey_" + node.data.key).remove();
+        $.map(node.getChildren(),function(node){
+         $("#myKey_" + node.data.key).remove();
+        });}
          },
       onDblClick: function(node, event) {
         node.toggleSelect();
-      },
-      onKeydown: function(node, event) {
-        if( event.which == 32 ) {
-          node.toggleSelect();
-          return false;
-        }
-      }
-        });
-        });
-
+      }});
+      });
 
 %div{:class => "line",
      :id => "searchResultsLine"}
@@ -86,12 +66,14 @@
       %p
         %span{:class => "h3"}
           Filters:
-      %p
-        %a{:id => "filterEnum"}
-        %span{:id => "clickMe"}
+      %p{:id => "filterEnum"}
+      %a{:id => "clickMe"}
         
-      %p
-        %span{:id => "echoSelectionRoots"}
+      %p{:id => "tester"}
+        Foo
+        - unless @app_area.nil?
+          - @app_area.each do |area|
+            %span= area
       %div{:class => "inner"}
         %div{:class => "box infoBg"}
           %div{:class => "data colSort"}

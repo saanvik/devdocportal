@@ -263,7 +263,8 @@ get '/:root/:locale/search/:query/facet' do
     @results = @search.results
     if (@results.length > 0)
     then
-      haml :search, :locals => {:locale => locale, :root => root, :query => query}
+      haml :search, :locals => {:locale => locale, :root => root, :query => query,
+        :app_area => params[:app_area], :type => params[:type].split}
     else
       haml :search_no_results, :locals => {:query => query}
     end
