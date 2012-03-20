@@ -227,6 +227,7 @@ get '/:root/:locale/search/:query/facet' do
   root = params[:root]
   locale = set_locale(params[:locale])
   STDERR.puts "app_area is #{params[:app_area]}"
+  STDERR.puts params[:app_area].split.inspect
   STDERR.puts "editions is #{params[:edition]}"
   query = params[:query]
 #  facet = params[:facet]
@@ -313,7 +314,7 @@ post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
   #   original_query = referrer.match(/.*\/([^\/]*)\/search\/(.*)/)[2]
   #   STDERR.puts "My original query is #{original_query}"
   #   STDERR.puts "F - #{filter}"
-  #   redirect to("#{root}/#{locale}/search/#{original_query}+#{filter}")    
+  #   redirect to("#{root}/#{locale}/search/#{original_query}+#{filter}")
   # else
   #   query = h(params[:s])
   #   redirect to("#{root}/#{locale}/search/#{query}")

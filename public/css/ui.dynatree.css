@@ -272,7 +272,7 @@ ul.dynatree-container a
 	vertical-align: top;
 	margin: 0px;
 	margin-left: 3px;
-/*	outline: 0; /* @ Firefox, prevent dotted border after click */
+	outline: 0; 
 }
 
 ul.dynatree-container a:hover
@@ -299,7 +299,7 @@ span.dynatree-folder a
 ul.dynatree-container a:focus,
 span.dynatree-focused a:link  /* @IE */
 {
-	background-color: #EFEBDE; /* gray */
+#	background-color: #EFEBDE; /* gray */
 }
 
 span.dynatree-has-children a
@@ -312,14 +312,13 @@ span.dynatree-expanded a
 
 span.dynatree-selected a
 {
-	color: green;
 	font-style: italic;
 }
 
 span.dynatree-active a
 {
-	background-color: #3169C6 !important;
-	color: white !important; /* @ IE6 */
+#	background-color: #3169C6 !important;
+#	color: white !important; /* @ IE6 */
 }
 
 /*******************************************************************************

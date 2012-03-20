@@ -1,37 +1,70 @@
-[ {"title": "Type","hideCheckbox":"true","isFolder":"true","icon":"hide",
-   "children": [
-       {"title": "Guide", "icon" : "hide"},
-       {"title": "Reference", "icon" : "hide"},
-       {"title": "Release Notes", "icon" : "hide"},
-       {"title": "Tutorial", "icon" : "hide"},
-       {"title": "Video", "icon" : "hide"}
-   ]
-  },
-  {"title": "Technology", "isFolder": "true", "hideCheckbox": "true", "icon" : "hide",
-   "children": [
-       {"title": "Apex", "icon" : "hide"},
-       {"title": "Integration", "icon" : "hide",
-	"children": [
-	    {"title": "Bulk API", "icon" : "hide"},
-	    {"title": "Chatter REST API", "icon" : "hide"},
-	    {"title": "Java SDK", "icon" : "hide"}
-	    ]}
-   ]},
-       {"title": "Customization & Setup", "icon" : "hide",
-	"children": [
-	    {"title": "Validation Rules", "icon" : "hide"},
-	    {"title": "Workflow", "icon" : "hide"},
-	    {"title": "Users and Profiles SDK", "icon" : "hide"}
-	    ]
-       },
-
-       {"title": "Data Management", "icon" : "hide",
-	"children": [
-	    {"title": "Data Loader", "icon" : "hide"},
-	    {"title": "Mass Update and Delete", "icon" : "hide"},
-	    {"title": "Import Wizards", "icon" : "hide"}
-	    ]},
-
-       {"title": "Developer Console", "icon" : "hide"}	    
-
+[{ "title": "Feature Area","isFolder":true,"icon":false, "unselectable":true,"hideCheckbox":true,"key":"FeatureArea",
+	"children":[
+	    {"title":"Customization and setup", "key":"Customization_Setup","icon":false},
+	    {"title":"Data model","key": "Data_Model","icon":false, "isFolder":true,
+	     "children":[
+		 {"title":"Objects and fields","key":"Custom_Objects_Tabs_Fields","icon":false},
+		 {"title":"Validation rules","key":"Validation_Rules","icon":false},
+		 {"title":"Formulas","key":"Formulas","icon":false}
+	     ]
+	    },
+	    {"title":"Data management","key":"Data_Management","icon":false, "isFolder":true,
+	     "children":[
+		 {"title":"Data loader","key":"Data_Loader","icon":false},
+		 {"title":"Data export","key":"Data_Export","icon":false}
+	     ]},
+	    {"title":"Logic","key":"Logic","icon":false, "isFolder":true, "isFolder":true,
+	     "children":[
+		 {"title":"Apex Code","key":"Apex_Code_Development_Deployment","icon":false},
+		 {"title":"Workflow","key":"Workflow_Approvals","icon":false}
+	     ]
+	    },
+	    {"title":"Integration","key":"API_Integration_Performance","icon":false, "isFolder":true,
+	     "children": [
+		 {"title":"Bulk API","key":"Bulk_API","icon":false},
+		 {"title":"Chatter REST API","key":"Chatter_REST_API","icon":false},
+		 {"title":"Java SDK","key":"Java_SDK","icon":false},
+		 {"title":"Metadata API","key":"Metadata_API","icon":false},
+		 {"title":"Metadata REST API","key":"REST_Metadata_API","icon":false},
+		 {"title":"REST API","key":"REST_API","icon":false},
+		 {"title":"SOAP API","key":"SOAP_API","icon":false},
+		 {"title":"Streaming API","key":"Streaming_API","icon":false}
+	     ]
+	    },
+	    {"title":"Security","key":"Security","icon":false, "isFolder":true,
+	     "children":[
+		 {"title":"Passwords","key":"Passwords_Login","icon":false},
+		 {"title":"OAuth","key":"OAuth","icon":false},
+		 {"title":"Sharing and visibility","key":"Sharing_Visibility","icon":false},
+		 {"title":"Users and profiles","key":"Manage_Users_Profiles","icon":false}
+	     ]
+	    },
+	    {"title":"Testing and deployment","key":"Deployment_Distribution","icon":false, "isFolder":true,
+	     "children":[
+		 {"title":"Change sets","key":"Change_Management_Change_Sets","icon":false},
+		 {"title":"Deploying","key":"Deploying","icon":false},
+		 {"title":"Test databases","key":"Sandbox","icon":false},
+		 {"title":"Packaging for distribution","key":"Packaging_for_Distribution","icon":false}
+		 ]
+	    },
+	    {"title":"Testing and deployment","key":"Deployment_Distribution","icon":false, "isFolder":true,
+	     "children":[
+		 {"title":"Change sets","key":"Change_Management_Change_Sets","icon":false},
+		 {"title":"Deploying","key":"Deploying","icon":false},
+		 {"title":"Test databases","key":"Sandbox","icon":false},
+		 {"title":"Packaging for distribution","key":"Packaging_for_Distribution","icon":false}
+	     ]
+	    },
+	    {"title":"Mobile development","key":"Mobile","icon":false}
+	]
+ }, 
+ {"title":"Type","hideCheckbox" : true, "isFolder":true,"icon":false, "isFolder":true, "key":"Type",
+  "children":[
+      {"title":"FAQs","icon":false, "key":"FAQ"},
+      {"title":"Guides","icon":false, "key":"Guide"},
+      {"title":"Release notes","icon":false, "key":"RelNote"},
+      {"title":"Tutorials","icon":false,"key":"Tutorial"},
+      {"title":"Videos","icon":false,"key":"Video"}
+      ]
+ }
 ]
