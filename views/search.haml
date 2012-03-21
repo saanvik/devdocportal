@@ -15,7 +15,7 @@
         // isReloading is true, if status was read from existing cookies
         // isError is only used in Ajax mode
           #{
-           app_area.map{ |area | "this.selectKey('#{area}');"}.join '\n'
+             app_area.map{ |area | "this.selectKey('#{area}');"}.join '\n' unless @app_area.nil?
           }
         },
         // Set up the initial state based on the URL
@@ -83,13 +83,6 @@
       %p{:id => "filterEnum"}
       %a{:id => "clickMe"}
         
-      %p{:id => "tester_old"}
-        - unless app_area.nil?
-          - app_area.each do |area|
-            %span= area
-        - if app_area.nil?
-          %span Nil?
-      %p{:id => "tester"}      
       %div{:class => "inner"}
         %div{:class => "box infoBg"}
           %div{:class => "data colSort"}

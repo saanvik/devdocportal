@@ -3,6 +3,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/r18n'
+require 'sinatra/reloader' if development?
 require 'couchrest'
 require 'nokogiri'
 require 'haml'
@@ -226,15 +227,9 @@ get '/:root/:locale/search/:query/facet' do
   STDERR.puts "In the facet search"
   root = params[:root]
   locale = set_locale(params[:locale])
-  STDERR.puts "editions is #{params[:edition]}"
-  STDERR.puts "Am in the right route?"
   query = params[:query]
-#  facet = params[:facet]
-#  facetsArray = params[:facet].split
-#  STDERR.puts "Here's the array"
-#  facetsArray.each{ |myfacet| STDERR.puts myfacet}
-#  STDERR.puts "Facet: #{facet}"
-#  STDERR.puts "The length is #{params[:app_area].length}"
+  app_area = params[:app_area].length > 0 ? params[:app_area].split : []
+  type = params[:type].length > 0 ? params[:type].split : []
   @topictitle = t.title.searchresults
   begin
     @search=Sunspot.search(Topic) do
@@ -242,31 +237,19 @@ get '/:root/:locale/search/:query/facet' do
         highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true
       end
       with(:locale, locale)
-      if params[:app_area]
-        app_area = params[:app_area].split
-        STDERR.puts "app_area is #{app_area}"
-        STDERR.puts app_area.inspect
-        STDERR.puts app_area.class
-        with(:app_area,app_area)
-      end
-      if params[:editon]
-        with(:edition,params[:edition].split)
-      end
-      if params[:product]
-        with(:product, params[:product].split)
-      end
-      if params[:role]
-        with(:role, params[:role].split)
-      end
+      with(:app_area,app_area) if app_area.length > 0
+      with(:type).any_of(type) if type.length > 0
       paginate :page => 1, :per_page => 1500
     end
   rescue
+    STDERR.puts "I needed to be rescued!"
     haml :search_no_results, :locals => {:query => query}
   else
+    STDERR.puts "Did we get anything? #{@search.results.length}"
     @results = @search.results
     if (@results.length > 0)
     then
-      haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => params[:app_area].split, :type => params[:type].split}
+      haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
     else
       haml :search_no_results, :locals => {:query => query}
     end
@@ -280,6 +263,8 @@ get '/:root/:locale/search/:query' do
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
+  app_area = params[:app_area].length > 0 ? params[:app_area].split : []
+  type = params[:type].length > 0 ? params[:type].split : []
   @topictitle = t.title.searchresults
   begin
     @search=Sunspot.search(Topic) do
@@ -295,7 +280,8 @@ get '/:root/:locale/search/:query' do
     @results = @search.results
     if (@results.length > 0)
     then
-      haml :search, :locals => {:locale => locale, :root => root, :query => query}
+      haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
+      # haml :search, :locals => {:locale => locale, :root => root, :query => query}
     else
       haml :search_no_results, :locals => {:query => query}
     end
