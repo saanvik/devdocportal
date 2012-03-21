@@ -31,8 +31,8 @@
             return node.data.key;
             }
           });
-         $("#clickMe").attr('href','http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
-         $("#clickMe").text('http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+         $("#clickMe").attr('href','http://sanderson-wsl.internal.salesforce.com:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+         $("#clickMe").text('http://sanderson-wsl.internal.salesforce.com:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
         if (select) {
            $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
            if (node.getChildren()) {
