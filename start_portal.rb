@@ -263,8 +263,8 @@ get '/:root/:locale/search/:query' do
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
-  app_area = params[:app_area].length > 0 ? params[:app_area].split : []
-  type = params[:type].length > 0 ? params[:type].split : []
+  app_area = []
+  type = []
   @topictitle = t.title.searchresults
   begin
     @search=Sunspot.search(Topic) do
