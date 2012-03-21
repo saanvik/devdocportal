@@ -245,7 +245,7 @@ get '/:root/:locale/search/:query/facet' do
     STDERR.puts "I needed to be rescued!"
     haml :search_no_results, :locals => {:query => query}
   else
-    STDERR.puts "Did we get anything? #{@search.results.length}"
+    STDERR.puts "What is app_area?  #{app_area.inspect}"
     @results = @search.results
     if (@results.length > 0)
     then

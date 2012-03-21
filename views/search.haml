@@ -14,8 +14,9 @@
         // 'this' is the current tree
         // isReloading is true, if status was read from existing cookies
         // isError is only used in Ajax mode
-          #{
-             app_area.map{ |area | "this.selectKey('#{area}');"}.join '\n' unless @app_area.nil?
+        #{
+             STDERR.puts "Huh? - is app_area nil? #{app_area.nil?}"
+             app_area.map{ |area | "this.selectKey('#{area}');"}.join '\n' unless app_area.nil?
           }
         },
         // Set up the initial state based on the URL
@@ -31,8 +32,8 @@
             return node.data.key;
             }
           });
-         $("#clickMe").attr('href','http://sanderson-wsl.internal.salesforce.com:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
-         $("#clickMe").text('http://sanderson-wsl.internal.salesforce.com:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+         $("#clickMe").attr('href','http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+         $("#clickMe").text('http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
         if (select) {
            $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
            if (node.getChildren()) {
