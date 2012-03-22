@@ -231,6 +231,8 @@ get '/:root/:locale/search/:query/facet' do
   app_area = params[:app_area].length > 0 ? params[:app_area].split : []
   type = params[:type].length > 0 ? params[:type].split : []
   @topictitle = t.title.searchresults
+  @fullURL = request.url
+  @baseURL = @fullURL.match(/(.*)\/search\/.*/)[1]
   begin
     @search=Sunspot.search(Topic) do
       keywords query do
@@ -266,6 +268,8 @@ get '/:root/:locale/search/:query' do
   app_area = []
   type = []
   @topictitle = t.title.searchresults
+  @fullURL = request.url
+  @baseURL = @fullURL.match(/(.*)\/search\/.*/)[1]
   begin
     @search=Sunspot.search(Topic) do
       keywords query do

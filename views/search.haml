@@ -15,7 +15,6 @@
         // isReloading is true, if status was read from existing cookies
         // isError is only used in Ajax mode
         #{
-             STDERR.puts "Huh? - is app_area nil? #{app_area.nil?}"
              app_area.map{ |area | "this.selectKey('#{area}');"}.join '\n' unless app_area.nil?
           }
         },
@@ -32,8 +31,12 @@
             return node.data.key;
             }
           });
-         $("#clickMe").attr('href','http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
-         $("#clickMe").text('http://localhost:4567/dbcom/en-us/search/WSDL/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));
+          #{
+          %Q^$("#clickMe").attr('href','#{@baseURL}/search/#{query}/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));^
+         }
+         #{
+          %Q^$("#clickMe").text('#{@baseURL}/search/#{query}/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));^
+         }
         if (select) {
            $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
            if (node.getChildren()) {
