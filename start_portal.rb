@@ -20,9 +20,9 @@ require './couchrest_sunspot.rb'
 # Visit at, for example, http://couch-rest-289.heroku.com/dbcom/en/us/customviews.htm
 
 # Authentication
-# use Rack::Auth::Basic, "Restricted Area" do |username, password|
-#   [username, password] == ['devdoc', 'test1234']
-# end
+use Rack::Auth::Basic, "Restricted Area" do |username, password|
+   [username, password] == ['devdoc', 'test1234']
+end
 
 ## Cacching
 set :static, true

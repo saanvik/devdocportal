@@ -14,6 +14,14 @@ task :start_local => [:init_local]do
   sh %{ruby start_portal.rb}
 end
 
+task :start_local_with_bundle => [:init_local]do
+  sh %{bundle exec thin -R config.ru start}
+end
+
+task :start_local_with_foreman => [:init_local]do
+  sh %{foreman start}
+end
+
 task :start_local_with_remote => [:init_remote]do
   sh %{ruby start_portal.rb}
 end

@@ -1,4 +1,5 @@
-source "http://rubygems.org"
+source :rubygems
+gem "foreman"
 gem "thin"
 gem "couchrest"
 gem "couchrest_model"
@@ -8,9 +9,9 @@ gem "highline"
 gem "nokogiri"
 gem "sunspot", "~>1.3"
 gem "sunspot_rails", "~>1.3"
-gem "sinatra"
+gem "sinatra", :require => "sinatra/base"
 gem "sinatra-r18n"
-gem "sinatra-reloader"
+gem "sinatra-reloader", :group => :development
 gem "dalli"
 gem "newrelic_rpm"
 gem "rack-test"
