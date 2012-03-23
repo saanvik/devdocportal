@@ -1,0 +1,102 @@
+-# This page is the landing page, a page for people to get to if they
+-# haven't search for anything, or haven't clicked a context sensitive
+-# help link
+%div{:class => "page liquid body mal"}
+  %div{:class => "line mal rtm"}
+    %div{:class => "unit size1of2 mrm"}
+      %div{:class => "box callout chatty"} 
+        %div{:class => "inner"}
+          %div{:class => "hd"}
+            %div{:class => "mtm mls mbm"} 
+              %h3
+                = t.title.getting_started
+            %div{:class => "bd"}
+              %ul{:class => "bulletList"}
+                %li
+                  = t.landing.first_time_item_one
+                %li
+                  = t.landing.first_time_item_two
+                %li
+                  = t.landing.first_time_item_three
+    %div{:class=> "unit size1of2 mrm lastUnit"}
+      %div{:class => "box callout chatty"}
+        %div{:class => "inner"}
+          %div{:class => "hd"}
+            %div{:class => "mtm mls mbm"} 
+              %h3= t.title.popular_content
+            %div{:class => "bd"}
+              -# @todo Is this what we think is popular?
+              %ul{:class => "bulletList"}
+                %li
+                  = t.landing.popular_item_one
+                %li
+                  = t.landing.popular_item_two
+                %li
+                  = t.landing.popular_item_three
+  %div
+    %div{:class => "h3",
+         :style => "text-align: center;"}
+      = t.landing.guides_title
+    %div{:class => "box themed"}
+      %div{:class => "inner mal"}
+        %div{:class => "hd mts"}
+          %form{:id =>"searchForm",
+                :action => " ",
+                :method => "post"}
+            %fieldset
+              %div{:class=>"input",
+                   :style => "border-radius: 0px; float: left;"}
+                %input{:type=>"text",
+                       :id=>"s",
+                       :name=>"s",
+                       :placeholder=>t.filter.placeholder}
+              %input{:type=>"submit",
+                     :value=>"",
+                     :id=>"searchSubmit",
+                     :style => "right: 35px;"}
+        %div{:class => "bd data colSort"}
+          %table{:class => "txtL sort_table search_results",
+                 :style => "table-layout:fixed"}
+            %thead
+              %tr
+                %th{:colspan => "2",
+                    :class => "sortable sorted h4 header",
+                    :title => "title",
+                    :scope => "col"}
+                  = t.landing.guides_table_title
+                %th{:class => "sortable sorted h4 header",
+                    :title => "type",
+                    :scope => "col"}
+                  = t.landing.guides_table_type
+                %th{:class => "sortable sorted h4 header",
+                    :title => "area",
+                    :scope => "col"}
+                  = t.landing.guides_table_feature_area
+                %th{:class => "sortable sorted h4 header",
+                    :title => "updated",
+                    :scope => "col"}
+                  = t.landing.guides_table_updated
+            %tbody{:class => "content"}
+              -# @todo These values must be auto-populated ... from what?
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  Some icon
+                %td
+                  Some title
+                %td
+                  Some type
+                %td
+                  Some feature area
+                %td
+                  Updated when?
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  Another icon
+                %td
+                  Another title
+                %td
+                  Another type
+                %td
+                  Another feature area
+                %td
+                  Another update when?
