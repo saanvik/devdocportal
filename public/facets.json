@@ -47,14 +47,6 @@
 		 {"title":"Packaging for distribution","key":"Packaging_for_Distribution","icon":false}
 		 ]
 	    },
-	    {"title":"Testing and deployment","key":"Deployment_Distribution","icon":false, "isFolder":true,
-	     "children":[
-		 {"title":"Change sets","key":"Change_Management_Change_Sets","icon":false},
-		 {"title":"Deploying","key":"Deploying","icon":false},
-		 {"title":"Test databases","key":"Sandbox","icon":false},
-		 {"title":"Packaging for distribution","key":"Packaging_for_Distribution","icon":false}
-	     ]
-	    },
 	    {"title":"Mobile development","key":"Mobile","icon":false}
 	]
  }, 
