@@ -37,3 +37,17 @@ facets:
 
 filter:
   placeholder: Filter Results
+
+landing:
+  first_time_item_one: First getting started item
+  first_time_item_two: Second getting started item
+  first_time_item_three: Third getting started item
+  popular_item_one: First popular item
+  popular_item_two: Second popular item
+  popular_item_three: Third popular item
+  guides_title: Getting Started
+  guides_table_title: Title
+  guides_table_type: Type
+  guides_table_feature_area: Area
+  guides_table_updated: Last updated
+  

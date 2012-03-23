@@ -45,7 +45,7 @@ set :haml, :format => :xhtml, :ugly => true
 
 # Set default root and topic
 set :default_root, 'dbcom'
-set :default_topic, 'index.htm'
+set :default_topic, 'dbcom_index.htm'
 
 # Add new relic M&M
 configure :production do
@@ -207,11 +207,11 @@ get '/:locale/*.pdf' do |filename|
   STDERR.print "Going to #{@locale}/#{filename}.pdf"
 end
 
-# Search only page
-get '/dbcom/:locale/search' do
+# Top level page
+get '/dbcom/:locale/dbcom_index.htm' do
   # Search only page should go back to the landing page
   @locale = set_locale(params[:locale])
-  haml :search_info
+  haml :landing
 end
 
 
@@ -224,7 +224,7 @@ end
 
 # Actual search URL, with a facet
 get '/:root/:locale/search/:query/facet' do
-  STDERR.puts "In the facet search"
+  STDERR.puts "In the faceted search"
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
