@@ -29,12 +29,6 @@
         $(document).ready(function() 
         { 
          $(".sort_table").tablesorter({cssAsc: "ascending", cssDesc: "descending"});
-         $("div#searchResultsLine").delegate("span#toggleFacets", "click", function(){
-              $("div#facetDiv").toggle();
-              $("div#searchResultsDiv").toggleClass("size3of4");
-              $("span#toggleFacets").toggleClass("ui-icon-circle-arrow-w");
-              $("span#toggleFacets").toggleClass("ui-icon-circle-arrow-e");
-              });
          });
 
   %body
@@ -43,7 +37,7 @@
         %div{:class => "bd"}
           %div{:style => "float: left"}
             %a{:class=>"img pts",
-               :href=>"/dbcom/en-us/index.htm"}
+               :href=>"/dbcom/en-us/dbcom_index.htm"}
               %img{:alt=>"Database.com cloud",
                    :src=>"/oocss/images/databaselogo_cloud.png",
                    :width => "100px",

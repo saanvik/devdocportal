@@ -1,4 +1,17 @@
 :javascript
+  $(document).ready(function() 
+    { 
+     $(".sort_table").tablesorter({cssAsc: "ascending", cssDesc: "descending"});
+     #{
+       if (@search.total > 0)
+       then
+       '$("#noSearchResultsDiv").remove();'
+       else
+       '$("#searchResultsDiv").remove();'
+       end
+     }
+    });
+
   var timeout;
 
   function redirect(URL) {
@@ -30,8 +43,6 @@
         this.getRoot().visit(function(node){
           node.expand(true);
           });
-
-
         },
         // Set up the initial state based on the URL
         onSelect: function(select, node) {
@@ -64,7 +75,7 @@
         #{
          %Q^$("#clickMe").attr('href','#{@baseURL}/search/#{query}/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));^
          }
-         if(node.tree.isUserEvent()) {
+         if(node.tree.isUserEvent() && ((#{@search.total} > 0) || (select))) {
             clearTimer();
             redirectAfter(redirectURL,15000)
           }
@@ -86,9 +97,31 @@
         %div{:class => "bd",
              :id => "tree"}
 
-  %span{:id => "toggleFacets",
-        :class => "ui-icon ui-icon-circle-arrow-w",
-        :style => "float: left;"}
+  -# This div is for no search results
+  %div{:class => "unit size3of4 last_unit",
+       :id => "noSearchResultsDiv"}
+    %h2
+      = t.search.noresults_title
+    %p
+      %span 
+        = t.search.noresults
+      %span <b>#{query}</b>
+    %p
+      %span{:class => "h3"}
+        Filters:
+    %p{:id => "filterEnum"}
+
+    %div{:class => "data colSort"}
+      %h2 Tips on Searching
+      %p
+        = t.search.tip_intro
+      %p
+        = t.search.tip_quotes
+      %p
+        = t.search.tip_wildcards
+      %p
+        = t.search.tip_plus_minus
+  -# This div is for 1 or more search results
   %div{:class => "unit size3of4 last_unit",
        :id => "searchResultsDiv"}
     %div{:class => "box chatty infoBg"}

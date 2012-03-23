@@ -244,8 +244,7 @@ get '/:root/:locale/search/:query/facet' do
       paginate :page => 1, :per_page => 1500
     end
   rescue
-    STDERR.puts "I needed to be rescued!"
-    haml :search_no_results, :locals => {:query => query}
+    haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
   else
     STDERR.puts "What is app_area?  #{app_area.inspect}"
     @results = @search.results
@@ -253,7 +252,7 @@ get '/:root/:locale/search/:query/facet' do
     then
       haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
     else
-      haml :search_no_results, :locals => {:query => query}
+      haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
     end
   end
 end
@@ -279,7 +278,7 @@ get '/:root/:locale/search/:query' do
       paginate :page => 1, :per_page => 1500
     end
   rescue
-    haml :search_no_results, :locals => {:query => query}
+    haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
   else
     @results = @search.results
     if (@results.length > 0)
@@ -287,7 +286,7 @@ get '/:root/:locale/search/:query' do
       haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
       # haml :search, :locals => {:locale => locale, :root => root, :query => query}
     else
-      haml :search_no_results, :locals => {:query => query}
+      haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
     end
   end
 end
