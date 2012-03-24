@@ -36,7 +36,7 @@ facets:
 
 
 filter:
-  placeholder: Filter Results
+  placeholder: Filter Table
 
 landing:
   first_time_item_one: First getting started item

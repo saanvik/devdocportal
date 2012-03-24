@@ -1,6 +1,25 @@
 -# This page is the landing page, a page for people to get to if they
 -# haven't search for anything, or haven't clicked a context sensitive
 -# help link
+:javascript
+  $(function() { 
+    var theTable = $('table#deliverables')
+
+    theTable.find("tbody > tr").find("td:eq(1)").mousedown(function(){
+      $(this).prev().find(":checkbox").click()
+    });
+
+    $("#filter").keyup(function() {
+      $.uiTableFilter( theTable, this.value );
+    })
+
+    $('#filter-form').submit(function(){
+      theTable.find("tbody > tr:visible > td:eq(1)").mousedown();
+      return false;
+    }).focus(); //Give focus to input field
+  });  
+
+                                
 %div{:class => "page liquid body mal"}
   %div{:class => "line mal rtm"}
     %div{:class => "unit size1of2 mrm"}
@@ -39,24 +58,19 @@
       = t.landing.guides_title
     %div{:class => "box themed"}
       %div{:class => "inner mal"}
-        %div{:class => "hd mts"}
-          %form{:id =>"searchForm",
-                :action => " ",
-                :method => "post"}
-            %fieldset
-              %div{:class=>"input",
-                   :style => "border-radius: 0px; float: left;"}
-                %input{:type=>"text",
-                       :id=>"s",
-                       :name=>"s",
-                       :placeholder=>t.filter.placeholder}
-              %input{:type=>"submit",
-                     :value=>"",
-                     :id=>"searchSubmit",
-                     :style => "right: 35px;"}
+        %div{:class => "hd mas"}
+          %form{:id=>"filter-form"}
+            %input{:name => "filter",
+                   :type=>"text",
+                   :id=>"filter",
+                   :value => "",
+                   :maxlength => "30",
+                   :size => "30",
+                   :placeholder => t.filter.placeholder}
         %div{:class => "bd data colSort"}
           %table{:class => "txtL sort_table search_results",
-                 :style => "table-layout:fixed"}
+                 :style => "table-layout:fixed",
+                 :id => "deliverables"}
             %thead
               %tr
                 %th{:colspan => "2",
@@ -66,18 +80,21 @@
                   = t.landing.guides_table_title
                 %th{:class => "sortable sorted h4 header",
                     :title => "type",
-                    :scope => "col"}
+                    :scope => "col",
+                    :filter => "false"}
                   = t.landing.guides_table_type
                 %th{:class => "sortable sorted h4 header",
                     :title => "area",
-                    :scope => "col"}
+                    :scope => "col",
+                    :filter => "false"}
                   = t.landing.guides_table_feature_area
                 %th{:class => "sortable sorted h4 header",
                     :title => "updated",
-                    :scope => "col"}
+                    :scope => "col",
+                    :filter => "false"}
                   = t.landing.guides_table_updated
-            %tbody{:class => "content"}
               -# @todo These values must be auto-populated ... from what?
+            %tbody{:class => "content"}
               %tr
                 %td{:style => "border-width: 0 0 1px 0;"}
                   Some icon
