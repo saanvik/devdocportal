@@ -27,20 +27,13 @@
        '$("#searchResultsDiv").remove();'
        end
      }
+     var timer;
     });
-
-  var timeout;
 
   function redirect(URL) {
     window.location = URL;
-    clearTimer();
   }
-  function clearTimer() {
-    clearTimeout(timeout);
-  }  
-  function redirectAfter(URL,time) {
-    timeout = setTimeout(redirect(URL), time);
-  }
+
   $(function(){
         $("#tree").dynatree({
         debugLevel:2,
@@ -93,8 +86,8 @@
          %Q^$("#clickMe").attr('href','#{@baseURL}/search/#{query}/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));^
          }
          if(node.tree.isUserEvent() && ((#{@search.total} > 0) || (select))) {
-            clearTimer();
-            redirectAfter(redirectURL,15000)
+            window.clearTimeout('timer');
+            timer = window.setTimeout(function(){redirect(redirectURL)},1000);
           }
           },
       onDblClick: function(node, event) {
