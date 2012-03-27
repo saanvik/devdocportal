@@ -278,9 +278,11 @@ get '/:root/:locale/search/:query' do
       paginate :page => 1, :per_page => 1500
     end
   rescue
+    STDERR.puts "I've been rescued!"
     haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
   else
     @results = @search.results
+    STDERR.puts "Number of results -> #{@results.length}"
     if (@results.length > 0)
     then
       haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }

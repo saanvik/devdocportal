@@ -1,4 +1,21 @@
 :javascript
+  $(function() { 
+    var theTable = $('table#deliverables')
+    var hiddenRows
+
+    $("#filter").keyup(function() {
+      $.uiTableFilter( theTable, this.value );
+      hiddenRows = $("table#deliverables tbody tr").filter(":not(:hidden)");
+      $("#searchTotal").text(hiddenRows.length);
+    })
+
+    $('#filter-form').submit(function(){
+      theTable.find("tbody > tr:visible > td:eq(1)").mousedown();
+      return false;
+    }).focus(); //Give focus to input field
+  });  
+
+:javascript
   $(document).ready(function() 
     { 
      $(".sort_table").tablesorter({cssAsc: "ascending", cssDesc: "descending"});
@@ -85,6 +102,8 @@
       }});
       });
 
+
+
 %div{:class => "line",
      :id => "searchResultsLine"}
   %div{:class => "unit size1of4",
@@ -128,7 +147,7 @@
       %p{:class => "h2"}
         Search Results
       %p{:style => "padding-bottom: 10px; padding-top: 5px;"}
-        %span
+        %span{:id => "searchTotal"}
           = @search.total
         %span 
           = t.search_results.count
@@ -141,9 +160,20 @@
         
       %div{:class => "inner"}
         %div{:class => "box infoBg"}
+          %div{:class => "mbs"}
+            %form{:id=>"filter-form"}
+              %input{:name => "filter",
+                     :type=>"text",
+                     :id=>"filter",
+                     :value => "",
+                     :maxlength => "30",
+                     :size => "30",
+                     :placeholder => t.search.filter_placeholder}
           %div{:class => "data colSort"}
             %table{:class => "txtL sort_table search_results",
-                   :style => "table-layout: fixed;"}
+                   :style => "table-layout: fixed;",
+                   :id => "deliverables"}
+
               %thead
                 -# Filter search box
                 -# %tr{:style =>  "background: #F2F2F2;"}

@@ -6,10 +6,6 @@
   $(function() { 
     var theTable = $('table#deliverables')
 
-    theTable.find("tbody > tr").find("td:eq(1)").mousedown(function(){
-      $(this).prev().find(":checkbox").click()
-    });
-
     $("#filter").keyup(function() {
       $.uiTableFilter( theTable, this.value );
     })
