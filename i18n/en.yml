@@ -18,13 +18,13 @@ search:
   string: Enter your search
   noresults_title: No search results found.
   noresults: 0 results for 
+  tip_facets: In the search results, you can also select feature areas or document types to restrict your search to that area.
+  tip_filter: Another option is to search within the search results.
   tip_title: Tips on Searching
   tip_intro: Searches are simple.  Enter the terms you want to search for and click on the search icon..
   tip_quotes: You can search for a phrase by surrounding it with quote characters.  For example, "grant access" returns all the topics with the phrase "grant access", but doesn't return topics that contain only the term "grant" or "access", or a topic that contains both terms, but are separated by other words.
   tip_plus_minus: You can use + and - to indicate mandatory or optional entries.  For example, <table><tr><th>Search String</th><th>Returns</th></tr><tr><td>grant + access</td><td>All topics with the terms "grant" and "access".</td></tr><tr><td>grant - access</td><td>All  topics with the term "grant" but without the term "access".</td></tr><tr><td>grant access</td><td>The same results as grant + access</td></tr></table>
   tip_wildcards: Wildcard searches aren't supported.
-  tip_facets: In the search results, you can also select feature areas or document types to restrict your search to that area.
-  tips_filter: Another option is to search within the search results.
 
   placeholder: Search Technical Library
   filter_placeholder: Search within results
