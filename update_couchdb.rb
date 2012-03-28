@@ -26,18 +26,18 @@ Sunspot.setup(Topic) do
   text :perm_and_edition_tables, :stored => false
   text :title, :stored => true
   string :app_area, :stored => true, :multiple => true do
-    app_area.split
+    app_area.nil? ? [] : app_area.split
   end
   string :edition, :stored => true, :multiple => true do
-    edition.split
+    edition.nil? ? [] : edition.split
   end
   string :identifier, :stored => true
   string :locale, :stored => true
   string :product, :stored => true , :multiple => true do
-    product.split
+    product.nil? ? [] : product.split
   end
   string :role, :stored => true , :multiple => true do
-    role.split
+    role.nil? ? [] : role.split
   end
   string :topicname, :stored => true
   time :updated_at, :stored => true
@@ -77,18 +77,18 @@ def upload_attachment(documentname,locale,fullpath, mime_type,attachmentname)
   dupe = Topic.by_topicname_and_locale.key(["#{documentname}","#{locale}"]).count > 0
   unless dupe
   then
-    begin
-      @thisattachment = Topic.create({
+#    begin
+      @thisattachment = Topic.create!({
                                     :locale => locale,
                                     :attachment_hash => this_attachment_hash,
                                     :topicname => documentname})
       @thisattachment.create_attachment(
-                                          :name => attachmentname,
-                                          :file => thisfile,
-                                          :content_type => mime_type)
-    rescue
-      STDERR.puts "Could not create a new topic with lang/locale: #{locale} and filename #{documentname}"
-    end
+                                           :name => attachmentname,
+                                           :file => thisfile,
+                                           :content_type => mime_type)
+    # rescue
+    #   STDERR.puts "Could not create a new topic with lang/locale: #{locale} and filename #{documentname}"
+    # end
   else
     # Hopefully we don't need the first, but just in case
     @thisattachment = Topic.by_topicname_and_locale.key(["#{documentname}","#{locale}"]).first
