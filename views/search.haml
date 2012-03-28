@@ -199,11 +199,11 @@
                     - else @snippet = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
                   %tr
                     %td
-                      %div{:class => "search_results_title"}
+                      %div{:class => "search_results_title mrl"}
                         %a{:href => "/#{root}/#{locale}/#{hit.result.topicname}"}
                           = hit.result.title
-                        %br
-                          = @snippet
+                      %div{:class => "mrl"}
+                        = @snippet
                     %td
                       Type
                     %td
