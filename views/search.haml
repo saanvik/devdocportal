@@ -168,35 +168,24 @@
                    :id => "deliverables"}
 
               %thead
-                -# Filter search box
-                -# %tr{:style =>  "background: #F2F2F2;"}
-                -#   %td{:scope => "col",
-                -#       :style => "width: 80%;border-width: 0;"}
-                -#     %form{:id =>"filterForm",
-                -#           :action => " ",
-                -#           :method => "post"}
-                -#       %fieldset
-                -#         %div{:class=>"input",
-                -#              :id => "filter"}
-                -#           %input{:type=>"text",
-                -#                  :id=>"f",
-                -#                  :name=>"f",
-                -#                  :placeholder=>t.filter.placeholder}
-                -#         %input{:id => "filterButton",
-                -#            :type=>"submit",
-                -#            :value => "Filter",
-                -#            :class => "h6 pas",
-                -#            :style => "margin: 0px;"}
-                  -# %td{:scope => "col",
-                  -#     :style => "width: 20%;border-width: 0;"}
                 %tr
                   %th{:scope => "col",
-                      :class =>"sortable sorted h4",
+                      :class =>"sortable sorted h6",
                       :title => t.search_results.th_title,
-                      :style => "width: 80%;"}
+                      :style => "width: 70%;"}
                     = t.search_results.th_title
                   %th{:scope => "col",
-                      :class =>"sortable sorted h4",
+                      :class =>"sortable sorted h6",
+                      :title => "updated",
+                      :style => "min-width: 8em;"}
+                    = t.search_results.th_type
+                  %th{:scope => "col",
+                      :class =>"sortable sorted h6",
+                      :title => "updated",
+                      :style => "min-width: 8em;"}
+                    = t.search_results.th_technology
+                  %th{:scope => "col",
+                      :class =>"sortable sorted h6",
                       :title => "updated",
                       :style => "min-width: 8em;"}
                     = t.search_results.th_updated
@@ -215,6 +204,10 @@
                           = hit.result.title
                         %br
                           = @snippet
+                    %td
+                      Type
+                    %td
+                      Technology
                     %td= @localtime
 
 

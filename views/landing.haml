@@ -68,24 +68,29 @@
           %table{:class => "txtL sort_table search_results",
                  :style => "table-layout:fixed",
                  :id => "deliverables"}
+            %col{:width => "60px"}
+            %col
+            %col{:width => "10%"}
+            %col{:width => "10%"}
+            %col{:width => "10%"}
             %thead
               %tr
                 %th{:colspan => "2",
-                    :class => "sortable sorted h4 header",
+                    :class => "sortable sorted h6 header",
                     :title => "title",
                     :scope => "col"}
                   = t.landing.guides_table_title
-                %th{:class => "sortable sorted h4 header",
+                %th{:class => "sortable sorted h6 header",
                     :title => "type",
                     :scope => "col",
                     :filter => "false"}
                   = t.landing.guides_table_type
-                %th{:class => "sortable sorted h4 header",
+                %th{:class => "sortable sorted h6 header",
                     :title => "area",
                     :scope => "col",
                     :filter => "false"}
                   = t.landing.guides_table_feature_area
-                %th{:class => "sortable sorted h4 header",
+                %th{:class => "sortable sorted h6 header",
                     :title => "updated",
                     :scope => "col",
                     :filter => "false"}
@@ -94,23 +99,165 @@
             %tbody{:class => "content"}
               %tr
                 %td{:style => "border-width: 0 0 1px 0;"}
-                  Some icon
+                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
-                  Some title
+                  %a{:href=>"index.htm"}
+                    Database.com User's Guide
                 %td
-                  Some type
+                  Guide
                 %td
-                  Some feature area
+                  database.com
                 %td
                   Updated when?
               %tr
                 %td{:style => "border-width: 0 0 1px 0;"}
-                  Another icon
+                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
-                  Another title
+                  %a{:href=>"getting_started_index.htm"}
+                    Getting Started with Database.com
                 %td
-                  Another type
+                  Guide
                 %td
-                  Another feature area
+                  Database.com
                 %td
-                  Another update when?
+                  Updated when?
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"dbcom_rest_index.htm"}
+                    Database.com REST API Developer's Guide
+                %td
+                  Guide
+                %td
+                  REST API
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"dbcom_apex_index.htm"}
+                    Database.com Apex Code Developer's Guide
+                %td
+                  Guide
+                %td
+                  Apex
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"dbcom_objects_index.htm"}
+                    Database.com Object Reference
+                %td
+                  Guide
+                %td
+                  database.com
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"rest_index.htm"}
+                    Database.com Chatter REST API Developer's Guide
+                %td
+                  Guide
+                %td
+                  API
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"dbcom_soql_index.htm"}
+                    Database.com SOQL/SOSL Reference
+                %td
+                  Guide
+                %td
+                  SOQL, SOSL
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"dbcom_bulk_index.htm"}
+                    Database.com Bulk API Developer’s Guide
+                %td
+                  Guide
+                %td
+                  Bulk API
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"dbcom_streaming_index.htm"}
+                    Database.com Streaming API Developer’s Guide
+                %td
+                  Guide
+                %td
+                  Streaming API
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/guide_icon.png"}
+                %td
+                  %a{:href=>"dbcom_metadata_index.htm"}
+                    Database.com Metadata API Developer's Guide
+                %td
+                  Guide
+                %td
+                  Metadata API
+                %td
+                  Updated when?
+
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/notes_icon.png"}
+                %td
+                  %a{:href=>"dbcom_relnotes_index.htm"}
+                    Spring '12 Database.com Release Notes
+                %td
+                  Release Notes
+                %td
+                  database.com
+                %td
+                  Updated when?
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/tutorial_icon.png"}
+                %td
+                  %a{:href=>"dbcom_workbook_index.htm"}
+                    Database.com Workbook
+                %td
+                  Workbook
+                %td
+                  database.com
+                %td
+                  Updated when?
+              %tr
+                %td{:style => "border-width: 0 0 1px 0;"}
+                  %img{:src => "/portal_images/tutorial_icon.png"}
+                %td
+                  %a{:href=>"mobile_sdk_index.htm"}
+                    Mobile SDK Workbook
+                %td
+                  Workbook
+                %td
+                  database.com
+                %td
+                  Updated when?

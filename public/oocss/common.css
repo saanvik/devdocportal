@@ -28,7 +28,7 @@ form {
 }
 h1, h2, h3, h4, h5, h6 {
     display: inline;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 100%;
     margin: 0;
 }
@@ -338,7 +338,7 @@ table.tabsNewBar tr.newBar {
     display: none;
 }
 .tabNavigation {
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 91%;
     margin-bottom: 6px;
     padding-bottom: 10px;
@@ -403,7 +403,7 @@ table.tab {
 .tabOn {
     background-color: #669900;
     color: #FFFFFF;
-    font-family: 'Verdana','Arial','Helvetica';
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 100%;
     font-weight: bold;
     text-decoration: none;
@@ -411,15 +411,15 @@ table.tab {
 a.tabOn:link {
     background-color: #669900;
     color: #FFFFFF;
-    font-family: 'Verdana','Arial','Helvetica';
-    font-size: 100%;
+    font-family: 'Arial','Helvetica',sans-serif;
+    Font-size: 100%;
     font-weight: bold;
     text-decoration: none;
 }
 .tabOff {
     background-color: #336699;
     color: #FFFFFF;
-    font-family: 'Verdana','Arial','Helvetica';
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 100%;
     font-weight: normal;
     text-decoration: none;
@@ -427,7 +427,7 @@ a.tabOn:link {
 a.tabOff:link {
     background-color: #336699;
     color: #FFFFFF;
-    font-family: 'Verdana','Arial','Helvetica';
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 100%;
     font-weight: normal;
     text-decoration: none;
@@ -868,7 +868,7 @@ div.outerNoSidebar {
     background: url("/img/combo_button_no_line.gif") no-repeat scroll right bottom #FFFFFF;
     color: #FFFFFF;
     display: inline;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 2px 22px 3px 3px;
@@ -893,7 +893,7 @@ div.outerNoSidebar {
     border-width: 1px;
     color: #000000;
     display: block;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 0 6px;
@@ -1007,7 +1007,7 @@ div.outerNoSidebar {
     color: #FFFFFF;
     cursor: pointer;
     display: inline;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-weight: bold;
     padding: 0 3px 1px;
     position: relative;
@@ -1155,7 +1155,7 @@ div.outerNoSidebar {
     border: 1px solid #000000;
 }
 .miniTab {
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     padding: 6px 0 0 10px;
 }
 .miniTab .currentTab, .miniTab .currentTab a {
@@ -1240,7 +1240,7 @@ div.outerNoSidebar {
     padding-bottom: 4px;
 }
 body.lookupTab div.srch {
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 91%;
     font-weight: bold;
     padding: 4px 3px;
@@ -1510,7 +1510,7 @@ body.lookupTab div.srch {
     color: #FFFFFF;
     cursor: pointer;
     display: inline;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 1px 3px;
@@ -1525,7 +1525,7 @@ body.lookupTab div.srch {
     border-width: medium 1px 1px medium;
     color: #FFFFFF;
     cursor: pointer;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 0 3px 1px;
@@ -1540,7 +1540,7 @@ body.lookupTab div.srch {
     border-width: medium 1px 1px medium;
     color: #FFFFFF;
     cursor: pointer;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 1px 3px;
@@ -1555,7 +1555,7 @@ body.lookupTab div.srch {
     border-width: medium 1px 1px medium;
     color: #FFFFFF;
     cursor: pointer;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 1px 3px;
@@ -1570,7 +1570,7 @@ body.lookupTab div.srch {
     border-width: 1px;
     color: #C1C1C1;
     cursor: default;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 0 3px 1px;
@@ -1589,7 +1589,7 @@ body.lookupTab div.srch {
     color: #FFFFFF;
     cursor: pointer;
     display: inline;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     margin-left: 2em;
@@ -1603,7 +1603,7 @@ body.lookupTab div.srch {
     border-width: medium 1px 1px medium;
     color: white;
     cursor: pointer;
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 80%;
     font-weight: bold;
     padding: 1px 3px;
@@ -1643,7 +1643,7 @@ input.syncStop {
     padding-bottom: 5px;
 }
 .bPageTitle .ptBreadcrumb {
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 91.3%;
     height: 15px;
     margin-bottom: -15px;
@@ -7449,7 +7449,7 @@ body.choosePriceBook .pbHeader .pbTitle {
     margin: 4px 0;
 }
 .errorConsole .errorConsoleHeader {
-    font-family: 'Verdana','Geneva',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;`<
     padding: 4px 8px;
 }
 .errorConsole .errorConsoleHeader .errorSummary {
@@ -7728,7 +7728,7 @@ body.choosePriceBook .pbHeader .pbTitle {
 }
 .readonlybanner .bannerContentTitle {
     color: #333333;
-    font-family: 'Verdana','Arial','Helvetica',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 1.1em;
     font-weight: bold;
     line-height: normal;
@@ -7736,7 +7736,7 @@ body.choosePriceBook .pbHeader .pbTitle {
 }
 .readonlybanner .bannerContentSubtitle {
     color: #000000;
-    font-family: 'Verdana','Arial','Helvetica',sans-serif;
+    font-family: 'Arial','Helvetica',sans-serif;
     font-size: 1.1em;
     font-weight: normal;
     line-height: normal;

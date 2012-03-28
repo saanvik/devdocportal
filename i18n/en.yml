@@ -12,7 +12,9 @@ title:
 
 search_results:
   th_title: Title
-  th_updated: Last Updated
+  th_updated: Updated
+  th_type: Type
+  th_technology: Technology
   count: results for 
 search:
   string: Enter your search
