@@ -297,7 +297,7 @@ end
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
   STDERR.puts "In search post"
   locale = set_locale(locale)
-  query = h(params[:s])
+  query = params[:s]
   redirect to("#{root}/#{locale}/search/#{query}")
 
   # This is needed if we use the filter search box
