@@ -85,7 +85,7 @@
         #{
          %Q^$("#clickMe").attr('href','#{@baseURL}/search/#{query}/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" "));^
          }
-         if(node.tree.isUserEvent() && ((#{@search.total} > 0) || (select))) {
+         if(node.tree.isUserEvent()) {
             window.clearTimeout('timer');
             timer = window.setTimeout(function(){redirect(redirectURL)},1000);
           }
