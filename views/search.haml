@@ -1,4 +1,8 @@
 :javascript
+  var timer;
+  function hideWrongDiv() {
+  }
+  
   $(function() { 
     var theTable = $('table#deliverables')
     var hiddenRows
@@ -14,21 +18,6 @@
       return false;
     }).focus(); //Give focus to input field
   });  
-
-:javascript
-  $(document).ready(function() 
-    { 
-     $(".sort_table").tablesorter({cssAsc: "ascending", cssDesc: "descending"});
-     #{
-       if (@search.total > 0)
-       then
-       '$("#noSearchResultsDiv").remove();'
-       else
-       '$("#searchResultsDiv").remove();'
-       end
-     }
-     var timer;
-    });
 
   function redirect(URL) {
     window.location = URL;
@@ -95,6 +84,30 @@
       }});
       });
 
+-# Okay, this is all wrong.  The braces and parens are wrong.  If you fix them, though, it doesn't sort.  Any ideas?
+:javascript
+  $(document).ready(function() {
+     $(".sort_table").tablesorter({
+     cssAsc: "ascending",
+     cssDesc: "descending",
+     headers: { 
+            1: { 
+                sorter: true 
+            }
+     }
+     );
+     });
+:javascript
+  $(document).ready(function() {
+     #{
+       if (@search.total > 0)
+       then
+       '$("#noSearchResultsDiv").remove();'
+       else
+       '$("#searchResultsDiv").remove();'
+       end
+     }
+  });
 
 
 %div{:class => "line",
@@ -148,9 +161,6 @@
       %p
         %span{:class => "h3"}
           Filters:
-      %p{:id => "filterEnum"}
-      %a{:id => "clickMe"}
-        
       %div{:class => "inner"}
         %div{:class => "box infoBg"}
           %div{:class => "mbs"}
@@ -166,13 +176,15 @@
             %table{:class => "txtL sort_table search_results",
                    :style => "table-layout: fixed;",
                    :id => "deliverables"}
-
+              %col
+              %col{:width => "12%"}
+              %col{:width => "12%"}
+              %col{:width => "12%"}
               %thead
                 %tr
                   %th{:scope => "col",
                       :class =>"sortable sorted h6",
-                      :title => t.search_results.th_title,
-                      :style => "width: 70%;"}
+                      :title => t.search_results.th_title}
                     = t.search_results.th_title
                   %th{:scope => "col",
                       :class =>"sortable sorted h6",
@@ -182,7 +194,7 @@
                   %th{:scope => "col",
                       :class =>"sortable sorted h6",
                       :title => "updated",
-                      :style => "min-width: 8em;"}
+                      :style => "min-width: 100px;"}
                     = t.search_results.th_technology
                   %th{:scope => "col",
                       :class =>"sortable sorted h6",
