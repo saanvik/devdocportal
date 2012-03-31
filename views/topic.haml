@@ -1,5 +1,44 @@
+:javascript
+  $(function(){
+      $("#tree").dynatree({
+      debugLevel:2,
+      checkbox: false,
+      persist: false,
+      selectMode: 1,
+      initAjax: { //Eventually get this back from couchdb
+        url: "/dbcom_help_toc.json"
+      },
+      onActivate: function(node) {
+        #{
+             %Q^var baseURL = "#{@baseURL}";^
+          }
+          if(node.tree.isUserEvent()) {
+            window.location = baseURL + "/" + node.data.key;
+            }
+      },
+      onPostInit: function(isReloading, isError) {
+            #{
+              %Q^var key = "#{topicname}";^
+            }
+            if( key ) {
+                this.activateKey(key)
+            }
+            },
+        }
+        )
+  });
+
 %div{:class => "line"}
-  %div{:class => "box chatty infoBg"}
+  %div{:class => "unit size1of4"}
+    %div{:class=> "box callout chatty mrl"}
+      %div{:class => "inner"}
+        %div{:class => "hd mts"}
+          %span{:class => "h4"}
+            %a{:href => "http://localhost:5984/spring12/b0593afcfb1694c880b2c1933e58e462/dbcom_help_toc.json"}
+              = t.facets.title
+        %div{:class => "bd",
+             :id => "tree"}
+  %div{:class => "unit size3of4 last_unit box chatty infoBg"}
     %div{:class => "inner"}
       %div{:class => "box infoBg mlm mrm"}
         =@content

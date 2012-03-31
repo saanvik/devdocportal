@@ -1,6 +1,18 @@
 -# This page is the landing page, a page for people to get to if they
 -# haven't search for anything, or haven't clicked a context sensitive
 -# help link
+:javascript
+  $(document).ready(function() 
+    { 
+     $(".sort_table").tablesorter({
+     cssAsc: "ascending",
+     cssDesc: "descending"
+     headers: { 
+            0: { 
+                sorter: false 
+            }, 
+     });
+    });
 
 :javascript
   $(function() { 
@@ -14,7 +26,10 @@
       theTable.find("tbody > tr:visible > td:eq(1)").mousedown();
       return false;
     }).focus(); //Give focus to input field
+    
   });  
+
+
 
                                 
 %div{:class => "page liquid body mal"}
@@ -68,15 +83,13 @@
           %table{:class => "txtL sort_table search_results",
                  :style => "table-layout:fixed",
                  :id => "deliverables"}
-            %col{:width => "60px"}
             %col
             %col{:width => "10%"}
             %col{:width => "10%"}
             %col{:width => "10%"}
             %thead
               %tr
-                %th{:colspan => "2",
-                    :class => "sortable sorted header h6",
+                %th{:class => "sortable sorted header h6",
                     :title => "title",
                     :scope => "col"}
                   = t.landing.guides_table_title
@@ -98,9 +111,8 @@
               -# @todo These values must be auto-populated ... from what?
             %tbody{:class => "content"}
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"index.htm"}
                     Database.com User's Guide
                 %td
@@ -110,9 +122,8 @@
                 %td
                   Updated when?
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"getting_started_index.htm"}
                     Getting Started with Database.com
                 %td
@@ -122,9 +133,8 @@
                 %td
                   Updated when?
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"dbcom_rest_index.htm"}
                     Database.com REST API Developer's Guide
                 %td
@@ -135,9 +145,8 @@
                   Updated when?
 
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"dbcom_apex_index.htm"}
                     Database.com Apex Code Developer's Guide
                 %td
@@ -148,9 +157,8 @@
                   Updated when?
 
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"dbcom_objects_index.htm"}
                     Database.com Object Reference
                 %td
@@ -161,9 +169,8 @@
                   Updated when?
 
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"rest_index.htm"}
                     Database.com Chatter REST API Developer's Guide
                 %td
@@ -174,9 +181,8 @@
                   Updated when?
 
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"dbcom_soql_index.htm"}
                     Database.com SOQL/SOSL Reference
                 %td
@@ -187,9 +193,8 @@
                   Updated when?
 
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"dbcom_bulk_index.htm"}
                     Database.com Bulk API Developer’s Guide
                 %td
@@ -200,9 +205,8 @@
                   Updated when?
 
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"dbcom_streaming_index.htm"}
                     Database.com Streaming API Developer’s Guide
                 %td
@@ -213,9 +217,8 @@
                   Updated when?
 
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/guide_icon.png"}
                 %td
+                  %img{:src => "/portal_images/guide_icon.png"}
                   %a{:href=>"dbcom_metadata_index.htm"}
                     Database.com Metadata API Developer's Guide
                 %td
@@ -224,11 +227,9 @@
                   Metadata API
                 %td
                   Updated when?
-
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/notes_icon.png"}
                 %td
+                  %img{:src => "/portal_images/notes_icon.png"}
                   %a{:href=>"dbcom_relnotes_index.htm"}
                     Spring '12 Database.com Release Notes
                 %td
@@ -238,9 +239,8 @@
                 %td
                   Updated when?
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/tutorial_icon.png"}
                 %td
+                  %img{:src => "/portal_images/tutorial_icon.png"}
                   %a{:href=>"dbcom_workbook_index.htm"}
                     Database.com Workbook
                 %td
@@ -250,9 +250,8 @@
                 %td
                   Updated when?
               %tr
-                %td{:style => "border-width: 0 0 1px 0;"}
-                  %img{:src => "/portal_images/tutorial_icon.png"}
                 %td
+                  %img{:src => "/portal_images/tutorial_icon.png"}
                   %a{:href=>"mobile_sdk_index.htm"}
                     Mobile SDK Workbook
                 %td

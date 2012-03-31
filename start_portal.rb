@@ -344,7 +344,10 @@ get '/:root/:locale/:topicname' do
     @topictitle=@thisdoc.xpath('//title[1]').inner_text()
     @sidebartitle =t.title.toc
     @sidebarcontent = t.toc
-    haml :topic
+    @fullURL = request.url
+    @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
+    STDERR.puts "baseURL -> #{@baseURL}"
+    haml :topic, :locals => { :topicname => topicname }
   rescue
     haml :'404'
   end

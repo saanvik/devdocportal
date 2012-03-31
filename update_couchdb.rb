@@ -307,7 +307,7 @@ end
 # Uploading HTML files also adds them to the index and updates refereneced image files.
 # Start by changing to the correct output directory
 Dir.chdir "#{DOCSRCDIR}"
-Dir.glob("**/*.{html,htm,css,js}") do |filename|
+Dir.glob("**/*.{html,htm,css,js,json}") do |filename|
   fullpath = "#{DOCSRCDIR}#{filename}"
   begin
     mime_type = get_mime_type(fullpath[/(?:.*)(\..*$)/, 1])

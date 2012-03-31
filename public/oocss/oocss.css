@@ -1777,7 +1777,12 @@ a:hover, a:focus {
 }
 .colSort .sorted {
     background-color: #BBE3EF;
+    background-image: url("/oocss/images/bg.gif");
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
 }
+
 .colSort .sorted:after {
     -moz-border-radius: 7px 7px 7px 7px;
     -webkit-border-radius: 7px 7px 7px 7px;
@@ -1786,22 +1791,26 @@ a:hover, a:focus {
     margin-left: 5px;
     padding: 1px 4px 2px;
 }
-.colSort .ascending:after {
-    content: "↑";
-    background-color: #D5F1F9;
-}
+
 .colSort .ascending {
+    background-color: #D5F1F9;
+    background-image: url("/oocss/images/asc.gif");
+}
+
+.colSort .ascending:after {
+    color: #222222;
+    content: "";
     background-color: #D5F1F9;
 }
 
 .colSort .descending {
     background-color: #D5F1F9;
+    background-image: url("/oocss/images/desc.gif");
 }
-
 
 .colSort .descending:after {
     color: #222222;
-    content: "↓";
+    content: "";
     background-color: #D5F1F9;
 }
 
@@ -3483,3 +3492,11 @@ table.sort_table thead.sorted tr th.descending:hover:after {
 table.search_results * td { 
     overflow: hidden;
  }
+
+/* Add style overrides for dynatree */
+span.dynatree-active a {
+    background: #c4e7f3;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
