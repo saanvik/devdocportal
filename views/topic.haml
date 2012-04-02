@@ -12,8 +12,11 @@
         #{
              %Q^var baseURL = "#{@baseURL}";^
           }
+          #{
+             %Q^var guide = "#{@guide}";^
+          }
           if(node.tree.isUserEvent()) {
-            window.location = baseURL + "/" + node.data.key;
+            window.location = baseURL + "/" + guide + "/" + node.data.key;
             }
       },
       onPostInit: function(isReloading, isError) {
@@ -40,7 +43,5 @@
              :id => "tree"}
   %div{:class => "unit size3of4 last_unit box chatty infoBg"}
     %div{:class => "inner"}
-      %span{:id => "WTF"}
-        =@toc_json_fullURL
       %div{:class => "box infoBg mlm mrm"}
         =@content

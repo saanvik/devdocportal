@@ -382,6 +382,7 @@ get '/:root/:locale/:guide/:topicname' do
   root = params[:root]
   STDERR.puts "Getting #{topicname}"
     begin
+      @guide = params[:guide]
       @attachment = get_attachment(topicname, topicname, locale)
       @thisdoc = Nokogiri::XML(@attachment)
       @toc_json = @thisdoc.xpath("//meta[@name = 'SFDC.TOC']/@content")
@@ -392,7 +393,8 @@ get '/:root/:locale/:guide/:topicname' do
       @sidebartitle =t.title.toc
       @sidebarcontent = t.toc
       @fullURL = request.url
-      @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
+      @baseURL= "#{@fullURL.match(/(.*)\/#{topicname}/)[1]}"
+      STDERR.puts "baseURL is now #{@baseURL}"
       @toc_json_fullURL = "#{@baseURL}/#{@toc_json_URL}"
       STDERR.puts "The URL for the json is #{@toc_json_fullURL}"
       haml :topic, :locals => { :topicname => topicname}
