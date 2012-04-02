@@ -115,20 +115,24 @@ helpers do
 
   # Get the attachment from the cache, or push it into the cache
   def get_attachment(topicname, attachmentname, locale, time_to_live=settings.long_ttl)
-    if(!settings.enable_cache)
+    begin
+      if(!settings.enable_cache)
       then
-      @thistopic = Topic.by_topicname_and_locale.key([topicname,locale]).first
-      return @thistopic.read_attachment(attachmentname)
-    end
-    # Check that this is good enough - what about dupe attachment names?
-    @key = "#{topicname}/#{attachmentname}"
-    if(settings.cache.get(@key) == nil)
+        @thistopic = Topic.by_topicname_and_locale.key([topicname,locale]).first
+        return @thistopic.read_attachment(attachmentname)
+      end
+      # Check that this is good enough - what about dupe attachment names?
+      @key = "#{topicname}/#{attachmentname}"
+      if(settings.cache.get(@key) == nil)
       then
-      @thistopic = Topic.by_topicname_and_locale.key([topicname,locale]).first
-      @image = @thistopic.read_attachment(attachmentname)
-      settings.cache.set(@key, @image, ttl=time_to_live+rand(100))
+        @thistopic = Topic.by_topicname_and_locale.key([topicname,locale]).first
+        @image = @thistopic.read_attachment(attachmentname)
+        settings.cache.set(@key, @image, ttl=time_to_live+rand(100))
+      end
+      return settings.cache.get(@key)
+    rescue
+      STDERR.puts "Couldn't get the attachment, trying #{topicname}, #{attachmentname}, #{locale}}"
     end
-    return settings.cache.get(@key)
   end
 
   def set_locale(locale)
@@ -221,6 +225,10 @@ get '/dbcom/:locale/search/' do
   haml :search_info
 end
 
+get '/dbcom/:locale/search' do
+  @locale = set_locale(params[:locale])
+  haml :search_info
+end
 
 # Actual search URL, with a facet
 get '/:root/:locale/search/:query/facet' do
@@ -353,6 +361,18 @@ get '/:root/:locale/:topicname' do
     haml :'404'
   end
 end
+# Get a JSON file
+get '/:root/:locale/:guide/:topicname.json' do
+  topicname = params[:guide] + "/" + params[:topicname] + ".json"
+  locale = set_locale(params[:locale])
+  root = params[:root]
+    begin
+      @this_json = get_attachment(topicname, topicname, locale)
+      return @this_json
+    rescue
+      haml :'404'
+    end
+end
 
 get '/:root/:locale/:guide/:topicname' do
   topicname = params[:guide] + "/" + params[:topicname]
@@ -361,12 +381,17 @@ get '/:root/:locale/:guide/:topicname' do
     begin
       @attachment = get_attachment(topicname, topicname, locale)
       @thisdoc = Nokogiri::XML(@attachment)
+      @toc_json = @thisdoc.xpath("//meta[@name = 'SFDC.TOC']/@content")
+      @toc_json_URL = params[:guide] + "/" + @toc_json.to_s
+      STDERR.puts "toc_json -> #{@toc_json_URL}"
       @content=@thisdoc.xpath('//body').children()
       @topictitle=@thisdoc.xpath('//title[1]').inner_text()
       @sidebartitle =t.title.toc
       @sidebarcontent = t.toc
       @fullURL = request.url
       @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
+      @toc_json_fullURL = "#{@baseURL}/#{@toc_json_URL}"
+      STDERR.puts "The URL for the json is #{@toc_json_fullURL}"
       haml :topic, :locals => { :topicname => topicname }
   rescue
     haml :'404'
