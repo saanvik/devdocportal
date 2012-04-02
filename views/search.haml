@@ -122,30 +122,6 @@
         %div{:class => "bd",
              :id => "tree"}
 
-  -# This div is for no search results
-  %div{:class => "unit size3of4 last_unit",
-       :id => "noSearchResultsDiv"}
-    %h2
-      = t.search.noresults_title
-    %p
-      %span 
-        = t.search.noresults
-      %span <b>#{query}</b>
-    %p
-      %span{:class => "h3"}
-        Filters:
-    %p{:id => "filterEnum"}
-
-    %div{:class => "data colSort"}
-      %h2 Tips on Searching
-      %p
-        = t.search.tip_intro
-      %p
-        = t.search.tip_quotes
-      %p
-        = t.search.tip_wildcards
-      %p
-        = t.search.tip_plus_minus
   -# This div is for 1 or more search results
   %div{:class => "unit size3of4 last_unit",
        :id => "searchResultsDiv"}
@@ -209,6 +185,10 @@
                   - if (hit.highlight(:content).nil?)
                     - then @snippet = ""
                     - else @snippet = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
+                  - @doctype = hit.result.doctype
+                  - @technology = hit.result.technology
+                  - @maintitle = hit.result.maintitle
+                  - @homelink = hit.result.homelink
                   %tr
                     %td
                       %div{:class => "search_results_title mrl"}
@@ -216,13 +196,39 @@
                           = hit.result.title
                       %div{:class => "mrl"}
                         = @snippet
-                    %td
-                      Type
-                    %td
-                      Technology
+                      %div
+                        (From
+                        %a{:href => "/#{root}/#{locale}/#{@homelink}"}
+                          #{@maintitle}
+                        )
+                    %td= @doctype
+                    %td= @technology
                     %td= @localtime
 
+  -# This div is for no search results
+  %div{:class => "unit size3of4 last_unit",
+       :id => "noSearchResultsDiv"}
+    %h2
+      = t.search.noresults_title
+    %p
+      %span 
+        = t.search.noresults
+      %span <b>#{query}</b>
+    %p
+      %span{:class => "h3"}
+        Filters:
+    %p{:id => "filterEnum"}
 
+    %div{:class => "data colSort"}
+      %h2 Tips on Searching
+      %p
+        = t.search.tip_intro
+      %p
+        = t.search.tip_quotes
+      %p
+        = t.search.tip_wildcards
+      %p
+        = t.search.tip_plus_minus
 
 
 

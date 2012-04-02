@@ -340,10 +340,11 @@ get '/:root/:locale/:topicname' do
   begin
     @attachment = get_attachment(topicname, topicname, locale)
     @thisdoc = Nokogiri::XML(@attachment)
-    @content=@thisdoc.xpath('//body').children().remove_class("body")
+    @content=@thisdoc.xpath('//body').children()
     @topictitle=@thisdoc.xpath('//title[1]').inner_text()
     @sidebartitle =t.title.toc
     @sidebarcontent = t.toc
+    @toc_jason = @thisdoc.xpath("//meta[@name = 'SFDC.TOC']/@content")
     @fullURL = request.url
     @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
     STDERR.puts "baseURL -> #{@baseURL}"
@@ -352,6 +353,26 @@ get '/:root/:locale/:topicname' do
     haml :'404'
   end
 end
+
+get '/:root/:locale/:guide/:topicname' do
+  topicname = params[:guide] + "/" + params[:topicname]
+  locale = set_locale(params[:locale])
+  root = params[:root]
+    begin
+      @attachment = get_attachment(topicname, topicname, locale)
+      @thisdoc = Nokogiri::XML(@attachment)
+      @content=@thisdoc.xpath('//body').children()
+      @topictitle=@thisdoc.xpath('//title[1]').inner_text()
+      @sidebartitle =t.title.toc
+      @sidebarcontent = t.toc
+      @fullURL = request.url
+      @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
+      haml :topic, :locals => { :topicname => topicname }
+  rescue
+    haml :'404'
+  end
+end
+
 
 get '/:locale/:topicname.:format' do
   locale = set_locale(params[:locale])

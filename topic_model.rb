@@ -55,6 +55,10 @@ class Topic < CouchRest::Model::Base
   property :edition, String
   property :topic_type, String
   property :identifier, String
+  property :technology, String
+  property :doctype, String
+  property :maintitle, String
+  property :homelink, String
 
   # Need to add the text from the attachment for solr searching
   property :content, String
@@ -64,15 +68,22 @@ class Topic < CouchRest::Model::Base
 
   ## The design documents
   design do
-    view :by__id
+    view :by_id
     view :by_topicname
     view :by_identifier
     view :by_topicname_and_locale
+    view :by_maintitle
+    view :by_technology
   end
 
   searchable do
     text :content, :stored => true
+    text :perm_and_edition_tables, :stored => false
     text :title, :stored => true
+    text :technology, :stored => true
+    text :doctype, :stored => true
+    text :maintitle, :stored => true
+    text :homelink, :stored => true
     string :app_area, :stored => true, :multiple => true
     string :edition, :stored => true, :multiple => true
     string :identifier, :stored => true

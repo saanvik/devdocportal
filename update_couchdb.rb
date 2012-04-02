@@ -25,6 +25,10 @@ Sunspot.setup(Topic) do
   text :content, :stored => true
   text :perm_and_edition_tables, :stored => false
   text :title, :stored => true
+  text :technology, :stored => true
+  text :doctype, :stored => true
+  text :maintitle, :stored => true
+  text :homelink, :stored => true
   string :app_area, :stored => true, :multiple => true do
     app_area.nil? ? [] : app_area.split
   end
@@ -157,6 +161,10 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
   edition = nokodoc.xpath("//meta[@name = 'edition']/@content")
   topic_type = nokodoc.xpath("//meta[@name = 'product']/@content")
   identifier = nokodoc.xpath("//meta[@name = 'DC.Identifier']/@content")
+  maintitle = nokodoc.xpath("//meta[@name = 'SFDC.Title']/@content")
+  technology = nokodoc.xpath("//meta[@name = 'SFDC.Technology']/@content")
+  doctype = nokodoc.xpath("//meta[@name = 'SFDC.Type']/@content")
+  homelink = nokodoc.xpath("//div[@class = 'breadcrumb']/a[@class = 'link'][@title = 'Home']/@href")
   upload_attachment(filename,locale,fullpath, mime_type,filename)
   perm_and_edition_tables=nokodoc.xpath('//table[contains(@class, "permTable") or contains(@class, "editionTable")]').inner_text()
   body_content=nokodoc.xpath('//body')
@@ -185,7 +193,12 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
                                  :identifier => identifier,
                                  :content => content,
                                  :perm_and_edition_tables => perm_and_edition_tables,
-                                 :title => title)
+                                 :title => title,
+                                 :maintitle => maintitle,
+                                 :technology => technology,
+                                 :doctype => doctype,
+                                 :homelink => homelink
+                                 )
   rescue NoMethodError
     STDERR.puts "Error: Could not update the attributes on #{filename}.  Check the couchdb connection."
     STDERR.puts "#{$!}"
@@ -209,7 +222,12 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
                                      :identifier => identifier,
                                      :content => content,
                                      :perm_and_edition_tables => perm_and_edition_tables,
-                                     :title => title)
+                                     :title => title,
+                                     :maintitle => maintitle,
+                                     :technology => technology,
+                                     :doctype => doctype,
+                                     :homelink => homelink
+                                     )
         STDERR.puts "Success!"
       rescue
         STDERR.puts "Nope.  Updating the attributes on #{filename} still failed."
@@ -250,7 +268,7 @@ end
 # Else is there just in case
 # Since the file may not be available, we need to catch any exceptions
 def upload_referenced_images(filename, mime_type, nokodoc, locale)
-  nokodoc.xpath("//img/@src").each do |image|
+  nokodoc.xpath("//img/@src[starts-with(.,'/img')]").each do |image|
     begin
       @original_filename = filename
       case
@@ -345,7 +363,7 @@ Dir.glob("**/*.{css,js}") do |filename|
     parser = CssParser::Parser.new
     parser.load_uri!(fullpath)
     parser.each_selector(:all) do |selector,declarations,specificity|
-      if (declarations.include? 'url("/')
+      if (declarations.include? 'url(\"/img')
         @img_path = /url\(.(\/[^'#")]*)/.match(declarations)
         @img_fullpath = "#{APPSRCDIR}#{@img_path[1]}"
         if File.exist?(@img_fullpath)

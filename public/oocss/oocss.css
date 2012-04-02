@@ -901,6 +901,8 @@ em {
 .breadcrumb {
     font-size: 1.083em;
     padding: 2px 0 10px;
+    color: #7d7d84;
+    margin-bottom: 10px;
 }
 .breadcrumb li {
     display: inline-block;
@@ -1706,7 +1708,8 @@ a:hover, a:focus {
     border-width: 0 5px 5px;
 }
 .breadcrumb a {
-    color: #797979;
+    color: #015BA7;
+    font-size: 0.95em;
 }
 .checkList li {
     background: url("/img/oocss/dot.png") no-repeat scroll 0 0 transparent;
@@ -1780,7 +1783,6 @@ a:hover, a:focus {
     background-image: url("/oocss/images/bg.gif");
     background-repeat: no-repeat;
     background-position: center right;
-    cursor: pointer;
 }
 
 .colSort .sorted:after {
@@ -1795,6 +1797,8 @@ a:hover, a:focus {
 .colSort .ascending {
     background-color: #D5F1F9;
     background-image: url("/oocss/images/asc.gif");
+    background-repeat: no-repeat;
+    background-position: center right;
 }
 
 .colSort .ascending:after {
@@ -1806,6 +1810,8 @@ a:hover, a:focus {
 .colSort .descending {
     background-color: #D5F1F9;
     background-image: url("/oocss/images/desc.gif");
+    background-repeat: no-repeat;
+    background-position: center right;
 }
 
 .colSort .descending:after {
@@ -3223,6 +3229,8 @@ h1 + div#sfdc\:seealso {
 h1 + div#sfdc\:seealso * li
 {
     margin-top: 0.75em;
+    list-style-type: disc;
+    font-weight: bold;
 }
 
 div.breadcrumbs {
@@ -3465,7 +3473,7 @@ cite {
     -webkit-box-shadow: 0 00px 0px #137C9E;
     background-color: #FFFFFF;
     border-top: 0px;
-    margin-top: 0px;
+    margin-top: 30px;
 }
    
 .techlib:hover {
@@ -3481,17 +3489,17 @@ table.sort_table thead.sorted tr th.featureTableHeader:hover {
     background-color: #D5F1F9;
 }
 
-table.sort_table thead.sorted tr th.featureTableHeader:hover:after {
-    content: "↓";
-}
-
-table.sort_table thead.sorted tr th.descending:hover:after {
-    content: "↑";
-}
 
 table.search_results * td { 
     overflow: hidden;
  }
+
+div.nextprevarrows {
+    float:right;
+}
+div.nextprevarrows_bottom {
+    text-align: center;
+}
 
 /* Add style overrides for dynatree */
 span.dynatree-active a {
@@ -3499,4 +3507,10 @@ span.dynatree-active a {
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
+
