@@ -376,6 +376,11 @@ get '/:root/:locale/:guide/:topicname.json' do
     end
 end
 
+# Broken - fix it!
+get '/dbcom/en-us/db_help/dbcom_help_dbcom_user_guide.htm' do
+  redirect to("/dbcom/en-us/db_help/index.htm")
+end
+
 get '/:root/:locale/:guide/:topicname' do
   topicname = params[:guide] + "/" + params[:topicname]
   locale = set_locale(params[:locale])
