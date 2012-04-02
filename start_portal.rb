@@ -382,6 +382,7 @@ get '/:root/:locale/:guide/:topicname' do
   root = params[:root]
   STDERR.puts "Getting #{topicname}"
     begin
+      @topickey = params[:topicname]
       @guide = params[:guide]
       @attachment = get_attachment(topicname, topicname, locale)
       @thisdoc = Nokogiri::XML(@attachment)

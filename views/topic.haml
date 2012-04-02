@@ -21,7 +21,7 @@
       },
       onPostInit: function(isReloading, isError) {
             #{
-              %Q^var key = "#{topicname}";^
+              %Q^var key = "#{@topickey}";^
             }
             if( key ) {
                 this.activateKey(key)
@@ -37,8 +37,7 @@
       %div{:class => "inner"}
         %div{:class => "hd mts"}
           %span{:class => "h4"}
-            %a{:href => "http://localhost:5984/spring12/b0593afcfb1694c880b2c1933e58e462/dbcom_help_toc.json"}
-              = t.facets.title
+            = t.facets.title
         %div{:class => "bd",
              :id => "tree"}
   %div{:class => "unit size3of4 last_unit box chatty infoBg"}
