@@ -6,7 +6,7 @@
       persist: false,
       selectMode: 1,
       initAjax: { //Eventually get this back from couchdb
-        url: "#{toc_json_fullURL}"
+          url: "#{@toc_json_fullURL}"
       },
       onActivate: function(node) {
         #{
@@ -40,5 +40,7 @@
              :id => "tree"}
   %div{:class => "unit size3of4 last_unit box chatty infoBg"}
     %div{:class => "inner"}
+      %span{:id => "WTF"}
+        =@toc_json_fullURL
       %div{:class => "box infoBg mlm mrm"}
         =@content

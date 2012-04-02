@@ -341,31 +341,33 @@ end
 
 # Calls to /dbcom/<locale>/<topicname> get redirected
 # based on the locale key in couchdb
-get '/:root/:locale/:topicname' do
-  topicname = params[:topicname]
-  locale = set_locale(params[:locale])
-  root = params[:root]
-  begin
-    @attachment = get_attachment(topicname, topicname, locale)
-    @thisdoc = Nokogiri::XML(@attachment)
-    @content=@thisdoc.xpath('//body').children()
-    @topictitle=@thisdoc.xpath('//title[1]').inner_text()
-    @sidebartitle =t.title.toc
-    @sidebarcontent = t.toc
-    @toc_jason = @thisdoc.xpath("//meta[@name = 'SFDC.TOC']/@content")
-    @fullURL = request.url
-    @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
-    STDERR.puts "baseURL -> #{@baseURL}"
-    haml :topic, :locals => { :topicname => topicname }
-  rescue
-    haml :'404'
-  end
-end
+# get '/:root/:locale/:topicname' do
+#   topicname = params[:topicname]
+#   locale = set_locale(params[:locale])
+#   root = params[:root]
+#   begin
+#     @attachment = get_attachment(topicname, topicname, locale)
+#     @thisdoc = Nokogiri::XML(@attachment)
+#     @content=@thisdoc.xpath('//body').children()
+#     @topictitle=@thisdoc.xpath('//title[1]').inner_text()
+#     @sidebartitle =t.title.toc
+#     @sidebarcontent = t.toc
+#     @toc_jason = @thisdoc.xpath("//meta[@name = 'SFDC.TOC']/@content")
+#     @fullURL = request.url
+#     @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
+#     STDERR.puts "baseURL -> #{@baseURL}"
+#     haml :topic, :locals => { :topicname => topicname }
+#   rescue
+#     haml :'404'
+#   end
+# end
+
 # Get a JSON file
 get '/:root/:locale/:guide/:topicname.json' do
   topicname = params[:guide] + "/" + params[:topicname] + ".json"
   locale = set_locale(params[:locale])
   root = params[:root]
+  STDERR.puts "Getting the toc json file"
     begin
       @this_json = get_attachment(topicname, topicname, locale)
       return @this_json
@@ -378,6 +380,7 @@ get '/:root/:locale/:guide/:topicname' do
   topicname = params[:guide] + "/" + params[:topicname]
   locale = set_locale(params[:locale])
   root = params[:root]
+  STDERR.puts "Getting #{topicname}"
     begin
       @attachment = get_attachment(topicname, topicname, locale)
       @thisdoc = Nokogiri::XML(@attachment)
@@ -392,9 +395,10 @@ get '/:root/:locale/:guide/:topicname' do
       @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
       @toc_json_fullURL = "#{@baseURL}/#{@toc_json_URL}"
       STDERR.puts "The URL for the json is #{@toc_json_fullURL}"
-      haml :topic, :locals => { :topicname => topicname }
+      haml :topic, :locals => { :topicname => topicname}
   rescue
-    haml :'404'
+      STDERR.puts "Help, I've been rescued from a topic call"
+      haml :'404'
   end
 end
 

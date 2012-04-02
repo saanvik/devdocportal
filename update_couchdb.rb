@@ -340,7 +340,6 @@ Dir.glob("**/*.{html,htm,css,js,json}") do |filename|
     update_metadata_from_attachment(filename,fullpath, mime_type,nokodoc,locale)
     upload_referenced_images(filename, mime_type,nokodoc,locale)
   else
-    STDERR.puts "Uploading an attachment for #{filename}"
     upload_attachment(filename,LOCALE,fullpath, mime_type,filename)
   end
 end
