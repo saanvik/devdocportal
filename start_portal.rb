@@ -3,7 +3,6 @@ require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/r18n'
-require 'sinatra/reloader' if development?
 require 'couchrest'
 require 'nokogiri'
 require 'haml'
