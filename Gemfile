@@ -12,7 +12,6 @@ gem "sunspot_rails", "~>1.3"
 gem "sunspot_solr", "~>1.3.1", :group => :development
 gem "sinatra", :require => "sinatra/base"
 gem "sinatra-r18n"
-gem "sinatra-reloader", :group => :development
 gem "dalli"
 gem "newrelic_rpm"
 gem "rack-test"
