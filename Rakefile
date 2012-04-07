@@ -22,6 +22,10 @@ task :start_local_with_foreman => [:init_local]do
   sh %{foreman start}
 end
 
+task :start_local_with_shotgun => [:init_local]do
+  sh %{shotgun thin -p 5000 -E development}
+end
+
 task :start_local_with_remote => [:init_remote]do
   sh %{ruby start_portal.rb}
 end

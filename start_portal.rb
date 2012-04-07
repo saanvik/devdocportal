@@ -145,8 +145,6 @@ helpers do
   end
 end
 
-
-
 ######################################################################
 # Routes here
 ######################################################################
@@ -207,7 +205,6 @@ end
 # User guide PDF
 get '/:locale/*.pdf' do |filename|
   @locale = set_locale(params[:locale])
-  STDERR.print "Going to #{@locale}/#{filename}.pdf"
 end
 
 # Top level page
@@ -231,7 +228,6 @@ end
 
 # Actual search URL, with a facet
 get '/:root/:locale/search/:query/facet' do
-  STDERR.puts "In the faceted search"
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
@@ -253,7 +249,6 @@ get '/:root/:locale/search/:query/facet' do
   rescue
     haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
   else
-    STDERR.puts "What is app_area?  #{app_area.inspect}"
     @results = @search.results
     if (@results.length > 0)
     then
@@ -267,7 +262,6 @@ end
 # Actual search URL
 # @todo Do queries need to be escaped to be safe?
 get '/:root/:locale/search/:query' do
-  STDERR.puts "Not in faceted search"
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
@@ -285,11 +279,9 @@ get '/:root/:locale/search/:query' do
       paginate :page => 1, :per_page => 1500
     end
   rescue
-    STDERR.puts "I've been rescued!"
     haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
   else
     @results = @search.results
-    STDERR.puts "Number of results -> #{@results.length}"
     if (@results.length > 0)
     then
       haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
@@ -302,24 +294,9 @@ end
 
 # Grab the search and return a page with the results
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
-  STDERR.puts "In search post"
   locale = set_locale(locale)
   query = params[:s]
   redirect to("#{root}/#{locale}/search/#{query}")
-
-  # This is needed if we use the filter search box
-  # if params[:f]
-  #   filter = h(params[:f])
-  #   referrer = request.referrer
-  #   STDERR.puts "My referrer is #{referrer}"
-  #   original_query = referrer.match(/.*\/([^\/]*)\/search\/(.*)/)[2]
-  #   STDERR.puts "My original query is #{original_query}"
-  #   STDERR.puts "F - #{filter}"
-  #   redirect to("#{root}/#{locale}/search/#{original_query}+#{filter}")
-  # else
-  #   query = h(params[:s])
-  #   redirect to("#{root}/#{locale}/search/#{query}")
-  # end
 end
 
 
@@ -338,35 +315,11 @@ get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, i
   end
 end
 
-# Calls to /dbcom/<locale>/<topicname> get redirected
-# based on the locale key in couchdb
-# get '/:root/:locale/:topicname' do
-#   topicname = params[:topicname]
-#   locale = set_locale(params[:locale])
-#   root = params[:root]
-#   begin
-#     @attachment = get_attachment(topicname, topicname, locale)
-#     @thisdoc = Nokogiri::XML(@attachment)
-#     @content=@thisdoc.xpath('//body').children()
-#     @topictitle=@thisdoc.xpath('//title[1]').inner_text()
-#     @sidebartitle =t.title.toc
-#     @sidebarcontent = t.toc
-#     @toc_jason = @thisdoc.xpath("//meta[@name = 'SFDC.TOC']/@content")
-#     @fullURL = request.url
-#     @baseURL = @fullURL.match(/(.*)\/#{topicname}/)[1]
-#     STDERR.puts "baseURL -> #{@baseURL}"
-#     haml :topic, :locals => { :topicname => topicname }
-#   rescue
-#     haml :'404'
-#   end
-# end
-
 # Get a JSON file
 get '/:root/:locale/:guide/:topicname.json' do
   topicname = params[:guide] + "/" + params[:topicname] + ".json"
   locale = set_locale(params[:locale])
   root = params[:root]
-  STDERR.puts "Getting the toc json file"
     begin
       @this_json = get_attachment(topicname, topicname, locale)
       return @this_json
@@ -384,7 +337,6 @@ get '/:root/:locale/:guide/:topicname' do
   topicname = params[:guide] + "/" + params[:topicname]
   locale = set_locale(params[:locale])
   root = params[:root]
-  STDERR.puts "Getting #{topicname}"
     begin
       @topickey = params[:topicname]
       @guide = params[:guide]
@@ -392,19 +344,16 @@ get '/:root/:locale/:guide/:topicname' do
       @thisdoc = Nokogiri::XML(@attachment)
       @toc_json = @thisdoc.xpath("//meta[@name = 'SFDC.TOC']/@content")
       @toc_json_URL = params[:guide] + "/" + @toc_json.to_s
-      STDERR.puts "toc_json -> #{@toc_json_URL}"
       @content=@thisdoc.xpath('//body').children()
       @topictitle=@thisdoc.xpath('//title[1]').inner_text()
-      @sidebartitle =t.title.toc
+      @sidebartitle=@thisdoc.xpath("//meta[@name = 'SFDC.Title']/@content")
       @sidebarcontent = t.toc
       @fullURL = request.url
       @baseURL= "#{@fullURL.match(/(.*)\/#{topicname}/)[1]}"
-      STDERR.puts "baseURL is now #{@baseURL}"
       @toc_json_fullURL = "#{@baseURL}/#{@toc_json_URL}"
-      STDERR.puts "The URL for the json is #{@toc_json_fullURL}"
       haml :topic, :locals => { :topicname => topicname}
   rescue
-      STDERR.puts "Help, I've been rescued from a topic call"
+      STDERR.puts "I've been rescued from a topic call, this results in a 404 error."
       haml :'404'
   end
 end
@@ -438,7 +387,5 @@ get %r{(.*)} do |root|
   else
     locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
     redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
-    # Need to redirect
-#    redirect to("http://database.com")
   end
 end

@@ -3370,6 +3370,16 @@ input#filterSubmit {
     cursor:pointer;
 }
 
+input#filter{
+    background-image: url('./images/search16.png');
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+    padding-left: 22px;
+    padding-top: 2px;
+    height:20px;
+    border: 2px inset;
+}
+
 
 /*
   BEGIN ICON STYLES
@@ -3499,6 +3509,11 @@ div.nextprevarrows {
 }
 div.nextprevarrows_bottom {
     text-align: center;
+}
+
+h3.landingboxtitles {
+    color: #8ab529;
+    vertical-align: middle;
 }
 
 /* Add style overrides for dynatree */

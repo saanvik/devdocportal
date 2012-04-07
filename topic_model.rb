@@ -9,6 +9,11 @@ require 'highline/import'
 require './globals.rb'
 require './couchrest_sunspot.rb'
 
+configure :development do
+  LOCALDB = ENV['LOCALCOUCH_URL'] = "http://admin:admin@localhost:5984/spring12"
+  LOCALSOLR = ENV['LOCALSOLR_URL'] = "http://127.0.0.1:8990/solr"
+end
+
 case
 when ENV['CLOUDANT_URL']
   puts "Logging in with #{ENV['CLOUDANT_URL']}"

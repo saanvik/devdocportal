@@ -9,6 +9,7 @@ title:
   searchresults: Search Results
   facets: Facets
   main: Technical Library
+  first_time: First Time? Start Here.
 
 search_results:
   th_title: Title
@@ -25,9 +26,8 @@ search:
   tip_title: Tips on Searching
   tip_intro: Searches are simple.  Enter the terms you want to search for and click the search icon.
   tip_quotes: You can search for a phrase by surrounding it with quotation marks.  For example, "grant access" returns all the topics with the phrase "grant access", but doesn't return topics that contain only the term "grant" or "access", or a topic that contains both terms, but are separated by other words.
-  tip_plus_minus: You can use + and - to indicate mandatory or optional entries.  For example: <table><tr><th>Search String</th><th>Returns</th></tr><tr><td>grant + access</td><td>All topics with the terms "grant" and "access".</td></tr><tr><td>grant - access</td><td>All  topics with the term "grant" but without the term "access".</td></tr><tr><td>grant access</td><td>The same results as grant + access.</td></tr></table>
+  tip_plus_minus: 'You can use + and - to indicate mandatory or optional entries.  For example: <table><tr><th>Search String</th><th>Returns</th></tr><tr><td>grant + access</td><td>All topics with the terms "grant" and "access".</td></tr><tr><td>grant - access</td><td>All  topics with the term "grant" but without the term "access".</td></tr><tr><td>grant access</td><td>The same results as grant + access.</td></tr></table>'
   tip_wildcards: Wildcard searches aren't supported.
-
   placeholder: Search Technical Library
   filter_placeholder: Search within results
 
@@ -51,7 +51,7 @@ landing:
   popular_item_one: First popular item
   popular_item_two: Second popular item
   popular_item_three: Third popular item
-  guides_title: Getting Started
+  guides_title: Guides and Resources
   guides_table_title: Title
   guides_table_type: Type
   guides_table_feature_area: Area

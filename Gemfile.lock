@@ -35,7 +35,7 @@ GEM
     nokogiri (1.5.0)
     pr_geohash (1.0.0)
     r18n-core (0.4.11)
-    rack (1.3.5)
+    rack (1.4.1)
     rack-protection (1.1.4)
       rack
     rack-test (0.6.1)
@@ -83,6 +83,7 @@ DEPENDENCIES
   highline
   newrelic_rpm
   nokogiri
+  rack
   rack-test
   rake
   sinatra
