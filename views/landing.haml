@@ -43,18 +43,31 @@
                    :style => "vertical-align: middle;"}
               %h3{:class => "landingboxtitles"}
                 = t.title.first_time
-            %div{:class => "bd"}
-              %ul{:class => "bulletList",
-                  :style => "font-weight: bold;"}
-                %li
-                  %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp"}
-                    Introducing Databse.com Video                  
-                %li
-                  %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
-                    Getting Started with Database.com
-                %li
-                  %a{:href => "http://docs.database.com"}
-                    Database.com User's Guide
+            %div{:class => "bd line"}
+              %div{:class => "unit size1of2"}
+                %ul{:class => "bulletList",
+                    :style => "font-weight: bold;"}
+                  %li
+                    %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp"}
+                      Introducing Databse.com Video                  
+                  %li
+                    %a{:href => "/dbcom/#{@locale}/db_intro/quickstart_intro.htm"}
+                      Getting Started with Database.com
+                  %li
+                    %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
+                      Database.com Workbook
+              %div{:class => "unit size1of2 last"}
+                %ul{:class => "bulletList",
+                    :style => "font-weight: bold;"}
+                  %li
+                    %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp"}
+                      Introducing Databse.com Video                  
+                  %li
+                    %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
+                      Getting Started with Database.com
+                  %li
+                    %a{:href => "http://docs.database.com"}
+                      Database.com User's Guide
     %div{:class=> "unit size1of2 mrm lastUnit"}
       %div{:class => "box callout chatty"}
         %div{:class => "inner"}
@@ -64,21 +77,33 @@
                    :style => "vertical-align: middle;"}
               %h3{:class => "landingboxtitles"}
                 = t.title.popular_content
-            %div{:class => "bd"}
-              -# @todo Is this what we think is popular?
-              %ul{:class => "bulletList",
-                  :style => "font-weight: bold;"}
-                %li
-                  %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
-                    Getting Started with Database.com
-                %li
-                  %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
-                    Database.com Workbook
-                %li
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/"}
-                    Database.com Short Take Videos
+            %div{:class => "bd line"}
+              %div{:class => "unit size1of2"}
+                %ul{:class => "bulletList",
+                    :style => "font-weight: bold;"}
+                  %li
+                    %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
+                      Getting Started with Database.com
+                  %li
+                    %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
+                      Database.com Workbook
+                  %li
+                    %a{:href => "http://blog.database.com/blog/2011/08/30/"}
+                      Database.com Short Take Videos
+              %div{:class => "unit size1of2 last"}
+                %ul{:class => "bulletList",
+                    :style => "font-weight: bold;"}
+                  %li
+                    %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
+                      Getting Started with Database.com
+                  %li
+                    %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
+                      Database.com Workbook
+                  %li
+                    %a{:href => "http://blog.database.com/blog/2011/08/30/"}
+                      Database.com Short Take Videos
   %div
-    %div{:class => "h3"}
+    %div{:class => "h3 mll"}
       = t.landing.guides_title
     %div{:class => "box themed"}
       %div{:class => "inner mal"}
