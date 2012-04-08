@@ -60,14 +60,14 @@
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp"}
-                      Introducing Databse.com Video                  
+                    %a{:href => "https://github.com/forcedotcom/SalesforceMobileSDK-Samples/raw/master/Mobile_SDK_Workbook.pdf"}
+                      Mobile SDK Workbook
                   %li
-                    %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
-                      Getting Started with Database.com
+                    %a{:href => "http://www.salesforce.com/us/developer/docs/apex_workbook/apex_workbook.pdf"}
+                      Apex Workbook
                   %li
-                    %a{:href => "http://docs.database.com"}
-                      Database.com User's Guide
+                    %a{:href => "/dbcom/#{@locale}/db_intro/quickstart_intro.htm"}
+                      Database.com FAQs
     %div{:class=> "unit size1of2 mrm lastUnit"}
       %div{:class => "box callout chatty"}
         %div{:class => "inner"}
@@ -82,26 +82,26 @@
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
-                      Getting Started with Database.com
+                    %a{:href => "/dbcom/#{@locale}/db_sosl_soql/sforce_api_calls_soql.htm"}
+                      Database.com SOQL and SOSL Reference
                   %li
-                    %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
-                      Database.com Workbook
+                    %a{:href => "/dbcom/#{@locale}/db_apex/apex_testing_unit_tests.htm"}
+                      Unit Testing Apex
                   %li
-                    %a{:href => "http://blog.database.com/blog/2011/08/30/"}
-                      Database.com Short Take Videos
+                    %a{:href => "/dbcom/#{@locale}/db_apex/apex_reference.htm"}
+                      Database.com Limits
               %div{:class => "unit size1of2 last"}
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "http://www.salesforce.com/us/developer/docs/dbcom_intro/index.htm"}
-                      Getting Started with Database.com
+                    %a{:href => "/dbcom/#{@locale}/db_intro/dbcom_Limits.htm"}
+                      REST API Reference
                   %li
                     %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
                       Database.com Workbook
                   %li
                     %a{:href => "http://blog.database.com/blog/2011/08/30/"}
-                      Database.com Short Take Videos
+                      Data Loader Quick Start
   %div
     %div{:class => "h3 mll"}
       = t.landing.guides_title
@@ -149,8 +149,10 @@
             %tbody{:class => "content"}
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_help/index.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                  :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_help/index.htm",
+                     :class => "middle"}
                     Database.com User's Guide
                 %td
                   Guide
@@ -160,8 +162,10 @@
                   April 1, 2012
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_intro/quickstart_intro.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_intro/quickstart_intro.htm",
+                     :class => "middle"}
                     Getting Started with Database.com
                 %td
                   Guide
@@ -171,8 +175,10 @@
                   April 1, 2012
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"dbcom_rest_index.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/dbcom_rest_index.htm",
+                     :class => "middle"}
                     Database.com REST API Developer's Guide
                 %td
                   Guide
@@ -183,8 +189,10 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_apex/apex_intro.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_apex/apex_intro.htm",
+                     :class => "middle"}
                     Database.com Apex Code Developer's Guide
                 %td
                   Guide
@@ -195,8 +203,10 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_obj_ref/sforce_api_objects_concepts.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_obj_ref/sforce_api_objects_concepts.htm",
+                     :class => "middle"}
                     Database.com Object Reference
                 %td
                   Guide
@@ -207,8 +217,10 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_rest_api/intro_what_is_chatter_connect.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_rest_api/intro_what_is_chatter_connect.htm",
+                     :class => "middle"}
                     Database.com Chatter REST API Developer's Guide
                 %td
                   Guide
@@ -219,8 +231,10 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/db_sosl_soql/sforce_api_calls_soql.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_sosl_soql/sforce_api_calls_soql.htm",
+                     :class => "middle"}
                     Database.com SOQL/SOSL Reference
                 %td
                   Guide
@@ -231,8 +245,10 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_bulk_api/asynch_api_intro.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_bulk_api/asynch_api_intro.htm",
+                     :class => "middle"}
                     Database.com Bulk API Developer’s Guide
                 %td
                   Guide
@@ -243,8 +259,10 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_streaming_api/intro_stream.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_streaming_api/intro_stream.htm",
+                     :class => "middle"}
                     Database.com Streaming API Developer’s Guide
                 %td
                   Guide
@@ -255,8 +273,10 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png"}
-                  %a{:href=>"/dbcom/en-us/db_metadata_api/meta_intro.htm"}
+                  %img{:src => "/portal_images/guide_icon.png",
+                       :class => "middle"}
+                  %a{:href=>"/dbcom/en-us/db_metadata_api/meta_intro.htm",
+                     :class => "middle"}
                     Database.com Metadata API Developer's Guide
                 %td
                   Guide
