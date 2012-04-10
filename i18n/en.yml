@@ -1,5 +1,10 @@
 # English US label file
 
+# General
+
+# of, as in 5 of 10
+of: of
+
 title:
   popular_content: Popular Content
   toc: Table of Contents

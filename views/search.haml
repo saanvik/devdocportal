@@ -10,7 +10,7 @@
     $("#filter").keyup(function() {
       $.uiTableFilter( theTable, this.value );
       hiddenRows = $("table#deliverables tbody tr").filter(":not(:hidden)");
-      $("#searchTotal").text(hiddenRows.length);
+      $("#searchFiltered").text(hiddenRows.length);
     })
 
     $('#filter-form').submit(function(){
@@ -129,7 +129,11 @@
       %p{:class => "h2"}
         Search Results
       %p{:style => "padding-bottom: 10px; padding-top: 5px;"}
-        %span{:id => "searchTotal"}
+        %span{:id => "searchFiltered"}
+          = @search.total
+        %span
+          = t.of
+        %span{:id => "searchFiltered"}
           = @search.total
         %span 
           = t.search_results.count
