@@ -235,6 +235,7 @@ get '/:root/:locale/search/:query/facet' do
   type = params[:type].length > 0 ? params[:type].split : []
   @topictitle = t.title.searchresults
   @fullURL = request.url
+  STDERR.puts "full URL -> #{@fullURL}"
   @baseURL = @fullURL.match(/(.*)\/search\/.*/)[1]
   begin
     @search=Sunspot.search(Topic) do
@@ -296,6 +297,7 @@ end
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
   locale = set_locale(locale)
   query = params[:s]
+  STDERR.puts "Am I in a post?  what is my query? #{query}"
   redirect to("#{root}/#{locale}/search/#{query}")
 end
 

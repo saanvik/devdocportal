@@ -27,9 +27,9 @@
         $("#tree").dynatree({
         debugLevel:2,
         checkbox: true,
-        persist: false,
+        persist: true,
         selectMode: 3,
-        initAjax: { //Eventually get this back from couchdb
+        initAjax: { 
           url: "/facets.json",
         },
         onPostInit: function(isReloading, isError) {
@@ -141,6 +141,7 @@
       %p
         %span{:class => "h3"}
           Filters:
+          %span{:id=>"filterEnum"}
       %div{:class => "inner"}
         %div{:class => "box infoBg"}
           %div{:class => "mbs"}

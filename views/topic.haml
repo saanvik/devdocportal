@@ -3,10 +3,16 @@
       $("#tree").dynatree({
       debugLevel:2,
       checkbox: false,
-      persist: false,
+      persist: true,
       selectMode: 1,
-      initAjax: { //Eventually get this back from couchdb
-          url: "#{@toc_json_fullURL}"
+      initAjax: { 
+          url: "#{@toc_json_fullURL}",
+          addActiveKey: true,
+      },
+      onLazyRead: function(node){
+         node.appendAjax({
+              url: "#{@toc_json_fullURL}",
+        });
       },
       onActivate: function(node) {
         #{

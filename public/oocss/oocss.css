@@ -1796,7 +1796,7 @@ a:hover, a:focus {
 
 .colSort .ascending {
     background-color: #D5F1F9;
-    background-image: url("/oocss/images/asc.gif");
+    background-image: url("/oocss/images/desc.gif");
     background-repeat: no-repeat;
     background-position: center right;
 }
@@ -1809,7 +1809,7 @@ a:hover, a:focus {
 
 .colSort .descending {
     background-color: #D5F1F9;
-    background-image: url("/oocss/images/desc.gif");
+    background-image: url("/oocss/images/asc.gif");
     background-repeat: no-repeat;
     background-position: center right;
 }
