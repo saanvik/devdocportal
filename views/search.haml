@@ -71,6 +71,12 @@
         #{
           %Q^var redirectURL = '#{@baseURL}/search/#{query}/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" ");^
          }
+        #{
+          %Q^var baseURLWTF = '#{@baseURL}';^
+         }
+        #{
+          %Q^var queryWTF = '#{query}';^
+         }
          if(node.tree.isUserEvent()) {
             window.clearTimeout('timer');
             timer = window.setTimeout(function(){redirect(redirectURL)},1000);

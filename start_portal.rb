@@ -31,6 +31,8 @@ set :enable_cache, true
 set :short_ttl, 400
 set :long_ttl, 4600
 
+set :logging, true
+
 before do
   expires 500, :public, :must_revalidate
 end
@@ -143,6 +145,7 @@ helpers do
     #   return 'en-us'
     # end
   end
+
 end
 
 ######################################################################
@@ -209,6 +212,7 @@ end
 
 # Top level page
 get '/dbcom/:locale/dbcom_index.htm' do
+  STDERR.puts "In the top-level page"
   # Search only page should go back to the landing page
   @locale = set_locale(params[:locale])
   haml :landing
@@ -217,17 +221,20 @@ end
 
 # Go to the search page, nothing but the search
 get '/dbcom/:locale/search/' do
+  STDERR.puts "In the search/"
   @locale = set_locale(params[:locale])
   haml :search_info
 end
 
 get '/dbcom/:locale/search' do
+    STDERR.puts "In the search"
   @locale = set_locale(params[:locale])
   haml :search_info
 end
 
 # Actual search URL, with a facet
 get '/:root/:locale/search/:query/facet' do
+  STDERR.puts "In the faceted search"
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
@@ -235,9 +242,11 @@ get '/:root/:locale/search/:query/facet' do
   type = params[:type].length > 0 ? params[:type].split : []
   @topictitle = t.title.searchresults
   @fullURL = request.url
-  STDERR.puts "full URL -> #{@fullURL}"
   @baseURL = @fullURL.match(/(.*)\/search\/.*/)[1]
-  begin
+    if (@baseURL.include? 'search')
+      @baseURL.sub!(/\/search/,'')
+  end
+    begin
     @search=Sunspot.search(Topic) do
       keywords query do
         highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true
@@ -263,6 +272,7 @@ end
 # Actual search URL
 # @todo Do queries need to be escaped to be safe?
 get '/:root/:locale/search/:query' do
+  STDERR.puts "In the search with a query"
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
@@ -304,6 +314,7 @@ end
 
 # Grab all the relative links that go to images
 get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, imagename|
+  STDERR.puts "In the image route"
   begin
     set_content_type(imagename[/(?:.*)(\..*$)/, 1])
     referrer = request.referrer
@@ -319,6 +330,7 @@ end
 
 # Get a JSON file
 get '/:root/:locale/:guide/:topicname.json' do
+  STDERR.puts "In the json route"
   topicname = params[:guide] + "/" + params[:topicname] + ".json"
   locale = set_locale(params[:locale])
   root = params[:root]
@@ -332,10 +344,12 @@ end
 
 # Broken - fix it!
 get '/dbcom/en-us/db_help/dbcom_help_dbcom_user_guide.htm' do
+  STDERR.puts "In the broken redirect"
   redirect to("/dbcom/en-us/db_help/index.htm")
 end
 
 get '/:root/:locale/:guide/:topicname' do
+  STDERR.puts "In the topicname"
   topicname = params[:guide] + "/" + params[:topicname]
   locale = set_locale(params[:locale])
   root = params[:root]
@@ -362,17 +376,20 @@ end
 
 
 get '/:locale/:topicname.:format' do
+  STDERR.puts "In the topicname with a format"
   locale = set_locale(params[:locale])
   redirect to("/#{settings.default_root}/#{locale}/#{params[:topicname]}.#{params[:format]}")
 end
 
 
 get '/:root/:locale/?' do
+  STDERR.puts "In the locale with a question mark"
   locale = set_locale(params[:locale])
   redirect to("/#{params[:root]}/#{locale}/#{settings.default_topic}")
 end
 
 get '/:topicname.:format' do
+    STDERR.puts "In the root:format"
   locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
   redirect to("/#{settings.default_root}/#{locale}/#{params[:topicname]}.#{params[:format]}")
 end
@@ -380,6 +397,7 @@ end
 # Need to support URLs of the format
 # http://docs.database.com/dbcom?locale=en-us&target=<filename>&section=<section>
 get %r{(.*)} do |root|
+  STDERR.puts "In the context sensitive help route"
   if (
       (defined?(params[:locale])) &&
       (defined?(params[:target]))
@@ -388,6 +406,8 @@ get %r{(.*)} do |root|
     redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
   else
     locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
+    @fullURL = request.url
+    STDERR.puts "full URL -> #{@fullURL}"
     redirect to("/#{settings.default_root}/#{locale}/#{settings.default_topic}")
   end
 end
