@@ -1,6 +1,9 @@
 :javascript
   var timer;
-  function hideWrongDiv() {
+
+  function clearFilterBox(key) {
+      var myTree = $("#tree").dynatree("getTree");
+      myTree.selectKey(key,false);
   }
   
   $(function() { 
@@ -57,10 +60,10 @@
             }
           });
         if (select) {
-           $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + ' X</span>');
+           $("#filterEnum").append('<span class="btn" id="myKey_' + node.data.key + '" onclick="clearFilterBox(\''+ node.data.key + '\');">' + node.data.title + ' <span class="closeFilterBox greyedText">X</span></span>');
            if (node.getChildren()) {
              $.map(node.getChildren(),function(node){
-               $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</span>');
+               $("#filterEnum").append('<span class="btn" id="myKey_' + node.data.key + '" onclick="clearFilterBox(\''+ node.data.key + '\');">' + node.data.title + ' <span class="closeFilterBox greyedText">X</span></span>');
            });}
            } else {
         $("#myKey_" + node.data.key).remove();
@@ -71,13 +74,7 @@
         #{
           %Q^var redirectURL = '#{@baseURL}/search/#{query}/facet?app_area=' + selFeatureAreaKeys.join(" ") + '&type=' + selTypeKeys.join(" ");^
          }
-        #{
-          %Q^var baseURLWTF = '#{@baseURL}';^
-         }
-        #{
-          %Q^var queryWTF = '#{query}';^
-         }
-         if(node.tree.isUserEvent()) {
+         if(node.tree.isUserEvent() || (! select)) {
             window.clearTimeout('timer');
             timer = window.setTimeout(function(){redirect(redirectURL)},1000);
           }
@@ -87,19 +84,6 @@
       }});
       });
 
--# Okay, this is all wrong.  The braces and parens are wrong.  If you fix them, though, it doesn't sort.  Any ideas?
-:javascript
-  $(document).ready(function() {
-     $(".sort_table").tablesorter({
-     cssAsc: "ascending",
-     cssDesc: "descending",
-     headers: { 
-            1: { 
-                sorter: true 
-            }
-     }
-     );
-     });
 :javascript
   $(document).ready(function() {
      #{
@@ -111,7 +95,6 @@
        end
      }
   });
-
 
 %div{:class => "line",
      :id => "searchResultsLine"}
