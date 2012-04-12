@@ -199,10 +199,8 @@
                       %div{:class => "mrl"}
                         = @snippet
                       %div
-                        (From
                         %a{:href => "/#{root}/#{locale}/#{@homelink}"}
-                          #{@maintitle}
-                        )
+                          (From #{@maintitle})
                     %td= @doctype
                     %td= @technology
                     %td= @localtime
