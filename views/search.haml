@@ -118,7 +118,7 @@
   -# This div is for 1 or more search results
   %div{:class => "unit size3of4 last_unit",
        :id => "searchResultsDiv"}
-    %div{:class => "box chatty infoBg"}
+    %div
       %p{:class => "h2"}
         Search Results
       %p{:style => "padding-bottom: 10px; padding-top: 5px;"}
@@ -139,9 +139,9 @@
            :class => "mls",
            :onclick => "clearFacets();",
            :href => "javascript:void(0);"}= t.search.filter_clear
-      %div{:class => "inner"}
-        %div{:class => "box infoBg"}
-          %div{:class => "mbs"}
+      %div{:class => "box themed standardBg"}
+        %div{:class => "inner"}
+          %div{:class => "hd mas"}
             %form{:id=>"filter-form"}
               %input{:name => "filter",
                      :type=>"text",
@@ -149,8 +149,8 @@
                      :value => "",
                      :maxlength => "30",
                      :size => "30",
-                     :placeholder => t.search.filter_placeholder}
-          %div{:class => "data colSort"}
+                     :placeholder => t.filter.placeholder}
+          %div{:class => "bd data colSort"}
             %table{:class => "txtL sort_table search_results",
                    :style => "table-layout: fixed;",
                    :id => "deliverables"}
