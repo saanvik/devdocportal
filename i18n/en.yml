@@ -35,6 +35,7 @@ search:
   tip_wildcards: Wildcard searches aren't supported.
   placeholder: Search Technical Library
   filter_placeholder: Filter Results
+  filter_clear: Clear all
 
 misc:
   try_again: Please try again.
