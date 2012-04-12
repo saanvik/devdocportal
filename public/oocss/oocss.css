@@ -3524,6 +3524,13 @@ h3.landingboxtitles {
 .middle {
     vertical-align: middle;
 }
+
+.codeph .varname, .codeblock .varname
+{
+    font-style: italic;
+    font-weight: bold;
+}
+
 /* Add style overrides for dynatree */
 span.dynatree-active a {
     background: #c4e7f3;

@@ -57,10 +57,10 @@
             }
           });
         if (select) {
-           $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
+           $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + ' X</span>');
            if (node.getChildren()) {
              $.map(node.getChildren(),function(node){
-               $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</a>');
+               $("#filterEnum").append('<span class="btn primaryBtn" id="myKey_' + node.data.key + '">' + node.data.title + '</span>');
            });}
            } else {
         $("#myKey_" + node.data.key).remove();

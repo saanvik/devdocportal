@@ -27,11 +27,9 @@ end
 set :static, true
 set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
 set :cache, Dalli::Client.new
-set :enable_cache, true
+set :enable_cache, false
 set :short_ttl, 400
 set :long_ttl, 4600
-
-set :logging, true
 
 before do
   expires 500, :public, :must_revalidate
@@ -96,7 +94,6 @@ end
 # Switch to HTML error for untranslated messages
 ::R18n::Filters.off(:untranslated)
 ::R18n::Filters.on(:untranslated_html)
-
 
 # Sinatra helpers go here
 helpers do
@@ -243,10 +240,10 @@ get '/:root/:locale/search/:query/facet' do
   @topictitle = t.title.searchresults
   @fullURL = request.url
   @baseURL = @fullURL.match(/(.*)\/search\/.*/)[1]
-    if (@baseURL.include? 'search')
-      @baseURL.sub!(/\/search/,'')
+  if (@baseURL.include? 'search')
+    @baseURL.sub!(/\/search/,'')
   end
-    begin
+  begin
     @search=Sunspot.search(Topic) do
       keywords query do
         highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true
@@ -272,7 +269,6 @@ end
 # Actual search URL
 # @todo Do queries need to be escaped to be safe?
 get '/:root/:locale/search/:query' do
-  STDERR.puts "In the search with a query"
   root = params[:root]
   locale = set_locale(params[:locale])
   query = params[:query]
@@ -281,6 +277,7 @@ get '/:root/:locale/search/:query' do
   @topictitle = t.title.searchresults
   @fullURL = request.url
   @baseURL = @fullURL.match(/(.*)\/search\/.*/)[1]
+  STDERR.puts "In the search with a query"
   begin
     @search=Sunspot.search(Topic) do
       keywords query do
@@ -290,6 +287,7 @@ get '/:root/:locale/search/:query' do
       paginate :page => 1, :per_page => 1500
     end
   rescue
+    STDERR.puts "Getting rescued in the search"
     haml :search, :locals => {:locale => locale, :root => root, :query => query, :app_area => app_area, :type => type }
   else
     @results = @search.results
