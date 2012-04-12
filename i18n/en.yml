@@ -48,7 +48,7 @@ facets:
 
 
 filter:
-  placeholder: Filter Table
+  placeholder: Filter guides and resources
 
 landing:
   first_time_item_one: First getting started item

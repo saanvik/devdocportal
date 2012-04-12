@@ -305,6 +305,7 @@ end
 post %r{/([^\/]*)\/([^\/]*)\/.*} do |root,locale|
   locale = set_locale(locale)
   query = params[:s]
+  query.sub!(/\%/, '%25')
   STDERR.puts "Am I in a post?  what is my query? #{query}"
   redirect to("#{root}/#{locale}/search/#{query}")
 end
