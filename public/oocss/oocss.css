@@ -76,6 +76,7 @@ pre, code, kbd, samp, tt {
 
 th.permTableHeader {
 	text-align: center;
+	font-size: 0.8em;
 	
 }
 .line:after {
