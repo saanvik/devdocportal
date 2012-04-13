@@ -15,7 +15,7 @@
         :media => "all",
         :href => "/oocss/oocss.css"}
       %script{:type => "text/javascript",
-            :src => "/js/jquery-1.7.min.js"}
+            :src => "/js/jquery-1.7.1.min.js"}
       %script{:type => "text/javascript",
               :src => "/js/jquery.tablesorter.min.js"}
       %script{:type => "text/javascript",
@@ -31,7 +31,7 @@
         $(document).ready(function() 
         { 
          $(".sort_table").tablesorter({cssAsc: "ascending", cssDesc: "descending"});
-         });
+        });
 
   %body
     %div{:class => "callout wizardBg mam"}
@@ -62,6 +62,7 @@
                   %input{:type=>"text",
                          :id=>"s",
                          :name=>"s",
+                         :title=>t.search.placeholder,
                          :placeholder=>t.search.placeholder}
                 %input{:type=>"submit",
                        :value=>"",

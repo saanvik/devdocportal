@@ -2,19 +2,6 @@
 -# haven't search for anything, or haven't clicked a context sensitive
 -# help link
 :javascript
-  $(document).ready(function() 
-    { 
-     $(".sort_table").tablesorter({
-     cssAsc: "ascending",
-     cssDesc: "descending"
-     headers: { 
-            0: { 
-                sorter: false 
-            }, 
-     });
-    });
-
-:javascript
   $(function() { 
     var theTable = $('table#deliverables')
 
@@ -46,7 +33,13 @@
                     :style => "font-weight: bold;"}
                   %li
                     %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp"}
-                      Introducing Database.com Video                  
+                     Video: Introducing Database.com
+                  %li
+                    %a{:href=>"(http://blog.database.com/blog/category/short-takes/"}
+                      Videos: Database.com Short Takes
+                  %li
+                    %a{:href=>"/dbcom/#{@locale}/db_intro/dbcom_Database_com_Overview.htm"}
+                      Database.com Overview
                   %li
                     %a{:href => "/dbcom/#{@locale}/db_intro/quickstart_intro.htm"}
                       Getting Started with Database.com
@@ -109,9 +102,9 @@
             %input{:name => "filter",
                    :type=>"text",
                    :id=>"filter",
-                   :value => "",
                    :maxlength => "30",
                    :size => "30",
+                   :title => t.filter.placeholder,
                    :placeholder => t.filter.placeholder}
         %div{:class => "bd data colSort"}
           %table{:class => "txtL sort_table search_results",

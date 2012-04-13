@@ -149,6 +149,7 @@
                      :value => "",
                      :maxlength => "30",
                      :size => "30",
+                     :title => t.filter.placeholder,
                      :placeholder => t.filter.placeholder}
           %div{:class => "bd data colSort"}
             %table{:class => "txtL sort_table search_results",
@@ -186,7 +187,7 @@
                     - else @localtime = l Time.at(hit.result.updated_at.to_i).to_date, :full
                   - if (hit.highlight(:content).nil?)
                     - then @snippet = ""
-                    - else @snippet = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{word}</span>" }
+                    - else @snippet = hit.highlight(:content).format { |word| "<span class=\"highlight\">#{EscapeUtils.escape_html(word)}</span>"}
                   - @doctype = hit.result.doctype
                   - @technology = hit.result.technology
                   - @maintitle = hit.result.maintitle
