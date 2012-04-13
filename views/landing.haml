@@ -33,31 +33,25 @@
                     :style => "font-weight: bold;"}
                   %li
                     %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp"}
-                     Video: Introducing Database.com
+                      Video: Introducing Database.com
                   %li
                     %a{:href=>"(http://blog.database.com/blog/category/short-takes/"}
                       Videos: Database.com Short Takes
                   %li
                     %a{:href=>"/dbcom/#{@locale}/db_intro/dbcom_Database_com_Overview.htm"}
                       Database.com Overview
-                  %li
-                    %a{:href => "/dbcom/#{@locale}/db_intro/quickstart_intro.htm"}
-                      Getting Started with Database.com
-                  %li
-                    %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
-                      Database.com Workbook
               %div{:class => "unit size1of2 last"}
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "https://github.com/forcedotcom/SalesforceMobileSDK-Samples/raw/master/Mobile_SDK_Workbook.pdf"}
+                    %a{:href => "/dbcom/#{@locale}/dbcom_workbook/workbook_preface.htm"}
+                      Database.com Workbook
+                  %li
+                    %a{:href => "/dbcom/#{@locale}/mobile_workbook/mobile_intro.htm"}
                       Mobile SDK Workbook
                   %li
-                    %a{:href => "http://www.salesforce.com/us/developer/docs/apex_workbook/apex_workbook.pdf"}
-                      Apex Workbook
-                  %li
-                    %a{:href => "/dbcom/#{@locale}/db_intro/quickstart_intro.htm"}
-                      Database.com FAQs
+                    %a{:href=>"/dbcom/#{@locale}/db_help/integrate_what_is_api.htm"}
+                      Which API Should I Use?
     %div{:class=> "unit size1of2 mrm lastUnit"}
       %div{:class => "box callout chatty"}
         %div{:class => "inner"}
@@ -72,26 +66,26 @@
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "/dbcom/#{@locale}/db_sosl_soql/sforce_api_calls_soql.htm"}
-                      Database.com SOQL and SOSL Reference
-                  %li
-                    %a{:href => "/dbcom/#{@locale}/db_apex/apex_testing_unit_tests.htm"}
-                      Unit Testing Apex
-                  %li
                     %a{:href => "/dbcom/#{@locale}/db_apex/apex_reference.htm"}
                       Database.com Limits
+                  %li
+                    %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm"}
+                      Data Loader Quick Start
+                  %li
+                    %a{:href => "/dbcom/#{@locale}/db_rest_api/resources_list.htm"}
+                      REST API Reference
               %div{:class => "unit size1of2 last"}
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "/dbcom/#{@locale}/db_intro/dbcom_Limits.htm"}
-                      REST API Reference
+                    %a{:href => "/dbcom/#{@locale}/db_sosl_soql/sforce_api_calls_soql.htm"}
+                      Database.com SOQL and SOSL Reference
                   %li
-                    %a{:href => "http://www.salesforce.com/us/developer/docs/workbook_database/workbook_database.pdf"}
-                      Database.com Workbook
+                    %a{:href => "/dbcom/#{@locale}/db_apex/apex_methods_systm.htm"}
+                      Apex Classes and Methods
                   %li
-                    %a{:href => "http://blog.database.com/blog/2011/08/30/"}
-                      Data Loader Quick Start
+                    %a{:href => "/dbcom/#{@locale}/db_apex/apex_testing_unit_tests.htm"}
+                      Unit Testing Apex
   %div
     %div{:class => "h3 mll"}
       = t.landing.guides_title
@@ -147,7 +141,7 @@
                 %td
                   Guide
                 %td
-                  database.com
+
                 %td
                   April 1, 2012
               %tr
@@ -160,7 +154,7 @@
                 %td
                   Guide
                 %td
-                  Database.com
+
                 %td
                   April 1, 2012
               %tr
@@ -201,7 +195,7 @@
                 %td
                   Guide
                 %td
-                  database.com
+
                 %td
                   April 1, 2012
 
@@ -215,7 +209,7 @@
                 %td
                   Guide
                 %td
-                  API
+                  Chatter REST API
                 %td
                   April 1, 2012
 
@@ -284,7 +278,7 @@
                 %td
                   Guide
                 %td
-                  API
+                  SOAP API
                 %td
                   April 1, 2012
               %tr
@@ -297,7 +291,7 @@
                 %td
                   Release Notes
                 %td
-                  Database.com
+
                 %td
                   April 1, 2012
               %tr
@@ -310,23 +304,22 @@
                 %td
                   Workbook
                 %td
-                  Database.com
+
                 %td
                   April 1, 2012
               %tr
                 %td
                   %img{:src => "/portal_images/tutorial_icon.png",
                        :class => "middle"}
-                  %a{:href => "http://www.salesforce.com/us/developer/docs/apex_workbook/apex_workbook.pdf",
+                  %a{:href => "/dbcom/#{@locale}/mobile_workbook/mobile_intro.htm",
                      :class => "middle"}
-                    Apex Workbook
+                    Mobile SDK Workbook
                 %td
                   Workbook
                 %td
-                  Apex
+                  Mobile
                 %td
                   April 1, 2012
-
               %tr
                 %td
                   %img{:src => "/portal_images/tutorial_icon.png",
@@ -337,7 +330,146 @@
                 %td
                   Video
                 %td
-                  Database.com
+
                 %td
                   April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm",
+                     :class => "middle"}
+                    Data Loader Quick Start
+                %td
+                  Video
+                %td
 
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-001/",
+                     :class => "middle"}
+                    Short Take #1: Quick Tour of the console
+                  %p{:class => "mll, dev_desc"}
+                    This episode is a brief tour of the Database.com Console, the tool you’ll use to do all sorts of things with your database, including common administration tasks,
+                    app schema design, and security policy implementations.
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-002/",
+                     :class => "middle"}
+                    Short Take #2: Orgs and Sandboxes
+                  %p{:class => "mll, dev_desc"}
+                    When your app uses Database.com, all of the complicated, time-consuming, and costly problems related to database provisioning, configuration, and management don’t exist thanks
+                    to orgs and sandboxes. In this episode, you’ll learn about these basic terms and concepts and how to create a sandbox.
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-003/",
+                     :class => "middle"}
+                    Short Take #3: Your first Object and Standard Fields
+                  %p{:class => "mll, dev_desc"}
+                    With Database.com, it’s easy to create an object (aka table) for storing application data. This episode shows you how to get started. Along the way, you’ll learn about standard
+                    fields and API names.
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-004/",
+                     :class => "middle"}
+                    Short Take #4: Data Types and Custom Fields
+                  %p{:class => "mll, dev_desc"}
+                    When you design objects for your app, you’ll need to create custom fields with the correct data types to store your data. This episode gets you started.
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-005/",
+                     :class => "middle"}
+                    Short Take #5: Workbench Tour
+                  %p{:class => "mll, dev_desc"}
+                    To browse and manipulate Database.com data, view your org’s metadata, or execute some code, you can use a handy tool called Workbench. This episode is a quick preview of the
+                    power of Workbench.
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-006/",
+                     :class => "middle"}
+                    Short Take #6: Relate a Master and Detail Object
+                  %p{:class => "mll, dev_desc"}
+                    Want to build new relationships? This episode can help you learn how … with Database.com master-detail object relationships. You’ll also see how to use Workbench to
+                    work with related records.
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-007/",
+                     :class => "middle"}
+                    Short Take #7: Create a Roll-Up Summary field
+                  %p{:class => "mll, dev_desc"}
+                    This episode shows you how to add a roll-up summary field to a master object that aggregates information in a master record from related detail records. All with a few
+                    clicks of your mouse and without any code!
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
+              %tr
+                %td
+                  %img{:src => "/portal_images/tutorial_icon.png",
+                       :class => "middle"}
+                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-008/",
+                     :class => "middle"}
+                    Short Take #8
+                  %p{:class => "mll, dev_desc"}
+                    Data integrity enforcement by the database helps ensure that apps are working with valid data. In this episode, you’ll explore many features that Database.com has to help
+                    enforce data integrity, including basic data types, unique and required fields, and validation rules.
+                %td
+                  Video
+                %td
+
+                %td
+                  April 1, 2012
