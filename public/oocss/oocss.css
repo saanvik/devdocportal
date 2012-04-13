@@ -955,6 +955,7 @@ em {
 }
 .bulletList {
     padding-left: 20px;
+    margin-top: 1em;
 }
 .bulletList li {
     list-style: disc outside none;
@@ -1006,6 +1007,7 @@ hr.divider_strong {
 .data {
     position: relative;
     text-align: left;
+    padding-top: 1em;
 }
 .data table {
     width: 100%;
@@ -3484,7 +3486,7 @@ cite {
     -webkit-box-shadow: 0 00px 0px #137C9E;
     background-color: #FFFFFF;
     border-top: 0px;
-    margin-top: 30px;
+    margin-top: 1.5em;
 }
    
 .techlib:hover {
@@ -3510,6 +3512,14 @@ div.nextprevarrows {
 }
 div.nextprevarrows_bottom {
     text-align: center;
+}
+
+div.nextprevarrows_bottom span a img {
+    vertical-align: middle;
+}
+
+.nextprevseparator {
+    padding-right: 0.4em;
 }
 
 h3.landingboxtitles {
@@ -3538,6 +3548,16 @@ h3.landingboxtitles {
 div.section {
     margin-top: 2.25em;
 }
+
+.nested1 {
+    margin-top: 2em;
+}
+
+div.nested1 div.body {
+    margin-top: 1em;
+}
+
+
 
 /* Add style overrides for dynatree */
 span.dynatree-active a {
