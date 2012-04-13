@@ -29,7 +29,7 @@ search:
   tip_facets: Within the search results, you can select feature areas or document types to filter your results, or you can enter additional terms to search withing the results.
   tip_filter:  For example, if you select "Objects and Fields" and "Apex Code" feature areas, and documents of type "Guides" and "Workbooks" your search results will include all topics in any Guide or Workbook whose features match either "Objects and Fields" or "Apex Code".
   tip_title: Tips on Searching
-  tip_intro: Searches are simple.  Enter the terms you want to search for and click the search icon.
+  tip_intro: Enter the terms you want to search for and click the search icon.
   tip_quotes: You can search for a phrase by surrounding it with quotation marks.  For example, "grant access" returns all the topics with the phrase "grant access", but doesn't return topics that contain only the term "grant" or "access", or a topic that contains both terms, but are separated by other words.
   tip_plus_minus: 'You can use + and - to indicate mandatory or optional entries.  For example: <table><tr><th>Search String</th><th>Returns</th></tr><tr><td>grant + access</td><td>All topics with the terms "grant" and "access".</td></tr><tr><td>grant - access</td><td>All  topics with the term "grant" but without the term "access".</td></tr><tr><td>grant access</td><td>The same results as grant + access.</td></tr></table>'
   tip_wildcards: Wildcard searches aren't supported.
@@ -60,6 +60,6 @@ landing:
   guides_title: Guides and Resources
   guides_table_title: Title
   guides_table_type: Type
-  guides_table_feature_area: Area
+  guides_table_feature_area: Feature area
   guides_table_updated: Last updated
   

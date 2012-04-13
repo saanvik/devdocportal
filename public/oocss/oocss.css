@@ -959,7 +959,7 @@ em {
 }
 .bulletList li {
     list-style: disc outside none;
-    margin: 3px 0 15px 0;
+    margin: 3px 0 0.75em 0;
 }
 .ideaList ul {
     margin: 4px;
@@ -3512,6 +3512,7 @@ div.nextprevarrows {
 }
 div.nextprevarrows_bottom {
     text-align: center;
+    margin-top: 1em;
 }
 
 div.nextprevarrows_bottom span a img {
@@ -3557,7 +3558,9 @@ div.nested1 div.body {
     margin-top: 1em;
 }
 
-
+.bluetext {
+    color: #2861A1;
+}
 
 /* Add style overrides for dynatree */
 span.dynatree-active a {

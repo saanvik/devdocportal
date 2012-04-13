@@ -67,10 +67,10 @@
             }
           });
         if (select) {
-           $("#clearAll").before('<span class="btn" id="myKey_' + node.data.key + '" onclick="clearFilterBox(\''+ node.data.key + '\');">' + node.data.title + ' <span class="closeFilterBox greyedText">X</span></span>');
+           $("#clearAll").before('<span class="btn bluetext pas" id="myKey_' + node.data.key + '" onclick="clearFilterBox(\''+ node.data.key + '\');">' + node.data.title + ' <span class="closeFilterBox greyedText pls">X</span></span>');
            if (node.getChildren()) {
              $.map(node.getChildren(),function(node){
-               $("#clearAll").before('<span class="btn" id="myKey_' + node.data.key + '" onclick="clearFilterBox(\''+ node.data.key + '\');">' + node.data.title + ' <span class="closeFilterBox greyedText">X</span></span>');
+               $("#clearAll").before('<span class="btn bluetext pas" id="myKey_' + node.data.key + '" onclick="clearFilterBox(\''+ node.data.key + '\');">' + node.data.title + ' <span class="closeFilterBox greyedText pls">X</span></span>');
            });}
            } else {
         $("#myKey_" + node.data.key).remove();
@@ -134,11 +134,11 @@
       %p
         %span{:class => "h3"}
           Filters:
-      %p{:id=>"filterEnum"}
-        %a{:id=>"clearAll",
-           :class => "mls",
-           :onclick => "clearFacets();",
-           :href => "javascript:void(0);"}= t.search.filter_clear
+        %span{:id=>"filterEnum"}
+          %a{:id=>"clearAll",
+             :class => "mls",
+             :onclick => "clearFacets();",
+             :href => "javascript:void(0);"}= t.search.filter_clear
       %div{:class => "box themed standardBg"}
         %div{:class => "inner"}
           %div{:class => "hd mas"}
@@ -208,9 +208,9 @@
   -# This div is for no search results
   %div{:class => "unit size3of4 last_unit",
        :id => "noSearchResultsDiv"}
-    %h2
+    %p{:class => "h2"}
       = t.search.noresults_title
-    %p
+    %p{:style => "padding-bottom: 10px; padding-top: 5px;"}
       %span 
         = t.search.noresults
       %span <b>#{query}</b>
@@ -220,7 +220,7 @@
     %p{:id => "filterEnum"}
 
     %div{:class => "data colSort"}
-      %h2 Tips on Searching
+      %p{:class=>"h4"}Tips on Searching
       %p
         = t.search.tip_intro
       %p
