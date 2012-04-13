@@ -3532,6 +3532,10 @@ h3.landingboxtitles {
     color: #808080;
 }
 
+.fadedGreyText {
+    color: #7d7d84;
+}
+
 .middle {
     vertical-align: middle;
 }

@@ -107,16 +107,16 @@
      :id => "searchResultsLine"}
   %div{:class => "unit size1of4",
        :id => "facetDiv"}
-    %div{:class=> "box callout chatty mrl"}
+    %div{:class=> "box mrl"}
       %div{:class => "inner"}
-        %div{:class => "hd mts"}
-          %span{:class => "h6 greyedText"}
+        %div{:class => "hd mts mbm"}
+          %span{:class => "fadedGreyText"}
             = t.facets.title
         %div{:class => "bd",
              :id => "tree"}
 
   -# This div is for 1 or more search results
-  %div{:class => "unit size3of4 last_unit",
+  %div{:class => "unit size3of4 last_unit mts",
        :id => "searchResultsDiv"}
     %div
       %p{:class => "h2"}
@@ -206,7 +206,7 @@
                     %td= @localtime
 
   -# This div is for no search results
-  %div{:class => "unit size3of4 last_unit",
+  %div{:class => "unit size3of4 last_unit mts",
        :id => "noSearchResultsDiv"}
     %p{:class => "h2"}
       = t.search.noresults_title
