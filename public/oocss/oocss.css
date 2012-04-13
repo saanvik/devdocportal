@@ -3511,6 +3511,11 @@ table.search_results * td {
 div.nextprevarrows {
     float:right;
 }
+
+div.nextprevarrows .link {
+    padding-left: 10px;
+}
+
 div.nextprevarrows_bottom {
     text-align: center;
     margin-top: 1em;
@@ -3518,10 +3523,12 @@ div.nextprevarrows_bottom {
 
 div.nextprevarrows_bottom span a img {
     vertical-align: middle;
+    padding: 20px;
 }
 
 .nextprevseparator {
-    padding-right: 0.4em;
+    padding-right: 1em;
+    padding-left: 1em;
 }
 
 h3.landingboxtitles {
