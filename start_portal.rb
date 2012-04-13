@@ -281,7 +281,7 @@ get '/:root/:locale/search/:query' do
   begin
     @search=Sunspot.search(Topic) do
       keywords query do
-        highlight :content, :fragment_size => 500, :phrase_highlighter => true, :require_field_match => true
+        highlight :content, :fragment_size => 250, :phrase_highlighter => true, :require_field_match => true
       end
       with(:locale, locale)
       paginate :page => 1, :per_page => 1500
