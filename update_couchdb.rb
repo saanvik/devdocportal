@@ -173,7 +173,8 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
   body_content.xpath('//table[contains(@class, "permTable") or contains(@class, "editionTable")]').remove
   body_content.xpath('//h1[1]').remove
   body_content.xpath('//*[contains(@class, "breadcrumb")]').remove
-  content=EscapeUtils.escape_html(body_content.children().inner_text())
+#  content=EscapeUtils.escape_html(body_content.children().inner_text())
+  content=body_content.children().inner_text()
   title=nokodoc.xpath('//title[1]').inner_text()
 
   @thistopic = Topic.by_topicname_and_locale.key(["#{filename}","#{locale}"]).first
