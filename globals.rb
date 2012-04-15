@@ -24,7 +24,7 @@ DOCSRCDIR ||= "#{WD}/help_build/en/"
 APPSRCDIR ||= "#{HOMEDIR}/dev/app/main/core/sfdc/htdocs"
 
 # Source of the app images
-APPIMGSRC ||= "#{HOMEDIR}/dev/app/main/core/sfdc/htdocs/img"
+APPIMGSRC ||= "#{HOMEDIR}/dev/app/main/core/sfdc/htdocs"
 
 # Default lang/locale
 LOCALE ||= "en-us"

@@ -115,6 +115,7 @@ helpers do
   # Get the attachment from the cache, or push it into the cache
   def get_attachment(topicname, attachmentname, locale, time_to_live=settings.long_ttl)
     begin
+      STDERR.puts "Get the attachment, trying #{topicname}, #{attachmentname}, #{locale}}"
       if(!settings.enable_cache)
       then
         @thistopic = Topic.by_topicname_and_locale.key([topicname,locale]).first
@@ -313,12 +314,13 @@ end
 
 
 # Grab all the relative links that go to images
-get %r{/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, imagepath, imagename|
-  STDERR.puts "In the image route"
+get %r{/([^\/]*)\/([^\/]*)\/([^\/]*)\/(.*images)\/([^\/]*)} do |root, locale, deliverable,imagepath, imagename|
+  STDERR.puts "In the image root"
   begin
     set_content_type(imagename[/(?:.*)(\..*$)/, 1])
     referrer = request.referrer
-    topicname = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/(.*)/)[3]
+    filename = referrer.match(/.*\/([^\/]*)\/([^\/]*)\/([^\/]*)\/(.*)/)[4]
+    topicname = "#{deliverable}/#{filename}"
     fullattachmentname = "#{imagepath}/#{imagename}"
     locale = set_locale(locale)
     @image = get_attachment(topicname, fullattachmentname, locale)

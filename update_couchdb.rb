@@ -270,12 +270,14 @@ end
 # Else is there just in case
 # Since the file may not be available, we need to catch any exceptions
 def upload_referenced_images(filename, mime_type, nokodoc, locale)
-  nokodoc.xpath("//img/@src[starts-with(.,'/img')]").each do |image|
+  mydirectory = filename.match(/([^\/]*)\/(.*)/)[1]
+  nokodoc.xpath("//img/@src").each do |image|
     begin
       @original_filename = filename
       case
       when (image.text =~ /^[^\/].*/)
-        fullpath = "#{DOCSRCDIR}#{image.text}"
+        mypath = "#{DOCSRCDIR}#{mydirectory}/#{image.text}"
+        fullpath = File.expand_path(mypath)
         begin
           mime_type = get_mime_type(fullpath[/(?:.*)(\..*$)/, 1])
         rescue
@@ -284,6 +286,7 @@ def upload_referenced_images(filename, mime_type, nokodoc, locale)
         begin
           if File.exist?(fullpath)
           then
+            STDERR.puts "Adding #{fullpath} to #{filename}"
             upload_attachment(filename,locale,fullpath,mime_type,image.text)
           else
             STDERR.puts "Failed to find the file\n\t #{fullpath}\n referenced by \n\t #{@original_filename}"
@@ -303,6 +306,8 @@ def upload_referenced_images(filename, mime_type, nokodoc, locale)
           then
             upload_attachment('app_image_document',locale,fullpath,mime_type,image.text)
           else
+            STDERR.puts "APPSRCDIR -> #{APPSRCDIR}"
+            STDERR.puts "image.text -> #{image.text}"
             STDERR.puts "Failed to find the file\n\t #{fullpath}\n referenced by \n\t #{@original_filename}"
           end
         rescue
@@ -340,6 +345,11 @@ Dir.glob("**/*.{html,htm,css,js,json}") do |filename|
     nokodoc = Nokogiri::XML(open("#{fullpath}"))
     locale=nokodoc.xpath('/html/@lang')
     update_metadata_from_attachment(filename,fullpath, mime_type,nokodoc,locale)
+    # STDERR.puts "About to upload referenced images"
+    # STDERR.puts "filename -> #{filename}"
+    # nokodoc.xpath("//img/@src").each do |image|
+    #   STDERR.puts "Here's an image #{image}"
+    # end
     upload_referenced_images(filename, mime_type,nokodoc,locale)
   else
     upload_attachment(filename,LOCALE,fullpath, mime_type,filename)
