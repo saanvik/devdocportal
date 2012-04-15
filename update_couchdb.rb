@@ -270,12 +270,14 @@ end
 # Else is there just in case
 # Since the file may not be available, we need to catch any exceptions
 def upload_referenced_images(filename, mime_type, nokodoc, locale)
-  mydirectory = filename.match(/([^\/]*)\/(.*)/)[1]
   nokodoc.xpath("//img/@src").each do |image|
+    # portal_images are in the public directory
+    unless (image.text.include? '/portal_images')
     begin
       @original_filename = filename
       case
       when (image.text =~ /^[^\/].*/)
+        mydirectory = @original_filename.match(/([^\/]*)\/(.*)/)[1]
         mypath = "#{DOCSRCDIR}#{mydirectory}/#{image.text}"
         fullpath = File.expand_path(mypath)
         begin
@@ -286,7 +288,6 @@ def upload_referenced_images(filename, mime_type, nokodoc, locale)
         begin
           if File.exist?(fullpath)
           then
-            STDERR.puts "Adding #{fullpath} to #{filename}"
             upload_attachment(filename,locale,fullpath,mime_type,image.text)
           else
             STDERR.puts "Failed to find the file\n\t #{fullpath}\n referenced by \n\t #{@original_filename}"
@@ -319,6 +320,7 @@ def upload_referenced_images(filename, mime_type, nokodoc, locale)
     rescue
       STDERR.puts "File\n\t #{image.text}\n referenced by \n\t #{@original_filename} is not formatted in a way I understand."
     end
+  end
   end
 end
 
