@@ -1,6 +1,18 @@
 :javascript
   var timer;
 
+  function expandAllNodes(key) {
+    $("#tree").dynatree("getRoot").visit(function(node){
+      node.expand(true);
+    });
+  }
+
+  function collapseAllNodes(key) {
+    $("#tree").dynatree("getRoot").visit(function(node){
+      node.expand(false);
+    });
+  }
+
   function clearFilterBox(key) {
       var myTree = $("#tree").dynatree("getTree");
       myTree.selectKey(key,false);
@@ -110,6 +122,14 @@
     %div{:class=> "box mrl"}
       %div{:class => "inner"}
         %div{:class => "hd mts mbm"}
+          %div{:class => "threequarterssizefont"}
+            %a{:onclick => "expandAllNodes();",
+               :href => "javascript:void(0);"}
+              Expand All
+            |             
+            %a{:onclick => "collapseAllNodes();",
+               :href => "javascript:void(0);"}
+              Collapse All
           %span{:class => "fadedGreyText"}
             = t.facets.title
         %div{:class => "bd",
