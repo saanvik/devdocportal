@@ -3595,3 +3595,6 @@ span.dynatree-active a {
     overflow: hidden;
 }
 
+span.dynatree-node a {
+    padding-bottom: 5px;
+}
