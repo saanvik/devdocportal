@@ -14,7 +14,9 @@ Requirements
 ------------
 
 * Ruby 1.9.2
-    ** Use "bundle install" to install the required gems
+    ** Use 
+	''' bundle install
+	to install the required gems
 * Couchdb
 * Solr
 * memcached
