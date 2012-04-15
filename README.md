@@ -5,8 +5,10 @@ This is the 178 working version of the developer documentation
 portal, a heroku based application for delivering content to
 salesforce, force.com, and database.com developers.
 
-[See it live](http://devdocportal-178.herokuapp.com/dbcom/en-us/dbcom_index.htm
-"See it live") 
+[See it live](http://devdocportal-178.herokuapp.com/dbcom/en-us/dbcom_index.htm) 
+
+Username: devdoc
+Password: test1234
 
 Requirements
 ------------
