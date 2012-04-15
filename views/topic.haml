@@ -45,8 +45,10 @@
     %div{:class=> "box callout chatty mrl"}
       %div{:class => "inner"}
         %div{:class => "hd mts"}
-          %span{:class => "h4"}
-            = @sidebartitle
+          %a{:href => "/dbcom/{@locale}/dbcom_index.htm",
+             :class => "highlight"}
+            %b
+              Home
         %div{:class => "bd",
              :id => "tree"}
   %div{:class => "unit size3of4 last_unit box chatty infoBg"}
