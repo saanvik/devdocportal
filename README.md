@@ -13,7 +13,7 @@ Password: test1234
 Requirements
 ------------
 
-* Ruby 1.9.2
+* Ruby 1.9.2   
     ** Use 
 	''' bundle install
 	to install the required gems
