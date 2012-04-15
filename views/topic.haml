@@ -1,4 +1,16 @@
 :javascript
+  function expandAllNodes(key) {
+    $("#tree").dynatree("getRoot").visit(function(node){
+      node.expand(true);
+    });
+  }
+
+  function collapseAllNodes(key) {
+    $("#tree").dynatree("getRoot").visit(function(node){
+      node.expand(false);
+    });
+  }
+
   $(function(){
       $("#tree").dynatree({
       debugLevel:2,
@@ -45,10 +57,19 @@
     %div{:class=> "box callout chatty mrl"}
       %div{:class => "inner"}
         %div{:class => "hd mts"}
-          %a{:href => "/dbcom/{@locale}/dbcom_index.htm",
-             :class => "highlight"}
-            %b
-              Home
+          %div
+            %a{:onclick => "expandAllNodes();",
+               :href => "javascript:void(0);"}
+              Expand All
+            |             
+            %a{:onclick => "collapseAllNodes();",
+               :href => "javascript:void(0);"}
+              Collapse All
+          %div
+            %a{:href => "/dbcom/{@locale}/dbcom_index.htm",
+               :class => "highlight"}
+              %b
+                Home
         %div{:class => "bd",
              :id => "tree"}
   %div{:class => "unit size3of4 last_unit box chatty infoBg"}
