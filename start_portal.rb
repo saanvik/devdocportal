@@ -145,6 +145,12 @@ helpers do
     # end
   end
 
+  #This is one big case statement that tags the
+  # @todo - Figure out where the content comes from (probably an xpath on the attachment) and how to map it.
+  #def create_tags()
+
+  #end
+
 end
 
 ######################################################################
@@ -252,7 +258,7 @@ get '/:root/:locale/search/:query/facet' do
       end
       with(:locale, locale)
       with(:app_area,app_area) if app_area.length > 0
-      with(:type).any_of(type) if type.length > 0
+      with(:doctype).any_of(type) if type.length > 0
       paginate :page => 1, :per_page => 1500
     end
   rescue

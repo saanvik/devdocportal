@@ -23,6 +23,10 @@
       #{
          app_area.map{ |area | "myTree.selectKey('#{area}',false);"}.join '\n' unless app_area.nil?
       }
+      #{
+         type.map{ |mytype | "myTree.selectKey('#{mytype}',false);"}.join '\n' unless type.nil?
+      }
+
   }
 
   $(function() { 
@@ -61,6 +65,10 @@
         #{
              app_area.map{ |area | "this.selectKey('#{area}');"}.join '\n' unless app_area.nil?
           }
+        #{
+             type.map{ |thistype | "this.selectKey('#{thistype}');"}.join '\n' unless type.nil?
+          }
+
         this.getRoot().visit(function(node){
           node.expand(true);
           });
@@ -104,14 +112,21 @@
       });
 
 :javascript
-  $(document).ready(function() {
+  $(document).onload(function() {
      #{
-       if (@search.total > 0)
-       then
-       '$("#noSearchResultsDiv").remove();'
+       if (not(@search.nil?))
+       then 
+         if (@search.total > 0)
+         then
+         '$("#noSearchResultsDiv").remove();'
+         else
+         '$("#searchResultsDiv").remove();'
+         end
        else
-       '$("#searchResultsDiv").remove();'
+         '$("#searchResultsDiv").remove();'
+         # Why doesn't this remove it before loading?
        end
+
      }
   });
 

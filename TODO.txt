@@ -3,23 +3,31 @@ DEV DOC PORTAL PROJECT    -*- mode: org; -*-
 This TODO is designed for emacs org mode
 
 Next steps
-* TODO Look up popups from Org deadlines
-* TODO Look up importing dates from Exchange/iCal
+* TODO Finish up the type facets
+* TODO Fix styles for shortdesc on landing page
+** Landing page should be able to use deliverable metadata document
+* TODO Fix guide links on search results page
+* TODO Finish tags [0/1]
+** TODO Create a json file to upload to couch as part of the build that has all the metadata for the deliverable
+** TODO Push an identifier for the deliverable into the HTML
+** TODO Create a helper to pull the content out
 * TODO Send labels for localization 
-  DEADLINE: <2012-02-03 Fri 13:30>
+  DEADLINE: <2012-04-18 Wed 13:30>
+** TODO Update all the haml files to make labels out of everythign
+** TODO Figure out what Evelyn was talking about with x of y
 * Write a rake file to [1/5]
 ** TODO Build the doc
-** DONE Update the local system
-   CLOSED: [2012-01-30 Mon 08:34]
+** TODO Push the content into the database
 ** TODO Run automated tests on local system
-** TODO Monitor remote [/]
+** TODO Monitor remote [2/4]
 *** Can this be done on a server running on my linux box?
 *** Maybe use pulse for this, too.
 *** TODO Report last update in CouchDB
 **** This is likely easiest to do by setting up a view on the DB using couchrest
-*** TODO Report status of site (Ranger?)
-*** TODO New Relic or Blitz test?
-*** TODO Can google voice be used to call me on a Ranger message?
+*** DONE Report status of site (Ranger?)
+    CLOSED: [2012-04-15 Sun 18:40]
+*** DONE New Relic or Blitz test?
+    CLOSED: [2012-04-15 Sun 18:40]
 * TODO See if Jenkins supports Rake
 * Update docbuild [3/5]
 ** DONE Drop /js/functions.js
@@ -33,6 +41,7 @@ Next steps
 ** VERIFY Update on_server links
 
 * Long term
+** Generate the landing page
 ** Document how other people can use our repository
 ** Support mobile by rewriting haml, or maybe just the CSS
 ** TODO Write a "clean-up" method to remove old documents
@@ -52,7 +61,7 @@ Next steps
 *** Valid api_versions only
 *** TODO Route for dbcom/topicname
 *** Return en-us and latest patch version
-
+    
 
 * Learn about Ruby
 ** What are sets for in Ruby?

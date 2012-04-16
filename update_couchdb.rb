@@ -27,9 +27,11 @@ Sunspot.setup(Topic) do
   text :perm_and_edition_tables, :stored => false
   text :title, :stored => true
   text :technology, :stored => true
-  text :doctype, :stored => true
   text :maintitle, :stored => true
   text :homelink, :stored => true
+  string :doctype, :stored => true, :multiple => true do
+    doctype.nil? ? [] : doctype.split
+  end
   string :app_area, :stored => true, :multiple => true do
     app_area.nil? ? [] : app_area.split
   end

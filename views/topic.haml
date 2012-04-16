@@ -10,8 +10,8 @@
       node.expand(false);
     });
   }
-
   $(function(){
+      $("a[name = 'top'] ~ .body").prepend('<div id="topicTags"><span class="h5 mrl">Tags:</span><span class="btn bluetext pas">Foo</span></div>');
       $("#tree").dynatree({
       debugLevel:2,
       checkbox: false,

@@ -86,9 +86,9 @@ class Topic < CouchRest::Model::Base
     text :perm_and_edition_tables, :stored => false
     text :title, :stored => true
     text :technology, :stored => true
-    text :doctype, :stored => true
     text :maintitle, :stored => true
     text :homelink, :stored => true
+    string :doctype, :stored => true, :multiple => true
     string :app_area, :stored => true, :multiple => true
     string :edition, :stored => true, :multiple => true
     string :identifier, :stored => true
