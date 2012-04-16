@@ -69,7 +69,7 @@
                :href => "javascript:void(0);"}
               Collapse All
           %div
-            %a{:href => "/dbcom/{@locale}/dbcom_index.htm",
+            %a{:href => "/dbcom/#{@locale}/dbcom_index.htm",
                :class => "highlight"}
               %b
                 Home
@@ -80,7 +80,7 @@
       %div{:class=>"pdf_button"}
         %a{:class=>"btn primaryBtn",
            :title => "PDF",
-           :href=>"/dbcom/#{@locale}#{@relatedpdf}",
+           :href=>"/#{@locale}/#{@relatedpdf}",
            :style => "white-space: normal;"}pdf
         %a{:class=>"btn primaryBtn",
            :title => "email",

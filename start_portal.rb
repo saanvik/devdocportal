@@ -288,9 +288,9 @@ get '/img/*' do | path |
 end
 
 # User guide PDF
-get '/:locale/*.pdf' do |filename|
-  @locale = set_locale(params[:locale])
-end
+# get '/dbcom/:locale/:pdfname.pdf' do
+#    @locale = set_locale(params[:locale])
+# end
 
 # Top level page
 get '/dbcom/:locale/dbcom_index.htm' do
@@ -439,6 +439,7 @@ get '/:root/:locale/:guide/:topicname' do
   locale = set_locale(params[:locale])
   root = params[:root]
     begin
+      @locale = params[:locale]
       @topickey = params[:topicname]
       @guide = params[:guide]
       @attachment = get_attachment(topicname, topicname, locale)
