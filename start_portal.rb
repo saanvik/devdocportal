@@ -147,9 +147,86 @@ helpers do
 
   #This is one big case statement that tags the
   # @todo - Figure out where the content comes from (probably an xpath on the attachment) and how to map it.
-  #def create_tags()
-
-  #end
+  def map_tag(tag)
+    case
+    when tag == "FeatureArea"
+      return "Feature Area"
+    when tag == "Customization_Setup"
+      return "Customization and setup"
+    when tag == "Data_Model"
+      return "Data model"
+    when tag == "Custom_Objects_Tabs_Fields"
+      return "Objects and fields"
+    when tag == "Validation_Rules"
+      return "Validation rules"
+    when tag == "Formulas"
+      return "Formulas"
+    when tag == "Data_Management"
+      return "Data management"
+    when tag == "Data_Loader"
+      return "Data loader"
+    when tag == "Data_Export"
+      return "Data export"
+    when tag == "Logic"
+      return "Logic"
+    when tag == "Apex_Code_Development_Deployment"
+      return "Apex Code"
+    when tag == "Workflow_Approvals"
+      return "Workflow"
+    when tag == "API_Integration_Performance"
+      return "Integration"
+    when tag == "Bulk_API"
+      return "Bulk API"
+    when tag == "Chatter_REST_API"
+      return "Chatter REST API"
+    when tag == "Java_SDK"
+      return "Java SDK"
+    when tag == "Metadata_API"
+      return "Metadata API"
+    when tag == "REST_Metadata_API"
+      return "Metadata REST API"
+    when tag == "REST_API"
+      return "REST API"
+    when tag == "SOAP_API"
+      return "SOAP API"
+    when tag == "Streaming_API"
+      return "Streaming API"
+    when tag == "Security"
+      return "Security"
+    when tag == "Passwords_Login"
+      return "Passwords"
+    when tag == "OAuth"
+      return "OAuth"
+    when tag == "Sharing_Visibility"
+      return "Sharing and visibility"
+    when tag == "Manage_Users_Profiles"
+      return "Users and profiles"
+    when tag == "Deployment_Distribution"
+      return "Testing and deployment"
+    when tag == "Change_Management_Change_Sets"
+      return "Change sets"
+    when tag == "Deploying"
+      return "Deploying"
+    when tag == "Sandbox"
+      return "Test databases"
+    when tag == "Packaging_for_Distribution"
+      return "Packaging for distribution"
+    when tag == "Mobile"
+      return "Mobile development"
+    when tag == "Type"
+      return "Type"
+    when tag == "FAQ"
+      return "FAQs"
+    when tag == "Guide"
+      return "Guides"
+    when tag == "RelNote"
+      return "Release notes"
+    when tag == "Tutorial"
+      return "Tutorials"
+    when tag == "Video"
+      return "Videos"
+    end
+  end
 
 end
 
@@ -371,6 +448,8 @@ get '/:root/:locale/:guide/:topicname' do
       @content=@thisdoc.xpath('//body').children()
       @topictitle=@thisdoc.xpath('//title[1]').inner_text()
       @sidebartitle=@thisdoc.xpath("//meta[@name = 'SFDC.Title']/@content")
+      @relatedpdf=@thisdoc.xpath("//meta[@name = 'SFDC.RelatedPDF']/@content")
+      @appareas=@thisdoc.xpath("//meta[@name = 'app_area']/@content").to_s.strip.split
       @sidebarcontent = t.toc
       @fullURL = request.url
       @baseURL= "#{@fullURL.match(/(.*)\/#{topicname}/)[1]}"

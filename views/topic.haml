@@ -11,7 +11,10 @@
     });
   }
   $(function(){
-      $("a[name = 'top'] ~ .body").prepend('<div id="topicTags"><span class="h5 mrl">Tags:</span><span class="btn bluetext pas">Foo</span></div>');
+      $("a[name = 'top'] ~ .body").prepend('<div id="topicTags"><span class="h5 mrl">Tags:</span></div>');
+      #{
+         @appareas.map{ |mytag | %Q^$('#topicTags').append('<span class="btn bluetext pas">#{map_tag(mytag)}</span>');^}.join '\n' unless @appareas.nil?
+      }
       $("#tree").dynatree({
       debugLevel:2,
       checkbox: false,
@@ -74,5 +77,15 @@
              :id => "tree"}
   %div{:class => "unit size3of4 last_unit box chatty infoBg"}
     %div{:class => "inner"}
+      %div{:class=>"pdf_button"}
+        %a{:class=>"btn primaryBtn",
+           :title => "PDF",
+           :href=>"/dbcom/#{@locale}/#{@relatedpdf}",
+           :style => "white-space: normal;"}pdf
+        %a{:class=>"btn primaryBtn",
+           :title => "email",
+           :href=>"mailto:?body=#{request.url}",
+           :style => "white-space: normal;"}email
+      
       %div{:class => "box infoBg mlm mrm"}
         =@content

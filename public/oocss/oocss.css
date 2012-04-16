@@ -3466,8 +3466,8 @@ img.icon_24x18 {
 {
     position: absolute;
     z-index: 15;
-    right: 45px;
-    padding-top: 13px;
+    right: 90px;
+    padding-top: 0px;
 }
 
 .varname
