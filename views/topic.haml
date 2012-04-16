@@ -13,7 +13,7 @@
   $(function(){
       $("a[name = 'top'] ~ .body").prepend('<div id="topicTags"><span class="h5 mrl">Tags:</span></div>');
       #{
-         @appareas.map{ |mytag | %Q^$('#topicTags').append('<span class="btn bluetext pas">#{map_tag(mytag)}</span>');^}.join '\n' unless @appareas.nil?
+      @appareas.map{ |mytag | %Q^$('#topicTags').append('<a href="/dbcom/#{@locale}/search/facet?app_area=#{mytag}&type="><span class="btn bluetext pas">#{map_tag(mytag)}</span></a>');^}.join '\n' unless @appareas.nil?
       }
       $("#tree").dynatree({
       debugLevel:2,

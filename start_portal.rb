@@ -228,6 +228,7 @@ helpers do
     end
   end
 
+
 end
 
 ######################################################################
@@ -313,6 +314,41 @@ get '/dbcom/:locale/search' do
   @locale = set_locale(params[:locale])
   haml :search_info
 end
+
+
+# Actual search URL, with a facet
+get '/:root/:locale/search/facet' do
+  STDERR.puts "In the faceted search, with no query"
+  root = params[:root]
+  locale = set_locale(params[:locale])
+  app_area = params[:app_area].length > 0 ? params[:app_area].split : []
+  type = params[:type].length > 0 ? params[:type].split : []
+  @topictitle = t.title.searchresults
+  @fullURL = request.url
+  @baseURL = @fullURL.match(/(.*)\/search\/.*/)[1]
+  if (@baseURL.include? 'search')
+    @baseURL.sub!(/\/search/,'')
+  end
+  begin
+    @search=Sunspot.search(Topic) do
+      with(:locale, locale)
+      with(:app_area,app_area) if app_area.length > 0
+      with(:doctype).any_of(type) if type.length > 0
+      paginate :page => 1, :per_page => 1500
+    end
+  rescue
+    haml :search, :locals => {:locale => locale, :root => root, :query => '', :app_area => app_area, :type => type }
+  else
+    @results = @search.results
+    if (@results.length > 0)
+    then
+      haml :search, :locals => {:locale => locale, :root => root, :query => '', :app_area => app_area, :type => type }
+    else
+      haml :search, :locals => {:locale => locale, :root => root, :query => '', :app_area => app_area, :type => type }
+    end
+  end
+end
+
 
 # Actual search URL, with a facet
 get '/:root/:locale/search/:query/facet' do

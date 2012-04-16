@@ -112,10 +112,10 @@
       });
 
 :javascript
-  $(document).onload(function() {
+  $(document).ready(function() {
      #{
        if (not(@search.nil?))
-       then 
+       then
          if (@search.total > 0)
          then
          '$("#noSearchResultsDiv").remove();'
@@ -126,7 +126,6 @@
          '$("#searchResultsDiv").remove();'
          # Why doesn't this remove it before loading?
        end
-
      }
   });
 
@@ -159,13 +158,15 @@
       %p{:style => "padding-bottom: 10px; padding-top: 5px;"}
         %span{:id => "searchFiltered"}
           = @search.total
-        %span
+        %span{:style => "display: #{query.length > 0 ? 'inline' : 'none'};"}
           = t.of
-        %span{:id => "searchFiltered"}
+        %span{:id => "searchFiltered",
+              :style => "display: #{query.length > 0 ? 'inline' : 'none'};"}
           = @search.total
-        %span 
+        %span{:style => "display: #{query.length > 0 ? 'inline' : 'none'};"}
           = t.search_results.count
-          %span <b>#{query}</b>
+          %span
+            <b>#{query}</b>
       %p
         %span{:class => "h3"}
           Filters:
