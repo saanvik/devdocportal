@@ -17,7 +17,7 @@ table {
 fieldset, img {
     border: 0 none;
 }
-address, caption, cite, code, dfn, em, strong, th, var {
+address, caption, cite, code, dfn, em, strong, th {
     font-style: normal;
     font-weight: normal;
 }
@@ -3473,6 +3473,7 @@ img.icon_24x18 {
 .varname
 {
     font-style: italic;
+    font-size: 1em;
 }
 
 cite {
@@ -3581,6 +3582,7 @@ div.nested1 div.body {
 .threequarterssizefont {
     font-size: 0.75em;
 }
+
 
 /* Add style overrides for dynatree */
 span.dynatree-active a {
