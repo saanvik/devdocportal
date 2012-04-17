@@ -44,11 +44,12 @@ abbr, acronym {
     font-variant: normal;
 }
 sup {
-    vertical-align: text-top;
+    position: relative; top: -0.5em; font-size: 80%;
 }
 sub {
-    vertical-align: text-bottom;
+ position: relative; bottom: -0.5em; font-size: 80%;    
 }
+
 input, textarea, select {
     font-family: inherit;
     font-size: inherit;
