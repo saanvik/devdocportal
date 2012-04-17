@@ -164,7 +164,7 @@ helpers do
     when tag == "Data_Management"
       return "Data management"
     when tag == "Data_Loader"
-      return "Data loader"
+      return "Data Loader"
     when tag == "Data_Export"
       return "Data export"
     when tag == "Logic"
