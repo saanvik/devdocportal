@@ -3463,14 +3463,6 @@ img.icon_24x18 {
   END ICON STYLES
 */
 
-.pdf_button
-{
-    position: absolute;
-    z-index: 15;
-    right: -5px;
-    padding-top: 0px;
-    top: -2.5em;
-}
 
 .varname
 {
@@ -3516,8 +3508,12 @@ div.nextprevarrows {
 }
 
 div.nextprevarrows .link {
-    padding-left: 10px;
+    padding-left: 5px;
 }
+
+div.nextprevarrows a.link img {
+    vertical-align: middle;
+} 
 
 div.nextprevarrows_bottom {
     text-align: center;

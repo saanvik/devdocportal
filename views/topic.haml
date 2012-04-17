@@ -15,6 +15,8 @@
       #{
         @app_keys_and_labels.map{|key, label| %Q^$('#topicTags').append('<a href="/dbcom/#{@locale}/search/facet?app_area=#{key}&type="><span class="btn bluetext pas">#{label}</span></a>');^}.join '\n' unless @app_keys_and_labels.nil?
       }
+      $('.nextprevarrows').prepend('<span class="pdf_button"><a class="btn primaryBtn" title="email" href="mailto:?body=#{request.url}" style="white-space: normal;">email</a></span>');
+      $('.pdf_button').prepend('<a class="btn primaryBtn" title="PDF" href="/#{@locale}/#{@relatedpdf}" style="white-space: normal;">PDF</a>');
       $("#tree").dynatree({
       debugLevel:2,
       checkbox: false,
@@ -53,6 +55,7 @@
             },
         }
         )
+
   });
 
 %div{:class => "line"}
@@ -77,15 +80,5 @@
              :id => "tree"}
   %div{:class => "unit size3of4 last_unit box chatty infoBg"}
     %div{:class => "inner"}
-      %div{:class=>"pdf_button"}
-        %a{:class=>"btn primaryBtn",
-           :title => "PDF",
-           :href=>"/#{@locale}/#{@relatedpdf}",
-           :style => "white-space: normal;"}PDF
-        %a{:class=>"btn primaryBtn",
-           :title => "email",
-           :href=>"mailto:?body=#{request.url}",
-           :style => "white-space: normal;"}email
-      
       %div{:class => "box infoBg mlm mrm"}
         =@content
