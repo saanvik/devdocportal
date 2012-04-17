@@ -225,6 +225,8 @@ helpers do
       return "Tutorials"
     when tag == "Video"
       return "Videos"
+    else
+      return ''
     end
   end
 
@@ -491,6 +493,7 @@ get '/:root/:locale/:guide/:topicname' do
       @fullURL = request.url
       @baseURL= "#{@fullURL.match(/(.*)\/#{topicname}/)[1]}"
       @toc_json_fullURL = "#{@baseURL}/#{@toc_json_URL}"
+      @app_keys_and_labels = Hash[@appareas.map{|category|[category, map_tag(category)]}].select{|k,v| v.length > 0} unless @appareas.nil?
       haml :topic, :locals => { :topicname => topicname}
   rescue
       STDERR.puts "I've been rescued from a topic call, this results in a 404 error."

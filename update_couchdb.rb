@@ -167,7 +167,7 @@ def update_metadata_from_attachment(filename,fullpath, mime_type, nokodoc,locale
   maintitle = nokodoc.xpath("//meta[@name = 'SFDC.Title']/@content")
   technology = nokodoc.xpath("//meta[@name = 'SFDC.Technology']/@content")
   doctype = nokodoc.xpath("//meta[@name = 'SFDC.Type']/@content")
-  homelink = nokodoc.xpath("//div[@class = 'breadcrumb']/a[@class = 'link'][@title = 'Home']/@href")
+  homelink = nokodoc.xpath("//meta[@name = 'SFDC.MainTopic']/@content")
   upload_attachment(filename,locale,fullpath, mime_type,filename)
   perm_and_edition_tables=nokodoc.xpath('//table[contains(@class, "permTable") or contains(@class, "editionTable")]').inner_text()
   body_content=nokodoc.xpath('//body')
