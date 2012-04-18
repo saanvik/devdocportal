@@ -174,7 +174,7 @@
           %a{:id=>"clearAll",
              :class => "mls",
              :onclick => "clearFacets();",
-             :href => "javascript:void(0);"}= t.search.filter_clear
+             :href => "javascript:void(0);"}= t.search.filter.clear
       %div{:class => "box themed standardBg"}
         %div{:class => "inner"}
           %div{:class => "hd mas"}
@@ -185,8 +185,8 @@
                      :value => "",
                      :maxlength => "30",
                      :size => "30",
-                     :title => t.filter.placeholder,
-                     :placeholder => t.filter.placeholder}
+                     :title => t.search.filter.placeholder,
+                     :placeholder => t.search.filter.placeholder}
           %div{:class => "bd data colSort"}
             %table{:class => "txtL sort_table search_results",
                    :style => "table-layout: fixed;",
@@ -251,11 +251,14 @@
       %span 
         = t.search.noresults
       %span <b>#{query}</b>
-    %p
-      %span{:class => "h3"}
-        Filters:
-    %p{:id => "filterEnum"}
-
+      %p
+        %span{:class => "h3"}
+          Filters:
+        %span{:id=>"filterEnum"}
+          %a{:id=>"clearAll",
+             :class => "mls",
+             :onclick => "clearFacets();",
+             :href => "javascript:void(0);"}= t.search.filter.clear
     %div{:class => "data colSort"}
       %p{:class=>"h4"}Tips on Searching
       %p

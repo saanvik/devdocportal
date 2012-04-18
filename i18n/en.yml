@@ -17,6 +17,8 @@ error:
 # landing.haml
 # Main page
 landing:
+  filter:
+    placeholder: "Filter guides and resources"
 
   table:
     title: Guides and Resources
@@ -48,7 +50,7 @@ landing:
     video:
       intro:
         title: "Video: Introducing Database.com"
-        description: " "
+        description: "A 4-minute narrated animation that describes basic operations in Database.com."
         url: "http://www.salesforce.com/_app/video/database/help/database_console.jsp"
       short_takes_blog:
         title: "Videos: Database.com Short Takes"
@@ -83,13 +85,13 @@ landing:
         description: "This episode shows you how to add a roll-up summary field to a master object that aggregates information in a master record from related detail records. All with a few clicks of your mouse and without any code!"
         url: "http://blog.database.com/blog/2011/08/30/short-take-007/"
       short_take_8:
-        title: "Short Take #8"
+        title: "Short Take #8: Data Integrity and Validation Rules"
         description: "Data integrity enforcement by the database helps ensure that apps are working with valid data. In this episode, you’ll explore many features that Database.com has to help enforce data integrity, including basic data types, unique and required fields, and validation rules."
         url: "http://blog.database.com/blog/2011/08/30/short-take-008/"
 
     guide:
       console:
-        title: "Database.com Console User's Guide"
+        title: "Database.com Console Users Guide"
         description: "A guide to managing your organization and data through the Database.com user interface."
       
       overview:
@@ -98,11 +100,11 @@ landing:
 
       dbcom_workbook:
         title: Database.com Workbook
-        description: " "
+        description: "A set of in-depth tutorials showing how to use Database.com. Includes tutorials that show how to use Workbench to query data and how to create a Java web application that accesses Database.com."
           
       mobile_workbook:
         title: Mobile SDK Workbook
-        description: " "
+        description: "A set of in-depth tutorials that demonstrate how you can integrate Database.com into your mobile applications. Tutorials provide examples of integration with iOS and Android operating systems, as well as HTML5."
           
       which_api:
         title: Which API Should I Use?
@@ -125,7 +127,7 @@ landing:
         description: "Developer’s guide for Chatter REST API, a programmatic way to access Chatter feeds and social data."
 
       sosl_soql:
-        title: Database.com SOQL and SOSL Reference
+        title: SOQL and SOSL Reference
         description: Reference and samples for querying data.
 
       classes_and_methods:
@@ -166,10 +168,13 @@ landing:
 
       summer_12_relnotes:
         title: "Summer '12 Release Notes"
-        description: " "
-  filter:
-    placeholder: Filter guides and resources
-      
+        description: "An overview of all changes in the new release of Database.com."
+
+topic:
+  button:
+    email: "Email"
+    pdf: "PDF"
+
 title:
   popular_content: Popular Content
   toc: Table of Contents
@@ -187,7 +192,12 @@ search_results:
   th_type: Type
   th_technology: Technology
   count: results for 
+
 search:
+  placeholder: Search Technical Library
+  filter:
+    placeholder: "Narrow results"
+    clear: Clear all
   string: Enter your search
   noresults_title: No search results found.
   noresults: 0 results for
@@ -198,9 +208,6 @@ search:
   tip_quotes: You can search for a phrase by surrounding it with quotation marks.  For example, "grant access" returns all the topics with the phrase "grant access", but doesn't return topics that contain only the term "grant" or "access", or a topic that contains both terms, but are separated by other words.
   tip_plus_minus: 'You can use + and - to indicate mandatory or optional entries.  For example: <table><tr><th>Search String</th><th>Returns</th></tr><tr><td>grant + access</td><td>All topics with the terms "grant" and "access".</td></tr><tr><td>grant - access</td><td>All  topics with the term "grant" but without the term "access".</td></tr><tr><td>grant access</td><td>The same results as grant + access.</td></tr></table>'
   tip_wildcards: Wildcard searches aren't supported.
-  placeholder: Search Technical Library
-  filter_placeholder: Filter Results
-  filter_clear: Clear all
 
 misc:
   try_again: Please try again.
@@ -212,7 +219,5 @@ facets:
   title: FILTER YOUR RESULTS
 
 
-filter:
-  placeholder: Filter guides and resources
 
   

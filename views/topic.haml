@@ -15,8 +15,11 @@
       #{
         @app_keys_and_labels.map{|key, label| %Q^$('#topicTags').append('<a href="/dbcom/#{@locale}/search/facet?app_area=#{key}&type="><span class="btn bluetext pas">#{label}</span></a>');^}.join '\n' unless @app_keys_and_labels.nil?
       }
-      $('.nextprevarrows').prepend('<span class="pdf_button"><a class="btn primaryBtn" title="email" href="mailto:?body=#{request.url}" style="white-space: normal;">email</a></span>');
-      $('.pdf_button').prepend('<a class="btn primaryBtn" title="PDF" href="/#{@locale}/#{@relatedpdf}" style="white-space: normal;">PDF</a>');
+      if($('div.nextprevarrows').length == 0) {
+        $('a[name="top"]').after('<div class="nextprevarrows"></div>');
+      }
+      $('.nextprevarrows').prepend('<span class="pdf_button"><a class="btn primaryBtn" title="email" href="mailto:?body=#{request.url}" style="white-space: normal;">#{t.topic.button.email}</a></span>');
+      $('.pdf_button').prepend('<a class="btn primaryBtn" title="PDF" href="/#{@locale}/#{@relatedpdf}" style="white-space: normal;">#{t.topic.button.pdf}</a>');
       $("#tree").dynatree({
       debugLevel:2,
       checkbox: false,

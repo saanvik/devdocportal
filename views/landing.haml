@@ -17,6 +17,13 @@
       return false;
     }).focus(); //Give focus to input field
   });
+
+:javascript
+  $(document).ready(function() { 
+    $("#deliverables").tablesorter({ 
+        sortList: [[0,0],[2,0]] 
+    }); 
+    }); 
                                 
 %div{:class => "page liquid body mal"}
   %div{:class => "line mal rtm"}
@@ -83,8 +90,8 @@
                     %a{:href => "/dbcom/#{@locale}/db_sosl_soql/sforce_api_calls_soql.htm"}
                       = t.landing.deliverable.guide.sosl_soql.title
                   %li
-                    %a{:href => "/dbcom/#{@locale}/db_apex/apex_methods_systm.htm"}
-                      = t.landing.deliverable.guide.sosl_soql.title
+                    %a{:href => "/dbcom/#{@locale}/db_apex/apex_methods_system.htm"}
+                      = t.landing.deliverable.guide.classes_and_methods.title
                   %li
                     %a{:href => "/dbcom/#{@locale}/db_apex/apex_testing_unit_tests.htm"}
                       = t.landing.deliverable.guide.unit_testing.title
