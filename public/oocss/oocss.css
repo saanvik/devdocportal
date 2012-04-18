@@ -72,7 +72,7 @@ table {
 pre, code, kbd, samp, tt {
     font-family: monospace;
     line-height: 100%;
-    font-size: 115%;
+    font-size: 120%;
 }
 
 /* And, because of the font-size setting above, all the descendants must keep it to 100% */
@@ -3501,7 +3501,6 @@ img.icon_24x18 {
 .varname
 {
     font-style: italic;
-    font-size: 1em;
 }
 
 cite {
