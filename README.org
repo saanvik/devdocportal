@@ -13,27 +13,19 @@
 
 * Requirements
 - Ruby 1.9.2
-   To install the required gems, use \\
-    \\
-   =bundle install=
+   To install the required gems, use =bundle install=
 - CouchDB
 - Solr
 - memcached
 
 * Process
 1. Update =globals.rb= to match your environment.
-2. Run \\
-   \\
-   =rake update_local_db=
-3. Run \\
-   \\
-   =rake start_local_with_foreman=
+2. Run =rake update_local_db=
+3. Run =rake start_local_with_foreman=
 4. Open your web browser to [[http://localhost:5000][view the site]].
 
 * Updating heroku
-  To update heroku, run \\
-  \\
-   =rake update_remote_db=
+  To update heroku, run =rake update_remote_db=
 
 * Rake
 There are other options in the Rakefile, including an option to run
@@ -108,9 +100,5 @@ to see all the commands.
 **** Valid api_versions only
 *** TODO Route for dbcom/topicname
 **** Return en-us and latest patch version
-    
-
-* Learn about Ruby
-** What are sets for in Ruby?
-** Look up Ruby gem xmlsimple; turns xml into a hash.  What does it do with attributes?  
-** Also, look to see if there is a Ruby gem for XML to JSON
+** Fix the directory structure    
+*** TODO Find out good patterns
