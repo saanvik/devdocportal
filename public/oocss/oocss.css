@@ -75,6 +75,40 @@ pre, code, kbd, samp, tt {
     font-size: 115%;
 }
 
+/* And, because of the font-size setting above, all the descendants must keep it to 100% */
+
+pre ~ pre, pre ~ code, pre ~ kbd, pre ~ samp, pre ~ tt,  
+    font-family: monospace;
+    line-height: 100%;
+    font-size: 100%;
+}
+
+
+code ~ pre, code ~ code, code ~ kbd, code ~ samp, code ~  tt, {
+    font-family: monospace;
+    line-height: 100%;
+    font-size: 100%;
+}
+
+kbd ~ pre, kbd ~ code, kbd ~  kbd, kbd ~ samp, kbd ~ tt {
+    font-family: monospace;
+    line-height: 100%;
+    font-size: 100%;
+}
+
+samp ~ pre, samp ~ samp, code ~ kbd, samp ~ samp, samp ~  tt, {
+    font-family: monospace;
+    line-height: 100%;
+    font-size: 100%;
+}
+
+tt ~ pre, tt ~ samp, code ~ kbd, tt ~ samp, tt ~ tt, {
+    font-family: monospace;
+    line-height: 100%;
+    font-size: 100%;
+}
+
+
 th.permTableHeader {
 	text-align: center;
 	font-size: 0.8em;

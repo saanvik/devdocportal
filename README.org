@@ -1,0 +1,116 @@
+#+OPTIONS: toc:1
+
+#+TITLE: Developer Documentation Portal
+
+  This is the 178 working version of the developer documentation
+  portal, a heroku based application for delivering content to
+  salesforce, force.com, and database.com developers.
+
+  [[http://devdocportal-178.herokuapp.com/dbcom/en-us/dbcom_index.htm][See it Live]]
+
+  Username: =devdoc=
+  Password: =test1234=
+
+* Requirements
+- Ruby 1.9.2
+   To install the required gems, use \\
+    \\
+   =bundle install=
+- CouchDB
+- Solr
+- memcached
+
+* Process
+1. Update =globals.rb= to match your environment.
+2. Run \\
+   \\
+   =rake update_local_db=
+3. Run \\
+   \\
+   =rake start_local_with_foreman=
+4. Open your web browser to [[http://localhost:5000][view the site]].
+
+* Updating heroku
+  To update heroku, run \\
+  \\
+   =rake update_remote_db=
+
+* Rake
+There are other options in the Rakefile, including an option to run
+locally against the remote database and search index.  Run =rake -T=
+to see all the commands.
+
+* Next steps [1/7]
+  These are the things that need to be done for 178.
+** TODO [#A] Close or push all bugs    
+   DEADLINE: <2012-04-19 Thu>
+** DONE Finish up the type facets
+  CLOSED: [2012-04-16 Mon 08:59]
+** TODO [#B] Fix styles for shortdesc on landing page
+** VERIFY [#A] Fix guide links on search results page
+** [#A] Send labels for localization [/]
+  DEADLINE: <2012-04-18 Wed 13:30>
+*** TODO Update all the haml files to make labels out of everything
+*** TODO Figure out what Evelyn was talking about in her labels question
+
+*** DONE Add link to r18n in the comments
+   CLOSED: [2012-04-17 Tue 17:33]
+*** DONE Add link to yaml in the comments
+   CLOSED: [2012-04-17 Tue 17:33]
+** TODO [#C] Set up Ranger report status of site (Ranger?), or figure out how to work with logentries
+** TODO [#C] New Relic
+** TODO [#B] Blitz test?
+** Update docbuild [3/5]
+*** DONE Drop /js/functions.js
+   CLOSED: [2012-02-03 Fri 08:15]
+***  DONE Drop onLoad
+     CLOSED: [2012-02-03 Fri 08:15]
+*** DONE Remove ${CSS.PATH}help.css from the build
+   CLOSED: [2012-02-03 Fri 08:15]
+*** VERIFY Set feedback=false by default
+*** VERIFY Update on_server links
+
+* Long term
+  Things to do after 178
+** TODO See if Jenkins supports Rake
+** Write a rake file to [1/5]
+*** TODO Build the doc
+*** TODO Push the content into the database
+*** TODO Run automated tests on local system
+*** TODO Monitor remote [2/4]
+**** *Q:* Can this be done on a server running on my linux box?
+**** *Q:* Maybe use pulse for this, too.
+
+** Fix deliverable level metadata [0/1]
+*** TODO Create a json file to upload to couch as part of the build that has all the metadata for the deliverable
+*** TODO Push an identifier for the deliverable into the topic document
+*** TODO Create a helper to pull the content out
+*** Q: Will this result in a lot more network traffic?  Is it worth it?
+** TODO Report last update in CouchDB
+     This is likely easiest to do by setting up a view on the DB using couchrest
+** TODO Generate the landing page
+** TODO Document how other people can use our repository
+** TODO Support mobile by rewriting haml, or maybe just the CSS
+** TODO Write a "clean-up" method to remove old documents
+** TODO Figure out feedback options
+** TODO Update local schema from Solr schema to get spelling check
+** TODO Set up sounds like (see http://blog.websolr.com/)
+** Update Routes [/]
+*** TODO Route for dbcom/locale/<api_version>/topicname
+**** Validate lang/local
+**** Valid api_versions only
+**** Validate lang/loc
+*** TODO Route for dbcom/locale/<patch_version>/topicname
+**** Valid patch_versions only
+*** TODO Route for dbcom/local/<api_version>/<patch_version>/topicname
+**** Validate lang/locale
+**** Valid patch_versions only
+**** Valid api_versions only
+*** TODO Route for dbcom/topicname
+**** Return en-us and latest patch version
+    
+
+* Learn about Ruby
+** What are sets for in Ruby?
+** Look up Ruby gem xmlsimple; turns xml into a hash.  What does it do with attributes?  
+** Also, look to see if there is a Ruby gem for XML to JSON

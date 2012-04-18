@@ -1,6 +1,9 @@
 -# This page is the landing page, a page for people to get to if they
 -# haven't search for anything, or haven't clicked a context sensitive
 -# help link
+
+-# @todo Do I need add a way for elements to be hidden from non-English languages?
+
 :javascript
   $(function() { 
     var theTable = $('table#deliverables')
@@ -13,7 +16,6 @@
       theTable.find("tbody > tr:visible > td:eq(1)").mousedown();
       return false;
     }).focus(); //Give focus to input field
-    
   });
                                 
 %div{:class => "page liquid body mal"}
@@ -26,32 +28,32 @@
               %img{:src => "/portal_images/getting_started_icon.png",
                    :style => "vertical-align: middle;"}
               %h3{:class => "landingboxtitles"}
-                = t.title.first_time
+                = t.landing.title.first_time
             %div{:class => "bd line"}
               %div{:class => "unit size1of2"}
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp"}
-                      Video: Introducing Database.com
+                    %a{:href => t.landing.deliverable.video.intro.url}
+                      = t.landing.deliverable.video.intro.title
                   %li
-                    %a{:href=>"http://blog.database.com/blog/category/short-takes/"}
-                      Videos: Database.com Short Takes
+                    %a{:href=>t.landing.deliverable.video.short_takes_blog.url}
+                      = t.landing.deliverable.video.short_takes_blog.title
                   %li
                     %a{:href=>"/dbcom/#{@locale}/db_intro/dbcom_Database_com_Overview.htm"}
-                      Database.com Overview
+                      = t.landing.deliverable.guide.overview.title
               %div{:class => "unit size1of2 last"}
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
                     %a{:href => "/dbcom/#{@locale}/dbcom_workbook/workbook_preface.htm"}
-                      Database.com Workbook
+                      = t.landing.deliverable.guide.dbcom_workbook.title
                   %li
                     %a{:href => "/dbcom/#{@locale}/mobile_workbook/mobile_intro.htm"}
-                      Mobile SDK Workbook
+                      = t.landing.deliverable.guide.mobile_workbook.title
                   %li
                     %a{:href=>"/dbcom/#{@locale}/db_help/integrate_what_is_api.htm"}
-                      Which API Should I Use?
+                      = t.landing.deliverable.guide.which_api.title
     %div{:class=> "unit size1of2 mrm lastUnit"}
       %div{:class => "box callout chatty"}
         %div{:class => "inner"}
@@ -60,35 +62,35 @@
               %img{:src => "/portal_images/popular_icon.png",
                    :style => "vertical-align: middle;"}
               %h3{:class => "landingboxtitles"}
-                = t.title.popular_content
+                = t.landing.title.popular_content
             %div{:class => "bd line"}
               %div{:class => "unit size1of2"}
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
                     %a{:href => "/dbcom/#{@locale}/db_apex/apex_reference.htm"}
-                      Database.com Limits
+                      = t.landing.deliverable.guide.limits.title
                   %li
                     %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm"}
-                      Data Loader Quick Start
+                      = t.landing.deliverable.guide.quick_start.title
                   %li
                     %a{:href => "/dbcom/#{@locale}/db_rest_api/resources_list.htm"}
-                      REST API Reference
+                      = t.landing.deliverable.guide.rest_api.title
               %div{:class => "unit size1of2 last"}
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
                     %a{:href => "/dbcom/#{@locale}/db_sosl_soql/sforce_api_calls_soql.htm"}
-                      Database.com SOQL and SOSL Reference
+                      = t.landing.deliverable.guide.sosl_soql.title
                   %li
                     %a{:href => "/dbcom/#{@locale}/db_apex/apex_methods_systm.htm"}
-                      Apex Classes and Methods
+                      = t.landing.deliverable.guide.sosl_soql.title
                   %li
                     %a{:href => "/dbcom/#{@locale}/db_apex/apex_testing_unit_tests.htm"}
-                      Unit Testing Apex
+                      = t.landing.deliverable.guide.unit_testing.title
   %div
     %div{:class => "h3 mll"}
-      = t.landing.guides_title
+      = t.landing.table.title
     %div{:class => "box themed standardBg"}
       %div{:class => "inner mal"}
         %div{:class => "hd mas"}
@@ -98,8 +100,8 @@
                    :id=>"filter",
                    :maxlength => "30",
                    :size => "30",
-                   :title => t.filter.placeholder,
-                   :placeholder => t.filter.placeholder}
+                   :title => t.landing.filter.placeholder,
+                   :placeholder => t.landing.filter.placeholder}
         %div{:class => "bd data colSort"}
           %table{:class => "txtL sort_table search_results",
                  :style => "table-layout:fixed",
@@ -113,22 +115,22 @@
                 %th{:class => "sortable sorted header h6",
                     :title => "title",
                     :scope => "col"}
-                  = t.landing.guides_table_title
+                  = t.landing.table.title_col
                 %th{:class => "sortable sorted header h6",
                     :title => "type",
                     :scope => "col",
                     :filter => "false"}
-                  = t.landing.guides_table_type
+                  = t.landing.table.type_col
                 %th{:class => "sortable sorted header h6",
                     :title => "area",
                     :scope => "col",
                     :filter => "false"}
-                  = t.landing.guides_table_feature_area
+                  = t.landing.table.area_col
                 %th{:class => "sortable sorted header h6",
                     :title => "updated",
                     :scope => "col",
                     :filter => "false"}
-                  = t.landing.guides_table_updated
+                  = t.landing.table.updated_col
               -# @todo These values must be auto-populated ... from what?
             %tbody{:class => "content"}
               %tr
@@ -137,11 +139,11 @@
                   :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_help/index.htm",
                      :class => "middle"}
-                    Database.com Console User's Guide
+                    = t.landing.deliverable.guide.console.title
                   %p{:class => "mll, dev_desc"}
-                    A guide to managing your organization and data through the Database.com user interface
+                    = t.landing.deliverable.guide.console.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
 
                 %td
@@ -152,12 +154,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_intro/quickstart_intro.htm",
                      :class => "middle"}
-                    Getting Started with Database.com
+                    = t.landing.deliverable.guide.getting_started.title
                   %p{:class => "mll, dev_desc"}
-
-
+                    = t.landing.deliverable.guide.getting_started.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
 
                 %td
@@ -168,11 +169,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_rest_api/intro_what_is_rest_api.htm",
                      :class => "middle"}
-                    Database.com REST API Developer's Guide
+                    = t.landing.deliverable.guide.rest_api.title
                   %p{:class => "mll, dev_desc"}
-                    A guide to using Database.com’s REST-based data API for accessing objects in your organization.
+                    = t.landing.deliverable.guide.rest_api.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   REST API
                 %td
@@ -184,11 +185,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_apex/apex_intro.htm",
                      :class => "middle"}
-                    Database.com Apex Code Developer's Guide
+                    = t.landing.deliverable.guide.apex_dev_guide.title
                   %p{:class => "mll, dev_desc"}
-                    Developer&#x2019;s Guide for Apex, the proprietary object-oriented programming language that allows you to write database triggers and add business logic.
+                    = t.landing.deliverable.guide.apex_dev_guide.description                    
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   Apex
                 %td
@@ -200,12 +201,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_obj_ref/sforce_api_objects_concepts.htm",
                      :class => "middle"}
-                    Database.com Object Reference
+                    = t.landing.deliverable.guide.object_reference.title                                        
                   %p{:class => "mll, dev_desc"}
-                    A list of the standard fields for standard objects in Database.com, including each field's label, data type, maximum length,
-                    precision, and scale.
+                    = t.landing.deliverable.guide.object_reference.description                    
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
 
                 %td
@@ -217,11 +217,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_rest_api/intro_what_is_chatter_connect.htm",
                      :class => "middle"}
-                    Database.com Chatter REST API Developer's Guide
+                    = t.landing.deliverable.guide.chatter_rest_api.title
                   %p{:class => "mll, dev_desc"}
-                    Developer’s guide for Chatter REST API, a programmatic way to access Chatter feeds and social data.
+                    = t.landing.deliverable.guide.chatter_rest_api.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   Chatter REST API
                 %td
@@ -233,11 +233,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_sosl_soql/sforce_api_calls_soql.htm",
                      :class => "middle"}
-                    Database.com SOQL/SOSL Reference
+                    = t.landing.deliverable.guide.sosl_soql.title
                   %p{:class => "mll, dev_desc"}
-                    Reference and samples for querying data.
+                    = t.landing.deliverable.guide.sosl_soql.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   SOQL, SOSL
                 %td
@@ -249,11 +249,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_bulk_api/asynch_api_intro.htm",
                      :class => "middle"}
-                    Database.com Bulk API Developer’s Guide
+                    = t.landing.deliverable.guide.bulk_api.title
                   %p{:class => "mll, dev_desc"}
-                    Reference for the REST-based Bulk API, a way of rapidly loading large quantities of records into Database.com.
+                    = t.landing.deliverable.guide.bulk_api.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   Bulk API
                 %td
@@ -265,12 +265,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_streaming_api/intro_stream.htm",
                      :class => "middle"}
-                    Database.com Streaming API Developer’s Guide
+                    = t.landing.deliverable.guide.streaming_api.title                    
                   %p{:class => "mll, dev_desc"}
-                    Developer’s Guide that contains information about how Streaming API works as well as a quick start and code examples.
-                    Streaming API enables you to receive events for changes to  Database.com data that matches a SOQL query you define.
+                    = t.landing.deliverable.guide.streaming_api.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   Streaming API
                 %td
@@ -282,11 +281,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_metadata_api/meta_intro.htm",
                      :class => "middle"}
-                    Database.com Metadata API Developer's Guide
+                    = t.landing.deliverable.guide.metadata_api.title                    
                   %p{:class => "mll, dev_desc"}
-                    Reference for the Metadata API, a way of retrieving and deploying setup information in your organization.
+                    = t.landing.deliverable.guide.metadata_api.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   Metadata API
                 %td
@@ -297,12 +296,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_soap_api/sforce_api_quickstart_intro.htm",
                      :class => "middle"}
-                    SOAP API Guide
+                    = t.landing.deliverable.guide.soap_api.title
                   %p{:class => "mll, dev_desc"}
-                    A guide to using the Force.com SOAP API. Note that this guide includes details about functionality related to the Salesforce.com Sales
-                    Cloud and Service Cloud applications that is not available in Database.com.
+                    = t.landing.deliverable.guide.soap_api.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
                   SOAP API
                 %td
@@ -313,11 +311,11 @@
                        :class => "middle"}
                   %a{:href=>"/dbcom/en-us/db_rel_notes/rn_about_release_notes.htm",
                      :class => "middle"}
-                    Summer '12 Release Notes
+                    = t.landing.deliverable.guide.summer_12_relnotes.title
                   %p{:class => "mll, dev_desc"}
-                    
+                    = t.landing.deliverable.guide.summer_12_relnotes.description
                 %td
-                  Release Notes
+                  = t.landing.deliverable.relnotes_name
                 %td
 
                 %td
@@ -328,11 +326,11 @@
                        :class => "middle"}
                     %a{:href => "/dbcom/#{@locale}/dbcom_workbook/workbook_preface.htm",
                        :class => "middle"}
-                      Database.com Workbook
+                      = t.landing.deliverable.guide.dbcom_workbook.title
                   %p{:class => "mll, dev_desc"}
-                    
+                    = t.landing.deliverable.guide.dbcom_workbook.description
                 %td
-                  Workbook
+                  = t.landing.deliverable.workbook_name
                 %td
 
                 %td
@@ -343,11 +341,11 @@
                        :class => "middle"}
                   %a{:href => "/dbcom/#{@locale}/mobile_workbook/mobile_intro.htm",
                      :class => "middle"}
-                    Mobile SDK Workbook
+                    = t.landing.deliverable.guide.mobile_workbook.title
                   %p{:class => "mll, dev_desc"}
-                    
+                    = t.landing.deliverable.guide.mobile_workbook.description
                 %td
-                  Workbook
+                  = t.landing.deliverable.workbook_name
                 %td
                   Mobile
                 %td
@@ -356,13 +354,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://www.salesforce.com/_app/video/database/help/database_console.jsp",
+                  %a{:href => t.landing.deliverable.video.intro.url,
                      :class => "middle"}
-                    Introducing Database.com Video                  
+                    = t.landing.deliverable.video.intro.title
                   %p{:class => "mll, dev_desc"}
-                    
+                    = t.landing.deliverable.video.intro.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -373,11 +371,11 @@
                        :class => "middle"}
                   %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm",
                      :class => "middle"}
-                    Data Loader Command Line Quick Start
+                    = t.landing.deliverable.guide.quick_start.title
                   %p{:class => "mll, dev_desc"}
-                    Step-by-step instructions for setting up and configuring the Data Loader using the command-line interface. interface.
+                    = t.landing.deliverable.guide.quick_start.description
                 %td
-                  Guide
+                  = t.landing.deliverable.guide_name
                 %td
 
                 %td
@@ -386,14 +384,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-001/",
+                  %a{:href => t.landing.deliverable.video.short_take_1.url,
                      :class => "middle"}
-                    Short Take #1: Quick Tour of the console
+                    = t.landing.deliverable.video.short_take_1.title
                   %p{:class => "mll, dev_desc"}
-                    This episode is a brief tour of the Database.com Console, the tool you’ll use to do all sorts of things with your database, including common administration tasks,
-                    app schema design, and security policy implementations.
+                    = t.landing.deliverable.video.short_take_1.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -402,14 +399,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-002/",
+                  %a{:href => t.landing.deliverable.video.short_take_2.url,
                      :class => "middle"}
-                    Short Take #2: Orgs and Sandboxes
+                    = t.landing.deliverable.video.short_take_2.title
                   %p{:class => "mll, dev_desc"}
-                    When your app uses Database.com, all of the complicated, time-consuming, and costly problems related to database provisioning, configuration, and management don’t exist thanks
-                    to orgs and sandboxes. In this episode, you’ll learn about these basic terms and concepts and how to create a sandbox.
+                    = t.landing.deliverable.video.short_take_2.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -418,14 +414,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-003/",
-                     :class => "middle"}
-                    Short Take #3: Your first Object and Standard Fields
+                  %a{:href => t.landing.deliverable.video.short_take_3.url,
+                     :class => "middle"}                                       
+                    = t.landing.deliverable.video.short_take_3.title
                   %p{:class => "mll, dev_desc"}
-                    With Database.com, it’s easy to create an object (aka table) for storing application data. This episode shows you how to get started. Along the way, you’ll learn about standard
-                    fields and API names.
+                    = t.landing.deliverable.video.short_take_3.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -434,13 +429,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-004/",
+                  %a{:href => t.landing.deliverable.video.short_take_4.url,
                      :class => "middle"}
-                    Short Take #4: Data Types and Custom Fields
+                    = t.landing.deliverable.video.short_take_4.title
                   %p{:class => "mll, dev_desc"}
-                    When you design objects for your app, you’ll need to create custom fields with the correct data types to store your data. This episode gets you started.
+                    = t.landing.deliverable.video.short_take_4.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -449,14 +444,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-005/",
+                  %a{:href => t.landing.deliverable.video.short_take_5.url,
                      :class => "middle"}
-                    Short Take #5: Workbench Tour
+                    = t.landing.deliverable.video.short_take_5.title
                   %p{:class => "mll, dev_desc"}
-                    To browse and manipulate Database.com data, view your org’s metadata, or execute some code, you can use a handy tool called Workbench. This episode is a quick preview of the
-                    power of Workbench.
+                    = t.landing.deliverable.video.short_take_5.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -465,14 +459,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-006/",
+                  %a{:href => t.landing.deliverable.video.short_take_6.url,
                      :class => "middle"}
-                    Short Take #6: Relate a Master and Detail Object
+                    = t.landing.deliverable.video.short_take_6.title
                   %p{:class => "mll, dev_desc"}
-                    Want to build new relationships? This episode can help you learn how … with Database.com master-detail object relationships. You’ll also see how to use Workbench to
-                    work with related records.
+                    = t.landing.deliverable.video.short_take_6.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -481,14 +474,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-007/",
+                  %a{:href => t.landing.deliverable.video.short_take_7.url,
                      :class => "middle"}
-                    Short Take #7: Create a Roll-Up Summary field
+                    = t.landing.deliverable.video.short_take_7.title
                   %p{:class => "mll, dev_desc"}
-                    This episode shows you how to add a roll-up summary field to a master object that aggregates information in a master record from related detail records. All with a few
-                    clicks of your mouse and without any code!
+                    = t.landing.deliverable.video.short_take_7.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td
@@ -497,14 +489,13 @@
                 %td
                   %img{:src => "/portal_images/recorder_ico.png",
                        :class => "middle"}
-                  %a{:href => "http://blog.database.com/blog/2011/08/30/short-take-008/",
+                  %a{:href => t.landing.deliverable.video.short_take_8.url,
                      :class => "middle"}
-                    Short Take #8
+                    = t.landing.deliverable.video.short_take_8.title
                   %p{:class => "mll, dev_desc"}
-                    Data integrity enforcement by the database helps ensure that apps are working with valid data. In this episode, you’ll explore many features that Database.com has to help
-                    enforce data integrity, including basic data types, unique and required fields, and validation rules.
+                    = t.landing.deliverable.video.short_take_8.description                    
                 %td
-                  Video
+                  = t.landing.deliverable.video_name
                 %td
 
                 %td

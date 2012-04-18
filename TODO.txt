@@ -7,9 +7,12 @@ Next steps
   CLOSED: [2012-04-16 Mon 08:59]
 * TODO Fix styles for shortdesc on landing page
 ** Landing page should be able to use deliverable metadata document
-* TODO Fix guide links on search results page
+* VERIFY Fix guide links on search results page
 * TODO Send labels for localization 
   DEADLINE: <2012-04-18 Wed 13:30>
+** Add link to r18n in the comments
+** Add link to yaml in the comments
+* TODO Figure out - is index.haml ever used?
 ** TODO Update all the haml files to make labels out of everythign
 ** TODO Figure out what Evelyn was talking about with x of y
 * Write a rake file to [1/5]

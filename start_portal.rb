@@ -503,14 +503,12 @@ end
 
 
 get '/:locale/:topicname.:format' do
-  STDERR.puts "In the topicname with a format"
   locale = set_locale(params[:locale])
   redirect to("/#{settings.default_root}/#{locale}/#{params[:topicname]}.#{params[:format]}")
 end
 
 
 get '/:root/:locale/?' do
-  STDERR.puts "In the locale with a question mark"
   locale = set_locale(params[:locale])
   redirect to("/#{params[:root]}/#{locale}/#{settings.default_topic}")
 end
@@ -523,6 +521,7 @@ end
 
 # Need to support URLs of the format
 # http://docs.database.com/dbcom?locale=en-us&target=<filename>&section=<section>
+# http://docs.database.com/dbcom?locale=en-us&target=index.htm&section=foo
 get %r{(.*)} do |root|
   STDERR.puts "In the context sensitive help route"
   if (
@@ -530,7 +529,7 @@ get %r{(.*)} do |root|
       (defined?(params[:target]))
       (not(params[:locale].nil? || params[:target].nil?))
       )
-    redirect to("#{root}/#{params[:locale]}/#{params[:target]}")
+    redirect to("#{root}/#{params[:locale]}/db_help/#{params[:target]}")
   else
     locale = set_locale(::R18n::I18n.parse_http(request.env['HTTP_ACCEPT_LANGUAGE'])[0])
     @fullURL = request.url

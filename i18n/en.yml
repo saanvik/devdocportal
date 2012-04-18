@@ -1,10 +1,175 @@
-# English US label file
+### English US label file.
+### Uses r18n ruby library - see http://r18n.rubyforge.org/
+### Labels are in yaml format - see http://www.yaml.org/spec/1.2/spec.html
+### Important yaml tip - use double quotes to escape special characters
 
-# General
+## General
 
 # of, as in 5 of 10
 of: of
 
+# error.haml
+# generic error page
+error:
+  page_not_exists: "The page you were looking for doesn't exist."
+  page_not_exist_cause: You may have mistyped the address or the page may have moved.
+
+# landing.haml
+# Main page
+landing:
+
+  table:
+    title: Guides and Resources
+    title_col: Title
+    type_col: Type
+    area_col: Feature area
+    updated_col: Last updated
+
+  title:
+    first_time: First Time? Start Here.
+    popular_content: Popular Content
+
+  area:
+    rest_name: REST API
+    apex_name: Apex
+    chatter_rest_api: Chatter REST API
+    soql_and_sosl: SOQL,SOSL
+    bulk_api: Bulk API
+    streaming_api: Streaming API
+    metadata_api: Metadata API
+    soap_api: SOAP API
+    mobile: mobile
+    
+  deliverable:
+    guide_name: Guide
+    video_name: Video
+    workbook_name: Workbook
+    relnotes_name: Release Notes
+    video:
+      intro:
+        title: "Video: Introducing Database.com"
+        description: " "
+        url: "http://www.salesforce.com/_app/video/database/help/database_console.jsp"
+      short_takes_blog:
+        title: "Videos: Database.com Short Takes"
+        description: " "
+        url: "http://blog.database.com/blog/category/short-takes/"
+      short_take_1:
+        title: "Short Take #1: Quick Tour of the console"
+        description: "This episode is a brief tour of the Database.com Console, the tool you’ll use to do all sorts of things with your database, including common administration tasks,app schema design, and security policy implementations."
+      short_take_2:
+        title: "Short Take #2: Orgs and Sandboxes"
+        description: "When your app uses Database.com, all of the complicated, time-consuming, and costly problems related to database provisioning, configuration, and management don’t exist thanks to orgs and sandboxes. In this episode, you’ll learn about these basic terms and concepts and how to create a sandbox."
+        url: "http://blog.database.com/blog/2011/08/30/short-take-001/"
+
+      short_take_3:
+        title: "Short Take #3: Your first Object and Standard Fields"
+        description: "With Database.com, it’s easy to create an object (aka table) for storing application data. This episode shows you how to get started. Along the way, you’ll learn about standard fields and API names."
+        url: "http://blog.database.com/blog/2011/08/30/short-take-002/"
+      short_take_4:
+        title: "Short Take #4: Data Types and Custom Fields"
+        description: "When you design objects for your app, you’ll need to create custom fields with the correct data types to store your data. This episode gets you started."
+        url: "http://blog.database.com/blog/2011/08/30/short-take-004/"
+      short_take_5:
+        title: "Short Take #5: Workbench Tour"
+        description: "To browse and manipulate Database.com data, view your org’s metadata, or execute some code, you can use a handy tool called Workbench. This episode is a quick preview of the power of Workbench."
+        url: "http://blog.database.com/blog/2011/08/30/short-take-005/"
+      short_take_6:
+        title: "Short Take #6: Relate a Master and Detail Object"
+        description: "Want to build new relationships? This episode can help you learn how … with Database.com master-detail object relationships. You’ll also see how to use Workbench to work with related records."
+        url: "http://blog.database.com/blog/2011/08/30/short-take-006/"
+      short_take_7:
+        title: "Short Take #7: Create a Roll-Up Summary field"
+        description: "This episode shows you how to add a roll-up summary field to a master object that aggregates information in a master record from related detail records. All with a few clicks of your mouse and without any code!"
+        url: "http://blog.database.com/blog/2011/08/30/short-take-007/"
+      short_take_8:
+        title: "Short Take #8"
+        description: "Data integrity enforcement by the database helps ensure that apps are working with valid data. In this episode, you’ll explore many features that Database.com has to help enforce data integrity, including basic data types, unique and required fields, and validation rules."
+        url: "http://blog.database.com/blog/2011/08/30/short-take-008/"
+
+    guide:
+      console:
+        title: "Database.com Console User's Guide"
+        description: "A guide to managing your organization and data through the Database.com user interface."
+      
+      overview:
+        title: Database.com Overview
+        description: " "
+
+      dbcom_workbook:
+        title: Database.com Workbook
+        description: " "
+          
+      mobile_workbook:
+        title: Mobile SDK Workbook
+        description: " "
+          
+      which_api:
+        title: Which API Should I Use?
+        description: " "
+          
+      limits:
+        title: Database.com Limits
+        description: " "
+          
+      quick_start:
+        title: Data Loader Command Line Quick Start
+        description: "Step-by-step instructions for setting up and configuring the Data Loader using the command-line interface."
+
+      rest_api:
+        title: "Database.com REST API Developer's Reference"
+        description: "A guide to using Database.com’s REST-based data API for accessing objects in your organization."
+
+      chatter_rest_api:
+        title: "Database.com Chatter REST API Developer's Guide"
+        description: "Developer’s guide for Chatter REST API, a programmatic way to access Chatter feeds and social data."
+
+      sosl_soql:
+        title: Database.com SOQL and SOSL Reference
+        description: Reference and samples for querying data.
+
+      classes_and_methods:
+        title: Apex Classes and Methods
+        description: " "
+
+      unit_testing:
+        title: Unit Testing Apex
+        description: " "
+
+      getting_started:
+        title: Getting Started with Database.com
+        description: " "
+
+      apex_dev_guide:
+        title: "Database.com Apex Code Developer's Guide"
+        description: "Developer&#x2019;s Guide for Apex, the proprietary object-oriented programming language that allows you to write database triggers and add business logic."
+
+      object_reference:
+        title: Database.com Object Reference
+        description: "A list of the standard fields for standard objects in Database.com, including each field's label, data type, maximum length, precision, and scale."
+
+      bulk_api:
+        title: "Database.com Bulk API Developer’s Guide"
+        description: "Reference for the REST-based Bulk API, a way of rapidly loading large quantities of records into Database.com."
+
+      streaming_api:
+        title: "Database.com Streaming API Developer’s Guide"
+        description: "Developer’s Guide that contains information about how Streaming API works as well as a quick start and code examples. Streaming API enables you to receive events for changes to  Database.com data that matches a SOQL query you define."
+
+      metadata_api:
+        title: "Database.com Metadata API Developer's Guide"
+        description: "Reference for the Metadata API, a way of retrieving and deploying setup information in your organization."
+
+      soap_api:
+        title: "SOAP API Guide"
+        description: "A guide to using the Force.com SOAP API. Note that this guide includes details about functionality related to the Salesforce.com Sales Cloud and Service Cloud applications that is not available in Database.com."
+
+      summer_12_relnotes:
+        title: "Summer '12 Release Notes"
+        description: " "
+  filter:
+    placeholder: Filter guides and resources
+      
 title:
   popular_content: Popular Content
   toc: Table of Contents
@@ -50,16 +215,4 @@ facets:
 filter:
   placeholder: Filter guides and resources
 
-landing:
-  first_time_item_one: First getting started item
-  first_time_item_two: Second getting started item
-  first_time_item_three: Third getting started item
-  popular_item_one: First popular item
-  popular_item_two: Second popular item
-  popular_item_three: Third popular item
-  guides_title: Guides and Resources
-  guides_table_title: Title
-  guides_table_type: Type
-  guides_table_feature_area: Feature area
-  guides_table_updated: Last updated
   

@@ -11,8 +11,9 @@
         %div{:class => "data colSort"}
           %p
             %b
-              The page you were looking for doesn't exist.
-          %p You may have mistyped the address or the page may have moved.
+              = t.error.page_not_exist
+          %p
+            = t.error.page_not_exist_cause
 
               
 
