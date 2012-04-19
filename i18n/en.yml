@@ -62,7 +62,8 @@ landing:
       short_take_1:
         title: "Short Take #1: Quick Tour of the console"
         description: "This episode is a brief tour of the Database.com Console, the tool you’ll use to do all sorts of things with your database, including common administration tasks,app schema design, and security policy implementations."
-        url: "http://blog.database.com/blog/2011/08/30/short-take-001/" 
+        url: "http://blog.database.com/blog/2011/08/30/short-take-001/"
+        updated: "April 15, 2012"
       short_take_2:
         title: "Short Take #2: Orgs and Sandboxes"
         description: "When your app uses Database.com, all of the complicated, time-consuming, and costly problems related to database provisioning, configuration, and management don’t exist thanks to orgs and sandboxes. In this episode, you’ll learn about these basic terms and concepts and how to create a sandbox."
@@ -135,7 +136,10 @@ landing:
         title: Data Loader Command Line Guide
         description: "Step-by-step instructions for setting up and configuring the Data Loader using the command-line interface."
         updated: "April 15, 2012"
-
+      data_loader:
+        title: "Data Loader"
+        description: "A guide to bulk importing or exporting of data. Use it to insert, update, delete, or export Database.com records."
+        updated: "April 15, 2012"
       rest_api:
         title: "Database.com REST API Developer's Reference"
         description: "A guide to using Database.com’s REST-based data API for accessing objects in your organization."
@@ -163,7 +167,7 @@ landing:
 
       getting_started:
         title: Getting Started with Database.com
-        description: " "
+        description: "A quick introduction to Database.com."
         updated: "April 15, 2012"
 
       apex_dev_guide:

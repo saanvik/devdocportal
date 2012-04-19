@@ -75,7 +75,7 @@
                 %ul{:class => "bulletList",
                     :style => "font-weight: bold;"}
                   %li
-                    %a{:href => "/dbcom/#{@locale}/data_loader/data_loader.htm"}
+                    %a{:href => "dbcom/#{@locale}/db_intro/dbcom_Limits.htm"}
                       = t.landing.deliverable.guide.limits.title
                   %li
                     %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm"}
@@ -303,13 +303,15 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_metadata_api/meta_intro.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.metadata_api.title                    
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.metadata_api.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_metadata_api/meta_intro.htm"}
+                        = t.landing.deliverable.guide.metadata_api.title                    
+                      %br
+                      = t.landing.deliverable.guide.metadata_api.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -318,13 +320,15 @@
                   = t.landing.deliverable.guide.metadata_api.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_soap_api/sforce_api_quickstart_intro.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.soap_api.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.soap_api.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_soap_api/sforce_api_quickstart_intro.htm"}
+                        = t.landing.deliverable.guide.soap_api.title
+                      %br
+                      = t.landing.deliverable.guide.soap_api.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -333,13 +337,15 @@
                   = t.landing.deliverable.guide.soap_api.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/notes_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_rel_notes/rn_about_release_notes.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.summer_12_relnotes.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.summer_12_relnotes.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/notes_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_rel_notes/rn_about_release_notes.htm"}
+                        = t.landing.deliverable.guide.summer_12_relnotes.title
+                      %br
+                      = t.landing.deliverable.guide.summer_12_relnotes.description
                 %td
                   = t.landing.deliverable.relnotes_name
                 %td
@@ -348,13 +354,15 @@
                   = t.landing.deliverable.guide.summer_12_relnotes.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/tutorial_icon.png",
-                       :class => "middle"}
-                    %a{:href => "/dbcom/#{@locale}/dbcom_workbook/workbook_preface.htm",
-                       :class => "middle"}
-                      = t.landing.deliverable.guide.dbcom_workbook.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.dbcom_workbook.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/tutorial_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/dbcom_workbook/workbook_preface.htm"}
+                        = t.landing.deliverable.guide.dbcom_workbook.title
+                      %br
+                      = t.landing.deliverable.guide.dbcom_workbook.description
                 %td
                   = t.landing.deliverable.workbook_name
                 %td
@@ -363,13 +371,15 @@
                   = t.landing.deliverable.guide.dbcom_workbook.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/tutorial_icon.png",
-                       :class => "middle"}
-                  %a{:href => "/dbcom/#{@locale}/mobile_workbook/mobile_intro.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.mobile_workbook.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.mobile_workbook.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/tutorial_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/mobile_workbook/mobile_intro.htm"}
+                        = t.landing.deliverable.guide.mobile_workbook.title
+                      %br
+                      = t.landing.deliverable.guide.mobile_workbook.description
                 %td
                   = t.landing.deliverable.workbook_name
                 %td
@@ -378,13 +388,15 @@
                   = t.landing.deliverable.guide.mobile_workbook.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.intro.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.intro.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.intro.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => "t.landing.deliverable.video.intro.url"}
+                        = t.landing.deliverable.video.intro.title
+                      %br
+                      = t.landing.deliverable.video.intro.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -398,10 +410,10 @@
                        :href=>"javascript:void(0);"}
                       %img{:src => "/portal_images/guide_icon.png"}
                     %div{:class => "mediaBd"}
-                      %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm"}
-                        = t.landing.deliverable.guide.quick_start.title
+                      %a{:href => "/dbcom/#{@locale}/data_loader/data_loader.htm"}
+                        = t.landing.deliverable.guide.data_loader.title
                       %br
-                      = t.landing.deliverable.guide.quick_start.description
+                      = t.landing.deliverable.guide.data_loader.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -410,13 +422,15 @@
                   = t.landing.deliverable.guide.quick_start.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_1.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.short_take_1.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_1.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_1.url}
+                        = t.landing.deliverable.video.short_take_1.title
+                      %br
+                      = t.landing.deliverable.video.short_take_1.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -425,13 +439,15 @@
                   = t.landing.deliverable.video.short_take_1.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_2.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.short_take_2.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_2.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_2.url}
+                        = t.landing.deliverable.video.short_take_2.title
+                      %br
+                      = t.landing.deliverable.video.short_take_2.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -440,13 +456,15 @@
                   = t.landing.deliverable.video.short_take_2.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_3.url,
-                     :class => "middle"}                                       
-                    = t.landing.deliverable.video.short_take_3.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_3.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_3.url}
+                        = t.landing.deliverable.video.short_take_3.title
+                      %br
+                      = t.landing.deliverable.video.short_take_3.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -455,13 +473,15 @@
                   = t.landing.deliverable.video.short_take_2.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_4.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.short_take_4.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_4.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_4.url}
+                        = t.landing.deliverable.video.short_take_4.title
+                      %br
+                      = t.landing.deliverable.video.short_take_4.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -470,13 +490,15 @@
                   = t.landing.deliverable.video.short_take_4.updated                    
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_5.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.short_take_5.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_5.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_5.url}
+                        = t.landing.deliverable.video.short_take_5.title
+                      %br
+                      = t.landing.deliverable.video.short_take_5.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -485,13 +507,15 @@
                   = t.landing.deliverable.video.short_take_5.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_6.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.short_take_6.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_6.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_6.url}
+                        = t.landing.deliverable.video.short_take_6.title
+                      %br
+                      = t.landing.deliverable.video.short_take_6.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -500,13 +524,15 @@
                   = t.landing.deliverable.video.short_take_6.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_7.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.short_take_7.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_7.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_7.url}
+                        = t.landing.deliverable.video.short_take_7.title
+                      %br
+                      = t.landing.deliverable.video.short_take_7.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
@@ -515,13 +541,15 @@
                   = t.landing.deliverable.video.short_take_7.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/recorder_ico.png",
-                       :class => "middle"}
-                  %a{:href => t.landing.deliverable.video.short_take_8.url,
-                     :class => "middle"}
-                    = t.landing.deliverable.video.short_take_8.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.video.short_take_8.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/recorder_ico.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => t.landing.deliverable.video.short_take_8.url}
+                        = t.landing.deliverable.video.short_take_8.title
+                      %br
+                      = t.landing.deliverable.video.short_take_8.description                    
                 %td
                   = t.landing.deliverable.video_name
                 %td
