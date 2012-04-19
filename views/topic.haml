@@ -11,9 +11,12 @@
     });
   }
   $(function(){
-      $("a[name = 'top'] ~ .body").prepend('<div id="topicTags"><span class="h5 mrl">Tags:</span></div>');
       #{
-        @app_keys_and_labels.map{|key, label| %Q^$('#topicTags').append('<a href="/dbcom/#{@locale}/search/facet?app_area=#{key}&type="><span class="btn bluetext pas">#{label}</span></a>');^}.join '\n' unless @app_keys_and_labels.nil?
+      if(not(@app_keys_and_labels.length==0)) then %Q^$("h1.helpHead1:first").after('<div id="topicTags" class="mtl"><span class="h5 mrl">Tags:</span></div>');^ end
+      }
+
+      #{
+        @app_keys_and_labels.map{|key, label| %Q^$('#topicTags').append('<a href="/dbcom/#{@locale}/search/facet?app_area=#{key}&type="><span class="btn bluetext pas">#{label}</span></a>');^}.join '\n' unless @app_keys_and_labels.length==0
       }
       if($('div.nextprevarrows').length == 0) {
         $('a[name="top"]').after('<div class="nextprevarrows"></div>');
