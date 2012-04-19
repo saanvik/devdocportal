@@ -8,6 +8,7 @@ require 'nokogiri'
 require 'haml'
 require 'dalli'
 require 'escape_utils'
+require 'memcachier'
 require './topic_model.rb'
 require './couchrest_sunspot.rb'
 
