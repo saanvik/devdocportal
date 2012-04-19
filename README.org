@@ -34,14 +34,17 @@ to see all the commands.
 
 * Next steps [1/7]
   These are the things that need to be done for 178.
+** ToC Performance
+   Use lazyload, look at the examples.  It appears that some json must
+   be loaded, and then the rest can be appened lazily.
 ** TODO [#A] Close or push all bugs    
    DEADLINE: <2012-04-19 Thu>
 ** DONE Finish up the type facets
   CLOSED: [2012-04-16 Mon 08:59]
 ** TODO [#B] Fix styles for shortdesc on landing page
 ** VERIFY [#A] Fix guide links on search results page
-** [#A] Send labels for localization [/]
-  DEADLINE: <2012-04-18 Wed 13:30>
+** [#C] Send labels for localization [/]
+  DEADLINE: <2012-04-20 Fri 13:30>
 *** TODO Update all the haml files to make labels out of everything
 *** TODO Figure out what Evelyn was talking about in her labels question
 

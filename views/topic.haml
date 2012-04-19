@@ -21,11 +21,9 @@
       $('.nextprevarrows').prepend('<span class="pdf_button"><a class="btn primaryBtn" title="email" href="mailto:?body=#{request.url}" style="white-space: normal;">#{t.topic.button.email}</a></span>');
       $('.pdf_button').prepend('<a class="btn primaryBtn" title="PDF" href="/#{@locale}/#{@relatedpdf}" style="white-space: normal;">#{t.topic.button.pdf}</a>');
       $("#tree").dynatree({
-      debugLevel:2,
       checkbox: false,
-      persist: true,
       selectMode: 1,
-      initAjax: { 
+      initAjax: {
           url: "#{@toc_json_fullURL}",
           cache: true
       },

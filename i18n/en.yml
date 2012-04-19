@@ -201,6 +201,15 @@ landing:
         description: "An overview of all changes in the new release of Database.com."
         updated: "April 15, 2012"
 
+layout:
+  logo:
+    alt: "Database.com cloud"
+    url: "/oocss/images/databaselogo_cloud.png"
+  logo_text:
+    alt:
+    url: "/oocss/images/databaselogo_text.gif"
+  copyright: © Copyright 2000–2012 salesforce.com, inc. All rights reserved.<br/>Various trademarks held by their respective owners.
+
 topic:
   button:
     email: "Email"
@@ -242,7 +251,7 @@ search:
 
 misc:
   try_again: Please try again.
-  copyright: © Copyright 2000–2012 salesforce.com, inc. All rights reserved.<br/>Various trademarks held by their respective owners.
+
   fourohfour_intro: Sorry, either the page you are looking for does not exist or something went wrong.  Please try again, enter a new search, or visit the <a href="/index.htm">the home page</a>.
   fivehundred_intro: Sorry, something went wrong.  Please try again, enter a search, or visit the <a href="/index.htm">the home page</a>.
 

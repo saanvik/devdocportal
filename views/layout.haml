@@ -40,13 +40,14 @@
           %div{:style => "float: left"}
             %a{:class=>"img pts",
                :href=>"/dbcom/en-us/dbcom_index.htm"}
-              %img{:alt=>"Database.com cloud",
-                   :src=>"/oocss/images/databaselogo_cloud.png",
+              %img{:alt=> t.layout.logo.alt,
+                   :src=> t.layout.logo.url,
                    :width => "100px",
                    :height => "70px"}
             %a{:class=>"img techlib",
                :href=>"/dbcom/en-us/dbcom_index.htm"}
-              %img{:src => "/oocss/images/databaselogo_text.gif",
+              %img{:src => t.layout.logo_text.url,
+                   :alt => t.layout.logo_text.alt,
                    :width => "270px",
                    :height => "43px",
                    :class => "pbs"}
@@ -73,4 +74,4 @@
  
     %div{:class => "footer"}
       %p{:style => "text-align: center"}
-        = t.misc.copyright
+        = t.layout.copyright
