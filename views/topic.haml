@@ -27,11 +27,7 @@
       selectMode: 1,
       initAjax: { 
           url: "#{@toc_json_fullURL}",
-      },
-      onLazyRead: function(node){
-         node.appendAjax({
-              url: "#{@toc_json_fullURL}",
-        });
+          cache: true
       },
       onActivate: function(node) {
         #{

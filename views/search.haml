@@ -57,6 +57,7 @@
         selectMode: 3,
         initAjax: { 
           url: "/facets.json",
+          cache: true
         },
         onPostInit: function(isReloading, isError) {
         // 'this' is the current tree
@@ -69,9 +70,6 @@
              type.map{ |thistype | "this.selectKey('#{thistype}');"}.join '\n' unless type.nil?
           }
 
-        this.getRoot().visit(function(node){
-          node.expand(true);
-          });
         },
         // Set up the initial state based on the URL
         onSelect: function(select, node) {

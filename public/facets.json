@@ -1,4 +1,4 @@
-[{ "title": "Feature Area","isFolder":true,"icon":false, "unselectable":true,"hideCheckbox":true,"key":"FeatureArea",
+[{ "title":"Feature Area", "isFolder":true,"icon":false, "unselectable":true,"hideCheckbox":true,"key":"FeatureArea","isLazy":true,
 	"children":[
 	    {"title":"Customization and setup", "key":"Customization_Setup","icon":false},
 	    {"title":"Data model","key": "Data_Model","icon":false, "isFolder":false,
@@ -50,7 +50,7 @@
 	    {"title":"Mobile development","key":"Mobile","icon":false}
 	]
  }, 
- {"title":"Type","hideCheckbox" : true, "isFolder":false,"icon":false, "key":"Type",
+ {"title":"Type","hideCheckbox" : true, "isFolder":false,"icon":false, "key":"Type","isLazy":true,
   "children":[
       {"title":"FAQs","icon":false, "key":"FAQ"},
       {"title":"Guides","icon":false, "key":"Guide"},
