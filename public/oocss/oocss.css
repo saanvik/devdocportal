@@ -3627,6 +3627,10 @@ div.nested1 div.body {
     font-size: 0.75em;
 }
 
+.helpHead1 {
+    line-height: 1.3em;
+}
+
 
 /* Add style overrides for dynatree */
 span.dynatree-active a {
