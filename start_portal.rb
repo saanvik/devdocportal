@@ -28,7 +28,7 @@ end
 set :static, true
 set :static_cache_control, [:public, :max_age => 36000, :expires => 500]
 set :cache, Dalli::Client.new
-set :enable_cache, false
+set :enable_cache, true
 set :short_ttl, 400
 set :long_ttl, 4600
 
