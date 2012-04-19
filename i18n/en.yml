@@ -132,7 +132,7 @@ landing:
         updated: "April 15, 2012"
           
       quick_start:
-        title: Data Loader Command Line Quick Start
+        title: Data Loader Command Line Guide
         description: "Step-by-step instructions for setting up and configuring the Data Loader using the command-line interface."
         updated: "April 15, 2012"
 
