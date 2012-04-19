@@ -34,8 +34,30 @@
           #{
              %Q^var guide = "#{@guide}";^
           }
-          if(node.tree.isUserEvent() && node.data.key.indexOf(".htm") != -1) {
-            window.location = baseURL + "/" + guide + "/" + node.data.key;
+          if(node.tree.isUserEvent()) {
+           if (node.data.key.indexOf(".htm") != -1) {
+              window.location = baseURL + "/" + guide + "/" + node.data.key;
+            } else { // Grab the first child that has an associated html file
+              if (node.getChildren()) {
+                childArray = node.getChildren();
+                for(var i=0;i<childArray.length;i++) {
+                if (childArray[i].data.key.indexOf(".htm") != -1) {
+                  window.location = baseURL + "/" + guide + "/" + childArray[i].data.key;
+                  break;
+                  } else { // If this one doesn't, look at it's children.  Yes, this should be a recursive function.
+                   if (node.getChildren()) {
+                     childArray = node.getChildren();
+                     for(var i=0;i<childArray.length;i++) {
+                       if (childArray[i].data.key.indexOf(".htm") != -1) {
+                        window.location = baseURL + "/" + guide + "/" + childArray[i].data.key;
+                        break;
+                      }
+                  }
+              }
+              }
+            }
+            }
+            }
             }
       },
       onPostInit: function(isReloading, isError) {
