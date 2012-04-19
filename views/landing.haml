@@ -142,13 +142,15 @@
             %tbody{:class => "content"}
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                  :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_help/index.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.console.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.console.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_help/index.htm"}
+                        = t.landing.deliverable.guide.console.title
+                      %br
+                      = t.landing.deliverable.guide.console.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -157,13 +159,15 @@
                   = t.landing.deliverable.guide.console.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_intro/quickstart_intro.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.getting_started.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.getting_started.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_intro/quickstart_intro.htm"}
+                        = t.landing.deliverable.guide.getting_started.title                    
+                      %br
+                      = t.landing.deliverable.guide.getting_started.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -172,13 +176,15 @@
                   = t.landing.deliverable.guide.getting_started.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_rest_api/intro_what_is_rest_api.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.rest_api.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.rest_api.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_rest_api/intro_what_is_rest_api.htm"}
+                        = t.landing.deliverable.guide.rest_api.title
+                      %br
+                      = t.landing.deliverable.guide.rest_api.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -188,13 +194,15 @@
                     
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_apex/apex_intro.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.apex_dev_guide.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.apex_dev_guide.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_apex/apex_intro.htm"}
+                        = t.landing.deliverable.guide.apex_dev_guide.title
+                      %br
+                      = t.landing.deliverable.guide.apex_dev_guide.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -203,13 +211,15 @@
                   = t.landing.deliverable.guide.apex_dev_guide.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_obj_ref/sforce_api_objects_concepts.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.object_reference.title                                        
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.object_reference.description                    
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_obj_ref/sforce_api_objects_concepts.htm"}
+                        = t.landing.deliverable.guide.object_reference.title                                        
+                      %br
+                      = t.landing.deliverable.guide.object_reference.description                    
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -219,13 +229,23 @@
 
               %tr
                 %td
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_chatter_rest_api/intro_what_is_rest_api.htm"}
+                        = t.landing.deliverable.guide.chatter_rest_api.title
+                      %br
+                      = t.landing.deliverable.guide.chatter_rest_api.description
+
                   %img{:src => "/portal_images/guide_icon.png",
                        :class => "middle"}
                   %a{:href=>"/dbcom/#{@locale}/db_rest_api/intro_what_is_rest_api.htm",
                      :class => "middle"}
-                    = t.landing.deliverable.guide.chatter_rest_api.title
+
                   %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.chatter_rest_api.description
+
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -235,13 +255,15 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_sosl_soql/sforce_api_calls_soql.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.sosl_soql.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.sosl_soql.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_sosl_soql/sforce_api_calls_soql.htm"}
+                        = t.landing.deliverable.guide.sosl_soql.title
+                      %br
+                      = t.landing.deliverable.guide.sosl_soql.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -251,13 +273,15 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_bulk_api/asynch_api_intro.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.bulk_api.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.bulk_api.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_bulk_api/asynch_api_intro.htm"}
+                        = t.landing.deliverable.guide.bulk_api.title
+                      %br
+                      = t.landing.deliverable.guide.bulk_api.description                        
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -267,13 +291,15 @@
 
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href=>"/dbcom/#{@locale}/db_streaming_api/intro_stream.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.streaming_api.title                    
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.streaming_api.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href=>"/dbcom/#{@locale}/db_streaming_api/intro_stream.htm"}
+                        = t.landing.deliverable.guide.streaming_api.title                    
+                      %br
+                        = t.landing.deliverable.guide.streaming_api.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td
@@ -373,13 +399,15 @@
                   = t.landing.deliverable.video.intro.updated
               %tr
                 %td
-                  %img{:src => "/portal_images/guide_icon.png",
-                       :class => "middle"}
-                  %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm",
-                     :class => "middle"}
-                    = t.landing.deliverable.guide.quick_start.title
-                  %p{:class => "mll, dev_desc"}
-                    = t.landing.deliverable.guide.quick_start.description
+                  %div{:class=>"media"}
+                    %a{:class => "img",
+                       :href=>"javascript:void(0);"}
+                      %img{:src => "/portal_images/guide_icon.png"}
+                    %div{:class => "mediaBd"}
+                      %a{:href => "/dbcom/#{@locale}/data_loader/command_line_intro.htm"}
+                        = t.landing.deliverable.guide.quick_start.title
+                      %br
+                      = t.landing.deliverable.guide.quick_start.description
                 %td
                   = t.landing.deliverable.guide_name
                 %td

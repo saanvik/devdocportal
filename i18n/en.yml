@@ -231,7 +231,8 @@ search_results:
   th_updated: Updated
   th_type: Type
   th_technology: Technology
-  count: results for 
+  count: results for
+  count_no_query: results found.
 
 search:
   placeholder: Search Technical Library

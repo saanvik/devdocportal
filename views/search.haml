@@ -162,6 +162,8 @@
           = t.search_results.count
           %span
             <b>#{query}</b>
+        %span{:style => "display: #{query.length == 0 ? 'inline' : 'none'};"}
+          = t.search_results.count_no_query
       %p
         %span{:class => "h3"}
           Filters:
