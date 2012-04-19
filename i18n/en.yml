@@ -138,7 +138,7 @@ landing:
         updated: "April 15, 2012"
       data_loader:
         title: "Data Loader"
-        description: "A guide to bulk importing or exporting of data. Use it to insert, update, delete, or export Database.com records."
+        description: "A guide describing how to use Data Loader to do a bulk import or export of data from a Database.com organization."
         updated: "April 15, 2012"
       rest_api:
         title: "Database.com REST API Developer's Reference"

@@ -1,4 +1,4 @@
-[{ "title":"Feature Area", "isFolder":true,"icon":false, "unselectable":true,"hideCheckbox":true,"key":"FeatureArea","isLazy":true,
+[{ "title":"Feature Area", "isFolder":false,"icon":false, "unselectable":true,"hideCheckbox":true,"key":"FeatureArea","isLazy":true,
 	"children":[
 	    {"title":"Customization and setup", "key":"Customization_Setup","icon":false},
 	    {"title":"Data model","key": "Data_Model","icon":false, "isFolder":false,
