@@ -279,9 +279,10 @@ end
 
 # All calls to help.css should go to the same file
 get '*help.css' do
-  content_type 'text/css'
-  @thiscss = Topic.by_topicname_and_locale.key(["help.css", "en-us"]).first
-  return @thiscss.read_attachment("help.css")
+  # content_type 'text/css'
+  # @thiscss = Topic.by_topicname_and_locale.key(["help.css", "en-us"]).first
+  # return @thiscss.read_attachment("help.css")
+  ""
 end
 
 # All calls to /img should grab it from the app_image_document

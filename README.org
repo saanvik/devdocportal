@@ -32,17 +32,16 @@ There are other options in the Rakefile, including an option to run
 locally against the remote database and search index.  Run =rake -T=
 to see all the commands.
 
-* Next steps [1/7]
+* Next steps [4/7]
   These are the things that need to be done for 178.
-** ToC Performance
-   Use lazyload, look at the examples.  It appears that some json must
-   be loaded, and then the rest can be appened lazily.
-** TODO [#A] Close or push all bugs    
-   DEADLINE: <2012-04-19 Thu>
+** DONE [#A] Close or push all bugs    
+   DEADLINE: <2012-04-19 Thu> CLOSED: [2012-04-19 Thu 17:07]
 ** DONE Finish up the type facets
   CLOSED: [2012-04-16 Mon 08:59]
-** TODO [#B] Fix styles for shortdesc on landing page
-** VERIFY [#A] Fix guide links on search results page
+** DONE [#B] Fix styles for shortdesc on landing page
+   CLOSED: [2012-04-19 Thu 17:08]
+** DONE [#A] Fix guide links on search results page
+   CLOSED: [2012-04-19 Thu 17:08]
 ** [#C] Send labels for localization [/]
   DEADLINE: <2012-04-20 Fri 13:30>
 *** TODO Update all the haml files to make labels out of everything
@@ -55,6 +54,7 @@ to see all the commands.
 ** TODO [#C] Set up Ranger report status of site (Ranger?), or figure out how to work with logentries
 ** TODO [#C] New Relic
 ** TODO [#B] Blitz test?
+** TODO Figure out the tags and filters text
 ** Update docbuild [3/5]
 *** DONE Drop /js/functions.js
    CLOSED: [2012-02-03 Fri 08:15]
@@ -65,17 +65,18 @@ to see all the commands.
 *** VERIFY Set feedback=false by default
 *** VERIFY Update on_server links
 
+*** TODO Drop help.css links?
 * Long term
   Things to do after 178
 ** TODO See if Jenkins supports Rake
-** Write a rake file to [1/5]
+** Write a rake file to [1/4]
 *** TODO Build the doc
-*** TODO Push the content into the database
+*** DONE Push the content into the database
+    CLOSED: [2012-01-19 Thu 17:13]
 *** TODO Run automated tests on local system
 *** TODO Monitor remote [2/4]
 **** *Q:* Can this be done on a server running on my linux box?
 **** *Q:* Maybe use pulse for this, too.
-
 ** Fix deliverable level metadata [0/1]
 *** TODO Create a json file to upload to couch as part of the build that has all the metadata for the deliverable
 *** TODO Push an identifier for the deliverable into the topic document

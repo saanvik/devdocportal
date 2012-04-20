@@ -218,6 +218,7 @@ topic:
   button:
     email: "Email"
     pdf: "PDF"
+  tags: "Tags:"
 
 title:
   popular_content: Popular Content
